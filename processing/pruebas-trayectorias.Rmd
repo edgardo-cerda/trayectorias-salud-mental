@@ -58,63 +58,101 @@ elsoc_salud <- elsoc_wide_2016_2021 %>%
          depr4_w03 = car::recode(phq9_w03, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"), 
          depr4_w04 = car::recode(phq9_w04, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"), 
          depr4_w05 = car::recode(phq9_w05, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"),
-         depr_w01 = car::recode(phq9_w01, "0:9 = 0; 10:27 = 1"), 
-         depr_w02 = car::recode(phq9_w02, "0:9 = 0; 10:27 = 1"), 
-         depr_w03 = car::recode(phq9_w03, "0:9 = 0; 10:27 = 1"),  
-         depr_w04 = car::recode(phq9_w04, "0:9 = 0; 10:27 = 1"), 
-         depr_w05 = car::recode(phq9_w05, "0:9 = 0; 10:27 = 1")
+         depr2_w01 = car::recode(phq9_w01, "0:9 = 0; 10:27 = 1"), 
+         depr2_w02 = car::recode(phq9_w02, "0:9 = 0; 10:27 = 1"), 
+         depr2_w03 = car::recode(phq9_w03, "0:9 = 0; 10:27 = 1"),  
+         depr2_w04 = car::recode(phq9_w04, "0:9 = 0; 10:27 = 1"), 
+         depr2_w05 = car::recode(phq9_w05, "0:9 = 0; 10:27 = 1")
          )
 
 ```
 
 # Análisis de secuencia
 
+## Secuencia con 4 categorías:
+
 ```{r}
-# Etiquetas de indicadores de variables
-vars_depr <- c('Sin síntomas', 'Síntomas medios', 'Síntomas moderados', 'Síntomas severos')
-
-# Etiquetas abreviadas de indicadores de variables
-labs_depr <- c('Sin', 'medio', 'mod', 'sev')
-
-# Colores para indicadores de variables
-cols_depr <- c('lightgreen', 'mediumturquoise', 'skyblue3', 'slateblue4')
 
 # Crear objeto con secuencias
-seq.depr <- TraMineR::seqdef(elsoc_salud, 
+seq.depr4 <- TraMineR::seqdef(elsoc_salud, 
                              var = c('depr4_w01', 'depr4_w02', 'depr4_w03', 'depr4_w04', 'depr4_w05'), 
-                             states = vars_depr, 
-                             labels = labs_depr,
-                             cpal = cols_depr)
+                             states = c('Sin síntomas', 'Síntomas medios', 'Síntomas moderados', 'Síntomas severos'), 
+                             cpal = c('lightgreen', 'mediumturquoise', 'skyblue3', 'slateblue4'))
 
 # Medir distancias entre secuencias usando analisis de secuencias usando optimal matching analysis
-dist.depr <- seqdist(seq.depr, 
-                     method = "OM", 
-                     sm = "CONSTANT")
+dist.depr4 <- TraMineR::seqdist(seq.depr4,
+                               method = "OM",
+                               sm = "CONSTANT")
 
 # Construir tipos de trayectorias con analisis de cluster jerarquico Ward
-ward.depr <- hclust(as.dist(dist.depr), 
-                    method = "ward.D")
+ward.depr4 <- stats::hclust(as.dist(dist.depr4),
+                           method = "ward.D")
 
 # Comparar soluciones con diferentes numeros de trayectorias (se prueban de 1 a 15 clusters)
-ward.range.depr <- as.clustrange(ward.depr, 
-                                 diss = dist.depr, 
-                                 ncluster = 15)
+ward.range.depr4 <- WeightedCluster::as.clustrange(ward.depr4,
+                                                  diss = dist.depr4, 
+                                                  ncluster = 32)
 
 # Visualizar clusters:
-plot(ward.range.depr, 
+plot(ward.range.depr4, 
      stat = c("ASW","ASWw", "HG", "PBC", "HC"), norm="zscore")
 ```
 
-5 clusters parece ser el número óptimo:
+### Prueba con 10 clusters:
+
 
 ```{r}
 # Revision de soluciones con 5 tipos
-ward.depr5 <- cutree(ward.depr, k = 5)
+ward.depr4.5 <- stats::cutree(ward.depr4, k = 6)
 
-seqdplot(seq.depr, group = ward.depr5, xtlab = 2016:2021, xlab="Tiempo")
-seqIplot(seq.depr, group = ward.depr5, xtlab = 2016:2021, sortv = "from.start", xlab = "Tiempo")
-seqmtplot(seq.depr, group = ward.depr5, xlab = "Estatus")
-seqHtplot(seq.depr, group = ward.depr5, xlab = "Tiempo")
+seqdplot(seq.depr4, group = ward.depr4.5, xtlab = c(2016:2019, 2021), xlab = "Tiempo")
+
+seqIplot(seq.depr4, group = ward.depr4.5, xtlab = c(2016:2019, 2021), sortv = "from.start", xlab = "Tiempo")
+seqmtplot(seq.depr4, group = ward.depr4.5, xlab = "Estatus")
+
+
+```
+
+## Secuencia con 2 categorías:
+
+```{r}
+
+# Crear objeto con secuencias
+seq.depr2 <- TraMineR::seqdef(elsoc_salud, 
+                             var = c('depr2_w01', 'depr2_w02', 'depr2_w03', 'depr2_w04', 'depr2_w05'), 
+                             states = c('Sin síntomas a medios', 'Síntomas moderados a severos'), 
+                             cpal = c('mediumturquoise', 'slateblue4'))
+
+# Medir distancias entre secuencias usando analisis de secuencias usando optimal matching analysis
+dist.depr2 <- TraMineR::seqdist(seq.depr2,
+                               method = "OM",
+                               sm = "CONSTANT")
+
+# Construir tipos de trayectorias con analisis de cluster jerarquico Ward
+ward.depr2 <- stats::hclust(as.dist(dist.depr2),
+                           method = "ward.D")
+
+# Comparar soluciones con diferentes numeros de trayectorias (se prueban de 1 a 15 clusters)
+ward.range.depr2 <- WeightedCluster::as.clustrange(ward.depr2,
+                                                  diss = dist.depr2, 
+                                                  ncluster = 32)
+
+# Visualizar clusters:
+plot(ward.range.depr2, 
+     stat = c("ASW","ASWw", "HG", "PBC", "HC"), norm="zscore")
+
+```
+
+### Prueba con 7 clusters:
+
+
+```{r}
+# Revision de soluciones con 5 tipos
+ward.depr2.5 <- stats::cutree(ward.depr2, k = 6)
+
+seqdplot(seq.depr2, group = ward.depr2.5, xtlab = c(2016:2019, 2021), xlab = "Tiempo")
+seqIplot(seq.depr2, group = ward.depr2.5, xtlab = c(2016:2019, 2021), sortv = "from.start", xlab = "Tiempo")
+seqmtplot(seq.depr2, group = ward.depr2.5, xlab = "Estatus")
 
 
 ```
