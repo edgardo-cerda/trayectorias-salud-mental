@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
 ## Cargar librerías
@@ -24,6 +24,15 @@ library(cluster)
 
 # Librería ELSOC
 library(elsoc)
+
+# Librerias graficos
+library(ggpubr)
+library(ggsankey)
+
+# Libreria analisis estadístico
+library(nnet)
+library(modelsummary)
+
 ```
 
 ## Cargar y preparar datos ELSOC
@@ -62,7 +71,8 @@ elsoc_salud <- elsoc_wide_2016_2021 %>%
          depr2_w02 = car::recode(phq9_w02, "0:9 = 0; 10:27 = 1"), 
          depr2_w03 = car::recode(phq9_w03, "0:9 = 0; 10:27 = 1"),  
          depr2_w04 = car::recode(phq9_w04, "0:9 = 0; 10:27 = 1"), 
-         depr2_w05 = car::recode(phq9_w05, "0:9 = 0; 10:27 = 1")
+         depr2_w05 = car::recode(phq9_w05, "0:9 = 0; 10:27 = 1"),
+         phq_sum = phq9_w01 + phq9_w02 + phq9_w03 + phq9_w04 + phq9_w05
          )
 
 ```
@@ -72,88 +82,326 @@ elsoc_salud <- elsoc_wide_2016_2021 %>%
 ## Secuencia con 4 categorías:
 
 ```{r}
-
 # Crear objeto con secuencias
 seq.depr4 <- TraMineR::seqdef(elsoc_salud, 
                              var = c('depr4_w01', 'depr4_w02', 'depr4_w03', 'depr4_w04', 'depr4_w05'), 
                              states = c('Sin síntomas', 'Síntomas medios', 'Síntomas moderados', 'Síntomas severos'), 
+                             labels = c('Sin', 'Medios', 'Moderados', 'Severos'),
+                             weights = elsoc_salud$ponderador02_w01,
                              cpal = c('lightgreen', 'mediumturquoise', 'skyblue3', 'slateblue4'))
+```
 
+### Gráfico de secuencias:
+
+Muestra las secuencias/trayectorias que cubren el 95% de la muestra. Son 260 secuencias, ordenadas según frecuencia:
+
+```{r}
+TraMineR::seqfplot(seq.depr4, border = NA, with.legend = "top",
+                   idxs = 1:260, space = 0)
+
+```
+
+### Frecuencia de estados y transiciones
+
+```{r}
+seqstatd(seq.depr4)
+
+seqtrate(seq.depr4)
+
+```
+
+
+### Clusters de secuencias:
+
+```{r}
 # Medir distancias entre secuencias usando analisis de secuencias usando optimal matching analysis
+
+# Se define matriz de costos de sustitución basados en valores medios de indice phq9
+substitution_cost_matrix <- as.matrix(rbind(c(0, 5, 10, 19),
+                                            c(5, 0, 5, 14),
+                                            c(10, 5, 0, 9),
+                                            c(19, 14, 9, 0)))
+
 dist.depr4 <- TraMineR::seqdist(seq.depr4,
                                method = "OM",
-                               sm = "CONSTANT")
+                               sm = substitution_cost_matrix)
+```
 
+
+```{r}
 # Construir tipos de trayectorias con analisis de cluster jerarquico Ward
-ward.depr4 <- stats::hclust(as.dist(dist.depr4),
-                           method = "ward.D")
+ward.depr4 <- cluster::agnes(dist.depr4, diss = TRUE, method = 'ward')
 
-# Comparar soluciones con diferentes numeros de trayectorias (se prueban de 1 a 15 clusters)
+# Comparar soluciones con diferentes numeros de trayectorias (se prueban de 2 a 10 clusters)
 ward.range.depr4 <- WeightedCluster::as.clustrange(ward.depr4,
                                                   diss = dist.depr4, 
-                                                  ncluster = 32)
-
+                                                  ncluster = 10)
 # Visualizar clusters:
-plot(ward.range.depr4, 
-     stat = c("ASW","ASWw", "HG", "PBC", "HC"), norm="zscore")
-```
-
-### Prueba con 10 clusters:
-
-
-```{r}
-# Revision de soluciones con 5 tipos
-ward.depr4.5 <- stats::cutree(ward.depr4, k = 6)
-
-seqdplot(seq.depr4, group = ward.depr4.5, xtlab = c(2016:2019, 2021), xlab = "Tiempo")
-
-seqIplot(seq.depr4, group = ward.depr4.5, xtlab = c(2016:2019, 2021), sortv = "from.start", xlab = "Tiempo")
-seqmtplot(seq.depr4, group = ward.depr4.5, xlab = "Estatus")
-
+ward.range.depr4$stats %>% 
+  mutate(clusters = 2:10) %>% 
+  pivot_longer(cols = c(ASW, ASWw, HG, PBC, HC),
+               names_to = 'indicador',
+               values_to = 'value') %>%
+  group_by(indicador) %>% 
+  mutate(value = (value - mean(value, na.rm = TRUE)) / sd(value, na.rm = TRUE)) %>% 
+  ggplot(aes(y = value, x = clusters, color = indicador, group = indicador)) + 
+  geom_line() + 
+  scale_x_continuous(breaks = 2:10)
 
 ```
 
-## Secuencia con 2 categorías:
+
+### Grafico de secuencias por clusters:
+
+Pruebas con 4, 5, 6 y 7 clusters
+
+```{r}
+grafico_trayectorias4_K <- function(K, ward) {
+  elsoc_trayectorias <- elsoc_salud
+  elsoc_trayectorias$trayectoria <- stats::cutree(ward, k = K)
+  
+  
+  nested_data <- elsoc_trayectorias %>% 
+    group_by(trayectoria) %>% 
+    nest()
+  
+  N <- purrr::map(.x = nested_data$data, .f = ~dim(.x)[1])
+  graficos <- purrr::map2(.x = nested_data$data,
+                          .y = N,
+                          .f = ~ .x %>%
+                            ggsankey::make_long(depr4_w01, depr4_w02, depr4_w03, depr4_w04, depr4_w05,
+                                                value = 'ponderador02_w01') %>%
+                            mutate(depr = factor(node,
+                                                 levels = 1:4,
+                                                 labels = c('Sin sintomas', 'medios', 'moderados', 'severos')),
+                                   x = factor(x,
+                                                 levels = glue::glue('depr4_w0{1:5}'),
+                                                 labels = glue::glue('{c(2016:2019, 2021)}'))) %>%
+                            ggplot(aes(x = x,
+                                       next_x = next_x, 
+                                       node = node, 
+                                       next_node = next_node,
+                                       fill = depr,
+                                       value = value)) +
+                            geom_sankey(flow.alpha = .6) +
+                            labs(x = NULL,
+                                 caption = glue::glue('N={.y}')) +
+                            theme(legend.position = 'bottom',
+                                  legend.title = element_blank()) +
+                            scale_fill_viridis_d(direction = -1, end = .8,
+                                                 drop = FALSE))
+    
+  
+  plot <- ggpubr::ggarrange(plotlist = graficos,
+                    common.legend = TRUE, legend = 'bottom')
+  annotate_figure(plot, top = text_grob(glue::glue('{K} clusters')))
+  
+}
+```
+
+
+```{r}
+purrr::map(.x = 4:7, ward = ward.depr4, .f = grafico_trayectorias4_K)
+```
+
+## 5 clusters:
+
+Me gusta la opción con 5 clusters. Nombres provisorios:
+ - Sintomas severos recurrentes
+ - Remisión sintomas
+ - Sintomas severos nuevos
+ - Sintomas intermitentes
+ - Sin sintomas/sintomas medios
+ 
+```{r}
+
+elsoc_salud_5 <- elsoc_salud
+elsoc_salud_5$trayectoria <- stats::cutree(ward.depr4, k = 5)
+
+```
+
 
 ```{r}
 
+N <- table(elsoc_salud_5$trayectoria)
+nombres_cluster <- c('Sintomas severos recurrentes', 'Remisión sintomas', 'Síntomas severos nuevos',
+              'Síntomas intermitentes', 'Sin sintomas/sintomas medios')
+
+graficos <- purrr::map(.x = 1:5, .f = ~
+                         elsoc_salud_5 %>%
+                         filter(trayectoria == .x) %>% 
+  ggsankey::make_long(depr4_w01, depr4_w02, depr4_w03, depr4_w04, depr4_w05,
+                      value = 'ponderador02_w01') %>%
+  mutate(depr = factor(node,
+                       levels = 1:4,
+                       labels = c('Sin sintomas', 'medios', 'moderados', 'severos')),
+         x = factor(x,
+                    levels = glue::glue('depr4_w0{1:5}'),
+                    labels = glue::glue('{c(2016:2019, 2021)}'))) %>%
+  ggplot(aes(x = x,
+             next_x = next_x, 
+             node = node, 
+             next_node = next_node,
+             fill = depr,
+             value = value)) +
+  geom_sankey(flow.alpha = .6) +
+  labs(x = NULL,
+       caption = glue::glue('N={N[.x]}')) +
+  theme(legend.position = 'bottom',
+        legend.title = element_blank()) +
+  scale_fill_viridis_d(direction = -1, end = .8)   +
+  ggtitle(NULL, subtitle = glue::glue('{nombres_cluster[.x]}'))
+)
+
+plot <- ggpubr::ggarrange(plotlist = graficos,
+                  common.legend = TRUE, legend = 'bottom')
+annotate_figure(plot, top = text_grob(glue::glue('5 clusters')))
+  
+```
+
+
+### Modelo multinomial logit
+
+```{r}
+
+
+m1 <- elsoc_salud_5 %>% 
+    filter(!elsoc::is_nsnr(m30_w01, m30_w02, m30_w03, m30_w04, m30b_w05)) %>% 
+  mutate(
+    m30_w01 = 1000*as.numeric(car::recode(m30_w01, "1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; 
+                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;
+                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA")),
+    m29_w01_imp = ifelse(is_nsnr(m29_w01), m30_w01, m29_w01),
+    ypc_w01 = m29_w01_imp / nhogar1_w01) %>%  
+  mutate(quintil_w01 = statar::xtile(ypc_w01, n = 5, wt = ponderador02_w01),
+         # quintil_w01 = factor(quintil_w01,
+         #                      levels = 1:5,
+         #                      labels = glue::glue('Quintil {1:5}')),
+         trayectoria = factor(trayectoria,
+                              levels = 1:5,
+                              labels = c('Sintomas severos recurrentes',
+                                         'Remisión sintomas',
+                                         'Sintomas severos nuevos',
+                                         'Sintomas intermitentes',
+                                         'Sin sintomas/sintomas medios')),
+         trayectoria = fct_rev(trayectoria),
+         sexo = factor(m0_sexo_w01, levels = 1:2,
+                       labels = c('Hombre', 'Mujer'))) %>% 
+           multinom(trayectoria ~ sexo + m0_edad_w01 + quintil_w01,
+               data = .) 
+
+
+modelsummary(m1,
+             stars = c('*' = .05, '**' = .01, '***' = .001),
+             group = model + term ~ y.level)
+
+```
+
+## Pruebas con depresión en 2 categorías
+
+
+```{r}
 # Crear objeto con secuencias
 seq.depr2 <- TraMineR::seqdef(elsoc_salud, 
                              var = c('depr2_w01', 'depr2_w02', 'depr2_w03', 'depr2_w04', 'depr2_w05'), 
-                             states = c('Sin síntomas a medios', 'Síntomas moderados a severos'), 
-                             cpal = c('mediumturquoise', 'slateblue4'))
+                             states = c('Sin síntomas/sintomas medios', 'sintomas moderados/severos'), 
+                             labels = c('Sin/medios', 'Moderados/Severos'),
+                             weights = elsoc_salud$ponderador02_w01,
+                             cpal = c('lightgreen', 'slateblue4'))
+```
 
-# Medir distancias entre secuencias usando analisis de secuencias usando optimal matching analysis
-dist.depr2 <- TraMineR::seqdist(seq.depr2,
-                               method = "OM",
-                               sm = "CONSTANT")
 
-# Construir tipos de trayectorias con analisis de cluster jerarquico Ward
-ward.depr2 <- stats::hclust(as.dist(dist.depr2),
-                           method = "ward.D")
+Hay 32 secuencias en total
 
-# Comparar soluciones con diferentes numeros de trayectorias (se prueban de 1 a 15 clusters)
-ward.range.depr2 <- WeightedCluster::as.clustrange(ward.depr2,
-                                                  diss = dist.depr2, 
-                                                  ncluster = 32)
-
-# Visualizar clusters:
-plot(ward.range.depr2, 
-     stat = c("ASW","ASWw", "HG", "PBC", "HC"), norm="zscore")
+```{r}
+TraMineR::seqfplot(seq.depr2, border = NA, with.legend = "top",
+                   idxs = 1:32, space = 0)
 
 ```
 
-### Prueba con 7 clusters:
+```{r}
+
+dist.depr2 <- TraMineR::seqdist(seq.depr2, method = "OM", sm = 'CONSTANT')
+
+# Construir tipos de trayectorias con analisis de cluster jerarquico Ward
+ward.depr2 <- cluster::agnes(dist.depr2, diss = TRUE, method = 'ward')
+
+# Comparar soluciones con diferentes numeros de trayectorias (se prueban de 2 a 10 clusters)
+ward.range.depr2 <- WeightedCluster::as.clustrange(ward.depr2,
+                                                  diss = dist.depr2, 
+                                                  ncluster = 10)
+
+# Visualizar clusters:
+ward.range.depr2$stats %>% 
+  mutate(clusters = 2:10) %>% 
+  pivot_longer(cols = c(ASW, ASWw, HG, PBC, HC),
+               names_to = 'indicador',
+               values_to = 'value') %>%
+  group_by(indicador) %>% 
+  mutate(value = (value - mean(value, na.rm = TRUE)) / sd(value, na.rm = TRUE)) %>% 
+  ggplot(aes(y = value, x = clusters, color = indicador, group = indicador)) + 
+  geom_line() + 
+  scale_x_continuous(breaks = 2:10)
+
+```
+
+```{r}
+
+elsoc_trayectorias <- elsoc_salud
+elsoc_trayectorias$trayectoria <- stats::cutree(ward.depr2, k = 2)
+
+```
 
 
 ```{r}
-# Revision de soluciones con 5 tipos
-ward.depr2.5 <- stats::cutree(ward.depr2, k = 6)
 
-seqdplot(seq.depr2, group = ward.depr2.5, xtlab = c(2016:2019, 2021), xlab = "Tiempo")
-seqIplot(seq.depr2, group = ward.depr2.5, xtlab = c(2016:2019, 2021), sortv = "from.start", xlab = "Tiempo")
-seqmtplot(seq.depr2, group = ward.depr2.5, xlab = "Estatus")
-
-
+grafico_trayectorias2_K <- function(K, ward) {
+  elsoc_trayectorias <- elsoc_salud
+  elsoc_trayectorias$trayectoria <- stats::cutree(ward, k = K)
+  
+  
+  nested_data <- elsoc_trayectorias %>% 
+    group_by(trayectoria) %>% 
+    nest()
+  
+  N <- purrr::map(.x = nested_data$data, .f = ~dim(.x)[1])
+  graficos <- purrr::map2(.x = nested_data$data,
+                          .y = N,
+                          .f = ~ .x %>%
+                            ggsankey::make_long(depr2_w01, depr2_w02, depr2_w03, depr2_w04, depr2_w05,
+                                                value = 'ponderador02_w01') %>%
+                            mutate(depr = factor(node,
+                                                 levels = 0:1,
+                                                 labels = c('Sin sintomas/medios', 'Síntomas moderados/severos')),
+                                   x = factor(x,
+                                                 levels = glue::glue('depr2_w0{1:5}'),
+                                                 labels = glue::glue('{c(2016:2019, 2021)}'))) %>%
+                            ggplot(aes(x = x,
+                                       next_x = next_x, 
+                                       node = node, 
+                                       next_node = next_node,
+                                       fill = depr,
+                                       value = value)) +
+                            geom_sankey(flow.alpha = .6) +
+                            labs(x = NULL,
+                                 caption = glue::glue('N={.y}')) +
+                            theme(legend.position = 'bottom',
+                                  legend.title = element_blank()) +
+                            scale_fill_viridis_d(direction = -1, end = .8,
+                                                 drop = FALSE))
+    
+  
+  plot <- ggpubr::ggarrange(plotlist = graficos,
+                    common.legend = TRUE, legend = 'bottom')
+  annotate_figure(plot, top = text_grob(glue::glue('{K} clusters')))
+  
+}
 ```
+
+```{r}
+purrr::map(.x = 2:7, ward = ward.depr2, .f = grafico_trayectorias2_K)
+```
+
+## Variables independientes
+
 
