@@ -355,7 +355,7 @@ grafico_trayectorias2_K <- function(K, ward) {
 purrr::map(.x = 2:7, ward = ward.depr2, .f = grafico_trayectorias2_K)
 ```
 
-# Creación Variables independientes
+# Creacion Variables independientes
 
 
 

@@ -11,5 +11,5 @@ secuencia-de-depresión-con-2-categorías
 gráfico-de-secuencias-1
 clusters-de-secuencias-1
 gráficos-de-secuencia-por-clusters
-creación-variables-independientes
+creacion-variables-independientes
 modelo-multinomial-logit
