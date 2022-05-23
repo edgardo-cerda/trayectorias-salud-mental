@@ -1,0 +1,26 @@
+--- 
+title: "Trayectorias de sintomatología depresiva"
+site: bookdown::bookdown_site
+documentclass: book
+link-citations: yes
+linkcolor: blue
+geometry: "left=4cm, right=3cm, top=2.5cm, bottom=2.5cm"
+fontsize: 12pt
+linestretch: 1.5
+toc-depth: 1
+lof: True
+lot: True
+author: Álvaro Jiménez, Fabián Duarte, Edgardo Cerda
+description: "Trayectorias de sintomatología depresiva"
+github-repo: "edgardo-cerda/trayectorias-salud-mental"
+always_allow_html: true
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+
+# Preambulo {-}
+
+<div style="text-align: justify">
+

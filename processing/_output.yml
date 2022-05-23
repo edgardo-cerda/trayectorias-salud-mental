@@ -1,0 +1,17 @@
+bookdown::gitbook:
+  split_by: chapter
+  css: style.css
+  config:
+    toc:
+      before: |
+        <li><a href="./">Trayectorias de depresión </a></li>
+      after: |
+        <li><a href="https://github.com/edgardo-cerda/trayectorias-salud-mental" target="blank"> Ver fuente <i class="fa fa-github"></i></a></li>
+    fontsettings:
+      theme: white
+      family: sans
+      size: 2
+    download: ["pdf"]
+    edit: null
+    info: no  
+  citation_package: default
