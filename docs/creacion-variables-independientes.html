@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 2 Creacion Variables independientes | Trayectorias de sintomatología depresiva</title>
-  <meta name="description" content="Capítulo 2 Creacion Variables independientes | Trayectorias de sintomatología depresiva" />
+  <title>Capítulo 3 Creacion Variables independientes | Trayectorias de sintomatología depresiva</title>
+  <meta name="description" content="Capítulo 3 Creacion Variables independientes | Trayectorias de sintomatología depresiva" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 2 Creacion Variables independientes | Trayectorias de sintomatología depresiva" />
+  <meta property="og:title" content="Capítulo 3 Creacion Variables independientes | Trayectorias de sintomatología depresiva" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="Capítulo 2 Creacion Variables independientes | Trayectorias de sintomatología depresiva" />
+  <meta property="og:description" content="Capítulo 3 Creacion Variables independientes | Trayectorias de sintomatología depresiva" />
   <meta name="github-repo" content="edgardo-cerda/trayectorias-salud-mental" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 2 Creacion Variables independientes | Trayectorias de sintomatología depresiva" />
+  <meta name="twitter:title" content="Capítulo 3 Creacion Variables independientes | Trayectorias de sintomatología depresiva" />
   
-  <meta name="twitter:description" content="Capítulo 2 Creacion Variables independientes | Trayectorias de sintomatología depresiva" />
+  <meta name="twitter:description" content="Capítulo 3 Creacion Variables independientes | Trayectorias de sintomatología depresiva" />
   
 
 <meta name="author" content="Álvaro Jiménez, Fabián Duarte, Edgardo Cerda" />
@@ -30,9 +30,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="trayectorias-de-sintomatología-depresiva.html"/>
-<link rel="next" href="modelo-multinomial-logit.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<link rel="prev" href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html"/>
+
+<script src="libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +50,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
@@ -138,30 +139,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Trayectorias de depresión </a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preambulo</a>
+<li><a href="index.html#cargar-y-preparar-datos-elsoc">Cargar y preparar datos ELSOC<span></span></a>
 <ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#cargar-librerías"><i class="fa fa-check"></i><b>0.1</b> Cargar librerías</a></li>
-<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#cargar-y-preparar-datos-elsoc"><i class="fa fa-check"></i><b>0.2</b> Cargar y preparar datos ELSOC</a></li>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>0.1</b> Cargar librerías<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="trayectorias-de-sintomatología-depresiva.html"><a href="trayectorias-de-sintomatología-depresiva.html"><i class="fa fa-check"></i><b>1</b> Trayectorias de sintomatología depresiva</a>
+<li class="chapter" data-level="1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><i class="fa fa-check"></i><b>1</b> Trayectorias de sintomatología depresiva. Modelo Optimal-Matching<span></span></a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="trayectorias-de-sintomatología-depresiva.html"><a href="trayectorias-de-sintomatología-depresiva.html#secuencia-de-depresión-con-4-categorías"><i class="fa fa-check"></i><b>1.1</b> Secuencia de depresión con 4 categorías:</a>
+<li class="chapter" data-level="1.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-4-categorías"><i class="fa fa-check"></i><b>1.1</b> Secuencia de depresión con 4 categorías:<span></span></a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="trayectorias-de-sintomatología-depresiva.html"><a href="trayectorias-de-sintomatología-depresiva.html#gráfico-de-secuencias"><i class="fa fa-check"></i><b>1.1.1</b> Gráfico de secuencias:</a></li>
-<li class="chapter" data-level="1.1.2" data-path="trayectorias-de-sintomatología-depresiva.html"><a href="trayectorias-de-sintomatología-depresiva.html#frecuencia-de-estados-y-transiciones"><i class="fa fa-check"></i><b>1.1.2</b> Frecuencia de estados y transiciones</a></li>
-<li class="chapter" data-level="1.1.3" data-path="trayectorias-de-sintomatología-depresiva.html"><a href="trayectorias-de-sintomatología-depresiva.html#clusters-de-secuencias"><i class="fa fa-check"></i><b>1.1.3</b> Clusters de secuencias:</a></li>
-<li class="chapter" data-level="1.1.4" data-path="trayectorias-de-sintomatología-depresiva.html"><a href="trayectorias-de-sintomatología-depresiva.html#graficos-de-secuencias-por-clusters"><i class="fa fa-check"></i><b>1.1.4</b> Graficos de secuencias por clusters</a></li>
-<li class="chapter" data-level="1.1.5" data-path="trayectorias-de-sintomatología-depresiva.html"><a href="trayectorias-de-sintomatología-depresiva.html#opción-preferida-5-clusters"><i class="fa fa-check"></i><b>1.1.5</b> Opción preferida: 5 clusters</a></li>
+<li class="chapter" data-level="1.1.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráfico-de-secuencias"><i class="fa fa-check"></i><b>1.1.1</b> Gráfico de secuencias:<span></span></a></li>
+<li class="chapter" data-level="1.1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#frecuencia-de-estados-y-transiciones"><i class="fa fa-check"></i><b>1.1.2</b> Frecuencia de estados y transiciones<span></span></a></li>
+<li class="chapter" data-level="1.1.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias"><i class="fa fa-check"></i><b>1.1.3</b> Clusters de secuencias:<span></span></a></li>
+<li class="chapter" data-level="1.1.4" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#graficos-de-secuencias-por-clusters"><i class="fa fa-check"></i><b>1.1.4</b> Graficos de secuencias por clusters<span></span></a></li>
+<li class="chapter" data-level="1.1.5" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#opción-preferida-5-clusters"><i class="fa fa-check"></i><b>1.1.5</b> Opción preferida: 5 clusters<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="trayectorias-de-sintomatología-depresiva.html"><a href="trayectorias-de-sintomatología-depresiva.html#secuencia-de-depresión-con-2-categorías"><i class="fa fa-check"></i><b>1.2</b> Secuencia de depresión con 2 categorías</a>
+<li class="chapter" data-level="1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-2-categorías"><i class="fa fa-check"></i><b>1.2</b> Secuencia de depresión con 2 categorías<span></span></a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="trayectorias-de-sintomatología-depresiva.html"><a href="trayectorias-de-sintomatología-depresiva.html#gráfico-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.1</b> Gráfico de secuencias:</a></li>
-<li class="chapter" data-level="1.2.2" data-path="trayectorias-de-sintomatología-depresiva.html"><a href="trayectorias-de-sintomatología-depresiva.html#clusters-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.2</b> Clusters de secuencias:</a></li>
-<li class="chapter" data-level="1.2.3" data-path="trayectorias-de-sintomatología-depresiva.html"><a href="trayectorias-de-sintomatología-depresiva.html#gráficos-de-secuencia-por-clusters"><i class="fa fa-check"></i><b>1.2.3</b> Gráficos de secuencia por clusters</a></li>
+<li class="chapter" data-level="1.2.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráfico-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.1</b> Gráfico de secuencias:<span></span></a></li>
+<li class="chapter" data-level="1.2.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.2</b> Clusters de secuencias:<span></span></a></li>
+<li class="chapter" data-level="1.2.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráficos-de-secuencia-por-clusters"><i class="fa fa-check"></i><b>1.2.3</b> Gráficos de secuencia por clusters<span></span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="creacion-variables-independientes.html"><a href="creacion-variables-independientes.html"><i class="fa fa-check"></i><b>2</b> Creacion Variables independientes</a></li>
-<li class="chapter" data-level="3" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html"><i class="fa fa-check"></i><b>3</b> Modelo multinomial logit</a></li>
+<li class="chapter" data-level="2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html"><i class="fa fa-check"></i><b>2</b> Trayectorias de sintomatologia depresiva. Modelo GMM<span></span></a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#identificar-trayectorias"><i class="fa fa-check"></i><b>2.1</b> Identificar trayectorias:<span></span></a>
+<ul>
+<li><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#modelos-de-trayectorias-lineales">Modelos de trayectorias lineales:<span></span></a></li>
+<li><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#modelos-de-trayectorias-cuadráticas">Modelos de trayectorias cuadráticas:<span></span></a></li>
+<li><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#comparación-resultados">Comparación resultados<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#principales-trayectorias"><i class="fa fa-check"></i><b>2.2</b> Principales trayectorias<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="creacion-variables-independientes.html"><a href="creacion-variables-independientes.html"><i class="fa fa-check"></i><b>3</b> Creacion Variables independientes<span></span></a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="creacion-variables-independientes.html"><a href="creacion-variables-independientes.html#modelo-multinomial-logit"><i class="fa fa-check"></i><b>3.1</b> Modelo multinomial logit<span></span></a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/edgardo-cerda/trayectorias-salud-mental" target="blank"> Ver fuente <i class="fa fa-github"></i></a></li>
 
@@ -182,16 +194,234 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="creacion-variables-independientes" class="section level1" number="2">
-<h1><span class="header-section-number">Capítulo 2</span> Creacion Variables independientes</h1>
+<div id="creacion-variables-independientes" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Creacion Variables independientes<a href="creacion-variables-independientes.html#creacion-variables-independientes" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="creacion-variables-independientes.html#cb49-1" aria-hidden="true" tabindex="-1"></a>elsoc_salud_modelo <span class="ot">&lt;-</span> elsoc_salud <span class="sc">%&gt;%</span> </span>
+<span id="cb49-2"><a href="creacion-variables-independientes.html#cb49-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>elsoc<span class="sc">::</span><span class="fu">is_nsnr</span>(m30_w01, m30_w02, m30_w03, m30_w04, m30b_w05)) <span class="sc">%&gt;%</span> </span>
+<span id="cb49-3"><a href="creacion-variables-independientes.html#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb49-4"><a href="creacion-variables-independientes.html#cb49-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">m30_w01 =</span> <span class="dv">1000</span><span class="sc">*</span><span class="fu">as.numeric</span>(car<span class="sc">::</span><span class="fu">recode</span>(m30_w01, <span class="st">&quot;1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; </span></span>
+<span id="cb49-5"><a href="creacion-variables-independientes.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="st">                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;</span></span>
+<span id="cb49-6"><a href="creacion-variables-independientes.html#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="st">                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA&quot;</span>)),</span>
+<span id="cb49-7"><a href="creacion-variables-independientes.html#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">m29_w01_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m29_w01), m30_w01, m29_w01),</span>
+<span id="cb49-8"><a href="creacion-variables-independientes.html#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">ypc_w01 =</span> m29_w01_imp <span class="sc">/</span> nhogar1_w01) <span class="sc">%&gt;%</span>  </span>
+<span id="cb49-9"><a href="creacion-variables-independientes.html#cb49-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">quintil_w01 =</span> statar<span class="sc">::</span><span class="fu">xtile</span>(ypc_w01, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">wt =</span> ponderador02_w01),</span>
+<span id="cb49-10"><a href="creacion-variables-independientes.html#cb49-10" aria-hidden="true" tabindex="-1"></a>         <span class="co"># quintil_w01 = factor(quintil_w01,</span></span>
+<span id="cb49-11"><a href="creacion-variables-independientes.html#cb49-11" aria-hidden="true" tabindex="-1"></a>         <span class="co">#                      levels = 1:5,</span></span>
+<span id="cb49-12"><a href="creacion-variables-independientes.html#cb49-12" aria-hidden="true" tabindex="-1"></a>         <span class="co">#                      labels = glue::glue(&#39;Quintil {1:5}&#39;)),</span></span>
+<span id="cb49-13"><a href="creacion-variables-independientes.html#cb49-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">trayectoria =</span> <span class="fu">factor</span>(trayectoria_om4<span class="fl">.5</span>,</span>
+<span id="cb49-14"><a href="creacion-variables-independientes.html#cb49-14" aria-hidden="true" tabindex="-1"></a>                              <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb49-15"><a href="creacion-variables-independientes.html#cb49-15" aria-hidden="true" tabindex="-1"></a>                              <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Sintomas severos recurrentes&#39;</span>,</span>
+<span id="cb49-16"><a href="creacion-variables-independientes.html#cb49-16" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;Remisión sintomas&#39;</span>,</span>
+<span id="cb49-17"><a href="creacion-variables-independientes.html#cb49-17" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;Sintomas severos nuevos&#39;</span>,</span>
+<span id="cb49-18"><a href="creacion-variables-independientes.html#cb49-18" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;Sintomas intermitentes&#39;</span>,</span>
+<span id="cb49-19"><a href="creacion-variables-independientes.html#cb49-19" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;Sin sintomas/sintomas medios&#39;</span>)),</span>
+<span id="cb49-20"><a href="creacion-variables-independientes.html#cb49-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">trayectoria =</span> <span class="fu">fct_rev</span>(trayectoria),</span>
+<span id="cb49-21"><a href="creacion-variables-independientes.html#cb49-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">sexo =</span> <span class="fu">factor</span>(m0_sexo_w01, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
+<span id="cb49-22"><a href="creacion-variables-independientes.html#cb49-22" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Hombre&#39;</span>, <span class="st">&#39;Mujer&#39;</span>)))</span></code></pre></div>
+<div id="modelo-multinomial-logit" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Modelo multinomial logit<a href="creacion-variables-independientes.html#modelo-multinomial-logit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="creacion-variables-independientes.html#cb50-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb50-2"><a href="creacion-variables-independientes.html#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria <span class="sc">~</span> sexo <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> quintil_w01,</span>
+<span id="cb50-3"><a href="creacion-variables-independientes.html#cb50-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  25 (16 variable)
+## initial  value 1977.999194 
+## iter  10 value 1675.752393
+## iter  20 value 1471.810141
+## final  value 1470.686805 
+## converged</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="creacion-variables-independientes.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(m1,</span>
+<span id="cb52-2"><a href="creacion-variables-independientes.html#cb52-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb52-3"><a href="creacion-variables-independientes.html#cb52-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> model <span class="sc">+</span> term <span class="sc">~</span> y.level)</span></code></pre></div>
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Sintomas intermitentes
+</th>
+<th style="text-align:center;">
+Sintomas severos nuevos
+</th>
+<th style="text-align:center;">
+Remisión sintomas
+</th>
+<th style="text-align:center;">
+Sintomas severos recurrentes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Model 1
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+-0.693*
+</td>
+<td style="text-align:center;">
+-1.436***
+</td>
+<td style="text-align:center;">
+-2.707***
+</td>
+<td style="text-align:center;">
+-2.580***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.349)
+</td>
+<td style="text-align:center;">
+(0.393)
+</td>
+<td style="text-align:center;">
+(0.536)
+</td>
+<td style="text-align:center;">
+(0.565)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sexoMujer
+</td>
+<td style="text-align:center;">
+0.470**
+</td>
+<td style="text-align:center;">
+0.685***
+</td>
+<td style="text-align:center;">
+0.900**
+</td>
+<td style="text-align:center;">
+1.277***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.177)
+</td>
+<td style="text-align:center;">
+(0.202)
+</td>
+<td style="text-align:center;">
+(0.280)
+</td>
+<td style="text-align:center;">
+(0.326)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+-0.012*
+</td>
+<td style="text-align:center;">
+-0.003
+</td>
+<td style="text-align:center;">
+0.010
+</td>
+<td style="text-align:center;">
+0.002
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.006)
+</td>
+<td style="text-align:center;">
+(0.006)
+</td>
+<td style="text-align:center;">
+(0.008)
+</td>
+<td style="text-align:center;">
+(0.008)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+quintil_w01
+</td>
+<td style="text-align:center;">
+-0.124*
+</td>
+<td style="text-align:center;">
+-0.139*
+</td>
+<td style="text-align:center;">
+-0.184*
+</td>
+<td style="text-align:center;">
+-0.245**
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.061)
+</td>
+<td style="text-align:center;">
+(0.067)
+</td>
+<td style="text-align:center;">
+(0.089)
+</td>
+<td style="text-align:center;">
+(0.093)
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup> * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001
+</td>
+</tr>
+</tfoot>
+</table>
+
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="trayectorias-de-sintomatología-depresiva.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="modelo-multinomial-logit.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
