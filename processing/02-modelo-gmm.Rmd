@@ -1,0 +1,146 @@
+# Trayectorias de sintomatologia depresiva. Modelo GMM
+
+```{r}
+set.seed(123)
+
+```
+
+## Identificar trayectorias:
+
+### Modelos de trayectorias lineales: {-}
+
+Se usa el modelo de 1 clase para fijar los valores iniciales a iterar:
+
+```{r, results=FALSE}
+lcga1_lin <- hlme(phq9 ~ ola, subject = "idencuesta", ng = 1, 
+              data = elsoc_salud_long)
+
+lcga2_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcga1_lin, 
+                    hlme(phq9 ~ ola , subject = "idencuesta", ng = 2, 
+                         data = elsoc_salud_long, mixture = ~ ola))
+
+lcga3_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcga1_lin, 
+                    hlme(phq9 ~ ola, subject = "idencuesta", ng = 3, 
+                         data = elsoc_salud_long, mixture = ~ ola))
+
+lcga4_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcga1_lin, 
+                    hlme(phq9 ~ ola, subject = "idencuesta", ng = 4, 
+                         data = elsoc_salud_long, mixture = ~ ola))
+
+lcga5_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcga1_lin, 
+                    hlme(phq9 ~ ola, subject = "idencuesta", ng = 5, 
+                         data = elsoc_salud_long, mixture = ~ ola))
+```
+
+### Modelos de trayectorias cuadráticas: {-}
+
+```{r, results=FALSE}
+
+lcga1_quad <- hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 1, 
+              data = elsoc_salud_long)
+
+lcga2_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcga1_quad, 
+                    hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 2, 
+                         data = elsoc_salud_long, mixture = ~ ola + I(ola^2)))
+
+lcga3_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcga1_quad, 
+                    hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 3, 
+                         data = elsoc_salud_long, mixture = ~ ola + I(ola^2)))
+
+lcga4_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcga1_quad, 
+                    hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 4, 
+                         data = elsoc_salud_long, mixture = ~ ola + I(ola^2)))
+
+lcga5_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcga1_quad, 
+                    hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 5, 
+                         data = elsoc_salud_long, mixture = ~ ola + I(ola^2)))
+
+```
+
+### Comparación resultados {-}
+
+```{r, results=FALSE}
+# Comparar resultados:
+resultados_comparados <- summarytable(lcga1_lin, lcga1_quad, 
+                             lcga2_lin, lcga2_quad, 
+                             lcga3_lin, lcga3_lin,
+                             lcga4_lin, lcga4_quad, 
+                             lcga5_lin, lcga5_quad)
+```
+
+
+```{r}
+kableExtra::kbl(resultados_comparados,
+                digits = 1)
+
+```
+
+## Principales trayectorias
+
+Según criterios de información debería estar entre 4y 5 clases:
+
+
+```{r}
+summary(lcga4_lin)
+
+pred_lcga4_lin <- predictY(lcga4_lin, data.frame(ola = 1:5))
+
+plot(pred_lcga4_lin, ylim = c(0, 27))
+
+```
+
+
+```{r}
+summary(lcga4_quad)
+
+pred_lcga4_quad <- predictY(lcga4_quad, data.frame(ola = 1:5))
+
+plot(pred_lcga4_quad, ylim = c(0, 27))
+
+```
+
+
+```{r}
+summary(lcga5_lin)
+
+pred_lcga5_lin <- predictY(lcga5_lin, data.frame(ola = 1:5))
+
+plot(pred_lcga5_lin, ylim = c(0, 27))
+
+```
+
+
+```{r}
+summary(lcga5_quad)
+
+pred_lcga5_quad <- predictY(lcga5_quad, data.frame(ola = 1:5))
+
+plot(pred_lcga5_quad, ylim = c(0, 27))
+
+```
+
+```{r}
+
+elsoc_salud$trayectoria_gmm.3lin <- elsoc_salud %>% 
+  left_join(lcga3_lin$pprob %>% select(idencuesta, class),
+            by = 'idencuesta') %>%
+  pull(class)
+
+elsoc_salud$trayectoria_gmm.3quad <- elsoc_salud %>% 
+  left_join(lcga3_quad$pprob %>% select(idencuesta, class),
+            by = 'idencuesta') %>%
+  pull(class)
+
+elsoc_salud$trayectoria_gmm.4lin <- elsoc_salud %>% 
+  left_join(lcga4_lin$pprob %>% select(idencuesta, class),
+            by = 'idencuesta') %>%
+  pull(class)
+
+elsoc_salud$trayectoria_gmm.4quad <- elsoc_salud %>% 
+  left_join(lcga4_quad$pprob %>% select(idencuesta, class),
+            by = 'idencuesta') %>%
+  pull(class)
+
+
+```
+

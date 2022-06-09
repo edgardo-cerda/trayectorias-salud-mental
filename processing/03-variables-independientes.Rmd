@@ -1,0 +1,44 @@
+
+# Creacion Variables independientes
+
+
+```{r}
+elsoc_salud_5_modelo <- elsoc_salud_5 %>% 
+    filter(!elsoc::is_nsnr(m30_w01, m30_w02, m30_w03, m30_w04, m30b_w05)) %>% 
+  mutate(
+    m30_w01 = 1000*as.numeric(car::recode(m30_w01, "1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; 
+                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;
+                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA")),
+    m29_w01_imp = ifelse(is_nsnr(m29_w01), m30_w01, m29_w01),
+    ypc_w01 = m29_w01_imp / nhogar1_w01) %>%  
+  mutate(quintil_w01 = statar::xtile(ypc_w01, n = 5, wt = ponderador02_w01),
+         # quintil_w01 = factor(quintil_w01,
+         #                      levels = 1:5,
+         #                      labels = glue::glue('Quintil {1:5}')),
+         trayectoria = factor(trayectoria,
+                              levels = 1:5,
+                              labels = c('Sintomas severos recurrentes',
+                                         'Remisión sintomas',
+                                         'Sintomas severos nuevos',
+                                         'Sintomas intermitentes',
+                                         'Sin sintomas/sintomas medios')),
+         trayectoria = fct_rev(trayectoria),
+         sexo = factor(m0_sexo_w01, levels = 1:2,
+                       labels = c('Hombre', 'Mujer')))
+```
+
+## Modelo multinomial logit
+
+```{r}
+
+
+m1 <- elsoc_salud_5_modelo %>%
+  multinom(trayectoria ~ sexo + m0_edad_w01 + quintil_w01,
+           data = .) 
+
+
+modelsummary(m1,
+             stars = c('*' = .05, '**' = .01, '***' = .001),
+             group = model + term ~ y.level)
+
+```
