@@ -129,30 +129,29 @@ grafico_trayectorias4_K <- function(K, ward) {
 purrr::map(.x = 4:7, ward = ward.depr4, .f = grafico_trayectorias4_K)
 ```
 
-### Opción preferida: 5 clusters
+### Opción preferida: 4 clusters
 
-Me gusta la opción con 5 clusters. Nombres provisorios:
- - Sintomas severos recurrentes
- - Remisión sintomas
- - Sintomas severos nuevos
- - Sintomas intermitentes
- - Sin sintomas/sintomas medios
+Me gusta la opción con 4 clusters. Nombres provisorios:
+ - Trayectoria alta/moderada
+ - Trayectoria descendente
+ - Trayectoria ascendente
+ - Trayectoria media/moderada
+ - Trayectoria baja/media
  
-```{r}
-
-elsoc_salud$trayectoria_om4.5 <- stats::cutree(ward.depr4, k = 5)
-
-```
 
 ```{r}
 
-N <- table(elsoc_salud$trayectoria_om4.5)
-nombres_cluster <- c('Sintomas severos recurrentes', 'Remisión sintomas', 'Síntomas severos nuevos',
-              'Síntomas intermitentes', 'Sin sintomas/sintomas medios')
+N <- table(stats::cutree(ward.depr4, k = 5))
+nombres_cluster <- c('Trayectoria alta/moderada', 
+                     'Trayectoria descendente', 
+                     'Trayectoria ascendente', 
+                     'Trayectoria media/moderada', 
+                     'Trayectoria baja/media')
 
 graficos <- purrr::map(.x = 1:5, .f = ~
                          elsoc_salud %>%
-                         filter(trayectoria_om4.5 == .x) %>% 
+                         mutate(trayectoria = stats::cutree(ward.depr4, k = 5)) %>% 
+                         filter(trayectoria == .x) %>% 
   ggsankey::make_long(depr4_w01, depr4_w02, depr4_w03, depr4_w04, depr4_w05,
                       value = 'ponderador02_w01') %>%
   mutate(depr = factor(node,
@@ -172,7 +171,7 @@ graficos <- purrr::map(.x = 1:5, .f = ~
        caption = glue::glue('N={N[.x]}')) +
   theme(legend.position = 'bottom',
         legend.title = element_blank()) +
-  scale_fill_viridis_d(direction = -1, end = .8)   +
+  scale_fill_viridis_d(direction = -1, end = .8, drop = FALSE)   +
   ggtitle(NULL, subtitle = glue::glue('{nombres_cluster[.x]}'))
 )
 
@@ -284,9 +283,3 @@ grafico_trayectorias2_K <- function(K, ward) {
 ```{r}
 purrr::map(.x = 2:7, ward = ward.depr2, .f = grafico_trayectorias2_K)
 ```
-
-```{r}
-elsoc_salud$trayectoria_om2.3 <- stats::cutree(ward.depr2, k = 3)
-
-```
-

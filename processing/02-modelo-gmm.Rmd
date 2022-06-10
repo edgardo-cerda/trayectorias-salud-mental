@@ -70,7 +70,10 @@ resultados_comparados <- summarytable(lcga1_lin, lcga1_quad,
 
 
 ```{r}
-kableExtra::kbl(resultados_comparados,
+kableExtra::kbl(resultados_comparados[,1:4],
+                digits = 1)
+
+kableExtra::kbl(resultados_comparados[,5:9],
                 digits = 1)
 
 ```
@@ -118,29 +121,3 @@ pred_lcga5_quad <- predictY(lcga5_quad, data.frame(ola = 1:5))
 plot(pred_lcga5_quad, ylim = c(0, 27))
 
 ```
-
-```{r}
-
-elsoc_salud$trayectoria_gmm.3lin <- elsoc_salud %>% 
-  left_join(lcga3_lin$pprob %>% select(idencuesta, class),
-            by = 'idencuesta') %>%
-  pull(class)
-
-elsoc_salud$trayectoria_gmm.3quad <- elsoc_salud %>% 
-  left_join(lcga3_quad$pprob %>% select(idencuesta, class),
-            by = 'idencuesta') %>%
-  pull(class)
-
-elsoc_salud$trayectoria_gmm.4lin <- elsoc_salud %>% 
-  left_join(lcga4_lin$pprob %>% select(idencuesta, class),
-            by = 'idencuesta') %>%
-  pull(class)
-
-elsoc_salud$trayectoria_gmm.4quad <- elsoc_salud %>% 
-  left_join(lcga4_quad$pprob %>% select(idencuesta, class),
-            by = 'idencuesta') %>%
-  pull(class)
-
-
-```
-

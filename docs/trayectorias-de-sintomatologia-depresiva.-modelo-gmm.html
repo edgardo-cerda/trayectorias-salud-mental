@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"/>
-<link rel="next" href="creacion-variables-independientes.html"/>
+<link rel="next" href="modelos.html"/>
 <script src="libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -151,7 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#frecuencia-de-estados-y-transiciones"><i class="fa fa-check"></i><b>1.1.2</b> Frecuencia de estados y transiciones<span></span></a></li>
 <li class="chapter" data-level="1.1.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias"><i class="fa fa-check"></i><b>1.1.3</b> Clusters de secuencias:<span></span></a></li>
 <li class="chapter" data-level="1.1.4" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#graficos-de-secuencias-por-clusters"><i class="fa fa-check"></i><b>1.1.4</b> Graficos de secuencias por clusters<span></span></a></li>
-<li class="chapter" data-level="1.1.5" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#opción-preferida-5-clusters"><i class="fa fa-check"></i><b>1.1.5</b> Opción preferida: 5 clusters<span></span></a></li>
+<li class="chapter" data-level="1.1.5" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#opción-preferida-4-clusters"><i class="fa fa-check"></i><b>1.1.5</b> Opción preferida: 4 clusters<span></span></a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-2-categorías"><i class="fa fa-check"></i><b>1.2</b> Secuencia de depresión con 2 categorías<span></span></a>
 <ul>
@@ -170,9 +170,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#principales-trayectorias"><i class="fa fa-check"></i><b>2.2</b> Principales trayectorias<span></span></a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="creacion-variables-independientes.html"><a href="creacion-variables-independientes.html"><i class="fa fa-check"></i><b>3</b> Creacion Variables independientes<span></span></a>
+<li class="chapter" data-level="3" data-path="modelos.html"><a href="modelos.html"><i class="fa fa-check"></i><b>3</b> Modelos<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="creacion-variables-independientes.html"><a href="creacion-variables-independientes.html#modelo-multinomial-logit"><i class="fa fa-check"></i><b>3.1</b> Modelo multinomial logit<span></span></a></li>
+<li><a href="modelos.html#agregar-variables-de-trayectoria-de-los-distintos-modelos">Agregar variables de trayectoria de los distintos modelos:<span></span></a></li>
+<li><a href="modelos.html#agregar-variables-independientes">Agregar variables independientes<span></span></a></li>
+<li class="chapter" data-level="3.1" data-path="modelos.html"><a href="modelos.html#modelo-multinomial-logit"><i class="fa fa-check"></i><b>3.1</b> Modelo multinomial logit<span></span></a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/edgardo-cerda/trayectorias-salud-mental" target="blank"> Ver fuente <i class="fa fa-github"></i></a></li>
@@ -196,62 +198,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="trayectorias-de-sintomatologia-depresiva.-modelo-gmm" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Capítulo 2</span> Trayectorias de sintomatologia depresiva. Modelo GMM<a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#trayectorias-de-sintomatologia-depresiva.-modelo-gmm" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span></code></pre></div>
 <div id="identificar-trayectorias" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Identificar trayectorias:<a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#identificar-trayectorias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="modelos-de-trayectorias-lineales" class="section level3 unnumbered hasAnchor">
 <h3>Modelos de trayectorias lineales:<a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#modelos-de-trayectorias-lineales" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Se usa el modelo de 1 clase para fijar los valores iniciales a iterar:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-1" aria-hidden="true" tabindex="-1"></a>lcga1_lin <span class="ot">&lt;-</span> <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola, <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">1</span>, </span>
-<span id="cb32-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> elsoc_salud_long)</span>
-<span id="cb32-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-4" aria-hidden="true" tabindex="-1"></a>lcga2_lin <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_lin, </span>
-<span id="cb32-5"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-5" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola , <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">2</span>, </span>
-<span id="cb32-6"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola))</span>
-<span id="cb32-7"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-8"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-8" aria-hidden="true" tabindex="-1"></a>lcga3_lin <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_lin, </span>
-<span id="cb32-9"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-9" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola, <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">3</span>, </span>
-<span id="cb32-10"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola))</span>
-<span id="cb32-11"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-12"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-12" aria-hidden="true" tabindex="-1"></a>lcga4_lin <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_lin, </span>
-<span id="cb32-13"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-13" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola, <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">4</span>, </span>
-<span id="cb32-14"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola))</span>
-<span id="cb32-15"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-16"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-16" aria-hidden="true" tabindex="-1"></a>lcga5_lin <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_lin, </span>
-<span id="cb32-17"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-17" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola, <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">5</span>, </span>
-<span id="cb32-18"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-18" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola))</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-1" aria-hidden="true" tabindex="-1"></a>lcga1_lin <span class="ot">&lt;-</span> <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola, <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">1</span>, </span>
+<span id="cb30-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> elsoc_salud_long)</span>
+<span id="cb30-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-4" aria-hidden="true" tabindex="-1"></a>lcga2_lin <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_lin, </span>
+<span id="cb30-5"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-5" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola , <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">2</span>, </span>
+<span id="cb30-6"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola))</span>
+<span id="cb30-7"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-8" aria-hidden="true" tabindex="-1"></a>lcga3_lin <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_lin, </span>
+<span id="cb30-9"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-9" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola, <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">3</span>, </span>
+<span id="cb30-10"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola))</span>
+<span id="cb30-11"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-12" aria-hidden="true" tabindex="-1"></a>lcga4_lin <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_lin, </span>
+<span id="cb30-13"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-13" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola, <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">4</span>, </span>
+<span id="cb30-14"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola))</span>
+<span id="cb30-15"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-16" aria-hidden="true" tabindex="-1"></a>lcga5_lin <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_lin, </span>
+<span id="cb30-17"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-17" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola, <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">5</span>, </span>
+<span id="cb30-18"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb30-18" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola))</span></code></pre></div>
 </div>
 <div id="modelos-de-trayectorias-cuadráticas" class="section level3 unnumbered hasAnchor">
 <h3>Modelos de trayectorias cuadráticas:<a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#modelos-de-trayectorias-cuadráticas" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-1" aria-hidden="true" tabindex="-1"></a>lcga1_quad <span class="ot">&lt;-</span> <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>), <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">1</span>, </span>
-<span id="cb33-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> elsoc_salud_long)</span>
-<span id="cb33-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-4"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-4" aria-hidden="true" tabindex="-1"></a>lcga2_quad <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_quad, </span>
-<span id="cb33-5"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-5" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>), <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">2</span>, </span>
-<span id="cb33-6"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>)))</span>
-<span id="cb33-7"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-8"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-8" aria-hidden="true" tabindex="-1"></a>lcga3_quad <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_quad, </span>
-<span id="cb33-9"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-9" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>), <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">3</span>, </span>
-<span id="cb33-10"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>)))</span>
-<span id="cb33-11"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-12"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-12" aria-hidden="true" tabindex="-1"></a>lcga4_quad <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_quad, </span>
-<span id="cb33-13"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-13" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>), <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">4</span>, </span>
-<span id="cb33-14"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>)))</span>
-<span id="cb33-15"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-16"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-16" aria-hidden="true" tabindex="-1"></a>lcga5_quad <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_quad, </span>
-<span id="cb33-17"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-17" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>), <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">5</span>, </span>
-<span id="cb33-18"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-18" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-1" aria-hidden="true" tabindex="-1"></a>lcga1_quad <span class="ot">&lt;-</span> <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>), <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">1</span>, </span>
+<span id="cb31-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">data =</span> elsoc_salud_long)</span>
+<span id="cb31-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-4" aria-hidden="true" tabindex="-1"></a>lcga2_quad <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_quad, </span>
+<span id="cb31-5"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-5" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>), <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">2</span>, </span>
+<span id="cb31-6"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-6" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>)))</span>
+<span id="cb31-7"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-8" aria-hidden="true" tabindex="-1"></a>lcga3_quad <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_quad, </span>
+<span id="cb31-9"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-9" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>), <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">3</span>, </span>
+<span id="cb31-10"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>)))</span>
+<span id="cb31-11"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-12" aria-hidden="true" tabindex="-1"></a>lcga4_quad <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_quad, </span>
+<span id="cb31-13"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-13" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>), <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">4</span>, </span>
+<span id="cb31-14"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-14" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>)))</span>
+<span id="cb31-15"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-16"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-16" aria-hidden="true" tabindex="-1"></a>lcga5_quad <span class="ot">&lt;-</span> <span class="fu">gridsearch</span>(<span class="at">rep =</span> <span class="dv">10</span>, <span class="at">maxiter =</span> <span class="dv">10</span>, <span class="at">minit =</span> lcga1_quad, </span>
+<span id="cb31-17"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-17" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">hlme</span>(phq9 <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>), <span class="at">subject =</span> <span class="st">&quot;idencuesta&quot;</span>, <span class="at">ng =</span> <span class="dv">5</span>, </span>
+<span id="cb31-18"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb31-18" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> elsoc_salud_long, <span class="at">mixture =</span> <span class="sc">~</span> ola <span class="sc">+</span> <span class="fu">I</span>(ola<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div>
 </div>
 <div id="comparación-resultados" class="section level3 unnumbered hasAnchor">
 <h3>Comparación resultados<a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#comparación-resultados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparar resultados:</span></span>
-<span id="cb34-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb34-2" aria-hidden="true" tabindex="-1"></a>resultados_comparados <span class="ot">&lt;-</span> <span class="fu">summarytable</span>(lcga1_lin, lcga1_quad, </span>
-<span id="cb34-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb34-3" aria-hidden="true" tabindex="-1"></a>                             lcga2_lin, lcga2_quad, </span>
-<span id="cb34-4"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb34-4" aria-hidden="true" tabindex="-1"></a>                             lcga3_lin, lcga3_lin,</span>
-<span id="cb34-5"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb34-5" aria-hidden="true" tabindex="-1"></a>                             lcga4_lin, lcga4_quad, </span>
-<span id="cb34-6"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb34-6" aria-hidden="true" tabindex="-1"></a>                             lcga5_lin, lcga5_quad)</span></code></pre></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb35-1" aria-hidden="true" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kbl</span>(resultados_comparados,</span>
-<span id="cb35-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb35-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparar resultados:</span></span>
+<span id="cb32-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-2" aria-hidden="true" tabindex="-1"></a>resultados_comparados <span class="ot">&lt;-</span> <span class="fu">summarytable</span>(lcga1_lin, lcga1_quad, </span>
+<span id="cb32-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-3" aria-hidden="true" tabindex="-1"></a>                             lcga2_lin, lcga2_quad, </span>
+<span id="cb32-4"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-4" aria-hidden="true" tabindex="-1"></a>                             lcga3_lin, lcga3_lin,</span>
+<span id="cb32-5"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-5" aria-hidden="true" tabindex="-1"></a>                             lcga4_lin, lcga4_quad, </span>
+<span id="cb32-6"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb32-6" aria-hidden="true" tabindex="-1"></a>                             lcga5_lin, lcga5_quad)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-1" aria-hidden="true" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kbl</span>(resultados_comparados[,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>],</span>
+<span id="cb33-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb33-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -268,6 +270,188 @@ npm
 </th>
 <th style="text-align:right;">
 BIC
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+lcga1_lin
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-23116.6
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+46255.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lcga1_quad
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+-23106.8
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+46242.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lcga2_lin
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-22296.7
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+44637.3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lcga2_quad
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+-22280.3
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+44619.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lcga3_lin
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-22169.6
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+44405.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lcga3_lin
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+-22169.6
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+44405.2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lcga4_lin
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+-22096.3
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+44280.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lcga4_quad
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+-22074.0
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+44265.1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lcga5_lin
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+-22065.5
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+44240.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lcga5_quad
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+-22042.1
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+44230.7
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb34-1" aria-hidden="true" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kbl</span>(resultados_comparados[,<span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>],</span>
+<span id="cb34-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb34-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">digits =</span> <span class="dv">1</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
 </th>
 <th style="text-align:right;">
 %class1
@@ -292,18 +476,6 @@ BIC
 lcga1_lin
 </td>
 <td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--23116.6
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
-46255.2
-</td>
-<td style="text-align:right;">
 100.0
 </td>
 <td style="text-align:right;">
@@ -322,18 +494,6 @@ NA
 <tr>
 <td style="text-align:left;">
 lcga1_quad
-</td>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:right;">
--23106.8
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-46242.9
 </td>
 <td style="text-align:right;">
 100.0
@@ -356,18 +516,6 @@ NA
 lcga2_lin
 </td>
 <td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--22296.7
-</td>
-<td style="text-align:right;">
-6
-</td>
-<td style="text-align:right;">
-44637.3
-</td>
-<td style="text-align:right;">
 20.8
 </td>
 <td style="text-align:right;">
@@ -386,18 +534,6 @@ NA
 <tr>
 <td style="text-align:left;">
 lcga2_quad
-</td>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
--22280.3
-</td>
-<td style="text-align:right;">
-8
-</td>
-<td style="text-align:right;">
-44619.1
 </td>
 <td style="text-align:right;">
 79.1
@@ -420,18 +556,6 @@ NA
 lcga3_lin
 </td>
 <td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--22169.6
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-44405.2
-</td>
-<td style="text-align:right;">
 26.3
 </td>
 <td style="text-align:right;">
@@ -450,18 +574,6 @@ NA
 <tr>
 <td style="text-align:left;">
 lcga3_lin
-</td>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:right;">
--22169.6
-</td>
-<td style="text-align:right;">
-9
-</td>
-<td style="text-align:right;">
-44405.2
 </td>
 <td style="text-align:right;">
 26.3
@@ -484,18 +596,6 @@ NA
 lcga4_lin
 </td>
 <td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
--22096.3
-</td>
-<td style="text-align:right;">
-12
-</td>
-<td style="text-align:right;">
-44280.4
-</td>
-<td style="text-align:right;">
 3.3
 </td>
 <td style="text-align:right;">
@@ -514,18 +614,6 @@ NA
 <tr>
 <td style="text-align:left;">
 lcga4_quad
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
--22074.0
-</td>
-<td style="text-align:right;">
-16
-</td>
-<td style="text-align:right;">
-44265.1
 </td>
 <td style="text-align:right;">
 3.7
@@ -548,18 +636,6 @@ NA
 lcga5_lin
 </td>
 <td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
--22065.5
-</td>
-<td style="text-align:right;">
-15
-</td>
-<td style="text-align:right;">
-44240.9
-</td>
-<td style="text-align:right;">
 58.9
 </td>
 <td style="text-align:right;">
@@ -578,18 +654,6 @@ lcga5_lin
 <tr>
 <td style="text-align:left;">
 lcga5_quad
-</td>
-<td style="text-align:right;">
-5
-</td>
-<td style="text-align:right;">
--22042.1
-</td>
-<td style="text-align:right;">
-20
-</td>
-<td style="text-align:right;">
-44230.7
 </td>
 <td style="text-align:right;">
 1.7
@@ -614,7 +678,7 @@ lcga5_quad
 <div id="principales-trayectorias" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Principales trayectorias<a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#principales-trayectorias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Según criterios de información debería estar entre 4y 5 clases:</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lcga4_lin)</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lcga4_lin)</span></code></pre></div>
 <pre><code>## Heterogenous linear mixed model 
 ##      fitted by maximum likelihood method 
 ##  
@@ -665,11 +729,11 @@ lcga5_quad
 ## 
 ##                              coef      Se
 ## Residual standard error:  4.10416 0.03655</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb38-1" aria-hidden="true" tabindex="-1"></a>pred_lcga4_lin <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcga4_lin, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
-<span id="cb38-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcga4_lin, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lcga4_quad)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb37-1" aria-hidden="true" tabindex="-1"></a>pred_lcga4_lin <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcga4_lin, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
+<span id="cb37-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcga4_lin, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lcga4_quad)</span></code></pre></div>
 <pre><code>## Heterogenous linear mixed model 
 ##      fitted by maximum likelihood method 
 ##  
@@ -724,11 +788,11 @@ lcga5_quad
 ## 
 ##                              coef      Se
 ## Residual standard error:  4.08664 0.03647</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb41-1" aria-hidden="true" tabindex="-1"></a>pred_lcga4_quad <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcga4_quad, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
-<span id="cb41-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcga4_quad, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lcga5_lin)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb40-1" aria-hidden="true" tabindex="-1"></a>pred_lcga4_quad <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcga4_quad, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
+<span id="cb40-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcga4_quad, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lcga5_lin)</span></code></pre></div>
 <pre><code>## Heterogenous linear mixed model 
 ##      fitted by maximum likelihood method 
 ##  
@@ -782,11 +846,11 @@ lcga5_quad
 ## 
 ##                              coef      Se
 ## Residual standard error:  4.03786 0.03663</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb44-1" aria-hidden="true" tabindex="-1"></a>pred_lcga5_lin <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcga5_lin, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
-<span id="cb44-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcga5_lin, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lcga5_quad)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb43-1" aria-hidden="true" tabindex="-1"></a>pred_lcga5_lin <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcga5_lin, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
+<span id="cb43-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcga5_lin, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lcga5_quad)</span></code></pre></div>
 <pre><code>## Heterogenous linear mixed model 
 ##      fitted by maximum likelihood method 
 ##  
@@ -845,29 +909,10 @@ lcga5_quad
 ## 
 ##                              coef      Se
 ## Residual standard error:  4.02135 0.03678</code></pre>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb47-1" aria-hidden="true" tabindex="-1"></a>pred_lcga5_quad <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcga5_quad, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
-<span id="cb47-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcga5_quad, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-1" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_gmm<span class="fl">.3</span>lin <span class="ot">&lt;-</span> elsoc_salud <span class="sc">%&gt;%</span> </span>
-<span id="cb48-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(lcga3_lin<span class="sc">$</span>pprob <span class="sc">%&gt;%</span> <span class="fu">select</span>(idencuesta, class),</span>
-<span id="cb48-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&#39;idencuesta&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb48-4"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(class)</span>
-<span id="cb48-5"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-6"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-6" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_gmm<span class="fl">.3</span>quad <span class="ot">&lt;-</span> elsoc_salud <span class="sc">%&gt;%</span> </span>
-<span id="cb48-7"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(lcga3_quad<span class="sc">$</span>pprob <span class="sc">%&gt;%</span> <span class="fu">select</span>(idencuesta, class),</span>
-<span id="cb48-8"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&#39;idencuesta&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb48-9"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(class)</span>
-<span id="cb48-10"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-11"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-11" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_gmm<span class="fl">.4</span>lin <span class="ot">&lt;-</span> elsoc_salud <span class="sc">%&gt;%</span> </span>
-<span id="cb48-12"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(lcga4_lin<span class="sc">$</span>pprob <span class="sc">%&gt;%</span> <span class="fu">select</span>(idencuesta, class),</span>
-<span id="cb48-13"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-13" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&#39;idencuesta&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb48-14"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(class)</span>
-<span id="cb48-15"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-16"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-16" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_gmm<span class="fl">.4</span>quad <span class="ot">&lt;-</span> elsoc_salud <span class="sc">%&gt;%</span> </span>
-<span id="cb48-17"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(lcga4_quad<span class="sc">$</span>pprob <span class="sc">%&gt;%</span> <span class="fu">select</span>(idencuesta, class),</span>
-<span id="cb48-18"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-18" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&#39;idencuesta&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb48-19"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb48-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(class)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb46-1" aria-hidden="true" tabindex="-1"></a>pred_lcga5_quad <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcga5_quad, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
+<span id="cb46-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-gmm.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcga5_quad, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -877,7 +922,7 @@ lcga5_quad
         </div>
       </div>
 <a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="creacion-variables-independientes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="modelos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,6 +1,47 @@
 
-# Creacion Variables independientes
+# Modelos
 
+
+## Agregar variables de trayectoria de los distintos modelos: {-}
+
+```{r}
+elsoc_salud$trayectoria_om4.5 <- factor(stats::cutree(ward.depr4, k = 5),
+                                        levels = c(5, 4, 2, 3, 1),
+                              labels = c('Trayectoria baja/media',
+                                         'Trayectoria media/moderada',
+                                         'Trayectoria descendente',
+                                         'Trayectoria ascendente',
+                                         'Trayectoria alta/moderada'))
+
+elsoc_salud$trayectoria_om2.3 <- stats::cutree(ward.depr2, k = 3)
+
+
+elsoc_salud$trayectoria_gmm.4lin <- factor(elsoc_salud %>% 
+  left_join(lcga4_lin$pprob %>% select(idencuesta, class),
+            by = 'idencuesta') %>%
+  pull(class),
+  levels = 1:4,
+  labels = c('Trayectoria descendente', 'Trayectoria ascendente', 'Trayectoria media estable', 'Trayectoria baja estable'))
+
+elsoc_salud$trayectoria_gmm.4quad <- factor(elsoc_salud %>% 
+  left_join(lcga4_quad$pprob %>% select(idencuesta, class),
+            by = 'idencuesta') %>%
+  pull(class),
+  levels = c(1, 4, 2, 3),
+    labels = c('Trayectoria descendente', 'Trayectoria ascendente', 'Trayectoria media estable', 'Trayectoria baja estable'))
+
+elsoc_salud$trayectoria_gmm.5lin <- elsoc_salud %>% 
+  left_join(lcga5_lin$pprob %>% select(idencuesta, class),
+            by = 'idencuesta') %>%
+  pull(class)
+
+elsoc_salud$trayectoria_gmm.5quad <- elsoc_salud %>% 
+  left_join(lcga5_quad$pprob %>% select(idencuesta, class),
+            by = 'idencuesta') %>%
+  pull(class)
+```
+
+## Agregar variables independientes {-}
 
 ```{r}
 
@@ -13,19 +54,13 @@ elsoc_salud_modelo <- elsoc_salud %>%
     m29_w01_imp = ifelse(is_nsnr(m29_w01), m30_w01, m29_w01),
     ypc_w01 = m29_w01_imp / nhogar1_w01) %>%  
   mutate(quintil_w01 = statar::xtile(ypc_w01, n = 5, wt = ponderador02_w01),
-         # quintil_w01 = factor(quintil_w01,
-         #                      levels = 1:5,
-         #                      labels = glue::glue('Quintil {1:5}')),
-         trayectoria = factor(trayectoria_om4.5,
+         quintil_w01 = factor(quintil_w01,
                               levels = 1:5,
-                              labels = c('Sintomas severos recurrentes',
-                                         'Remisión sintomas',
-                                         'Sintomas severos nuevos',
-                                         'Sintomas intermitentes',
-                                         'Sin sintomas/sintomas medios')),
-         trayectoria = fct_rev(trayectoria),
+                              labels = glue::glue('Quintil {1:5}')),
          sexo = factor(m0_sexo_w01, levels = 1:2,
                        labels = c('Hombre', 'Mujer')))
+
+
 ```
 
 ## Modelo multinomial logit
@@ -34,11 +69,17 @@ elsoc_salud_modelo <- elsoc_salud %>%
 
 
 m1 <- elsoc_salud_modelo %>%
-  multinom(trayectoria ~ sexo + m0_edad_w01 + quintil_w01,
+  multinom(trayectoria_om4.5 ~ sexo + m0_edad_w01 + quintil_w01,
+           data = .) 
+m2 <- elsoc_salud_modelo %>%
+  multinom(trayectoria_gmm.4lin ~ sexo + m0_edad_w01 + quintil_w01,
            data = .) 
 
-
 modelsummary(m1,
+             stars = c('*' = .05, '**' = .01, '***' = .001),
+             group = model + term ~ y.level)
+
+modelsummary(m2,
              stars = c('*' = .05, '**' = .01, '***' = .001),
              group = model + term ~ y.level)
 
