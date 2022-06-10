@@ -15,4 +15,5 @@ trayectorias-de-sintomatologia-depresiva.-modelo-gmm
 identificar-trayectorias
 principales-trayectorias
 modelos
+preparar-datos
 modelo-multinomial-logit
