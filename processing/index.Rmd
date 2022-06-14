@@ -91,7 +91,7 @@ elsoc_salud <- elsoc_wide_2016_2021 %>%
          depr2_w03 = car::recode(phq9_w03, "0:9 = 0; 10:27 = 1"),  
          depr2_w04 = car::recode(phq9_w04, "0:9 = 0; 10:27 = 1"), 
          depr2_w05 = car::recode(phq9_w05, "0:9 = 0; 10:27 = 1"),
-         phq_sum = phq9_w01 + phq9_w02 + phq9_w03 + phq9_w04 + phq9_w05
+         phq_sum = depr4_w01 + depr4_w02 + depr4_w03 + depr4_w04 + depr4_w05
          )
 
 

@@ -8,18 +8,20 @@
 seq.depr4 <- TraMineR::seqdef(elsoc_salud, 
                              var = c('depr4_w01', 'depr4_w02', 'depr4_w03', 'depr4_w04', 'depr4_w05'), 
                              states = c('Sin síntomas', 'Síntomas medios', 'Síntomas moderados', 'Síntomas severos'), 
-                             labels = c('Sin', 'Medios', 'Moderados', 'Severos'),
+                             labels = c('Sin síntomas', 'Síntomas medios', 'Sintomas moderados', 'Síntomas severos'),
                              weights = elsoc_salud$ponderador02_w01,
                              cpal = c('lightgreen', 'mediumturquoise', 'skyblue3', 'slateblue4'))
 ```
 
 ### Gráfico de secuencias:
 
-Muestra las secuencias/trayectorias que cubren el 95% de la muestra. Son 260 secuencias, ordenadas según frecuencia:
+Muestra todas las secuencias, ordenadas según la suma total del indice phq9 (sumando las 5 olas)
 
 ```{r}
-TraMineR::seqfplot(seq.depr4, border = NA, with.legend = "top",
-                   idxs = 1:260, space = 0)
+
+TraMineR::seqIplot(seq.depr4, border = NA, xtlab = c(2016:2019, 2021),
+                   space = 0, sortv = elsoc_salud$phq_sum)
+
 
 ```
 
@@ -75,34 +77,32 @@ ward.range.depr4$stats %>%
 
 ### Graficos de secuencias por clusters
 
-Pruebas con 4, 5, 6 y 7 clusters
-
-#### Agregar trayectorias a base de datos ELSOC:
+Pruebas con 3-6 clusters
 
 
 ```{r}
-TraMineR::seqIplot(seq.depr4, group = stats::cutree(ward.depr4, k = 3),
-                   border = NA, with.legend = "top",
-                   space = 0)
+TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 3),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
 
-TraMineR::seqIplot(seq.depr4, group = stats::cutree(ward.depr4, k = 4),
-                   border = NA, with.legend = "top",
-                   space = 0)
+TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 4),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
 
-TraMineR::seqIplot(seq.depr4, group = stats::cutree(ward.depr4, k = 5),
-                   border = NA, with.legend = "top",
-                   space = 0)
+TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 5),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
 
-TraMineR::seqIplot(seq.depr4, group = stats::cutree(ward.depr4, k = 6),
-                   border = NA, with.legend = "top",
-                   space = 0)
+TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 6),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
 
 ```
 
 
-### Opción preferida: 4 clusters
+### Opción preferida: 5 clusters
 
-Me gusta la opción con 4 clusters. Nombres provisorios:
+Me gusta la opción con 5 clusters. Nombres provisorios:
  - Trayectoria alta/moderada
  - Trayectoria descendente
  - Trayectoria ascendente
@@ -112,44 +112,19 @@ Me gusta la opción con 4 clusters. Nombres provisorios:
 
 ```{r}
 
-N <- table(stats::cutree(ward.depr4, k = 5))
-nombres_cluster <- c('Trayectoria alta/moderada', 
+seq.depr4$cluster <- factor(stats::cutree(ward.depr4, k = 5), 
+                            levels = 1:5,
+                            labels = c('Trayectoria alta/moderada', 
                      'Trayectoria descendente', 
                      'Trayectoria ascendente', 
                      'Trayectoria media/moderada', 
-                     'Trayectoria baja/media')
+                     'Trayectoria baja/media'))
 
-graficos <- purrr::map(.x = 1:5, .f = ~
-                         elsoc_salud %>%
-                         mutate(trayectoria = stats::cutree(ward.depr4, k = 5)) %>% 
-                         filter(trayectoria == .x) %>% 
-  ggsankey::make_long(depr4_w01, depr4_w02, depr4_w03, depr4_w04, depr4_w05,
-                      value = 'ponderador02_w01') %>%
-  mutate(depr = factor(node,
-                       levels = 1:4,
-                       labels = c('Sin sintomas', 'medios', 'moderados', 'severos')),
-         x = factor(x,
-                    levels = glue::glue('depr4_w0{1:5}'),
-                    labels = glue::glue('{c(2016:2019, 2021)}'))) %>%
-  ggplot(aes(x = x,
-             next_x = next_x, 
-             node = node, 
-             next_node = next_node,
-             fill = depr,
-             value = value)) +
-  geom_sankey(flow.alpha = .6) +
-  labs(x = NULL,
-       caption = glue::glue('N={N[.x]}')) +
-  theme(legend.position = 'bottom',
-        legend.title = element_blank()) +
-  scale_fill_viridis_d(direction = -1, end = .8, drop = FALSE)   +
-  ggtitle(NULL, subtitle = glue::glue('{nombres_cluster[.x]}'))
-)
+TraMineR::seqfplot(seq.depr4, group = seq.depr4$cluster,
+                   border = NA,
+                   space = 0, idxs = 0, 
+                   xtlab = c(2016:2019, 2021))
 
-plot <- ggpubr::ggarrange(plotlist = graficos,
-                  common.legend = TRUE, legend = 'bottom')
-annotate_figure(plot, top = text_grob(glue::glue('5 clusters')))
-  
 ```
 
 
@@ -171,8 +146,8 @@ seq.depr2 <- TraMineR::seqdef(elsoc_salud,
 Hay 32 secuencias en total
 
 ```{r}
-TraMineR::seqfplot(seq.depr2, border = NA, with.legend = "top",
-                   idxs = 1:32, space = 0)
+TraMineR::seqIplot(seq.depr2, border = NA, xtlab = c(2016:2019, 2021),
+                   space = 0, sortv = elsoc_salud$phq_sum)
 
 ```
 
@@ -207,20 +182,22 @@ ward.range.depr2$stats %>%
 ### Gráficos de secuencia por clusters
 
 ```{r}
-TraMineR::seqIplot(seq.depr2, group = stats::cutree(ward.depr2, k = 3),
-                   border = NA, with.legend = "top",
-                   space = 0)
 
-TraMineR::seqIplot(seq.depr2, group = stats::cutree(ward.depr2, k = 4),
-                   border = NA, with.legend = "top",
-                   space = 0)
+TraMineR::seqfplot(seq.depr2, group = stats::cutree(ward.depr2, k = 3),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
 
-TraMineR::seqIplot(seq.depr2, group = stats::cutree(ward.depr2, k = 5),
-                   border = NA, with.legend = "top",
-                   space = 0)
+TraMineR::seqfplot(seq.depr2, group = stats::cutree(ward.depr2, k = 4),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
 
-TraMineR::seqIplot(seq.depr2, group = stats::cutree(ward.depr2, k = 6),
-                   border = NA, with.legend = "top",
-                   space = 0)
+TraMineR::seqfplot(seq.depr2, group = stats::cutree(ward.depr2, k = 5),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
+
+TraMineR::seqfplot(seq.depr2, group = stats::cutree(ward.depr2, k = 6),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
+
 
 ```

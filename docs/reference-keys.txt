@@ -5,8 +5,7 @@ gráfico-de-secuencias
 frecuencia-de-estados-y-transiciones
 clusters-de-secuencias
 graficos-de-secuencias-por-clusters
-agregar-trayectorias-a-base-de-datos-elsoc
-opción-preferida-4-clusters
+opción-preferida-5-clusters
 secuencia-de-depresión-con-2-categorías
 gráfico-de-secuencias-1
 clusters-de-secuencias-1
