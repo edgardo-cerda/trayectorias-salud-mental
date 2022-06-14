@@ -205,533 +205,147 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.1</span> Preparar datos:<a href="modelos.html#preparar-datos" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="agregar-variables-de-trayectoria-de-los-distintos-modelos" class="section level3 unnumbered hasAnchor">
 <h3>Agregar variables de trayectoria de los distintos modelos:<a href="modelos.html#agregar-variables-de-trayectoria-de-los-distintos-modelos" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="modelos.html#cb47-1" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_om4<span class="fl">.5</span> <span class="ot">&lt;-</span> <span class="fu">factor</span>(stats<span class="sc">::</span><span class="fu">cutree</span>(ward.depr4, <span class="at">k =</span> <span class="dv">5</span>),</span>
-<span id="cb47-2"><a href="modelos.html#cb47-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>),</span>
-<span id="cb47-3"><a href="modelos.html#cb47-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Trayectoria baja/media&#39;</span>,</span>
-<span id="cb47-4"><a href="modelos.html#cb47-4" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;Trayectoria media/moderada&#39;</span>,</span>
-<span id="cb47-5"><a href="modelos.html#cb47-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;Trayectoria descendente&#39;</span>,</span>
-<span id="cb47-6"><a href="modelos.html#cb47-6" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;Trayectoria ascendente&#39;</span>,</span>
-<span id="cb47-7"><a href="modelos.html#cb47-7" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;Trayectoria alta/moderada&#39;</span>))</span>
-<span id="cb47-8"><a href="modelos.html#cb47-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-9"><a href="modelos.html#cb47-9" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_om2<span class="fl">.3</span> <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">cutree</span>(ward.depr2, <span class="at">k =</span> <span class="dv">3</span>)</span>
-<span id="cb47-10"><a href="modelos.html#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-11"><a href="modelos.html#cb47-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-12"><a href="modelos.html#cb47-12" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_gmm<span class="fl">.4</span>lin <span class="ot">&lt;-</span> <span class="fu">factor</span>(elsoc_salud <span class="sc">%&gt;%</span> </span>
-<span id="cb47-13"><a href="modelos.html#cb47-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(lcga4_lin<span class="sc">$</span>pprob <span class="sc">%&gt;%</span> <span class="fu">select</span>(idencuesta, class),</span>
-<span id="cb47-14"><a href="modelos.html#cb47-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&#39;idencuesta&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb47-15"><a href="modelos.html#cb47-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(class),</span>
-<span id="cb47-16"><a href="modelos.html#cb47-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
-<span id="cb47-17"><a href="modelos.html#cb47-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Trayectoria baja&#39;</span>, <span class="st">&#39;Trayectoria media&#39;</span>, <span class="st">&#39;Trayectoria descendente&#39;</span>, <span class="st">&#39;Trayectoria ascendente&#39;</span>))</span>
-<span id="cb47-18"><a href="modelos.html#cb47-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-19"><a href="modelos.html#cb47-19" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_gmm<span class="fl">.4</span>quad <span class="ot">&lt;-</span> <span class="fu">factor</span>(elsoc_salud <span class="sc">%&gt;%</span> </span>
-<span id="cb47-20"><a href="modelos.html#cb47-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(lcga4_quad<span class="sc">$</span>pprob <span class="sc">%&gt;%</span> <span class="fu">select</span>(idencuesta, class),</span>
-<span id="cb47-21"><a href="modelos.html#cb47-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&#39;idencuesta&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb47-22"><a href="modelos.html#cb47-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(class),</span>
-<span id="cb47-23"><a href="modelos.html#cb47-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>),</span>
-<span id="cb47-24"><a href="modelos.html#cb47-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Trayectoria baja&#39;</span>, <span class="st">&#39;Trayectoria media&#39;</span>, <span class="st">&#39;Trayectoria descendente&#39;</span>, <span class="st">&#39;Trayectoria ascendente&#39;</span>))</span>
-<span id="cb47-25"><a href="modelos.html#cb47-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-26"><a href="modelos.html#cb47-26" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_gmm<span class="fl">.5</span>lin <span class="ot">&lt;-</span> elsoc_salud <span class="sc">%&gt;%</span> </span>
-<span id="cb47-27"><a href="modelos.html#cb47-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(lcga5_lin<span class="sc">$</span>pprob <span class="sc">%&gt;%</span> <span class="fu">select</span>(idencuesta, class),</span>
-<span id="cb47-28"><a href="modelos.html#cb47-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&#39;idencuesta&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb47-29"><a href="modelos.html#cb47-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(class)</span>
-<span id="cb47-30"><a href="modelos.html#cb47-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-31"><a href="modelos.html#cb47-31" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_gmm<span class="fl">.5</span>quad <span class="ot">&lt;-</span> elsoc_salud <span class="sc">%&gt;%</span> </span>
-<span id="cb47-32"><a href="modelos.html#cb47-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(lcga5_quad<span class="sc">$</span>pprob <span class="sc">%&gt;%</span> <span class="fu">select</span>(idencuesta, class),</span>
-<span id="cb47-33"><a href="modelos.html#cb47-33" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&#39;idencuesta&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb47-34"><a href="modelos.html#cb47-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(class)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="modelos.html#cb41-1" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_om4<span class="fl">.5</span> <span class="ot">&lt;-</span> <span class="fu">factor</span>(stats<span class="sc">::</span><span class="fu">cutree</span>(ward.depr4, <span class="at">k =</span> <span class="dv">5</span>),</span>
+<span id="cb41-2"><a href="modelos.html#cb41-2" aria-hidden="true" tabindex="-1"></a>                                        <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>),</span>
+<span id="cb41-3"><a href="modelos.html#cb41-3" aria-hidden="true" tabindex="-1"></a>                              <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Trayectoria baja/media&#39;</span>,</span>
+<span id="cb41-4"><a href="modelos.html#cb41-4" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;Trayectoria media/moderada&#39;</span>,</span>
+<span id="cb41-5"><a href="modelos.html#cb41-5" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;Trayectoria descendente&#39;</span>,</span>
+<span id="cb41-6"><a href="modelos.html#cb41-6" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;Trayectoria ascendente&#39;</span>,</span>
+<span id="cb41-7"><a href="modelos.html#cb41-7" aria-hidden="true" tabindex="-1"></a>                                         <span class="st">&#39;Trayectoria alta/moderada&#39;</span>))</span>
+<span id="cb41-8"><a href="modelos.html#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-9"><a href="modelos.html#cb41-9" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_om2<span class="fl">.3</span> <span class="ot">&lt;-</span> stats<span class="sc">::</span><span class="fu">cutree</span>(ward.depr2, <span class="at">k =</span> <span class="dv">3</span>)</span>
+<span id="cb41-10"><a href="modelos.html#cb41-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-11"><a href="modelos.html#cb41-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-12"><a href="modelos.html#cb41-12" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_gmm<span class="fl">.4</span>lin <span class="ot">&lt;-</span> <span class="fu">factor</span>(elsoc_salud <span class="sc">%&gt;%</span> </span>
+<span id="cb41-13"><a href="modelos.html#cb41-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(lcga4_lin<span class="sc">$</span>pprob <span class="sc">%&gt;%</span> <span class="fu">select</span>(idencuesta, class),</span>
+<span id="cb41-14"><a href="modelos.html#cb41-14" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&#39;idencuesta&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-15"><a href="modelos.html#cb41-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(class),</span>
+<span id="cb41-16"><a href="modelos.html#cb41-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb41-17"><a href="modelos.html#cb41-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Trayectoria baja&#39;</span>, <span class="st">&#39;Trayectoria media&#39;</span>, <span class="st">&#39;Trayectoria descendente&#39;</span>, <span class="st">&#39;Trayectoria ascendente&#39;</span>))</span>
+<span id="cb41-18"><a href="modelos.html#cb41-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-19"><a href="modelos.html#cb41-19" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_gmm<span class="fl">.4</span>quad <span class="ot">&lt;-</span> <span class="fu">factor</span>(elsoc_salud <span class="sc">%&gt;%</span> </span>
+<span id="cb41-20"><a href="modelos.html#cb41-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(lcga4_quad<span class="sc">$</span>pprob <span class="sc">%&gt;%</span> <span class="fu">select</span>(idencuesta, class),</span>
+<span id="cb41-21"><a href="modelos.html#cb41-21" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&#39;idencuesta&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-22"><a href="modelos.html#cb41-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(class),</span>
+<span id="cb41-23"><a href="modelos.html#cb41-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>),</span>
+<span id="cb41-24"><a href="modelos.html#cb41-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Trayectoria baja&#39;</span>, <span class="st">&#39;Trayectoria media&#39;</span>, <span class="st">&#39;Trayectoria descendente&#39;</span>, <span class="st">&#39;Trayectoria ascendente&#39;</span>))</span>
+<span id="cb41-25"><a href="modelos.html#cb41-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-26"><a href="modelos.html#cb41-26" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_gmm<span class="fl">.5</span>lin <span class="ot">&lt;-</span> elsoc_salud <span class="sc">%&gt;%</span> </span>
+<span id="cb41-27"><a href="modelos.html#cb41-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(lcga5_lin<span class="sc">$</span>pprob <span class="sc">%&gt;%</span> <span class="fu">select</span>(idencuesta, class),</span>
+<span id="cb41-28"><a href="modelos.html#cb41-28" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&#39;idencuesta&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-29"><a href="modelos.html#cb41-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(class)</span>
+<span id="cb41-30"><a href="modelos.html#cb41-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-31"><a href="modelos.html#cb41-31" aria-hidden="true" tabindex="-1"></a>elsoc_salud<span class="sc">$</span>trayectoria_gmm<span class="fl">.5</span>quad <span class="ot">&lt;-</span> elsoc_salud <span class="sc">%&gt;%</span> </span>
+<span id="cb41-32"><a href="modelos.html#cb41-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(lcga5_quad<span class="sc">$</span>pprob <span class="sc">%&gt;%</span> <span class="fu">select</span>(idencuesta, class),</span>
+<span id="cb41-33"><a href="modelos.html#cb41-33" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="st">&#39;idencuesta&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-34"><a href="modelos.html#cb41-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(class)</span></code></pre></div>
 </div>
 <div id="agregar-variables-independientes" class="section level3 unnumbered hasAnchor">
 <h3>Agregar variables independientes<a href="modelos.html#agregar-variables-independientes" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="modelos.html#cb48-1" aria-hidden="true" tabindex="-1"></a>elsoc_salud_modelo <span class="ot">&lt;-</span> elsoc_salud <span class="sc">%&gt;%</span> </span>
-<span id="cb48-2"><a href="modelos.html#cb48-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>elsoc<span class="sc">::</span><span class="fu">is_nsnr</span>(m30_w01, m30_w02, m30_w03, m30_w04, m30b_w05)) <span class="sc">%&gt;%</span> </span>
-<span id="cb48-3"><a href="modelos.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb48-4"><a href="modelos.html#cb48-4" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-5"><a href="modelos.html#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">m30_w01 =</span> <span class="dv">1000</span><span class="sc">*</span><span class="fu">as.numeric</span>(car<span class="sc">::</span><span class="fu">recode</span>(m30_w01, <span class="st">&quot;1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; </span></span>
-<span id="cb48-6"><a href="modelos.html#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="st">                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;</span></span>
-<span id="cb48-7"><a href="modelos.html#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="st">                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA&quot;</span>)),</span>
-<span id="cb48-8"><a href="modelos.html#cb48-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">m29_w01_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m29_w01), m30_w01, m29_w01),</span>
-<span id="cb48-9"><a href="modelos.html#cb48-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ypc_w01 =</span> m29_w01_imp <span class="sc">/</span> nhogar1_w01,</span>
-<span id="cb48-10"><a href="modelos.html#cb48-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-11"><a href="modelos.html#cb48-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">m30_w02 =</span> <span class="dv">1000</span><span class="sc">*</span><span class="fu">as.numeric</span>(car<span class="sc">::</span><span class="fu">recode</span>(m30_w02, <span class="st">&quot;1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; </span></span>
-<span id="cb48-12"><a href="modelos.html#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="st">                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;</span></span>
-<span id="cb48-13"><a href="modelos.html#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="st">                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA&quot;</span>)),</span>
-<span id="cb48-14"><a href="modelos.html#cb48-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">m29_w02_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m29_w02), m30_w02, m29_w02),</span>
-<span id="cb48-15"><a href="modelos.html#cb48-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">ypc_w02 =</span> m29_w02_imp <span class="sc">/</span> nhogar1_w01,    </span>
-<span id="cb48-16"><a href="modelos.html#cb48-16" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-17"><a href="modelos.html#cb48-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">m30_w03 =</span> <span class="dv">1000</span><span class="sc">*</span><span class="fu">as.numeric</span>(car<span class="sc">::</span><span class="fu">recode</span>(m30_w03, <span class="st">&quot;1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; </span></span>
-<span id="cb48-18"><a href="modelos.html#cb48-18" aria-hidden="true" tabindex="-1"></a><span class="st">                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;</span></span>
-<span id="cb48-19"><a href="modelos.html#cb48-19" aria-hidden="true" tabindex="-1"></a><span class="st">                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA&quot;</span>)),</span>
-<span id="cb48-20"><a href="modelos.html#cb48-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">m29_w03_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m29_w03), m30_w03, m29_w03),</span>
-<span id="cb48-21"><a href="modelos.html#cb48-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">ypc_w03 =</span> m29_w03_imp <span class="sc">/</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m54_w03), <span class="cn">NA</span>, m54_w03),</span>
-<span id="cb48-22"><a href="modelos.html#cb48-22" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-23"><a href="modelos.html#cb48-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">m30_w04 =</span> <span class="dv">1000</span><span class="sc">*</span><span class="fu">as.numeric</span>(car<span class="sc">::</span><span class="fu">recode</span>(m30_w04, <span class="st">&quot;1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; </span></span>
-<span id="cb48-24"><a href="modelos.html#cb48-24" aria-hidden="true" tabindex="-1"></a><span class="st">                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;</span></span>
-<span id="cb48-25"><a href="modelos.html#cb48-25" aria-hidden="true" tabindex="-1"></a><span class="st">                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA&quot;</span>)),</span>
-<span id="cb48-26"><a href="modelos.html#cb48-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">m29_w04_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m29_w04), m30_w04, m29_w04),</span>
-<span id="cb48-27"><a href="modelos.html#cb48-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">ypc_w04 =</span> m29_w04_imp <span class="sc">/</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m54_w04), <span class="cn">NA</span>, m54_w04),</span>
-<span id="cb48-28"><a href="modelos.html#cb48-28" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-29"><a href="modelos.html#cb48-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">m30b_w05 =</span> <span class="dv">1000</span><span class="sc">*</span><span class="fu">as.numeric</span>(car<span class="sc">::</span><span class="fu">recode</span>(m30b_w05, <span class="st">&quot;1 = 225; 2 = 575; 3 = 850; 4 = 1250; 5 = 1750; NA = NA&quot;</span>)),</span>
-<span id="cb48-30"><a href="modelos.html#cb48-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">m29_w05_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m29_w05), m30b_w05, m29_w05),</span>
-<span id="cb48-31"><a href="modelos.html#cb48-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">ypc_w05 =</span> m29_w05_imp <span class="sc">/</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m54_w05), <span class="cn">NA</span>, m54_w05),</span>
-<span id="cb48-32"><a href="modelos.html#cb48-32" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb48-33"><a href="modelos.html#cb48-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w01 =</span> statar<span class="sc">::</span><span class="fu">xtile</span>(ypc_w01, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">wt =</span> ponderador02_w01),</span>
-<span id="cb48-34"><a href="modelos.html#cb48-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w01 =</span> <span class="fu">factor</span>(quintil_w01,</span>
-<span id="cb48-35"><a href="modelos.html#cb48-35" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb48-36"><a href="modelos.html#cb48-36" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;Quintil {1:5}&#39;</span>)),</span>
-<span id="cb48-37"><a href="modelos.html#cb48-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w02 =</span> statar<span class="sc">::</span><span class="fu">xtile</span>(ypc_w02, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">wt =</span> ponderador02_w02),</span>
-<span id="cb48-38"><a href="modelos.html#cb48-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w02 =</span> <span class="fu">factor</span>(quintil_w02,</span>
-<span id="cb48-39"><a href="modelos.html#cb48-39" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb48-40"><a href="modelos.html#cb48-40" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;Quintil {1:5}&#39;</span>)),</span>
-<span id="cb48-41"><a href="modelos.html#cb48-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w03 =</span> statar<span class="sc">::</span><span class="fu">xtile</span>(ypc_w03, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">wt =</span> ponderador02_w03),</span>
-<span id="cb48-42"><a href="modelos.html#cb48-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w03 =</span> <span class="fu">factor</span>(quintil_w03,</span>
-<span id="cb48-43"><a href="modelos.html#cb48-43" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb48-44"><a href="modelos.html#cb48-44" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;Quintil {1:5}&#39;</span>)),</span>
-<span id="cb48-45"><a href="modelos.html#cb48-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w04 =</span> statar<span class="sc">::</span><span class="fu">xtile</span>(ypc_w04, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">wt =</span> ponderador02_w04),</span>
-<span id="cb48-46"><a href="modelos.html#cb48-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w04 =</span> <span class="fu">factor</span>(quintil_w04,</span>
-<span id="cb48-47"><a href="modelos.html#cb48-47" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb48-48"><a href="modelos.html#cb48-48" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;Quintil {1:5}&#39;</span>)),</span>
-<span id="cb48-49"><a href="modelos.html#cb48-49" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w05 =</span> statar<span class="sc">::</span><span class="fu">xtile</span>(ypc_w05, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">wt =</span> ponderador02_w05),</span>
-<span id="cb48-50"><a href="modelos.html#cb48-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w05 =</span> <span class="fu">factor</span>(quintil_w05,</span>
-<span id="cb48-51"><a href="modelos.html#cb48-51" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb48-52"><a href="modelos.html#cb48-52" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;Quintil {1:5}&#39;</span>)),</span>
-<span id="cb48-53"><a href="modelos.html#cb48-53" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb48-54"><a href="modelos.html#cb48-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">ocup_w01 =</span> <span class="fu">factor</span>(car<span class="sc">::</span><span class="fu">recode</span>(m02_w01, <span class="st">&quot;1:3 = 1; 6 = 2; 4:5 = 3; 7:9 = 3&quot;</span>),</span>
-<span id="cb48-55"><a href="modelos.html#cb48-55" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
-<span id="cb48-56"><a href="modelos.html#cb48-56" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Ocupado&#39;</span>, <span class="st">&#39;Desempleado&#39;</span>, <span class="st">&#39;Inactivo&#39;</span>)),</span>
-<span id="cb48-57"><a href="modelos.html#cb48-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexo =</span> <span class="fu">factor</span>(m0_sexo_w01, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
-<span id="cb48-58"><a href="modelos.html#cb48-58" aria-hidden="true" tabindex="-1"></a>                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Hombre&#39;</span>, <span class="st">&#39;Mujer&#39;</span>)))</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="modelos.html#cb42-1" aria-hidden="true" tabindex="-1"></a>elsoc_salud_modelo <span class="ot">&lt;-</span> elsoc_salud <span class="sc">%&gt;%</span> </span>
+<span id="cb42-2"><a href="modelos.html#cb42-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span>elsoc<span class="sc">::</span><span class="fu">is_nsnr</span>(m30_w01, m30_w02, m30_w03, m30_w04, m30b_w05)) <span class="sc">%&gt;%</span> </span>
+<span id="cb42-3"><a href="modelos.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb42-4"><a href="modelos.html#cb42-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-5"><a href="modelos.html#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">m30_w01 =</span> <span class="dv">1000</span><span class="sc">*</span><span class="fu">as.numeric</span>(car<span class="sc">::</span><span class="fu">recode</span>(m30_w01, <span class="st">&quot;1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; </span></span>
+<span id="cb42-6"><a href="modelos.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="st">                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;</span></span>
+<span id="cb42-7"><a href="modelos.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="st">                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA&quot;</span>)),</span>
+<span id="cb42-8"><a href="modelos.html#cb42-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">m29_w01_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m29_w01), m30_w01, m29_w01),</span>
+<span id="cb42-9"><a href="modelos.html#cb42-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ypc_w01 =</span> m29_w01_imp <span class="sc">/</span> nhogar1_w01,</span>
+<span id="cb42-10"><a href="modelos.html#cb42-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-11"><a href="modelos.html#cb42-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">m30_w02 =</span> <span class="dv">1000</span><span class="sc">*</span><span class="fu">as.numeric</span>(car<span class="sc">::</span><span class="fu">recode</span>(m30_w02, <span class="st">&quot;1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; </span></span>
+<span id="cb42-12"><a href="modelos.html#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="st">                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;</span></span>
+<span id="cb42-13"><a href="modelos.html#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="st">                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA&quot;</span>)),</span>
+<span id="cb42-14"><a href="modelos.html#cb42-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">m29_w02_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m29_w02), m30_w02, m29_w02),</span>
+<span id="cb42-15"><a href="modelos.html#cb42-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">ypc_w02 =</span> m29_w02_imp <span class="sc">/</span> nhogar1_w01,    </span>
+<span id="cb42-16"><a href="modelos.html#cb42-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-17"><a href="modelos.html#cb42-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">m30_w03 =</span> <span class="dv">1000</span><span class="sc">*</span><span class="fu">as.numeric</span>(car<span class="sc">::</span><span class="fu">recode</span>(m30_w03, <span class="st">&quot;1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; </span></span>
+<span id="cb42-18"><a href="modelos.html#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="st">                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;</span></span>
+<span id="cb42-19"><a href="modelos.html#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="st">                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA&quot;</span>)),</span>
+<span id="cb42-20"><a href="modelos.html#cb42-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">m29_w03_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m29_w03), m30_w03, m29_w03),</span>
+<span id="cb42-21"><a href="modelos.html#cb42-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">ypc_w03 =</span> m29_w03_imp <span class="sc">/</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m54_w03), <span class="cn">NA</span>, m54_w03),</span>
+<span id="cb42-22"><a href="modelos.html#cb42-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-23"><a href="modelos.html#cb42-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">m30_w04 =</span> <span class="dv">1000</span><span class="sc">*</span><span class="fu">as.numeric</span>(car<span class="sc">::</span><span class="fu">recode</span>(m30_w04, <span class="st">&quot;1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; </span></span>
+<span id="cb42-24"><a href="modelos.html#cb42-24" aria-hidden="true" tabindex="-1"></a><span class="st">                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;</span></span>
+<span id="cb42-25"><a href="modelos.html#cb42-25" aria-hidden="true" tabindex="-1"></a><span class="st">                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA&quot;</span>)),</span>
+<span id="cb42-26"><a href="modelos.html#cb42-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">m29_w04_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m29_w04), m30_w04, m29_w04),</span>
+<span id="cb42-27"><a href="modelos.html#cb42-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">ypc_w04 =</span> m29_w04_imp <span class="sc">/</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m54_w04), <span class="cn">NA</span>, m54_w04),</span>
+<span id="cb42-28"><a href="modelos.html#cb42-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-29"><a href="modelos.html#cb42-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">m30b_w05 =</span> <span class="dv">1000</span><span class="sc">*</span><span class="fu">as.numeric</span>(car<span class="sc">::</span><span class="fu">recode</span>(m30b_w05, <span class="st">&quot;1 = 225; 2 = 575; 3 = 850; 4 = 1250; 5 = 1750; NA = NA&quot;</span>)),</span>
+<span id="cb42-30"><a href="modelos.html#cb42-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">m29_w05_imp =</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m29_w05), m30b_w05, m29_w05),</span>
+<span id="cb42-31"><a href="modelos.html#cb42-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">ypc_w05 =</span> m29_w05_imp <span class="sc">/</span> <span class="fu">ifelse</span>(<span class="fu">is_nsnr</span>(m54_w05), <span class="cn">NA</span>, m54_w05),</span>
+<span id="cb42-32"><a href="modelos.html#cb42-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb42-33"><a href="modelos.html#cb42-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">log_ing =</span> <span class="fu">log</span>((ypc_w01 <span class="sc">+</span> ypc_w02 <span class="sc">+</span> ypc_w03 <span class="sc">+</span> ypc_w04 <span class="sc">+</span> ypc_w05)<span class="sc">/</span><span class="dv">5</span>),</span>
+<span id="cb42-34"><a href="modelos.html#cb42-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w01 =</span> statar<span class="sc">::</span><span class="fu">xtile</span>(ypc_w01, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">wt =</span> ponderador02_w01),</span>
+<span id="cb42-35"><a href="modelos.html#cb42-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w01 =</span> <span class="fu">factor</span>(quintil_w01,</span>
+<span id="cb42-36"><a href="modelos.html#cb42-36" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb42-37"><a href="modelos.html#cb42-37" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;Quintil {1:5}&#39;</span>)),</span>
+<span id="cb42-38"><a href="modelos.html#cb42-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w02 =</span> statar<span class="sc">::</span><span class="fu">xtile</span>(ypc_w02, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">wt =</span> ponderador02_w02),</span>
+<span id="cb42-39"><a href="modelos.html#cb42-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w02 =</span> <span class="fu">factor</span>(quintil_w02,</span>
+<span id="cb42-40"><a href="modelos.html#cb42-40" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb42-41"><a href="modelos.html#cb42-41" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;Quintil {1:5}&#39;</span>)),</span>
+<span id="cb42-42"><a href="modelos.html#cb42-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w03 =</span> statar<span class="sc">::</span><span class="fu">xtile</span>(ypc_w03, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">wt =</span> ponderador02_w03),</span>
+<span id="cb42-43"><a href="modelos.html#cb42-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w03 =</span> <span class="fu">factor</span>(quintil_w03,</span>
+<span id="cb42-44"><a href="modelos.html#cb42-44" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb42-45"><a href="modelos.html#cb42-45" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;Quintil {1:5}&#39;</span>)),</span>
+<span id="cb42-46"><a href="modelos.html#cb42-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w04 =</span> statar<span class="sc">::</span><span class="fu">xtile</span>(ypc_w04, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">wt =</span> ponderador02_w04),</span>
+<span id="cb42-47"><a href="modelos.html#cb42-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w04 =</span> <span class="fu">factor</span>(quintil_w04,</span>
+<span id="cb42-48"><a href="modelos.html#cb42-48" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb42-49"><a href="modelos.html#cb42-49" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;Quintil {1:5}&#39;</span>)),</span>
+<span id="cb42-50"><a href="modelos.html#cb42-50" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w05 =</span> statar<span class="sc">::</span><span class="fu">xtile</span>(ypc_w05, <span class="at">n =</span> <span class="dv">5</span>, <span class="at">wt =</span> ponderador02_w05),</span>
+<span id="cb42-51"><a href="modelos.html#cb42-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">quintil_w05 =</span> <span class="fu">factor</span>(quintil_w05,</span>
+<span id="cb42-52"><a href="modelos.html#cb42-52" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb42-53"><a href="modelos.html#cb42-53" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&#39;Quintil {1:5}&#39;</span>)),</span>
+<span id="cb42-54"><a href="modelos.html#cb42-54" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb42-55"><a href="modelos.html#cb42-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">ocup_w01 =</span> <span class="fu">factor</span>(car<span class="sc">::</span><span class="fu">recode</span>(m02_w01, <span class="st">&quot;1:3 = 1; 6 = 2; 4:5 = 3; 7:9 = 3&quot;</span>),</span>
+<span id="cb42-56"><a href="modelos.html#cb42-56" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb42-57"><a href="modelos.html#cb42-57" aria-hidden="true" tabindex="-1"></a>                      <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Ocupado&#39;</span>, <span class="st">&#39;Desempleado&#39;</span>, <span class="st">&#39;Inactivo&#39;</span>)),</span>
+<span id="cb42-58"><a href="modelos.html#cb42-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexo =</span> <span class="fu">factor</span>(m0_sexo_w01, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
+<span id="cb42-59"><a href="modelos.html#cb42-59" aria-hidden="true" tabindex="-1"></a>                  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Hombre&#39;</span>, <span class="st">&#39;Mujer&#39;</span>)),</span>
+<span id="cb42-60"><a href="modelos.html#cb42-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">sobrecarga_deuda_w01 =</span> <span class="fu">factor</span>(m43_w01 <span class="sc">==</span> <span class="dv">5</span>),</span>
+<span id="cb42-61"><a href="modelos.html#cb42-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">sobrecarga_deuda_w03 =</span> <span class="fu">factor</span>(m43_w03 <span class="sc">==</span> <span class="dv">5</span>),</span>
+<span id="cb42-62"><a href="modelos.html#cb42-62" aria-hidden="true" tabindex="-1"></a>    <span class="at">sobrecarga_deuda_w05 =</span> <span class="fu">factor</span>(m43_w05 <span class="sc">==</span> <span class="dv">5</span>))</span></code></pre></div>
 </div>
 </div>
 <div id="modelo-multinomial-logit" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Modelo multinomial logit<a href="modelos.html#modelo-multinomial-logit" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="modelos.html#cb49-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb49-2"><a href="modelos.html#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> sexo <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> quintil_w01 <span class="sc">+</span> <span class="fu">factor</span>(m43_w01 <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">+</span> ocup_w01,</span>
-<span id="cb49-3"><a href="modelos.html#cb49-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
-<pre><code>## # weights:  55 (40 variable)
-## initial  value 1248.923820 
-## iter  10 value 913.115897
-## iter  20 value 893.847204
-## iter  30 value 893.658668
-## final  value 893.658571 
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="modelos.html#cb43-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb43-2"><a href="modelos.html#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> sexo <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> quintil_w01 <span class="sc">+</span> sobrecarga_deuda_w01 <span class="sc">+</span> sobrecarga_deuda_w03 <span class="sc">+</span> sobrecarga_deuda_w05 <span class="sc">+</span> ocup_w01,</span>
+<span id="cb43-3"><a href="modelos.html#cb43-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  52 (36 variable)
+## initial  value 677.897943 
+## iter  10 value 405.399296
+## iter  20 value 398.022591
+## iter  30 value 397.883223
+## final  value 397.882970 
 ## converged</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="modelos.html#cb51-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb51-2"><a href="modelos.html#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> sexo <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> quintil_w01 <span class="sc">+</span> <span class="fu">factor</span>(m43_w01 <span class="sc">==</span> <span class="dv">5</span>) <span class="sc">+</span> ocup_w01,</span>
-<span id="cb51-3"><a href="modelos.html#cb51-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
-<pre><code>## # weights:  44 (30 variable)
-## initial  value 1075.764424 
-## iter  10 value 695.581274
-## iter  20 value 648.087581
-## iter  30 value 645.520734
-## final  value 645.514530 
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="modelos.html#cb45-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb45-2"><a href="modelos.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> sexo <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> sobrecarga_deuda_w03 <span class="sc">+</span> sobrecarga_deuda_w05 <span class="sc">+</span> ocup_w01,</span>
+<span id="cb45-3"><a href="modelos.html#cb45-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  36 (24 variable)
+## initial  value 884.455802 
+## iter  10 value 583.167241
+## iter  20 value 544.325103
+## iter  30 value 540.749594
+## iter  40 value 540.715662
+## iter  50 value 540.708157
+## iter  50 value 540.708156
+## final  value 540.708156 
 ## converged</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="modelos.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(m1,</span>
-<span id="cb53-2"><a href="modelos.html#cb53-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb53-3"><a href="modelos.html#cb53-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> model <span class="sc">+</span> term <span class="sc">~</span> y.level)</span></code></pre></div>
-<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-</th>
-<th style="text-align:center;">
-Trayectoria media/moderada
-</th>
-<th style="text-align:center;">
-Trayectoria descendente
-</th>
-<th style="text-align:center;">
-Trayectoria ascendente
-</th>
-<th style="text-align:center;">
-Trayectoria alta/moderada
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Model 1
-</td>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:center;">
--1.221**
-</td>
-<td style="text-align:center;">
--2.827***
-</td>
-<td style="text-align:center;">
--1.639**
-</td>
-<td style="text-align:center;">
--2.766***
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.441)
-</td>
-<td style="text-align:center;">
-(0.685)
-</td>
-<td style="text-align:center;">
-(0.530)
-</td>
-<td style="text-align:center;">
-(0.702)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-sexoMujer
-</td>
-<td style="text-align:center;">
-0.707**
-</td>
-<td style="text-align:center;">
-1.031**
-</td>
-<td style="text-align:center;">
-0.947***
-</td>
-<td style="text-align:center;">
-1.181**
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.229)
-</td>
-<td style="text-align:center;">
-(0.375)
-</td>
-<td style="text-align:center;">
-(0.280)
-</td>
-<td style="text-align:center;">
-(0.405)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-m0_edad_w01
-</td>
-<td style="text-align:center;">
--0.003
-</td>
-<td style="text-align:center;">
-0.005
-</td>
-<td style="text-align:center;">
-0.001
-</td>
-<td style="text-align:center;">
--0.006
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.007)
-</td>
-<td style="text-align:center;">
-(0.011)
-</td>
-<td style="text-align:center;">
-(0.009)
-</td>
-<td style="text-align:center;">
-(0.012)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-quintil_w01Quintil 2
-</td>
-<td style="text-align:center;">
--0.550
-</td>
-<td style="text-align:center;">
--0.647
-</td>
-<td style="text-align:center;">
--1.346***
-</td>
-<td style="text-align:center;">
--0.366
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.321)
-</td>
-<td style="text-align:center;">
-(0.476)
-</td>
-<td style="text-align:center;">
-(0.399)
-</td>
-<td style="text-align:center;">
-(0.463)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-quintil_w01Quintil 3
-</td>
-<td style="text-align:center;">
--0.341
-</td>
-<td style="text-align:center;">
--0.126
-</td>
-<td style="text-align:center;">
--1.179**
-</td>
-<td style="text-align:center;">
--0.325
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.312)
-</td>
-<td style="text-align:center;">
-(0.432)
-</td>
-<td style="text-align:center;">
-(0.383)
-</td>
-<td style="text-align:center;">
-(0.467)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-quintil_w01Quintil 4
-</td>
-<td style="text-align:center;">
--0.109
-</td>
-<td style="text-align:center;">
--0.214
-</td>
-<td style="text-align:center;">
--0.365
-</td>
-<td style="text-align:center;">
--0.268
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.312)
-</td>
-<td style="text-align:center;">
-(0.462)
-</td>
-<td style="text-align:center;">
-(0.337)
-</td>
-<td style="text-align:center;">
-(0.490)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-quintil_w01Quintil 5
-</td>
-<td style="text-align:center;">
--0.776*
-</td>
-<td style="text-align:center;">
--1.151
-</td>
-<td style="text-align:center;">
--0.963*
-</td>
-<td style="text-align:center;">
--0.516
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.367)
-</td>
-<td style="text-align:center;">
-(0.620)
-</td>
-<td style="text-align:center;">
-(0.403)
-</td>
-<td style="text-align:center;">
-(0.558)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-factor(m43_w01 == 5)TRUE
-</td>
-<td style="text-align:center;">
-1.267***
-</td>
-<td style="text-align:center;">
-1.386**
-</td>
-<td style="text-align:center;">
-1.735***
-</td>
-<td style="text-align:center;">
-2.090***
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.352)
-</td>
-<td style="text-align:center;">
-(0.465)
-</td>
-<td style="text-align:center;">
-(0.363)
-</td>
-<td style="text-align:center;">
-(0.416)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-ocup_w01Desempleado
-</td>
-<td style="text-align:center;">
--0.242
-</td>
-<td style="text-align:center;">
--0.475
-</td>
-<td style="text-align:center;">
-0.199
-</td>
-<td style="text-align:center;">
--0.418
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.459)
-</td>
-<td style="text-align:center;">
-(0.771)
-</td>
-<td style="text-align:center;">
-(0.463)
-</td>
-<td style="text-align:center;">
-(0.782)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-ocup_w01Inactivo
-</td>
-<td style="text-align:center;">
--0.140
-</td>
-<td style="text-align:center;">
--0.104
-</td>
-<td style="text-align:center;">
--0.429
-</td>
-<td style="text-align:center;">
-0.160
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.247)
-</td>
-<td style="text-align:center;">
-(0.356)
-</td>
-<td style="text-align:center;">
-(0.308)
-</td>
-<td style="text-align:center;">
-(0.357)
-</td>
-</tr>
-</tbody>
-<tfoot>
-<tr>
-<td style="padding: 0; " colspan="100%">
-<sup></sup> * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001
-</td>
-</tr>
-</tfoot>
-</table>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="modelos.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(m2,</span>
-<span id="cb54-2"><a href="modelos.html#cb54-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb54-3"><a href="modelos.html#cb54-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> model <span class="sc">+</span> term <span class="sc">~</span> y.level)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="modelos.html#cb47-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="modelos.html#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> sexo <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> <span class="fu">factor</span>(m16_w01 <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">+</span> sobrecarga_deuda_w03 <span class="sc">+</span> sobrecarga_deuda_w05 <span class="sc">+</span> ocup_w01,</span>
+<span id="cb47-3"><a href="modelos.html#cb47-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  36 (24 variable)
+## initial  value 885.842097 
+## iter  10 value 566.655847
+## iter  20 value 546.839605
+## iter  30 value 546.667589
+## iter  30 value 546.667585
+## iter  30 value 546.667585
+## final  value 546.667585 
+## converged</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="modelos.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb49-2"><a href="modelos.html#cb49-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb49-3"><a href="modelos.html#cb49-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> model <span class="sc">+</span> term <span class="sc">~</span> y.level)</span></code></pre></div>
 <table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
 <thead>
 <tr>
@@ -759,13 +373,13 @@ Model 1
 (Intercept)
 </td>
 <td style="text-align:center;">
--0.904*
+-1.083*
 </td>
 <td style="text-align:center;">
--3.461***
+-2.688*
 </td>
 <td style="text-align:center;">
--2.829***
+-3.705***
 </td>
 </tr>
 <tr>
@@ -774,13 +388,13 @@ Model 1
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.374)
+(0.483)
 </td>
 <td style="text-align:center;">
-(1.011)
+(1.215)
 </td>
 <td style="text-align:center;">
-(0.747)
+(1.067)
 </td>
 </tr>
 <tr>
@@ -790,13 +404,13 @@ Model 1
 sexoMujer
 </td>
 <td style="text-align:center;">
-1.127***
+1.208***
 </td>
 <td style="text-align:center;">
-1.127
+0.563
 </td>
 <td style="text-align:center;">
-1.023*
+0.343
 </td>
 </tr>
 <tr>
@@ -805,13 +419,13 @@ sexoMujer
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.201)
+(0.256)
 </td>
 <td style="text-align:center;">
-(0.596)
+(0.640)
 </td>
 <td style="text-align:center;">
-(0.422)
+(0.500)
 </td>
 </tr>
 <tr>
@@ -821,13 +435,13 @@ sexoMujer
 m0_edad_w01
 </td>
 <td style="text-align:center;">
--0.009
+-0.012
 </td>
 <td style="text-align:center;">
--0.004
+-0.021
 </td>
 <td style="text-align:center;">
--0.008
+-0.005
 </td>
 </tr>
 <tr>
@@ -836,13 +450,13 @@ m0_edad_w01
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.006)
+(0.008)
 </td>
 <td style="text-align:center;">
-(0.017)
+(0.023)
 </td>
 <td style="text-align:center;">
-(0.013)
+(0.018)
 </td>
 </tr>
 <tr>
@@ -852,13 +466,13 @@ m0_edad_w01
 quintil_w01Quintil 2
 </td>
 <td style="text-align:center;">
--0.607*
+-0.375
 </td>
 <td style="text-align:center;">
--0.522
+-0.191
 </td>
 <td style="text-align:center;">
--0.666
+0.193
 </td>
 </tr>
 <tr>
@@ -867,13 +481,13 @@ quintil_w01Quintil 2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.271)
+(0.354)
 </td>
 <td style="text-align:center;">
-(0.615)
+(0.740)
 </td>
 <td style="text-align:center;">
-(0.514)
+(0.720)
 </td>
 </tr>
 <tr>
@@ -883,13 +497,13 @@ quintil_w01Quintil 2
 quintil_w01Quintil 3
 </td>
 <td style="text-align:center;">
--0.446
+-0.272
 </td>
 <td style="text-align:center;">
--1.076
+-1.107
 </td>
 <td style="text-align:center;">
--1.040
+-0.616
 </td>
 </tr>
 <tr>
@@ -898,13 +512,13 @@ quintil_w01Quintil 3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.262)
+(0.333)
 </td>
 <td style="text-align:center;">
-(0.720)
+(0.894)
 </td>
 <td style="text-align:center;">
-(0.569)
+(0.812)
 </td>
 </tr>
 <tr>
@@ -914,13 +528,13 @@ quintil_w01Quintil 3
 quintil_w01Quintil 4
 </td>
 <td style="text-align:center;">
--0.015
+0.104
 </td>
 <td style="text-align:center;">
--0.757
+-0.875
 </td>
 <td style="text-align:center;">
-0.061
+0.565
 </td>
 </tr>
 <tr>
@@ -929,13 +543,13 @@ quintil_w01Quintil 4
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.260)
+(0.331)
 </td>
 <td style="text-align:center;">
-(0.725)
+(0.910)
 </td>
 <td style="text-align:center;">
-(0.468)
+(0.687)
 </td>
 </tr>
 <tr>
@@ -945,13 +559,13 @@ quintil_w01Quintil 4
 quintil_w01Quintil 5
 </td>
 <td style="text-align:center;">
--0.594*
+-0.449
 </td>
 <td style="text-align:center;">
--0.563
+-0.535
 </td>
 <td style="text-align:center;">
--0.478
+0.416
 </td>
 </tr>
 <tr>
@@ -960,29 +574,29 @@ quintil_w01Quintil 5
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.302)
+(0.381)
 </td>
 <td style="text-align:center;">
-(0.747)
+(0.933)
 </td>
 <td style="text-align:center;">
-(0.590)
+(0.798)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-factor(m43_w01 == 5)TRUE
+sobrecarga_deuda_w01TRUE
 </td>
 <td style="text-align:center;">
-0.917**
+0.786*
 </td>
 <td style="text-align:center;">
-1.514**
+1.551*
 </td>
 <td style="text-align:center;">
-1.866***
+1.347*
 </td>
 </tr>
 <tr>
@@ -991,13 +605,75 @@ factor(m43_w01 == 5)TRUE
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.283)
+(0.341)
 </td>
 <td style="text-align:center;">
-(0.566)
+(0.649)
 </td>
 <td style="text-align:center;">
-(0.412)
+(0.558)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sobrecarga_deuda_w03TRUE
+</td>
+<td style="text-align:center;">
+0.764**
+</td>
+<td style="text-align:center;">
+1.577**
+</td>
+<td style="text-align:center;">
+1.703***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.297)
+</td>
+<td style="text-align:center;">
+(0.589)
+</td>
+<td style="text-align:center;">
+(0.492)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sobrecarga_deuda_w05TRUE
+</td>
+<td style="text-align:center;">
+0.496
+</td>
+<td style="text-align:center;">
+0.712
+</td>
+<td style="text-align:center;">
+2.058***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.411)
+</td>
+<td style="text-align:center;">
+(0.853)
+</td>
+<td style="text-align:center;">
+(0.543)
 </td>
 </tr>
 <tr>
@@ -1007,13 +683,13 @@ factor(m43_w01 == 5)TRUE
 ocup_w01Desempleado
 </td>
 <td style="text-align:center;">
--0.329
+-0.801
 </td>
 <td style="text-align:center;">
--0.332
+-0.647
 </td>
 <td style="text-align:center;">
-0.108
+0.140
 </td>
 </tr>
 <tr>
@@ -1022,13 +698,13 @@ ocup_w01Desempleado
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.385)
+(0.553)
 </td>
 <td style="text-align:center;">
-(1.080)
+(1.190)
 </td>
 <td style="text-align:center;">
-(0.674)
+(0.915)
 </td>
 </tr>
 <tr>
@@ -1038,13 +714,13 @@ ocup_w01Desempleado
 ocup_w01Inactivo
 </td>
 <td style="text-align:center;">
--0.176
+0.020
 </td>
 <td style="text-align:center;">
-0.171
+0.196
 </td>
 <td style="text-align:center;">
-0.231
+0.377
 </td>
 </tr>
 <tr>
@@ -1053,13 +729,511 @@ ocup_w01Inactivo
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.207)
+(0.264)
 </td>
 <td style="text-align:center;">
-(0.519)
+(0.669)
 </td>
 <td style="text-align:center;">
-(0.399)
+(0.573)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model 2
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+2.315
+</td>
+<td style="text-align:center;">
+-2.534
+</td>
+<td style="text-align:center;">
+0.777
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(1.820)
+</td>
+<td style="text-align:center;">
+(4.431)
+</td>
+<td style="text-align:center;">
+(4.211)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sexoMujer
+</td>
+<td style="text-align:center;">
+1.009***
+</td>
+<td style="text-align:center;">
+1.505*
+</td>
+<td style="text-align:center;">
+0.417
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.219)
+</td>
+<td style="text-align:center;">
+(0.650)
+</td>
+<td style="text-align:center;">
+(0.447)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+-0.014*
+</td>
+<td style="text-align:center;">
+0.007
+</td>
+<td style="text-align:center;">
+-0.005
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.007)
+</td>
+<td style="text-align:center;">
+(0.016)
+</td>
+<td style="text-align:center;">
+(0.015)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sobrecarga_deuda_w03TRUE
+</td>
+<td style="text-align:center;">
+0.767**
+</td>
+<td style="text-align:center;">
+1.612**
+</td>
+<td style="text-align:center;">
+1.735***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.277)
+</td>
+<td style="text-align:center;">
+(0.496)
+</td>
+<td style="text-align:center;">
+(0.435)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sobrecarga_deuda_w05TRUE
+</td>
+<td style="text-align:center;">
+0.601
+</td>
+<td style="text-align:center;">
+1.179
+</td>
+<td style="text-align:center;">
+2.134***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.364)
+</td>
+<td style="text-align:center;">
+(0.621)
+</td>
+<td style="text-align:center;">
+(0.477)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ocup_w01Desempleado
+</td>
+<td style="text-align:center;">
+-1.098*
+</td>
+<td style="text-align:center;">
+-8.686***
+</td>
+<td style="text-align:center;">
+0.490
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.521)
+</td>
+<td style="text-align:center;">
+(0.001)
+</td>
+<td style="text-align:center;">
+(0.707)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ocup_w01Inactivo
+</td>
+<td style="text-align:center;">
+-0.035
+</td>
+<td style="text-align:center;">
+0.248
+</td>
+<td style="text-align:center;">
+0.036
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.216)
+</td>
+<td style="text-align:center;">
+(0.477)
+</td>
+<td style="text-align:center;">
+(0.471)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+-0.265
+</td>
+<td style="text-align:center;">
+-0.175
+</td>
+<td style="text-align:center;">
+-0.336
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.142)
+</td>
+<td style="text-align:center;">
+(0.343)
+</td>
+<td style="text-align:center;">
+(0.329)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model 3
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+-0.998**
+</td>
+<td style="text-align:center;">
+-4.574***
+</td>
+<td style="text-align:center;">
+-3.756***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.348)
+</td>
+<td style="text-align:center;">
+(0.908)
+</td>
+<td style="text-align:center;">
+(0.780)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sexoMujer
+</td>
+<td style="text-align:center;">
+1.089***
+</td>
+<td style="text-align:center;">
+1.206*
+</td>
+<td style="text-align:center;">
+0.471
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.217)
+</td>
+<td style="text-align:center;">
+(0.577)
+</td>
+<td style="text-align:center;">
+(0.440)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+-0.014*
+</td>
+<td style="text-align:center;">
+0.005
+</td>
+<td style="text-align:center;">
+-0.003
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.007)
+</td>
+<td style="text-align:center;">
+(0.016)
+</td>
+<td style="text-align:center;">
+(0.015)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sobrecarga_deuda_w03TRUE
+</td>
+<td style="text-align:center;">
+0.836**
+</td>
+<td style="text-align:center;">
+1.612***
+</td>
+<td style="text-align:center;">
+1.867***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.274)
+</td>
+<td style="text-align:center;">
+(0.480)
+</td>
+<td style="text-align:center;">
+(0.429)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+sobrecarga_deuda_w05TRUE
+</td>
+<td style="text-align:center;">
+0.692
+</td>
+<td style="text-align:center;">
+1.523**
+</td>
+<td style="text-align:center;">
+2.209***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.365)
+</td>
+<td style="text-align:center;">
+(0.573)
+</td>
+<td style="text-align:center;">
+(0.471)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ocup_w01Desempleado
+</td>
+<td style="text-align:center;">
+-1.039*
+</td>
+<td style="text-align:center;">
+-0.081
+</td>
+<td style="text-align:center;">
+0.843
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.528)
+</td>
+<td style="text-align:center;">
+(1.125)
+</td>
+<td style="text-align:center;">
+(0.754)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+ocup_w01Inactivo
+</td>
+<td style="text-align:center;">
+-0.008
+</td>
+<td style="text-align:center;">
+0.525
+</td>
+<td style="text-align:center;">
+0.436
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.241)
+</td>
+<td style="text-align:center;">
+(0.577)
+</td>
+<td style="text-align:center;">
+(0.558)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+factor(m16_w01 %in% 1 × 2)TRUE
+</td>
+<td style="text-align:center;">
+-0.056
+</td>
+<td style="text-align:center;">
+0.329
+</td>
+<td style="text-align:center;">
+0.565
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.229)
+</td>
+<td style="text-align:center;">
+(0.570)
+</td>
+<td style="text-align:center;">
+(0.502)
 </td>
 </tr>
 </tbody>

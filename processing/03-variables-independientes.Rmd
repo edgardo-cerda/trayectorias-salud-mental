@@ -80,6 +80,7 @@ elsoc_salud_modelo <- elsoc_salud %>%
     m29_w05_imp = ifelse(is_nsnr(m29_w05), m30b_w05, m29_w05),
     ypc_w05 = m29_w05_imp / ifelse(is_nsnr(m54_w05), NA, m54_w05),
     
+    log_ing = log((ypc_w01 + ypc_w02 + ypc_w03 + ypc_w04 + ypc_w05)/5),
     quintil_w01 = statar::xtile(ypc_w01, n = 5, wt = ponderador02_w01),
     quintil_w01 = factor(quintil_w01,
                          levels = 1:5,
@@ -105,7 +106,10 @@ elsoc_salud_modelo <- elsoc_salud %>%
                       levels = 1:3,
                       labels = c('Ocupado', 'Desempleado', 'Inactivo')),
     sexo = factor(m0_sexo_w01, levels = 1:2,
-                  labels = c('Hombre', 'Mujer')))
+                  labels = c('Hombre', 'Mujer')),
+    sobrecarga_deuda_w01 = factor(m43_w01 == 5),
+    sobrecarga_deuda_w03 = factor(m43_w03 == 5),
+    sobrecarga_deuda_w05 = factor(m43_w05 == 5))
 
 
 ```
@@ -115,21 +119,21 @@ elsoc_salud_modelo <- elsoc_salud %>%
 
 ```{r}
 
-
 m1 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_om4.5 ~ sexo + m0_edad_w01 + quintil_w01 + factor(m43_w01 == 5) + ocup_w01,
+  multinom(trayectoria_gmm.4lin ~ sexo + m0_edad_w01 + quintil_w01 + sobrecarga_deuda_w01 + sobrecarga_deuda_w03 + sobrecarga_deuda_w05 + ocup_w01,
            data = .) 
 
 m2 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.4lin ~ sexo + m0_edad_w01 + quintil_w01 + factor(m43_w01 == 5) + ocup_w01,
+  multinom(trayectoria_gmm.4lin ~ sexo + m0_edad_w01 + log_ing + sobrecarga_deuda_w03 + sobrecarga_deuda_w05 + ocup_w01,
            data = .) 
 
-modelsummary(m1,
+m3 <- elsoc_salud_modelo %>%
+  multinom(trayectoria_gmm.4lin ~ sexo + m0_edad_w01 + factor(m16_w01 %in% 1:2) + sobrecarga_deuda_w03 + sobrecarga_deuda_w05 + ocup_w01,
+           data = .) 
+
+modelsummary(list(m1, m2, m3),
              stars = c('*' = .05, '**' = .01, '***' = .001),
              group = model + term ~ y.level)
 
-modelsummary(m2,
-             stars = c('*' = .05, '**' = .01, '***' = .001),
-             group = model + term ~ y.level)
 
 ```

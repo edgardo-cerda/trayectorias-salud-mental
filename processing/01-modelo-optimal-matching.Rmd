@@ -81,53 +81,24 @@ Pruebas con 4, 5, 6 y 7 clusters
 
 
 ```{r}
-grafico_trayectorias4_K <- function(K, ward) {
-  elsoc_trayectorias <- elsoc_salud
-  elsoc_trayectorias$trayectoria <- stats::cutree(ward, k = K)
-  
-  
-  nested_data <- elsoc_trayectorias %>% 
-    group_by(trayectoria) %>% 
-    nest()
-  
-  N <- purrr::map(.x = nested_data$data, .f = ~dim(.x)[1])
-  graficos <- purrr::map2(.x = nested_data$data,
-                          .y = N,
-                          .f = ~ .x %>%
-                            ggsankey::make_long(depr4_w01, depr4_w02, depr4_w03, depr4_w04, depr4_w05,
-                                                value = 'ponderador02_w01') %>%
-                            mutate(depr = factor(node,
-                                                 levels = 1:4,
-                                                 labels = c('Sin sintomas', 'medios', 'moderados', 'severos')),
-                                   x = factor(x,
-                                                 levels = glue::glue('depr4_w0{1:5}'),
-                                                 labels = glue::glue('{c(2016:2019, 2021)}'))) %>%
-                            ggplot(aes(x = x,
-                                       next_x = next_x, 
-                                       node = node, 
-                                       next_node = next_node,
-                                       fill = depr,
-                                       value = value)) +
-                            geom_sankey(flow.alpha = .6) +
-                            labs(x = NULL,
-                                 caption = glue::glue('N={.y}')) +
-                            theme(legend.position = 'bottom',
-                                  legend.title = element_blank()) +
-                            scale_fill_viridis_d(direction = -1, end = .8,
-                                                 drop = FALSE))
-    
-  
-  plot <- ggpubr::ggarrange(plotlist = graficos,
-                    common.legend = TRUE, legend = 'bottom')
-  annotate_figure(plot, top = text_grob(glue::glue('{K} clusters')))
-  
-}
+TraMineR::seqIplot(seq.depr4, group = stats::cutree(ward.depr4, k = 3),
+                   border = NA, with.legend = "top",
+                   space = 0)
+
+TraMineR::seqIplot(seq.depr4, group = stats::cutree(ward.depr4, k = 4),
+                   border = NA, with.legend = "top",
+                   space = 0)
+
+TraMineR::seqIplot(seq.depr4, group = stats::cutree(ward.depr4, k = 5),
+                   border = NA, with.legend = "top",
+                   space = 0)
+
+TraMineR::seqIplot(seq.depr4, group = stats::cutree(ward.depr4, k = 6),
+                   border = NA, with.legend = "top",
+                   space = 0)
+
 ```
 
-
-```{r}
-purrr::map(.x = 4:7, ward = ward.depr4, .f = grafico_trayectorias4_K)
-```
 
 ### Opción preferida: 4 clusters
 
@@ -236,50 +207,20 @@ ward.range.depr2$stats %>%
 ### Gráficos de secuencia por clusters
 
 ```{r}
+TraMineR::seqIplot(seq.depr2, group = stats::cutree(ward.depr2, k = 3),
+                   border = NA, with.legend = "top",
+                   space = 0)
 
-grafico_trayectorias2_K <- function(K, ward) {
-  elsoc_trayectorias <- elsoc_salud
-  elsoc_trayectorias$trayectoria <- stats::cutree(ward, k = K)
-  
-  
-  nested_data <- elsoc_trayectorias %>% 
-    group_by(trayectoria) %>% 
-    nest()
-  
-  N <- purrr::map(.x = nested_data$data, .f = ~dim(.x)[1])
-  graficos <- purrr::map2(.x = nested_data$data,
-                          .y = N,
-                          .f = ~ .x %>%
-                            ggsankey::make_long(depr2_w01, depr2_w02, depr2_w03, depr2_w04, depr2_w05,
-                                                value = 'ponderador02_w01') %>%
-                            mutate(depr = factor(node,
-                                                 levels = 0:1,
-                                                 labels = c('Sin sintomas/medios', 'Síntomas moderados/severos')),
-                                   x = factor(x,
-                                                 levels = glue::glue('depr2_w0{1:5}'),
-                                                 labels = glue::glue('{c(2016:2019, 2021)}'))) %>%
-                            ggplot(aes(x = x,
-                                       next_x = next_x, 
-                                       node = node, 
-                                       next_node = next_node,
-                                       fill = depr,
-                                       value = value)) +
-                            geom_sankey(flow.alpha = .6) +
-                            labs(x = NULL,
-                                 caption = glue::glue('N={.y}')) +
-                            theme(legend.position = 'bottom',
-                                  legend.title = element_blank()) +
-                            scale_fill_viridis_d(direction = -1, end = .8,
-                                                 drop = FALSE))
-    
-  
-  plot <- ggpubr::ggarrange(plotlist = graficos,
-                    common.legend = TRUE, legend = 'bottom')
-  annotate_figure(plot, top = text_grob(glue::glue('{K} clusters')))
-  
-}
-```
+TraMineR::seqIplot(seq.depr2, group = stats::cutree(ward.depr2, k = 4),
+                   border = NA, with.legend = "top",
+                   space = 0)
 
-```{r}
-purrr::map(.x = 2:7, ward = ward.depr2, .f = grafico_trayectorias2_K)
+TraMineR::seqIplot(seq.depr2, group = stats::cutree(ward.depr2, k = 5),
+                   border = NA, with.legend = "top",
+                   space = 0)
+
+TraMineR::seqIplot(seq.depr2, group = stats::cutree(ward.depr2, k = 6),
+                   border = NA, with.legend = "top",
+                   space = 0)
+
 ```
