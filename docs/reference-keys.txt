@@ -10,9 +10,10 @@ secuencia-de-depresión-con-2-categorías
 gráfico-de-secuencias-1
 clusters-de-secuencias-1
 gráficos-de-secuencia-por-clusters
-trayectorias-de-sintomatologia-depresiva.-modelo-gmm
+trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm
 identificar-trayectorias
 principales-trayectorias
-modelos
+variables-independientes
 preparar-datos
+trayectorias-de-variables-independientes
 modelo-multinomial-logit

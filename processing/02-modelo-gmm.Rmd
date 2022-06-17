@@ -16,44 +16,48 @@ lcmm1_lin <- hlme(phq9 ~ ola, subject = "idencuesta", ng = 1,
               data = elsoc_salud_long)
 
 lcmm2_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_lin, 
-                    hlme(phq9 ~ ola , subject = "idencuesta", ng = 2, 
-                         data = elsoc_salud_long, mixture = ~ ola))
+                    hlme(phq9 ~ ola, mixture = ~ ola, subject = "idencuesta", ng = 2, 
+                         data = elsoc_salud_long))
 
 lcmm3_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_lin, 
-                    hlme(phq9 ~ ola, subject = "idencuesta", ng = 3, 
-                         data = elsoc_salud_long, mixture = ~ ola))
+                    hlme(phq9 ~ ola, mixture = ~ ola, subject = "idencuesta", ng = 3, 
+                         data = elsoc_salud_long))
 
 lcmm4_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_lin, 
-                    hlme(phq9 ~ ola, subject = "idencuesta", ng = 4, 
-                         data = elsoc_salud_long, mixture = ~ ola))
+                    hlme(phq9 ~ ola, mixture = ~ ola, subject = "idencuesta", ng = 4, 
+                         data = elsoc_salud_long))
 
 lcmm5_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_lin, 
-                    hlme(phq9 ~ ola, subject = "idencuesta", ng = 5, 
-                         data = elsoc_salud_long, mixture = ~ ola))
+                    hlme(phq9 ~ ola, mixture = ~ ola, subject = "idencuesta", ng = 5, 
+                         data = elsoc_salud_long))
 ```
 
 ### Modelos de trayectorias cuadráticas: {-}
 
 ```{r, results=FALSE}
 
-lcmm1_quad <- hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 1, 
+lcmm1_quad <- hlme(phq9 ~ poly(ola, degree = 2, raw = TRUE), subject = "idencuesta", ng = 1, 
               data = elsoc_salud_long)
 
 lcmm2_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, 
-                    hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 2, 
-                         data = elsoc_salud_long, mixture = ~ ola + I(ola^2)))
+                    hlme(phq9 ~ ola + I(ola^2), mixture = ~ ola + I(ola^2),
+                         subject = "idencuesta", ng = 2, 
+                         data = elsoc_salud_long))
 
 lcmm3_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, 
-                    hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 3, 
-                         data = elsoc_salud_long, mixture = ~ ola + I(ola^2)))
+                    hlme(phq9 ~ ola + I(ola^2), mixture = ~ ola + I(ola^2),
+                         subject = "idencuesta", ng = 3, 
+                         data = elsoc_salud_long))
 
 lcmm4_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, 
-                    hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 4, 
-                         data = elsoc_salud_long, mixture = ~ ola + I(ola^2)))
+                    hlme(phq9 ~ ola + I(ola^2), mixture = ~ ola + I(ola^2),
+                         subject = "idencuesta", ng = 4, 
+                         data = elsoc_salud_long))
 
 lcmm5_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, 
-                    hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 5, 
-                         data = elsoc_salud_long, mixture = ~ ola + I(ola^2)))
+                    hlme(phq9 ~ ola + I(ola^2), mixture = ~ ola + I(ola^2),
+                         subject = "idencuesta", ng = 5, 
+                         data = elsoc_salud_long))
 
 ```
 

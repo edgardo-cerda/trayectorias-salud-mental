@@ -47,6 +47,8 @@ library(elsoc)
 # Librerias graficos
 library(ggpubr)
 library(ggsankey)
+library(shiny)
+library(plotly)
 
 # Libreria analisis estadístico
 library(nnet)

@@ -49,53 +49,79 @@ substitution_cost_matrix <- as.matrix(rbind(c(0, 5, 10, 19),
 dist.depr4 <- TraMineR::seqdist(seq.depr4,
                                method = "OM",
                                sm = substitution_cost_matrix)
-```
 
-
-```{r}
 # Construir tipos de trayectorias con analisis de cluster jerarquico Ward
 ward.depr4 <- cluster::agnes(dist.depr4, diss = TRUE, method = 'ward')
+```
 
+#### Indicadores de calidad de partición: {-}
+
+Se evalúa según los indicadores:
+
+```{r}
+kableExtra::kbl(data.frame(indicador = c('Point Biserial Correlation', "Hubert's Somers' D", 
+                                 "Hubert's C", "Average Silhouette Width (weighted)"),
+                   abreviacion = c('PBC', 'HGSD', 'HC', 'ASWw'),
+                   interpretacion = c('Mide la capacidad de la clusterización de reproducir las distancias',
+                                      'Mide la capacidad de la clusterización de reproducir las distancias tomando en cuenta empates en distancias',
+                                      'Mide la brecha entre la clusterización obtenida y la mejor partición teóricamente posible con este número de grupos y distancias',
+                                      'Mide la coherencia de asignaciones. Alta coherencia indica una alta distancia entre grupos y fuerte homogeneidad inter-grupal')))
+
+```
+
+```{r}
 # Comparar soluciones con diferentes numeros de trayectorias (se prueban de 2 a 10 clusters)
 ward.range.depr4 <- WeightedCluster::as.clustrange(ward.depr4,
                                                   diss = dist.depr4, 
                                                   ncluster = 10)
+
+
 # Visualizar clusters:
-ward.range.depr4$stats %>% 
-  mutate(clusters = 2:10) %>% 
-  pivot_longer(cols = c(ASW, ASWw, HG, PBC, HC),
+ward.range.depr4$stats %>%
+  mutate(clusters = 2:10) %>%
+  pivot_longer(cols = c(ASWw, HG, PBC, HC),
                names_to = 'indicador',
                values_to = 'value') %>%
-  group_by(indicador) %>% 
-  mutate(value = (value - mean(value, na.rm = TRUE)) / sd(value, na.rm = TRUE)) %>% 
-  ggplot(aes(y = value, x = clusters, color = indicador, group = indicador)) + 
-  geom_line() + 
+  group_by(indicador) %>%
+  mutate(value = (value - mean(value, na.rm = TRUE)) / sd(value, na.rm = TRUE)) %>%
+  ggplot(aes(y = value, x = clusters, color = indicador, group = indicador)) +
+  geom_line() +
   scale_x_continuous(breaks = 2:10)
 
 ```
 
+Para ASWw, HG y PBC, mientras más alto el valor indica una mejor calidad en la partición. Para HC mientras más bajo es mejor. Los mejores valores parecen estar entre 4 y 5 clusters.
+
 
 ### Graficos de secuencias por clusters
 
-Pruebas con 3-6 clusters
+Pruebas con 4-5 clusters
 
 
 ```{r}
-TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 3),
-                   border = NA, 
-                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
+
 
 TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 4),
                    border = NA, 
                    space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
 
+TraMineR::seqdplot(seq.depr4, group = stats::cutree(ward.depr4, k = 4),
+                   border = NA, 
+                   space = 0)
+
+
+```
+
+
+
+```{r}
 TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 5),
                    border = NA, 
                    space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
 
-TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 6),
+TraMineR::seqdplot(seq.depr4, group = stats::cutree(ward.depr4, k = 5),
                    border = NA, 
-                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
+                   space = 0)
 
 ```
 
@@ -123,6 +149,11 @@ seq.depr4$cluster <- factor(stats::cutree(ward.depr4, k = 5),
 TraMineR::seqfplot(seq.depr4, group = seq.depr4$cluster,
                    border = NA,
                    space = 0, idxs = 0, 
+                   xtlab = c(2016:2019, 2021))
+
+TraMineR::seqdplot(seq.depr4, group = seq.depr4$cluster,
+                   border = NA,
+                   space = 0, 
                    xtlab = c(2016:2019, 2021))
 
 ```
@@ -179,25 +210,45 @@ ward.range.depr2$stats %>%
 
 ```
 
+En este caso al parecer mientrás más clusters es mejor.
+
 ### Gráficos de secuencia por clusters
 
-```{r}
+Pruebas con 4-7 clusters
 
-TraMineR::seqfplot(seq.depr2, group = stats::cutree(ward.depr2, k = 3),
-                   border = NA, 
-                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
+```{r}
 
 TraMineR::seqfplot(seq.depr2, group = stats::cutree(ward.depr2, k = 4),
                    border = NA, 
                    space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
 
+TraMineR::seqdplot(seq.depr2, group = stats::cutree(ward.depr2, k = 4),
+                   border = NA, 
+                   space = 0)
+
 TraMineR::seqfplot(seq.depr2, group = stats::cutree(ward.depr2, k = 5),
                    border = NA, 
                    space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
 
+TraMineR::seqdplot(seq.depr2, group = stats::cutree(ward.depr2, k = 5),
+                   border = NA, 
+                   space = 0)
+
 TraMineR::seqfplot(seq.depr2, group = stats::cutree(ward.depr2, k = 6),
                    border = NA, 
                    space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
+
+TraMineR::seqdplot(seq.depr2, group = stats::cutree(ward.depr2, k = 6),
+                   border = NA, 
+                   space = 0)
+
+TraMineR::seqfplot(seq.depr2, group = stats::cutree(ward.depr2, k = 7),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
+
+TraMineR::seqdplot(seq.depr2, group = stats::cutree(ward.depr2, k = 7),
+                   border = NA, 
+                   space = 0)
 
 
 ```
