@@ -30,6 +30,10 @@ lcmm4_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_lin,
 lcmm5_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_lin, 
                     hlme(phq9 ~ ola, mixture = ~ ola, subject = "idencuesta", ng = 5, 
                          data = elsoc_salud_long))
+
+lcmm6_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_lin, 
+                    hlme(phq9 ~ ola, mixture = ~ ola, subject = "idencuesta", ng = 6, 
+                         data = elsoc_salud_long))
 ```
 
 ### Modelos de trayectorias cuadráticas: {-}
@@ -59,6 +63,11 @@ lcmm5_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad,
                          subject = "idencuesta", ng = 5, 
                          data = elsoc_salud_long))
 
+lcmm6_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, 
+                    hlme(phq9 ~ ola + I(ola^2), mixture = ~ ola + I(ola^2),
+                         subject = "idencuesta", ng = 6, 
+                         data = elsoc_salud_long))
+
 ```
 
 ### Comparación resultados {-}
@@ -69,7 +78,8 @@ resultados_comparados <- summarytable(lcmm1_lin, lcmm1_quad,
                              lcmm2_lin, lcmm2_quad, 
                              lcmm3_lin, lcmm3_lin,
                              lcmm4_lin, lcmm4_quad, 
-                             lcmm5_lin, lcmm5_quad)
+                             lcmm5_lin, lcmm5_quad,
+                             lcmm6_lin, lcmm6_quad)
 ```
 
 

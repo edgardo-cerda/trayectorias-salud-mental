@@ -172,11 +172,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="variables-independientes.html"><a href="variables-independientes.html"><i class="fa fa-check"></i><b>3</b> Variables independientes<span></span></a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="variables-independientes.html"><a href="variables-independientes.html#preparar-datos"><i class="fa fa-check"></i><b>3.1</b> Preparar datos:<span></span></a>
+<li class="chapter" data-level="3.1" data-path="variables-independientes.html"><a href="variables-independientes.html#preparar-datos"><i class="fa fa-check"></i><b>3.1</b> Preparar datos<span></span></a>
 <ul>
 <li><a href="variables-independientes.html#agregar-variables-de-trayectoria-de-los-distintos-modelos">Agregar variables de trayectoria de los distintos modelos:<span></span></a></li>
 <li><a href="variables-independientes.html#agregar-variables-independientes">Agregar variables independientes<span></span></a></li>
-<li class="chapter" data-level="3.1.1" data-path="variables-independientes.html"><a href="variables-independientes.html#trayectorias-de-variables-independientes"><i class="fa fa-check"></i><b>3.1.1</b> Trayectorias de variables independientes:<span></span></a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="variables-independientes.html"><a href="variables-independientes.html#trayectorias-de-variables-independientes"><i class="fa fa-check"></i><b>3.2</b> Trayectorias de variables independientes<span></span></a>
+<ul>
+<li><a href="variables-independientes.html#insatisfacción-con-el-ingreso">Insatisfacción con el ingreso<span></span></a></li>
+<li><a href="variables-independientes.html#situación-ocupacional">Situación ocupacional<span></span></a></li>
+<li><a href="variables-independientes.html#sobrecarga-por-deudas">Sobrecarga por deudas<span></span></a></li>
+<li><a href="variables-independientes.html#avtividad-física-regular">Avtividad física regular<span></span></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html"><i class="fa fa-check"></i><b>4</b> Modelo multinomial logit<span></span></a></li>
@@ -202,40 +208,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="modelo-multinomial-logit" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Capítulo 4</span> Modelo multinomial logit<a href="modelo-multinomial-logit.html#modelo-multinomial-logit" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="modelo-multinomial-logit.html#cb61-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb61-2"><a href="modelo-multinomial-logit.html#cb61-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> quintil_w01 <span class="sc">+</span> sobrecarga_deuda_w01 <span class="sc">+</span> sobrecarga_deuda_w03 <span class="sc">+</span> sobrecarga_deuda_w05 <span class="sc">+</span> ocup_w01,</span>
-<span id="cb61-3"><a href="modelo-multinomial-logit.html#cb61-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
-<pre><code>## # weights:  52 (36 variable)
-## initial  value 1700.983181 
-## iter  10 value 1062.831272
-## iter  20 value 1029.722426
-## iter  30 value 1026.119479
-## iter  40 value 1026.048938
-## final  value 1026.048643 
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="modelo-multinomial-logit.html#cb69-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb69-2"><a href="modelo-multinomial-logit.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb69-3"><a href="modelo-multinomial-logit.html#cb69-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  56 (39 variable)
+## initial  value 1699.596887 
+## iter  10 value 1099.718107
+## iter  20 value 1029.190733
+## iter  30 value 1022.274255
+## iter  40 value 1021.929361
+## iter  50 value 1021.913178
+## final  value 1021.913156 
 ## converged</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="modelo-multinomial-logit.html#cb63-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb63-2"><a href="modelo-multinomial-logit.html#cb63-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> sobrecarga_deuda_w03 <span class="sc">+</span> sobrecarga_deuda_w05 <span class="sc">+</span> ocup_w01,</span>
-<span id="cb63-3"><a href="modelo-multinomial-logit.html#cb63-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
-<pre><code>## # weights:  36 (24 variable)
-## initial  value 1696.824298 
-## iter  10 value 1115.283864
-## iter  20 value 1033.625271
-## iter  30 value 1031.007904
-## final  value 1030.986865 
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="modelo-multinomial-logit.html#cb71-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb71-2"><a href="modelo-multinomial-logit.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida,</span>
+<span id="cb71-3"><a href="modelo-multinomial-logit.html#cb71-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  68 (48 variable)
+## initial  value 1585.920749 
+## iter  10 value 1058.694925
+## iter  20 value 944.040166
+## iter  30 value 929.995266
+## iter  40 value 927.605532
+## iter  50 value 926.967686
+## iter  60 value 926.118763
+## iter  70 value 926.083986
+## final  value 926.074587 
 ## converged</code></pre>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="modelo-multinomial-logit.html#cb65-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb65-2"><a href="modelo-multinomial-logit.html#cb65-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> <span class="fu">factor</span>(m16_w01 <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">+</span> sobrecarga_deuda_w03 <span class="sc">+</span> sobrecarga_deuda_w05 <span class="sc">+</span> ocup_w01,</span>
-<span id="cb65-3"><a href="modelo-multinomial-logit.html#cb65-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
-<pre><code>## # weights:  36 (24 variable)
-## initial  value 1700.983181 
-## iter  10 value 1077.163163
-## iter  20 value 1044.037857
-## iter  30 value 1042.340184
-## final  value 1042.337840 
-## converged</code></pre>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="modelo-multinomial-logit.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
-<span id="cb67-2"><a href="modelo-multinomial-logit.html#cb67-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb67-3"><a href="modelo-multinomial-logit.html#cb67-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> model <span class="sc">+</span> term <span class="sc">~</span> y.level)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="modelo-multinomial-logit.html#cb73-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a href="modelo-multinomial-logit.html#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb73-3"><a href="modelo-multinomial-logit.html#cb73-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  88 (63 variable)
+## initial  value 1585.920749 
+## iter  10 value 1139.320687
+## iter  20 value 1010.497063
+## iter  30 value 925.370354
+## iter  40 value 892.548957
+## iter  50 value 884.653558
+## iter  60 value 882.564212
+## iter  70 value 881.652104
+## iter  80 value 880.747726
+## iter  90 value 880.569909
+## iter 100 value 880.482800
+## final  value 880.482800 
+## stopped after 100 iterations</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="modelo-multinomial-logit.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb75-2"><a href="modelo-multinomial-logit.html#cb75-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb75-3"><a href="modelo-multinomial-logit.html#cb75-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> model <span class="sc">+</span> term <span class="sc">~</span> y.level)</span></code></pre></div>
 <table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
 <thead>
 <tr>
@@ -263,44 +281,13 @@ Model 1
 (Intercept)
 </td>
 <td style="text-align:center;">
--2.209***
+0.673
 </td>
 <td style="text-align:center;">
--6.622***
+-2.051
 </td>
 <td style="text-align:center;">
--5.152***
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.401)
-</td>
-<td style="text-align:center;">
-(1.194)
-</td>
-<td style="text-align:center;">
-(0.856)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-m0_sexo_w01
-</td>
-<td style="text-align:center;">
-0.945***
-</td>
-<td style="text-align:center;">
-1.482**
-</td>
-<td style="text-align:center;">
-1.234***
+3.681
 </td>
 </tr>
 <tr>
@@ -309,355 +296,13 @@ m0_sexo_w01
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.162)
+(1.391)
 </td>
 <td style="text-align:center;">
-(0.504)
+(3.652)
 </td>
 <td style="text-align:center;">
-(0.357)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-m0_edad_w01
-</td>
-<td style="text-align:center;">
--0.006
-</td>
-<td style="text-align:center;">
-0.016
-</td>
-<td style="text-align:center;">
-0.007
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.005)
-</td>
-<td style="text-align:center;">
-(0.012)
-</td>
-<td style="text-align:center;">
-(0.010)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-quintil_w01Quintil 2
-</td>
-<td style="text-align:center;">
--0.440*
-</td>
-<td style="text-align:center;">
--0.713
-</td>
-<td style="text-align:center;">
--0.527
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.212)
-</td>
-<td style="text-align:center;">
-(0.470)
-</td>
-<td style="text-align:center;">
-(0.366)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-quintil_w01Quintil 3
-</td>
-<td style="text-align:center;">
--0.278
-</td>
-<td style="text-align:center;">
--0.989
-</td>
-<td style="text-align:center;">
--0.910*
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.206)
-</td>
-<td style="text-align:center;">
-(0.516)
-</td>
-<td style="text-align:center;">
-(0.411)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-quintil_w01Quintil 4
-</td>
-<td style="text-align:center;">
--0.086
-</td>
-<td style="text-align:center;">
--0.372
-</td>
-<td style="text-align:center;">
--0.297
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.211)
-</td>
-<td style="text-align:center;">
-(0.478)
-</td>
-<td style="text-align:center;">
-(0.380)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-quintil_w01Quintil 5
-</td>
-<td style="text-align:center;">
--0.555*
-</td>
-<td style="text-align:center;">
--0.704
-</td>
-<td style="text-align:center;">
--0.639
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.248)
-</td>
-<td style="text-align:center;">
-(0.607)
-</td>
-<td style="text-align:center;">
-(0.477)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-sobrecarga_deuda_w01TRUE
-</td>
-<td style="text-align:center;">
-0.662***
-</td>
-<td style="text-align:center;">
-0.390
-</td>
-<td style="text-align:center;">
-0.797*
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.170)
-</td>
-<td style="text-align:center;">
-(0.406)
-</td>
-<td style="text-align:center;">
-(0.311)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-sobrecarga_deuda_w03TRUE
-</td>
-<td style="text-align:center;">
-0.236
-</td>
-<td style="text-align:center;">
-0.895*
-</td>
-<td style="text-align:center;">
-0.160
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.167)
-</td>
-<td style="text-align:center;">
-(0.383)
-</td>
-<td style="text-align:center;">
-(0.316)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-sobrecarga_deuda_w05TRUE
-</td>
-<td style="text-align:center;">
-0.480*
-</td>
-<td style="text-align:center;">
-1.199**
-</td>
-<td style="text-align:center;">
-1.345***
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.201)
-</td>
-<td style="text-align:center;">
-(0.394)
-</td>
-<td style="text-align:center;">
-(0.312)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-ocup_w01Desempleado
-</td>
-<td style="text-align:center;">
--0.604
-</td>
-<td style="text-align:center;">
--0.004
-</td>
-<td style="text-align:center;">
-0.107
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.346)
-</td>
-<td style="text-align:center;">
-(0.789)
-</td>
-<td style="text-align:center;">
-(0.581)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-ocup_w01Inactivo
-</td>
-<td style="text-align:center;">
-0.101
-</td>
-<td style="text-align:center;">
-0.496
-</td>
-<td style="text-align:center;">
-0.472
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.159)
-</td>
-<td style="text-align:center;">
-(0.378)
-</td>
-<td style="text-align:center;">
-(0.297)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-Model 2
-</td>
-<td style="text-align:left;">
-(Intercept)
-</td>
-<td style="text-align:center;">
-0.684
-</td>
-<td style="text-align:center;">
--3.281
-</td>
-<td style="text-align:center;">
-4.096
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(1.356)
-</td>
-<td style="text-align:center;">
-(3.585)
-</td>
-<td style="text-align:center;">
-(2.916)
+(3.016)
 </td>
 </tr>
 <tr>
@@ -670,10 +315,10 @@ m0_sexo_w01
 0.851***
 </td>
 <td style="text-align:center;">
-1.595**
+1.581**
 </td>
 <td style="text-align:center;">
-0.974**
+0.789*
 </td>
 </tr>
 <tr>
@@ -682,13 +327,13 @@ m0_sexo_w01
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.160)
+(0.163)
 </td>
 <td style="text-align:center;">
-(0.551)
+(0.558)
 </td>
 <td style="text-align:center;">
-(0.357)
+(0.365)
 </td>
 </tr>
 <tr>
@@ -701,10 +346,10 @@ m0_edad_w01
 -0.008
 </td>
 <td style="text-align:center;">
-0.017
+0.021
 </td>
 <td style="text-align:center;">
-0.005
+-0.001
 </td>
 </tr>
 <tr>
@@ -716,7 +361,7 @@ m0_edad_w01
 (0.005)
 </td>
 <td style="text-align:center;">
-(0.013)
+(0.014)
 </td>
 <td style="text-align:center;">
 (0.010)
@@ -726,16 +371,264 @@ m0_edad_w01
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-sobrecarga_deuda_w03TRUE
+log_ing
 </td>
 <td style="text-align:center;">
-0.400*
+-0.148
 </td>
 <td style="text-align:center;">
-0.921*
+-0.230
 </td>
 <td style="text-align:center;">
-0.313
+-0.550*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.108)
+</td>
+<td style="text-align:center;">
+(0.282)
+</td>
+<td style="text-align:center;">
+(0.235)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda2
+</td>
+<td style="text-align:center;">
+-0.823***
+</td>
+<td style="text-align:center;">
+-0.723
+</td>
+<td style="text-align:center;">
+-0.864*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.211)
+</td>
+<td style="text-align:center;">
+(0.434)
+</td>
+<td style="text-align:center;">
+(0.355)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda3
+</td>
+<td style="text-align:center;">
+-1.007***
+</td>
+<td style="text-align:center;">
+-1.801***
+</td>
+<td style="text-align:center;">
+-1.491***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.188)
+</td>
+<td style="text-align:center;">
+(0.438)
+</td>
+<td style="text-align:center;">
+(0.334)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing2
+</td>
+<td style="text-align:center;">
+-0.033
+</td>
+<td style="text-align:center;">
+-0.702
+</td>
+<td style="text-align:center;">
+-0.190
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.230)
+</td>
+<td style="text-align:center;">
+(0.570)
+</td>
+<td style="text-align:center;">
+(0.531)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing3
+</td>
+<td style="text-align:center;">
+0.236
+</td>
+<td style="text-align:center;">
+-0.224
+</td>
+<td style="text-align:center;">
+0.726
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.231)
+</td>
+<td style="text-align:center;">
+(0.565)
+</td>
+<td style="text-align:center;">
+(0.496)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing4
+</td>
+<td style="text-align:center;">
+0.236
+</td>
+<td style="text-align:center;">
+-0.373
+</td>
+<td style="text-align:center;">
+0.112
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.269)
+</td>
+<td style="text-align:center;">
+(0.710)
+</td>
+<td style="text-align:center;">
+(0.631)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2
+</td>
+<td style="text-align:center;">
+-0.192
+</td>
+<td style="text-align:center;">
+-0.855
+</td>
+<td style="text-align:center;">
+-0.854*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.223)
+</td>
+<td style="text-align:center;">
+(0.523)
+</td>
+<td style="text-align:center;">
+(0.435)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup3
+</td>
+<td style="text-align:center;">
+0.011
+</td>
+<td style="text-align:center;">
+-0.028
+</td>
+<td style="text-align:center;">
+0.470
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.253)
+</td>
+<td style="text-align:center;">
+(0.574)
+</td>
+<td style="text-align:center;">
+(0.462)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+0.056
+</td>
+<td style="text-align:center;">
+0.003
+</td>
+<td style="text-align:center;">
+0.494
 </td>
 </tr>
 <tr>
@@ -747,57 +640,26 @@ sobrecarga_deuda_w03TRUE
 (0.159)
 </td>
 <td style="text-align:center;">
-(0.368)
+(0.395)
 </td>
 <td style="text-align:center;">
-(0.299)
+(0.341)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-sobrecarga_deuda_w05TRUE
+trayectoria_activ_fisica3
 </td>
 <td style="text-align:center;">
-0.596**
+-0.289
 </td>
 <td style="text-align:center;">
-1.211**
+0.237
 </td>
 <td style="text-align:center;">
-1.475***
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.197)
-</td>
-<td style="text-align:center;">
-(0.394)
-</td>
-<td style="text-align:center;">
-(0.306)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-ocup_w01Desempleado
-</td>
-<td style="text-align:center;">
--0.637
-</td>
-<td style="text-align:center;">
--0.650
-</td>
-<td style="text-align:center;">
-0.018
+0.220
 </td>
 </tr>
 <tr>
@@ -806,29 +668,61 @@ ocup_w01Desempleado
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.344)
+(0.258)
 </td>
 <td style="text-align:center;">
-(1.056)
+(0.633)
 </td>
 <td style="text-align:center;">
-(0.577)
+(0.567)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model 2
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+-0.217
+</td>
+<td style="text-align:center;">
+-3.528
+</td>
+<td style="text-align:center;">
+3.662
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-ocup_w01Inactivo
 </td>
 <td style="text-align:center;">
-0.052
+(1.516)
 </td>
 <td style="text-align:center;">
-0.415
+(3.926)
 </td>
 <td style="text-align:center;">
-0.319
+(3.309)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+0.871***
+</td>
+<td style="text-align:center;">
+1.871**
+</td>
+<td style="text-align:center;">
+0.714
 </td>
 </tr>
 <tr>
@@ -837,13 +731,44 @@ ocup_w01Inactivo
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.156)
+(0.172)
 </td>
 <td style="text-align:center;">
-(0.373)
+(0.635)
 </td>
 <td style="text-align:center;">
-(0.293)
+(0.375)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+-0.012*
+</td>
+<td style="text-align:center;">
+0.016
+</td>
+<td style="text-align:center;">
+-0.005
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.006)
+</td>
+<td style="text-align:center;">
+(0.015)
+</td>
+<td style="text-align:center;">
+(0.011)
 </td>
 </tr>
 <tr>
@@ -853,13 +778,13 @@ ocup_w01Inactivo
 log_ing
 </td>
 <td style="text-align:center;">
--0.232*
+-0.047
 </td>
 <td style="text-align:center;">
--0.334
+-0.093
 </td>
 <td style="text-align:center;">
--0.748***
+-0.497*
 </td>
 </tr>
 <tr>
@@ -868,13 +793,385 @@ log_ing
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.102)
+(0.113)
 </td>
 <td style="text-align:center;">
-(0.267)
+(0.296)
 </td>
 <td style="text-align:center;">
-(0.224)
+(0.248)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda2
+</td>
+<td style="text-align:center;">
+-0.663**
+</td>
+<td style="text-align:center;">
+-0.560
+</td>
+<td style="text-align:center;">
+-0.870*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.222)
+</td>
+<td style="text-align:center;">
+(0.454)
+</td>
+<td style="text-align:center;">
+(0.374)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda3
+</td>
+<td style="text-align:center;">
+-0.941***
+</td>
+<td style="text-align:center;">
+-1.683***
+</td>
+<td style="text-align:center;">
+-1.432***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.199)
+</td>
+<td style="text-align:center;">
+(0.463)
+</td>
+<td style="text-align:center;">
+(0.348)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing2
+</td>
+<td style="text-align:center;">
+-0.090
+</td>
+<td style="text-align:center;">
+-0.572
+</td>
+<td style="text-align:center;">
+-0.071
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.243)
+</td>
+<td style="text-align:center;">
+(0.597)
+</td>
+<td style="text-align:center;">
+(0.556)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing3
+</td>
+<td style="text-align:center;">
+0.174
+</td>
+<td style="text-align:center;">
+-0.332
+</td>
+<td style="text-align:center;">
+0.635
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.246)
+</td>
+<td style="text-align:center;">
+(0.621)
+</td>
+<td style="text-align:center;">
+(0.535)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing4
+</td>
+<td style="text-align:center;">
+0.251
+</td>
+<td style="text-align:center;">
+-0.232
+</td>
+<td style="text-align:center;">
+-0.015
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.287)
+</td>
+<td style="text-align:center;">
+(0.758)
+</td>
+<td style="text-align:center;">
+(0.687)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2
+</td>
+<td style="text-align:center;">
+-0.112
+</td>
+<td style="text-align:center;">
+-0.895
+</td>
+<td style="text-align:center;">
+-0.809
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.236)
+</td>
+<td style="text-align:center;">
+(0.557)
+</td>
+<td style="text-align:center;">
+(0.455)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup3
+</td>
+<td style="text-align:center;">
+0.160
+</td>
+<td style="text-align:center;">
+0.028
+</td>
+<td style="text-align:center;">
+0.581
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.270)
+</td>
+<td style="text-align:center;">
+(0.587)
+</td>
+<td style="text-align:center;">
+(0.477)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+0.028
+</td>
+<td style="text-align:center;">
+-0.180
+</td>
+<td style="text-align:center;">
+0.409
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.169)
+</td>
+<td style="text-align:center;">
+(0.407)
+</td>
+<td style="text-align:center;">
+(0.359)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+-0.270
+</td>
+<td style="text-align:center;">
+-0.181
+</td>
+<td style="text-align:center;">
+0.197
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.266)
+</td>
+<td style="text-align:center;">
+(0.709)
+</td>
+<td style="text-align:center;">
+(0.577)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01TRUE
+</td>
+<td style="text-align:center;">
+-0.011
+</td>
+<td style="text-align:center;">
+0.526
+</td>
+<td style="text-align:center;">
+0.463
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.159)
+</td>
+<td style="text-align:center;">
+(0.374)
+</td>
+<td style="text-align:center;">
+(0.291)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+imc_w01
+</td>
+<td style="text-align:center;">
+0.015
+</td>
+<td style="text-align:center;">
+0.015
+</td>
+<td style="text-align:center;">
+0.008
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.008)
+</td>
+<td style="text-align:center;">
+(0.009)
+</td>
+<td style="text-align:center;">
+(0.018)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaTRUE
+</td>
+<td style="text-align:center;">
+-0.879***
+</td>
+<td style="text-align:center;">
+-1.408***
+</td>
+<td style="text-align:center;">
+-0.907**
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.184)
+</td>
+<td style="text-align:center;">
+(0.376)
+</td>
+<td style="text-align:center;">
+(0.319)
 </td>
 </tr>
 <tr>
@@ -885,13 +1182,13 @@ Model 3
 (Intercept)
 </td>
 <td style="text-align:center;">
--2.345***
+-2.739
 </td>
 <td style="text-align:center;">
--7.115***
+-6.920
 </td>
 <td style="text-align:center;">
--5.603***
+0.556
 </td>
 </tr>
 <tr>
@@ -900,13 +1197,13 @@ Model 3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.359)
+(1.632)
 </td>
 <td style="text-align:center;">
-(1.136)
+(4.147)
 </td>
 <td style="text-align:center;">
-(0.803)
+(3.437)
 </td>
 </tr>
 <tr>
@@ -916,168 +1213,13 @@ Model 3
 m0_sexo_w01
 </td>
 <td style="text-align:center;">
-0.914***
+0.795***
 </td>
 <td style="text-align:center;">
-1.446**
+1.748**
 </td>
 <td style="text-align:center;">
-1.167***
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.158)
-</td>
-<td style="text-align:center;">
-(0.499)
-</td>
-<td style="text-align:center;">
-(0.351)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-m0_edad_w01
-</td>
-<td style="text-align:center;">
--0.007
-</td>
-<td style="text-align:center;">
-0.016
-</td>
-<td style="text-align:center;">
-0.006
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.005)
-</td>
-<td style="text-align:center;">
-(0.012)
-</td>
-<td style="text-align:center;">
-(0.009)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-sobrecarga_deuda_w03TRUE
-</td>
-<td style="text-align:center;">
-0.431**
-</td>
-<td style="text-align:center;">
-1.003**
-</td>
-<td style="text-align:center;">
-0.378
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.159)
-</td>
-<td style="text-align:center;">
-(0.362)
-</td>
-<td style="text-align:center;">
-(0.297)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-sobrecarga_deuda_w05TRUE
-</td>
-<td style="text-align:center;">
-0.609**
-</td>
-<td style="text-align:center;">
-1.295***
-</td>
-<td style="text-align:center;">
-1.502***
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.197)
-</td>
-<td style="text-align:center;">
-(0.385)
-</td>
-<td style="text-align:center;">
-(0.303)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-ocup_w01Desempleado
-</td>
-<td style="text-align:center;">
--0.517
-</td>
-<td style="text-align:center;">
-0.197
-</td>
-<td style="text-align:center;">
-0.490
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:center;">
-(0.353)
-</td>
-<td style="text-align:center;">
-(0.825)
-</td>
-<td style="text-align:center;">
-(0.615)
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-ocup_w01Inactivo
-</td>
-<td style="text-align:center;">
-0.162
-</td>
-<td style="text-align:center;">
-0.590
-</td>
-<td style="text-align:center;">
-0.765*
+0.670
 </td>
 </tr>
 <tr>
@@ -1089,26 +1231,26 @@ ocup_w01Inactivo
 (0.179)
 </td>
 <td style="text-align:center;">
-(0.460)
+(0.647)
 </td>
 <td style="text-align:center;">
-(0.374)
+(0.396)
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-factor(m16_w01 %in% 1 × 2)TRUE
+m0_edad_w01
 </td>
 <td style="text-align:center;">
-0.116
+-0.010
 </td>
 <td style="text-align:center;">
-0.082
+0.020
 </td>
 <td style="text-align:center;">
-0.483
+-0.005
 </td>
 </tr>
 <tr>
@@ -1117,13 +1259,571 @@ factor(m16_w01 %in% 1 × 2)TRUE
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.176)
+(0.006)
 </td>
 <td style="text-align:center;">
-(0.495)
+(0.015)
 </td>
 <td style="text-align:center;">
-(0.386)
+(0.011)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+-0.040
+</td>
+<td style="text-align:center;">
+-0.063
+</td>
+<td style="text-align:center;">
+-0.549*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.117)
+</td>
+<td style="text-align:center;">
+(0.308)
+</td>
+<td style="text-align:center;">
+(0.256)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda2
+</td>
+<td style="text-align:center;">
+-0.600**
+</td>
+<td style="text-align:center;">
+-0.515
+</td>
+<td style="text-align:center;">
+-0.909*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.231)
+</td>
+<td style="text-align:center;">
+(0.466)
+</td>
+<td style="text-align:center;">
+(0.388)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda3
+</td>
+<td style="text-align:center;">
+-0.929***
+</td>
+<td style="text-align:center;">
+-1.677***
+</td>
+<td style="text-align:center;">
+-1.425***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.208)
+</td>
+<td style="text-align:center;">
+(0.474)
+</td>
+<td style="text-align:center;">
+(0.356)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing2
+</td>
+<td style="text-align:center;">
+-0.120
+</td>
+<td style="text-align:center;">
+-0.596
+</td>
+<td style="text-align:center;">
+-0.018
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.250)
+</td>
+<td style="text-align:center;">
+(0.606)
+</td>
+<td style="text-align:center;">
+(0.564)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing3
+</td>
+<td style="text-align:center;">
+0.148
+</td>
+<td style="text-align:center;">
+-0.397
+</td>
+<td style="text-align:center;">
+0.665
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.254)
+</td>
+<td style="text-align:center;">
+(0.630)
+</td>
+<td style="text-align:center;">
+(0.546)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing4
+</td>
+<td style="text-align:center;">
+0.165
+</td>
+<td style="text-align:center;">
+-0.454
+</td>
+<td style="text-align:center;">
+-0.105
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.298)
+</td>
+<td style="text-align:center;">
+(0.779)
+</td>
+<td style="text-align:center;">
+(0.706)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2
+</td>
+<td style="text-align:center;">
+-0.049
+</td>
+<td style="text-align:center;">
+-0.779
+</td>
+<td style="text-align:center;">
+-0.771
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.244)
+</td>
+<td style="text-align:center;">
+(0.560)
+</td>
+<td style="text-align:center;">
+(0.463)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup3
+</td>
+<td style="text-align:center;">
+0.154
+</td>
+<td style="text-align:center;">
+0.013
+</td>
+<td style="text-align:center;">
+0.520
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.278)
+</td>
+<td style="text-align:center;">
+(0.600)
+</td>
+<td style="text-align:center;">
+(0.487)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+0.048
+</td>
+<td style="text-align:center;">
+-0.108
+</td>
+<td style="text-align:center;">
+0.503
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.175)
+</td>
+<td style="text-align:center;">
+(0.414)
+</td>
+<td style="text-align:center;">
+(0.367)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+-0.243
+</td>
+<td style="text-align:center;">
+-0.140
+</td>
+<td style="text-align:center;">
+0.161
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.275)
+</td>
+<td style="text-align:center;">
+(0.731)
+</td>
+<td style="text-align:center;">
+(0.598)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01TRUE
+</td>
+<td style="text-align:center;">
+0.038
+</td>
+<td style="text-align:center;">
+0.663
+</td>
+<td style="text-align:center;">
+0.516
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.165)
+</td>
+<td style="text-align:center;">
+(0.381)
+</td>
+<td style="text-align:center;">
+(0.300)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+imc_w01
+</td>
+<td style="text-align:center;">
+0.017*
+</td>
+<td style="text-align:center;">
+0.016
+</td>
+<td style="text-align:center;">
+0.014
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.009)
+</td>
+<td style="text-align:center;">
+(0.010)
+</td>
+<td style="text-align:center;">
+(0.017)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaTRUE
+</td>
+<td style="text-align:center;">
+-0.792***
+</td>
+<td style="text-align:center;">
+-1.318***
+</td>
+<td style="text-align:center;">
+-0.857**
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.192)
+</td>
+<td style="text-align:center;">
+(0.383)
+</td>
+<td style="text-align:center;">
+(0.331)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+0.053
+</td>
+<td style="text-align:center;">
+0.005
+</td>
+<td style="text-align:center;">
+0.008
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.059)
+</td>
+<td style="text-align:center;">
+(0.016)
+</td>
+<td style="text-align:center;">
+(0.020)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+<td style="text-align:center;">
+-0.001
+</td>
+<td style="text-align:center;">
+-0.004*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.002)
+</td>
+<td style="text-align:center;">
+(0.008)
+</td>
+<td style="text-align:center;">
+(0.002)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+-0.001
+</td>
+<td style="text-align:center;">
+0.002
+</td>
+<td style="text-align:center;">
+-0.002
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.002)
+</td>
+<td style="text-align:center;">
+(0.008)
+</td>
+<td style="text-align:center;">
+(0.002)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+0.354***
+</td>
+<td style="text-align:center;">
+0.481***
+</td>
+<td style="text-align:center;">
+0.385***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.047)
+</td>
+<td style="text-align:center;">
+(0.109)
+</td>
+<td style="text-align:center;">
+(0.087)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+<td style="text-align:center;">
+0.004
+</td>
+<td style="text-align:center;">
+0.186*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+(0.001)
+</td>
+<td style="text-align:center;">
+(0.033)
+</td>
+<td style="text-align:center;">
+(0.086)
 </td>
 </tr>
 </tbody>
