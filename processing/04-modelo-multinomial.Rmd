@@ -39,7 +39,8 @@ modelsummary::modelsummary(list(m1, m2, m3),
                            estimate = "{estimate}{stars}",
                            statistic = NULL,
                            stars = c('*' = .05, '**' = .01, '***' = .001),
-                           shape = term + response ~ model)
+                           shape = term + response ~ model,
+                           exponentiate = TRUE)
 
 
 ```
@@ -65,7 +66,8 @@ modelsummary::modelsummary(list(m1, m2, m3),
                            estimate = "{estimate}{stars}",
                            statistic = NULL,
                            stars = c('*' = .05, '**' = .01, '***' = .001),
-                           shape = term + response ~ model)
+                           shape = term + response ~ model,
+                           exponentiate = TRUE)
 
 ```
 
@@ -90,7 +92,8 @@ modelsummary::modelsummary(list(m1, m2, m3),
                            estimate = "{estimate}{stars}",
                            statistic = NULL,
                            stars = c('*' = .05, '**' = .01, '***' = .001),
-                           shape = term + response ~ model)
+                           shape = term + response ~ model,
+                           exponentiate = TRUE)
 
 ```
 
@@ -116,7 +119,8 @@ modelsummary::modelsummary(list(m1, m2, m3),
                            estimate = "{estimate}{stars}",
                            statistic = NULL,
                            stars = c('*' = .05, '**' = .01, '***' = .001),
-                           shape = term + response ~ model)
+                           shape = term + response ~ model,
+                           exponentiate = TRUE)
 
 ```
 
@@ -133,8 +137,7 @@ modelsummary::modelsummary(mf,
                            estimate = "{estimate}{stars}",
                            statistic = NULL,
                            stars = c('*' = .05, '**' = .01, '***' = .001),
-                           shape = term ~ response)
-
-asd <- mf$fitted.values
+                           shape = term ~ response,
+                           exponentiate = TRUE)
 
 ```
