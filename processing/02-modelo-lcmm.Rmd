@@ -11,7 +11,7 @@ set.seed(123)
 
 Se usa el modelo de 1 clase para fijar los valores iniciales a iterar:
 
-```{r, results=FALSE}
+```{r, results=FALSE, cache = TRUE}
 lcmm1_lin <- hlme(phq9 ~ ola, subject = "idencuesta", ng = 1, 
               data = elsoc_salud_long)
 
@@ -38,7 +38,7 @@ lcmm6_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_lin,
 
 ### Modelos de trayectorias cuadráticas: {-}
 
-```{r, results=FALSE}
+```{r, results=FALSE, cache = TRUE}
 
 lcmm1_quad <- hlme(phq9 ~ poly(ola, degree = 2, raw = TRUE), subject = "idencuesta", ng = 1, 
               data = elsoc_salud_long)

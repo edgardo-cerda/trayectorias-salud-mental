@@ -3,8 +3,6 @@
 
 ```{r}
 load('datos_salud_modelo.RData')
-
-elsoc_salud_modelo <- elsoc_salud_modelo %>% ungroup()
 ```
 
 ## Comparación trayectorias
@@ -33,16 +31,16 @@ with(elsoc_salud_modelo, rcompanion::cramerV(trayectoria_om4.5, trayectoria_gmm.
 ```{r}
 
 m1 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_om4.4 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_insatisf_ing + trayectoria_ocup2 + trayectoria_activ_fisica,
+  multinom(trayectoria_om4.4 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica,
            data = .) 
 summary(m1)
 
 m2 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_om4.4 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_insatisf_ing + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01,
+  multinom(trayectoria_om4.4 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01,
            data = .) 
 
 m3 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_om4.4 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_insatisf_ing + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
+  multinom(trayectoria_om4.4 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
            data = .) 
 
 modelsummary::modelsummary(list(m1, m2, m3),
@@ -60,15 +58,15 @@ modelsummary::modelsummary(list(m1, m2, m3),
 ```{r}
 
 m1 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_om4.5 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_insatisf_ing + trayectoria_ocup2 + trayectoria_activ_fisica,
+  multinom(trayectoria_om4.5 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica,
            data = .) 
 
 m2 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_om4.5 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_insatisf_ing + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01,
+  multinom(trayectoria_om4.5 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01,
            data = .) 
 
 m3 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_om4.5 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_insatisf_ing + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
+  multinom(trayectoria_om4.5 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
            data = .) 
 
 modelsummary::modelsummary(list(m1, m2, m3),
@@ -85,15 +83,15 @@ modelsummary::modelsummary(list(m1, m2, m3),
 ```{r}
 
 m1 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_insatisf_ing + trayectoria_ocup2 + trayectoria_activ_fisica,
+  multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica,
            data = .) 
 
 m2 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_insatisf_ing + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01,
+  multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01,
            data = .) 
 
 m3 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_insatisf_ing + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
+  multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
            data = .) 
 
 modelsummary::modelsummary(list(m1, m2, m3),
@@ -110,15 +108,15 @@ modelsummary::modelsummary(list(m1, m2, m3),
 ```{r}
 
 m1 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.5lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_insatisf_ing + trayectoria_ocup2 + trayectoria_activ_fisica,
+  multinom(trayectoria_gmm.5lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica,
            data = .) 
 
 m2 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.5lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_insatisf_ing + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01,
+  multinom(trayectoria_gmm.5lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01,
            data = .) 
 
 m3 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.5lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_insatisf_ing + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
+  multinom(trayectoria_gmm.5lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
            data = .) 
 
 modelsummary::modelsummary(list(m1, m2, m3),
