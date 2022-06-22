@@ -97,7 +97,7 @@ kableExtra::kbl(resultados_comparados[,5:9],
 Según criterios de información debería estar entre 4y 5 clases:
 
 
-```{r}
+```{r, cache = TRUE}
 summary(lcmm4_lin)
 
 pred_lcmm4_lin <- predictY(lcmm4_lin, data.frame(ola = 1:5))
@@ -107,7 +107,7 @@ plot(pred_lcmm4_lin, ylim = c(0, 27))
 ```
 
 
-```{r}
+```{r, cache = TRUE}
 summary(lcmm4_quad)
 
 pred_lcmm4_quad <- predictY(lcmm4_quad, data.frame(ola = 1:5))
@@ -117,7 +117,7 @@ plot(pred_lcmm4_quad, ylim = c(0, 27))
 ```
 
 
-```{r}
+```{r, cache = TRUE}
 summary(lcmm5_lin)
 
 pred_lcmm5_lin <- predictY(lcmm5_lin, data.frame(ola = 1:5))
@@ -127,7 +127,7 @@ plot(pred_lcmm5_lin, ylim = c(0, 27))
 ```
 
 
-```{r}
+```{r, cache = TRUE}
 summary(lcmm5_quad)
 
 pred_lcmm5_quad <- predictY(lcmm5_quad, data.frame(ola = 1:5))

@@ -22,3 +22,4 @@ variable-dependiente-trayectorias-om-4-clases
 variable-dependiente-trayectorias-om-5-clases
 variable-dependiente-trayectorias-lcmm-4-clases
 variable-dependiente-trayectorias-lcmm-5-clases
+modelo-preferido-trayectorias-lcmm-con-5-clases
