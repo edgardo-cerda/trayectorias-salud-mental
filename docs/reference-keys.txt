@@ -13,7 +13,12 @@ gráficos-de-secuencia-por-clusters
 trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm
 identificar-trayectorias
 principales-trayectorias
-variables-independientes
-preparar-datos
-trayectorias-de-variables-independientes
+variables-modelo
+crear-y-agregar-trayectorias-de-variables-independientes
+guardar-datos-para-usar-después
 modelo-multinomial-logit
+comparación-trayectorias
+variable-dependiente-trayectorias-om-4-clases
+variable-dependiente-trayectorias-om-5-clases
+variable-dependiente-trayectorias-lcmm-4-clases
+variable-dependiente-trayectorias-lcmm-5-clases

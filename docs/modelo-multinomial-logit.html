@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 4 Modelo multinomial logit | Trayectorias de sintomatología depresiva</title>
   <meta name="description" content="Capítulo 4 Modelo multinomial logit | Trayectorias de sintomatología depresiva" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 4 Modelo multinomial logit | Trayectorias de sintomatología depresiva" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Capítulo 4 Modelo multinomial logit | Trayectorias de sintomatología depresiva" />
   <meta name="github-repo" content="edgardo-cerda/trayectorias-salud-mental" />
@@ -30,9 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="variables-independientes.html"/>
+<link rel="prev" href="variables-modelo.html"/>
 
-<script src="libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -139,53 +137,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Trayectorias de depresión </a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#cargar-y-preparar-datos-elsoc">Cargar y preparar datos ELSOC<span></span></a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cargar y preparar datos ELSOC</a>
 <ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>0.1</b> Cargar librerías<span></span></a></li>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#cargar-librerías"><i class="fa fa-check"></i><b>0.1</b> Cargar librerías</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><i class="fa fa-check"></i><b>1</b> Trayectorias de sintomatología depresiva. Modelo Optimal-Matching<span></span></a>
+<li class="chapter" data-level="1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><i class="fa fa-check"></i><b>1</b> Trayectorias de sintomatología depresiva. Modelo Optimal-Matching</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-4-categorías"><i class="fa fa-check"></i><b>1.1</b> Secuencia de depresión con 4 categorías:<span></span></a>
+<li class="chapter" data-level="1.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-4-categorías"><i class="fa fa-check"></i><b>1.1</b> Secuencia de depresión con 4 categorías:</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráfico-de-secuencias"><i class="fa fa-check"></i><b>1.1.1</b> Gráfico de secuencias:<span></span></a></li>
-<li class="chapter" data-level="1.1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#frecuencia-de-estados-y-transiciones"><i class="fa fa-check"></i><b>1.1.2</b> Frecuencia de estados y transiciones<span></span></a></li>
-<li class="chapter" data-level="1.1.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias"><i class="fa fa-check"></i><b>1.1.3</b> Clusters de secuencias:<span></span></a></li>
-<li class="chapter" data-level="1.1.4" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#graficos-de-secuencias-por-clusters"><i class="fa fa-check"></i><b>1.1.4</b> Graficos de secuencias por clusters<span></span></a></li>
-<li class="chapter" data-level="1.1.5" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#opción-preferida-5-clusters"><i class="fa fa-check"></i><b>1.1.5</b> Opción preferida: 5 clusters<span></span></a></li>
+<li class="chapter" data-level="1.1.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráfico-de-secuencias"><i class="fa fa-check"></i><b>1.1.1</b> Gráfico de secuencias:</a></li>
+<li class="chapter" data-level="1.1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#frecuencia-de-estados-y-transiciones"><i class="fa fa-check"></i><b>1.1.2</b> Frecuencia de estados y transiciones</a></li>
+<li class="chapter" data-level="1.1.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias"><i class="fa fa-check"></i><b>1.1.3</b> Clusters de secuencias:</a></li>
+<li class="chapter" data-level="1.1.4" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#graficos-de-secuencias-por-clusters"><i class="fa fa-check"></i><b>1.1.4</b> Graficos de secuencias por clusters</a></li>
+<li class="chapter" data-level="1.1.5" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#opción-preferida-5-clusters"><i class="fa fa-check"></i><b>1.1.5</b> Opción preferida: 5 clusters</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-2-categorías"><i class="fa fa-check"></i><b>1.2</b> Secuencia de depresión con 2 categorías<span></span></a>
+<li class="chapter" data-level="1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-2-categorías"><i class="fa fa-check"></i><b>1.2</b> Secuencia de depresión con 2 categorías</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráfico-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.1</b> Gráfico de secuencias:<span></span></a></li>
-<li class="chapter" data-level="1.2.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.2</b> Clusters de secuencias:<span></span></a></li>
-<li class="chapter" data-level="1.2.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráficos-de-secuencia-por-clusters"><i class="fa fa-check"></i><b>1.2.3</b> Gráficos de secuencia por clusters<span></span></a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><i class="fa fa-check"></i><b>2</b> Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM)<span></span></a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#identificar-trayectorias"><i class="fa fa-check"></i><b>2.1</b> Identificar trayectorias:<span></span></a>
-<ul>
-<li><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-lineales">Modelos de trayectorias lineales:<span></span></a></li>
-<li><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-cuadráticas">Modelos de trayectorias cuadráticas:<span></span></a></li>
-<li><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#comparación-resultados">Comparación resultados<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#principales-trayectorias"><i class="fa fa-check"></i><b>2.2</b> Principales trayectorias<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="variables-independientes.html"><a href="variables-independientes.html"><i class="fa fa-check"></i><b>3</b> Variables independientes<span></span></a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="variables-independientes.html"><a href="variables-independientes.html#preparar-datos"><i class="fa fa-check"></i><b>3.1</b> Preparar datos<span></span></a>
-<ul>
-<li><a href="variables-independientes.html#agregar-variables-de-trayectoria-de-los-distintos-modelos">Agregar variables de trayectoria de los distintos modelos:<span></span></a></li>
-<li><a href="variables-independientes.html#agregar-variables-independientes">Agregar variables independientes<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="variables-independientes.html"><a href="variables-independientes.html#trayectorias-de-variables-independientes"><i class="fa fa-check"></i><b>3.2</b> Trayectorias de variables independientes<span></span></a>
-<ul>
-<li><a href="variables-independientes.html#insatisfacción-con-el-ingreso">Insatisfacción con el ingreso<span></span></a></li>
-<li><a href="variables-independientes.html#situación-ocupacional">Situación ocupacional<span></span></a></li>
-<li><a href="variables-independientes.html#sobrecarga-por-deudas">Sobrecarga por deudas<span></span></a></li>
-<li><a href="variables-independientes.html#avtividad-física-regular">Avtividad física regular<span></span></a></li>
+<li class="chapter" data-level="1.2.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráfico-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.1</b> Gráfico de secuencias:</a></li>
+<li class="chapter" data-level="1.2.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.2</b> Clusters de secuencias:</a></li>
+<li class="chapter" data-level="1.2.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráficos-de-secuencia-por-clusters"><i class="fa fa-check"></i><b>1.2.3</b> Gráficos de secuencia por clusters</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html"><i class="fa fa-check"></i><b>4</b> Modelo multinomial logit<span></span></a></li>
+<li class="chapter" data-level="2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><i class="fa fa-check"></i><b>2</b> Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM)</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#identificar-trayectorias"><i class="fa fa-check"></i><b>2.1</b> Identificar trayectorias:</a>
+<ul>
+<li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-lineales"><i class="fa fa-check"></i>Modelos de trayectorias lineales:</a></li>
+<li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-cuadráticas"><i class="fa fa-check"></i>Modelos de trayectorias cuadráticas:</a></li>
+<li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#comparación-resultados"><i class="fa fa-check"></i>Comparación resultados</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#principales-trayectorias"><i class="fa fa-check"></i><b>2.2</b> Principales trayectorias</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="variables-modelo.html"><a href="variables-modelo.html"><i class="fa fa-check"></i><b>3</b> Variables modelo</a>
+<ul>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#agregar-variables-de-trayectoria-de-los-distintos-modelos"><i class="fa fa-check"></i>Agregar variables de trayectoria de los distintos modelos</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#agregar-variables-independientes"><i class="fa fa-check"></i>Agregar variables independientes</a></li>
+<li class="chapter" data-level="3.1" data-path="variables-modelo.html"><a href="variables-modelo.html#crear-y-agregar-trayectorias-de-variables-independientes"><i class="fa fa-check"></i><b>3.1</b> Crear y agregar trayectorias de variables independientes</a>
+<ul>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#insatisfacción-con-el-ingreso"><i class="fa fa-check"></i>Insatisfacción con el ingreso</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#situación-ocupacional-3-categorías"><i class="fa fa-check"></i>Situación ocupacional (3 categorías)</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#situación-ocupacional-4-categorías"><i class="fa fa-check"></i>Situación ocupacional (4 categorías)</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#sobrecarga-por-deudas"><i class="fa fa-check"></i>Sobrecarga por deudas</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#avtividad-física-regular"><i class="fa fa-check"></i>Avtividad física regular</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="variables-modelo.html"><a href="variables-modelo.html#guardar-datos-para-usar-después"><i class="fa fa-check"></i><b>3.2</b> Guardar datos para usar después</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html"><i class="fa fa-check"></i><b>4</b> Modelo multinomial logit</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#comparación-trayectorias"><i class="fa fa-check"></i><b>4.1</b> Comparación trayectorias</a></li>
+<li class="chapter" data-level="4.2" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-4-clases"><i class="fa fa-check"></i><b>4.2</b> Variable dependiente: Trayectorias OM 4 clases</a></li>
+<li class="chapter" data-level="4.3" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-5-clases"><i class="fa fa-check"></i><b>4.3</b> Variable dependiente: Trayectorias OM 5 clases</a></li>
+<li class="chapter" data-level="4.4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-4-clases"><i class="fa fa-check"></i><b>4.4</b> Variable dependiente: Trayectorias LCMM 4 clases</a></li>
+<li class="chapter" data-level="4.5" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-5-clases"><i class="fa fa-check"></i><b>4.5</b> Variable dependiente: Trayectorias LCMM 5 clases</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/edgardo-cerda/trayectorias-salud-mental" target="blank"> Ver fuente <i class="fa fa-github"></i></a></li>
 
@@ -208,52 +212,149 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="modelo-multinomial-logit" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Capítulo 4</span> Modelo multinomial logit<a href="modelo-multinomial-logit.html#modelo-multinomial-logit" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="modelo-multinomial-logit.html#cb69-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb69-2"><a href="modelo-multinomial-logit.html#cb69-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup <span class="sc">+</span> trayectoria_activ_fisica,</span>
-<span id="cb69-3"><a href="modelo-multinomial-logit.html#cb69-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
-<pre><code>## # weights:  56 (39 variable)
-## initial  value 1699.596887 
-## iter  10 value 1099.718107
-## iter  20 value 1029.190733
-## iter  30 value 1022.274255
-## iter  40 value 1021.929361
-## iter  50 value 1021.913178
-## final  value 1021.913156 
-## converged</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="modelo-multinomial-logit.html#cb71-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb71-2"><a href="modelo-multinomial-logit.html#cb71-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida,</span>
-<span id="cb71-3"><a href="modelo-multinomial-logit.html#cb71-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="modelo-multinomial-logit.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&#39;datos_salud_modelo.RData&#39;</span>)</span></code></pre></div>
+<div id="comparación-trayectorias" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Comparación trayectorias<a href="modelo-multinomial-logit.html#comparación-trayectorias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="modelo-multinomial-logit.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, <span class="fu">table</span>(trayectoria_om4<span class="fl">.4</span>, trayectoria_gmm<span class="fl">.4</span>lin))</span></code></pre></div>
+<pre><code>##                             trayectoria_gmm.4lin
+## trayectoria_om4.4            Trayectoria baja Trayectoria media
+##   Trayectoria baja-media                   56               138
+##   Trayectoria media-moderada               10                60
+##   Trayectoria ascendente                   29                93
+##   Trayectoria alta-moderada                 0                17
+##                             trayectoria_gmm.4lin
+## trayectoria_om4.4            Trayectoria descendente Trayectoria ascendente
+##   Trayectoria baja-media                           0                      0
+##   Trayectoria media-moderada                      12                      2
+##   Trayectoria ascendente                           0                     33
+##   Trayectoria alta-moderada                       28                     33</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="modelo-multinomial-logit.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, <span class="fu">table</span>(trayectoria_om4<span class="fl">.4</span>, trayectoria_gmm<span class="fl">.5</span>lin))</span></code></pre></div>
+<pre><code>##                             trayectoria_gmm.5lin
+## trayectoria_om4.4            Trayectoria baja Trayectoria media
+##   Trayectoria baja-media                   27               164
+##   Trayectoria media-moderada                8                43
+##   Trayectoria ascendente                   19                89
+##   Trayectoria alta-moderada                 0                 6
+##                             trayectoria_gmm.5lin
+## trayectoria_om4.4            Trayectoria media-descendente
+##   Trayectoria baja-media                                 3
+##   Trayectoria media-moderada                            30
+##   Trayectoria ascendente                                 7
+##   Trayectoria alta-moderada                             25
+##                             trayectoria_gmm.5lin
+## trayectoria_om4.4            Trayectoria media-ascendente
+##   Trayectoria baja-media                                0
+##   Trayectoria media-moderada                            3
+##   Trayectoria ascendente                               40
+##   Trayectoria alta-moderada                            30
+##                             trayectoria_gmm.5lin
+## trayectoria_om4.4            Trayectoria alta-descendente
+##   Trayectoria baja-media                                0
+##   Trayectoria media-moderada                            0
+##   Trayectoria ascendente                                0
+##   Trayectoria alta-moderada                            17</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="modelo-multinomial-logit.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, <span class="fu">table</span>(trayectoria_om4<span class="fl">.5</span>, trayectoria_gmm<span class="fl">.4</span>lin))</span></code></pre></div>
+<pre><code>##                             trayectoria_gmm.4lin
+## trayectoria_om4.5            Trayectoria baja Trayectoria media
+##   Trayectoria baja-media                  699                19
+##   Trayectoria media-moderada               56               138
+##   Trayectoria descendente                  10                60
+##   Trayectoria ascendente                   29                93
+##   Trayectoria alta-moderada                 0                17
+##                             trayectoria_gmm.4lin
+## trayectoria_om4.5            Trayectoria descendente Trayectoria ascendente
+##   Trayectoria baja-media                           0                      0
+##   Trayectoria media-moderada                       0                      0
+##   Trayectoria descendente                         12                      2
+##   Trayectoria ascendente                           0                     33
+##   Trayectoria alta-moderada                       28                     33</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="modelo-multinomial-logit.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, <span class="fu">table</span>(trayectoria_om4<span class="fl">.5</span>, trayectoria_gmm<span class="fl">.5</span>lin))</span></code></pre></div>
+<pre><code>##                             trayectoria_gmm.5lin
+## trayectoria_om4.5            Trayectoria baja Trayectoria media
+##   Trayectoria baja-media                  678                40
+##   Trayectoria media-moderada               27               164
+##   Trayectoria descendente                   8                43
+##   Trayectoria ascendente                   19                89
+##   Trayectoria alta-moderada                 0                 6
+##                             trayectoria_gmm.5lin
+## trayectoria_om4.5            Trayectoria media-descendente
+##   Trayectoria baja-media                                 0
+##   Trayectoria media-moderada                             3
+##   Trayectoria descendente                               30
+##   Trayectoria ascendente                                 7
+##   Trayectoria alta-moderada                             25
+##                             trayectoria_gmm.5lin
+## trayectoria_om4.5            Trayectoria media-ascendente
+##   Trayectoria baja-media                                0
+##   Trayectoria media-moderada                            0
+##   Trayectoria descendente                               3
+##   Trayectoria ascendente                               40
+##   Trayectoria alta-moderada                            30
+##                             trayectoria_gmm.5lin
+## trayectoria_om4.5            Trayectoria alta-descendente
+##   Trayectoria baja-media                                0
+##   Trayectoria media-moderada                            0
+##   Trayectoria descendente                               0
+##   Trayectoria ascendente                                0
+##   Trayectoria alta-moderada                            17</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="modelo-multinomial-logit.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.4</span>, trayectoria_gmm<span class="fl">.4</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## Cramer V 
+##   0.2558</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="modelo-multinomial-logit.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.4</span>, trayectoria_gmm<span class="fl">.5</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## Cramer V 
+##   0.2524</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="modelo-multinomial-logit.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.5</span>, trayectoria_gmm<span class="fl">.4</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## Cramer V 
+##   0.6047</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="modelo-multinomial-logit.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.5</span>, trayectoria_gmm<span class="fl">.5</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## Cramer V 
+##   0.5733</code></pre>
+</div>
+<div id="variable-dependiente-trayectorias-om-4-clases" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Variable dependiente: Trayectorias OM 4 clases<a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-4-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="modelo-multinomial-logit.html#cb95-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb95-2"><a href="modelo-multinomial-logit.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb95-3"><a href="modelo-multinomial-logit.html#cb95-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
 <pre><code>## # weights:  68 (48 variable)
-## initial  value 1585.920749 
-## iter  10 value 1058.694925
-## iter  20 value 944.040166
-## iter  30 value 929.995266
-## iter  40 value 927.605532
-## iter  50 value 926.967686
-## iter  60 value 926.118763
-## iter  70 value 926.083986
-## final  value 926.074587 
+## initial  value 707.010124 
+## iter  10 value 645.754900
+## iter  20 value 637.340858
+## iter  30 value 636.338517
+## iter  40 value 636.205897
+## iter  50 value 636.194662
+## final  value 636.194619 
 ## converged</code></pre>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="modelo-multinomial-logit.html#cb73-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb73-2"><a href="modelo-multinomial-logit.html#cb73-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
-<span id="cb73-3"><a href="modelo-multinomial-logit.html#cb73-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
-<pre><code>## # weights:  88 (63 variable)
-## initial  value 1585.920749 
-## iter  10 value 1139.320687
-## iter  20 value 1010.497063
-## iter  30 value 925.370354
-## iter  40 value 892.548957
-## iter  50 value 884.653558
-## iter  60 value 882.564212
-## iter  70 value 881.652104
-## iter  80 value 880.747726
-## iter  90 value 880.569909
-## iter 100 value 880.482800
-## final  value 880.482800 
-## stopped after 100 iterations</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="modelo-multinomial-logit.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
-<span id="cb75-2"><a href="modelo-multinomial-logit.html#cb75-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb75-3"><a href="modelo-multinomial-logit.html#cb75-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> model <span class="sc">+</span> term <span class="sc">~</span> y.level)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="modelo-multinomial-logit.html#cb97-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb97-2"><a href="modelo-multinomial-logit.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
+<span id="cb97-3"><a href="modelo-multinomial-logit.html#cb97-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  84 (60 variable)
+## initial  value 647.399467 
+## iter  10 value 613.937758
+## iter  20 value 572.785949
+## iter  30 value 569.555614
+## iter  40 value 569.251668
+## iter  50 value 569.171390
+## iter  60 value 569.117829
+## iter  70 value 569.110418
+## final  value 569.110348 
+## converged</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="modelo-multinomial-logit.html#cb99-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb99-2"><a href="modelo-multinomial-logit.html#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb99-3"><a href="modelo-multinomial-logit.html#cb99-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  104 (75 variable)
+## initial  value 637.695406 
+## iter  10 value 585.971948
+## iter  20 value 552.488070
+## iter  30 value 544.078582
+## iter  40 value 542.383487
+## iter  50 value 542.241861
+## iter  60 value 542.197993
+## iter  70 value 542.194261
+## final  value 542.193548 
+## converged</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelo-multinomial-logit.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb101-2"><a href="modelo-multinomial-logit.html#cb101-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb101-3"><a href="modelo-multinomial-logit.html#cb101-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> model <span class="sc">+</span> term <span class="sc">~</span> y.level)</span></code></pre></div>
 <table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
 <thead>
 <tr>
@@ -262,13 +363,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <th style="text-align:left;">
 </th>
 <th style="text-align:center;">
-Trayectoria media
-</th>
-<th style="text-align:center;">
-Trayectoria descendente
-</th>
-<th style="text-align:center;">
-Trayectoria ascendente
+V1
 </th>
 </tr>
 </thead>
@@ -281,13 +376,7 @@ Model 1
 (Intercept)
 </td>
 <td style="text-align:center;">
-0.673
-</td>
-<td style="text-align:center;">
--2.051
-</td>
-<td style="text-align:center;">
-3.681
+27
 </td>
 </tr>
 <tr>
@@ -296,13 +385,7 @@ Model 1
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(1.391)
-</td>
-<td style="text-align:center;">
-(3.652)
-</td>
-<td style="text-align:center;">
-(3.016)
+27
 </td>
 </tr>
 <tr>
@@ -312,13 +395,7 @@ Model 1
 m0_sexo_w01
 </td>
 <td style="text-align:center;">
-0.851***
-</td>
-<td style="text-align:center;">
-1.581**
-</td>
-<td style="text-align:center;">
-0.789*
+27
 </td>
 </tr>
 <tr>
@@ -327,13 +404,7 @@ m0_sexo_w01
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.163)
-</td>
-<td style="text-align:center;">
-(0.558)
-</td>
-<td style="text-align:center;">
-(0.365)
+27
 </td>
 </tr>
 <tr>
@@ -343,13 +414,7 @@ m0_sexo_w01
 m0_edad_w01
 </td>
 <td style="text-align:center;">
--0.008
-</td>
-<td style="text-align:center;">
-0.021
-</td>
-<td style="text-align:center;">
--0.001
+27
 </td>
 </tr>
 <tr>
@@ -358,13 +423,7 @@ m0_edad_w01
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.005)
-</td>
-<td style="text-align:center;">
-(0.014)
-</td>
-<td style="text-align:center;">
-(0.010)
+27
 </td>
 </tr>
 <tr>
@@ -374,13 +433,7 @@ m0_edad_w01
 log_ing
 </td>
 <td style="text-align:center;">
--0.148
-</td>
-<td style="text-align:center;">
--0.230
-</td>
-<td style="text-align:center;">
--0.550*
+27
 </td>
 </tr>
 <tr>
@@ -389,13 +442,7 @@ log_ing
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.108)
-</td>
-<td style="text-align:center;">
-(0.282)
-</td>
-<td style="text-align:center;">
-(0.235)
+27
 </td>
 </tr>
 <tr>
@@ -405,13 +452,7 @@ log_ing
 trayectoria_deuda2
 </td>
 <td style="text-align:center;">
--0.823***
-</td>
-<td style="text-align:center;">
--0.723
-</td>
-<td style="text-align:center;">
--0.864*
+27
 </td>
 </tr>
 <tr>
@@ -420,13 +461,7 @@ trayectoria_deuda2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.211)
-</td>
-<td style="text-align:center;">
-(0.434)
-</td>
-<td style="text-align:center;">
-(0.355)
+27
 </td>
 </tr>
 <tr>
@@ -436,13 +471,7 @@ trayectoria_deuda2
 trayectoria_deuda3
 </td>
 <td style="text-align:center;">
--1.007***
-</td>
-<td style="text-align:center;">
--1.801***
-</td>
-<td style="text-align:center;">
--1.491***
+27
 </td>
 </tr>
 <tr>
@@ -451,13 +480,7 @@ trayectoria_deuda3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.188)
-</td>
-<td style="text-align:center;">
-(0.438)
-</td>
-<td style="text-align:center;">
-(0.334)
+27
 </td>
 </tr>
 <tr>
@@ -467,13 +490,7 @@ trayectoria_deuda3
 trayectoria_insatisf_ing2
 </td>
 <td style="text-align:center;">
--0.033
-</td>
-<td style="text-align:center;">
--0.702
-</td>
-<td style="text-align:center;">
--0.190
+27
 </td>
 </tr>
 <tr>
@@ -482,13 +499,7 @@ trayectoria_insatisf_ing2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.230)
-</td>
-<td style="text-align:center;">
-(0.570)
-</td>
-<td style="text-align:center;">
-(0.531)
+27
 </td>
 </tr>
 <tr>
@@ -498,13 +509,7 @@ trayectoria_insatisf_ing2
 trayectoria_insatisf_ing3
 </td>
 <td style="text-align:center;">
-0.236
-</td>
-<td style="text-align:center;">
--0.224
-</td>
-<td style="text-align:center;">
-0.726
+27
 </td>
 </tr>
 <tr>
@@ -513,13 +518,7 @@ trayectoria_insatisf_ing3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.231)
-</td>
-<td style="text-align:center;">
-(0.565)
-</td>
-<td style="text-align:center;">
-(0.496)
+27
 </td>
 </tr>
 <tr>
@@ -529,13 +528,7 @@ trayectoria_insatisf_ing3
 trayectoria_insatisf_ing4
 </td>
 <td style="text-align:center;">
-0.236
-</td>
-<td style="text-align:center;">
--0.373
-</td>
-<td style="text-align:center;">
-0.112
+27
 </td>
 </tr>
 <tr>
@@ -544,29 +537,17 @@ trayectoria_insatisf_ing4
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.269)
-</td>
-<td style="text-align:center;">
-(0.710)
-</td>
-<td style="text-align:center;">
-(0.631)
+27
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-trayectoria_ocup2
+trayectoria_ocup22
 </td>
 <td style="text-align:center;">
--0.192
-</td>
-<td style="text-align:center;">
--0.855
-</td>
-<td style="text-align:center;">
--0.854*
+27
 </td>
 </tr>
 <tr>
@@ -575,29 +556,17 @@ trayectoria_ocup2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.223)
-</td>
-<td style="text-align:center;">
-(0.523)
-</td>
-<td style="text-align:center;">
-(0.435)
+27
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-trayectoria_ocup3
+trayectoria_ocup23
 </td>
 <td style="text-align:center;">
-0.011
-</td>
-<td style="text-align:center;">
--0.028
-</td>
-<td style="text-align:center;">
-0.470
+27
 </td>
 </tr>
 <tr>
@@ -606,13 +575,45 @@ trayectoria_ocup3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.253)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup24
 </td>
 <td style="text-align:center;">
-(0.574)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.462)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup25
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
 </td>
 </tr>
 <tr>
@@ -622,13 +623,7 @@ trayectoria_ocup3
 trayectoria_activ_fisica2
 </td>
 <td style="text-align:center;">
-0.056
-</td>
-<td style="text-align:center;">
-0.003
-</td>
-<td style="text-align:center;">
-0.494
+27
 </td>
 </tr>
 <tr>
@@ -637,13 +632,7 @@ trayectoria_activ_fisica2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.159)
-</td>
-<td style="text-align:center;">
-(0.395)
-</td>
-<td style="text-align:center;">
-(0.341)
+27
 </td>
 </tr>
 <tr>
@@ -653,13 +642,7 @@ trayectoria_activ_fisica2
 trayectoria_activ_fisica3
 </td>
 <td style="text-align:center;">
--0.289
-</td>
-<td style="text-align:center;">
-0.237
-</td>
-<td style="text-align:center;">
-0.220
+27
 </td>
 </tr>
 <tr>
@@ -668,13 +651,197 @@ trayectoria_activ_fisica3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.258)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica4
 </td>
 <td style="text-align:center;">
-(0.633)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.567)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01Fumador
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+imc_w01
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaDecidido dirección de vida
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+apoyo_social_w01Con apoyo social
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
 </td>
 </tr>
 <tr>
@@ -685,13 +852,7 @@ Model 2
 (Intercept)
 </td>
 <td style="text-align:center;">
--0.217
-</td>
-<td style="text-align:center;">
--3.528
-</td>
-<td style="text-align:center;">
-3.662
+27
 </td>
 </tr>
 <tr>
@@ -700,13 +861,7 @@ Model 2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(1.516)
-</td>
-<td style="text-align:center;">
-(3.926)
-</td>
-<td style="text-align:center;">
-(3.309)
+27
 </td>
 </tr>
 <tr>
@@ -716,13 +871,7 @@ Model 2
 m0_sexo_w01
 </td>
 <td style="text-align:center;">
-0.871***
-</td>
-<td style="text-align:center;">
-1.871**
-</td>
-<td style="text-align:center;">
-0.714
+27
 </td>
 </tr>
 <tr>
@@ -731,13 +880,7 @@ m0_sexo_w01
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.172)
-</td>
-<td style="text-align:center;">
-(0.635)
-</td>
-<td style="text-align:center;">
-(0.375)
+27
 </td>
 </tr>
 <tr>
@@ -747,13 +890,7 @@ m0_sexo_w01
 m0_edad_w01
 </td>
 <td style="text-align:center;">
--0.012*
-</td>
-<td style="text-align:center;">
-0.016
-</td>
-<td style="text-align:center;">
--0.005
+27
 </td>
 </tr>
 <tr>
@@ -762,13 +899,7 @@ m0_edad_w01
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.006)
-</td>
-<td style="text-align:center;">
-(0.015)
-</td>
-<td style="text-align:center;">
-(0.011)
+27
 </td>
 </tr>
 <tr>
@@ -778,13 +909,7 @@ m0_edad_w01
 log_ing
 </td>
 <td style="text-align:center;">
--0.047
-</td>
-<td style="text-align:center;">
--0.093
-</td>
-<td style="text-align:center;">
--0.497*
+27
 </td>
 </tr>
 <tr>
@@ -793,13 +918,7 @@ log_ing
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.113)
-</td>
-<td style="text-align:center;">
-(0.296)
-</td>
-<td style="text-align:center;">
-(0.248)
+27
 </td>
 </tr>
 <tr>
@@ -809,13 +928,7 @@ log_ing
 trayectoria_deuda2
 </td>
 <td style="text-align:center;">
--0.663**
-</td>
-<td style="text-align:center;">
--0.560
-</td>
-<td style="text-align:center;">
--0.870*
+27
 </td>
 </tr>
 <tr>
@@ -824,13 +937,7 @@ trayectoria_deuda2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.222)
-</td>
-<td style="text-align:center;">
-(0.454)
-</td>
-<td style="text-align:center;">
-(0.374)
+27
 </td>
 </tr>
 <tr>
@@ -840,13 +947,7 @@ trayectoria_deuda2
 trayectoria_deuda3
 </td>
 <td style="text-align:center;">
--0.941***
-</td>
-<td style="text-align:center;">
--1.683***
-</td>
-<td style="text-align:center;">
--1.432***
+27
 </td>
 </tr>
 <tr>
@@ -855,13 +956,7 @@ trayectoria_deuda3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.199)
-</td>
-<td style="text-align:center;">
-(0.463)
-</td>
-<td style="text-align:center;">
-(0.348)
+27
 </td>
 </tr>
 <tr>
@@ -871,13 +966,7 @@ trayectoria_deuda3
 trayectoria_insatisf_ing2
 </td>
 <td style="text-align:center;">
--0.090
-</td>
-<td style="text-align:center;">
--0.572
-</td>
-<td style="text-align:center;">
--0.071
+27
 </td>
 </tr>
 <tr>
@@ -886,13 +975,7 @@ trayectoria_insatisf_ing2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.243)
-</td>
-<td style="text-align:center;">
-(0.597)
-</td>
-<td style="text-align:center;">
-(0.556)
+27
 </td>
 </tr>
 <tr>
@@ -902,13 +985,7 @@ trayectoria_insatisf_ing2
 trayectoria_insatisf_ing3
 </td>
 <td style="text-align:center;">
-0.174
-</td>
-<td style="text-align:center;">
--0.332
-</td>
-<td style="text-align:center;">
-0.635
+27
 </td>
 </tr>
 <tr>
@@ -917,13 +994,7 @@ trayectoria_insatisf_ing3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.246)
-</td>
-<td style="text-align:center;">
-(0.621)
-</td>
-<td style="text-align:center;">
-(0.535)
+27
 </td>
 </tr>
 <tr>
@@ -933,13 +1004,7 @@ trayectoria_insatisf_ing3
 trayectoria_insatisf_ing4
 </td>
 <td style="text-align:center;">
-0.251
-</td>
-<td style="text-align:center;">
--0.232
-</td>
-<td style="text-align:center;">
--0.015
+27
 </td>
 </tr>
 <tr>
@@ -948,29 +1013,17 @@ trayectoria_insatisf_ing4
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.287)
-</td>
-<td style="text-align:center;">
-(0.758)
-</td>
-<td style="text-align:center;">
-(0.687)
+27
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-trayectoria_ocup2
+trayectoria_ocup22
 </td>
 <td style="text-align:center;">
--0.112
-</td>
-<td style="text-align:center;">
--0.895
-</td>
-<td style="text-align:center;">
--0.809
+27
 </td>
 </tr>
 <tr>
@@ -979,29 +1032,17 @@ trayectoria_ocup2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.236)
-</td>
-<td style="text-align:center;">
-(0.557)
-</td>
-<td style="text-align:center;">
-(0.455)
+27
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-trayectoria_ocup3
+trayectoria_ocup23
 </td>
 <td style="text-align:center;">
-0.160
-</td>
-<td style="text-align:center;">
-0.028
-</td>
-<td style="text-align:center;">
-0.581
+27
 </td>
 </tr>
 <tr>
@@ -1010,13 +1051,45 @@ trayectoria_ocup3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.270)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup24
 </td>
 <td style="text-align:center;">
-(0.587)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.477)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup25
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
 </td>
 </tr>
 <tr>
@@ -1026,13 +1099,7 @@ trayectoria_ocup3
 trayectoria_activ_fisica2
 </td>
 <td style="text-align:center;">
-0.028
-</td>
-<td style="text-align:center;">
--0.180
-</td>
-<td style="text-align:center;">
-0.409
+27
 </td>
 </tr>
 <tr>
@@ -1041,13 +1108,7 @@ trayectoria_activ_fisica2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.169)
-</td>
-<td style="text-align:center;">
-(0.407)
-</td>
-<td style="text-align:center;">
-(0.359)
+27
 </td>
 </tr>
 <tr>
@@ -1057,13 +1118,7 @@ trayectoria_activ_fisica2
 trayectoria_activ_fisica3
 </td>
 <td style="text-align:center;">
--0.270
-</td>
-<td style="text-align:center;">
--0.181
-</td>
-<td style="text-align:center;">
-0.197
+27
 </td>
 </tr>
 <tr>
@@ -1072,29 +1127,17 @@ trayectoria_activ_fisica3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.266)
-</td>
-<td style="text-align:center;">
-(0.709)
-</td>
-<td style="text-align:center;">
-(0.577)
+27
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-fuma_w01TRUE
+trayectoria_activ_fisica4
 </td>
 <td style="text-align:center;">
--0.011
-</td>
-<td style="text-align:center;">
-0.526
-</td>
-<td style="text-align:center;">
-0.463
+27
 </td>
 </tr>
 <tr>
@@ -1103,13 +1146,26 @@ fuma_w01TRUE
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.159)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01Fumador
 </td>
 <td style="text-align:center;">
-(0.374)
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.291)
+9
 </td>
 </tr>
 <tr>
@@ -1119,13 +1175,7 @@ fuma_w01TRUE
 imc_w01
 </td>
 <td style="text-align:center;">
-0.015
-</td>
-<td style="text-align:center;">
-0.015
-</td>
-<td style="text-align:center;">
-0.008
+9
 </td>
 </tr>
 <tr>
@@ -1134,29 +1184,17 @@ imc_w01
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.008)
-</td>
-<td style="text-align:center;">
-(0.009)
-</td>
-<td style="text-align:center;">
-(0.018)
+9
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-proyecto_vidaTRUE
+proyecto_vidaDecidido dirección de vida
 </td>
 <td style="text-align:center;">
--0.879***
-</td>
-<td style="text-align:center;">
--1.408***
-</td>
-<td style="text-align:center;">
--0.907**
+9
 </td>
 </tr>
 <tr>
@@ -1165,13 +1203,121 @@ proyecto_vidaTRUE
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.184)
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+apoyo_social_w01Con apoyo social
 </td>
 <td style="text-align:center;">
-(0.376)
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.319)
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
 </td>
 </tr>
 <tr>
@@ -1182,13 +1328,7 @@ Model 3
 (Intercept)
 </td>
 <td style="text-align:center;">
--2.739
-</td>
-<td style="text-align:center;">
--6.920
-</td>
-<td style="text-align:center;">
-0.556
+27
 </td>
 </tr>
 <tr>
@@ -1197,13 +1337,7 @@ Model 3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(1.632)
-</td>
-<td style="text-align:center;">
-(4.147)
-</td>
-<td style="text-align:center;">
-(3.437)
+27
 </td>
 </tr>
 <tr>
@@ -1213,13 +1347,7 @@ Model 3
 m0_sexo_w01
 </td>
 <td style="text-align:center;">
-0.795***
-</td>
-<td style="text-align:center;">
-1.748**
-</td>
-<td style="text-align:center;">
-0.670
+27
 </td>
 </tr>
 <tr>
@@ -1228,13 +1356,7 @@ m0_sexo_w01
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.179)
-</td>
-<td style="text-align:center;">
-(0.647)
-</td>
-<td style="text-align:center;">
-(0.396)
+27
 </td>
 </tr>
 <tr>
@@ -1244,13 +1366,7 @@ m0_sexo_w01
 m0_edad_w01
 </td>
 <td style="text-align:center;">
--0.010
-</td>
-<td style="text-align:center;">
-0.020
-</td>
-<td style="text-align:center;">
--0.005
+27
 </td>
 </tr>
 <tr>
@@ -1259,13 +1375,7 @@ m0_edad_w01
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.006)
-</td>
-<td style="text-align:center;">
-(0.015)
-</td>
-<td style="text-align:center;">
-(0.011)
+27
 </td>
 </tr>
 <tr>
@@ -1275,13 +1385,7 @@ m0_edad_w01
 log_ing
 </td>
 <td style="text-align:center;">
--0.040
-</td>
-<td style="text-align:center;">
--0.063
-</td>
-<td style="text-align:center;">
--0.549*
+27
 </td>
 </tr>
 <tr>
@@ -1290,13 +1394,7 @@ log_ing
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.117)
-</td>
-<td style="text-align:center;">
-(0.308)
-</td>
-<td style="text-align:center;">
-(0.256)
+27
 </td>
 </tr>
 <tr>
@@ -1306,13 +1404,7 @@ log_ing
 trayectoria_deuda2
 </td>
 <td style="text-align:center;">
--0.600**
-</td>
-<td style="text-align:center;">
--0.515
-</td>
-<td style="text-align:center;">
--0.909*
+27
 </td>
 </tr>
 <tr>
@@ -1321,13 +1413,7 @@ trayectoria_deuda2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.231)
-</td>
-<td style="text-align:center;">
-(0.466)
-</td>
-<td style="text-align:center;">
-(0.388)
+27
 </td>
 </tr>
 <tr>
@@ -1337,13 +1423,7 @@ trayectoria_deuda2
 trayectoria_deuda3
 </td>
 <td style="text-align:center;">
--0.929***
-</td>
-<td style="text-align:center;">
--1.677***
-</td>
-<td style="text-align:center;">
--1.425***
+27
 </td>
 </tr>
 <tr>
@@ -1352,13 +1432,7 @@ trayectoria_deuda3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.208)
-</td>
-<td style="text-align:center;">
-(0.474)
-</td>
-<td style="text-align:center;">
-(0.356)
+27
 </td>
 </tr>
 <tr>
@@ -1368,13 +1442,7 @@ trayectoria_deuda3
 trayectoria_insatisf_ing2
 </td>
 <td style="text-align:center;">
--0.120
-</td>
-<td style="text-align:center;">
--0.596
-</td>
-<td style="text-align:center;">
--0.018
+27
 </td>
 </tr>
 <tr>
@@ -1383,13 +1451,7 @@ trayectoria_insatisf_ing2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.250)
-</td>
-<td style="text-align:center;">
-(0.606)
-</td>
-<td style="text-align:center;">
-(0.564)
+27
 </td>
 </tr>
 <tr>
@@ -1399,13 +1461,7 @@ trayectoria_insatisf_ing2
 trayectoria_insatisf_ing3
 </td>
 <td style="text-align:center;">
-0.148
-</td>
-<td style="text-align:center;">
--0.397
-</td>
-<td style="text-align:center;">
-0.665
+27
 </td>
 </tr>
 <tr>
@@ -1414,13 +1470,7 @@ trayectoria_insatisf_ing3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.254)
-</td>
-<td style="text-align:center;">
-(0.630)
-</td>
-<td style="text-align:center;">
-(0.546)
+27
 </td>
 </tr>
 <tr>
@@ -1430,13 +1480,7 @@ trayectoria_insatisf_ing3
 trayectoria_insatisf_ing4
 </td>
 <td style="text-align:center;">
-0.165
-</td>
-<td style="text-align:center;">
--0.454
-</td>
-<td style="text-align:center;">
--0.105
+27
 </td>
 </tr>
 <tr>
@@ -1445,29 +1489,17 @@ trayectoria_insatisf_ing4
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.298)
-</td>
-<td style="text-align:center;">
-(0.779)
-</td>
-<td style="text-align:center;">
-(0.706)
+27
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-trayectoria_ocup2
+trayectoria_ocup22
 </td>
 <td style="text-align:center;">
--0.049
-</td>
-<td style="text-align:center;">
--0.779
-</td>
-<td style="text-align:center;">
--0.771
+27
 </td>
 </tr>
 <tr>
@@ -1476,29 +1508,17 @@ trayectoria_ocup2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.244)
-</td>
-<td style="text-align:center;">
-(0.560)
-</td>
-<td style="text-align:center;">
-(0.463)
+27
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-trayectoria_ocup3
+trayectoria_ocup23
 </td>
 <td style="text-align:center;">
-0.154
-</td>
-<td style="text-align:center;">
-0.013
-</td>
-<td style="text-align:center;">
-0.520
+27
 </td>
 </tr>
 <tr>
@@ -1507,13 +1527,45 @@ trayectoria_ocup3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.278)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup24
 </td>
 <td style="text-align:center;">
-(0.600)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.487)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup25
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
 </td>
 </tr>
 <tr>
@@ -1523,13 +1575,7 @@ trayectoria_ocup3
 trayectoria_activ_fisica2
 </td>
 <td style="text-align:center;">
-0.048
-</td>
-<td style="text-align:center;">
--0.108
-</td>
-<td style="text-align:center;">
-0.503
+27
 </td>
 </tr>
 <tr>
@@ -1538,13 +1584,7 @@ trayectoria_activ_fisica2
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.175)
-</td>
-<td style="text-align:center;">
-(0.414)
-</td>
-<td style="text-align:center;">
-(0.367)
+27
 </td>
 </tr>
 <tr>
@@ -1554,13 +1594,7 @@ trayectoria_activ_fisica2
 trayectoria_activ_fisica3
 </td>
 <td style="text-align:center;">
--0.243
-</td>
-<td style="text-align:center;">
--0.140
-</td>
-<td style="text-align:center;">
-0.161
+27
 </td>
 </tr>
 <tr>
@@ -1569,29 +1603,17 @@ trayectoria_activ_fisica3
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.275)
-</td>
-<td style="text-align:center;">
-(0.731)
-</td>
-<td style="text-align:center;">
-(0.598)
+27
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-fuma_w01TRUE
+trayectoria_activ_fisica4
 </td>
 <td style="text-align:center;">
-0.038
-</td>
-<td style="text-align:center;">
-0.663
-</td>
-<td style="text-align:center;">
-0.516
+27
 </td>
 </tr>
 <tr>
@@ -1600,13 +1622,26 @@ fuma_w01TRUE
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.165)
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01Fumador
 </td>
 <td style="text-align:center;">
-(0.381)
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.300)
+9
 </td>
 </tr>
 <tr>
@@ -1616,13 +1651,7 @@ fuma_w01TRUE
 imc_w01
 </td>
 <td style="text-align:center;">
-0.017*
-</td>
-<td style="text-align:center;">
-0.016
-</td>
-<td style="text-align:center;">
-0.014
+9
 </td>
 </tr>
 <tr>
@@ -1631,29 +1660,17 @@ imc_w01
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.009)
-</td>
-<td style="text-align:center;">
-(0.010)
-</td>
-<td style="text-align:center;">
-(0.017)
+9
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-proyecto_vidaTRUE
+proyecto_vidaDecidido dirección de vida
 </td>
 <td style="text-align:center;">
--0.792***
-</td>
-<td style="text-align:center;">
--1.318***
-</td>
-<td style="text-align:center;">
--0.857**
+9
 </td>
 </tr>
 <tr>
@@ -1662,13 +1679,26 @@ proyecto_vidaTRUE
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.192)
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+apoyo_social_w01Con apoyo social
 </td>
 <td style="text-align:center;">
-(0.383)
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.331)
+9
 </td>
 </tr>
 <tr>
@@ -1678,13 +1708,7 @@ proyecto_vidaTRUE
 extraversion
 </td>
 <td style="text-align:center;">
-0.053
-</td>
-<td style="text-align:center;">
-0.005
-</td>
-<td style="text-align:center;">
-0.008
+3
 </td>
 </tr>
 <tr>
@@ -1693,13 +1717,7 @@ extraversion
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.059)
-</td>
-<td style="text-align:center;">
-(0.016)
-</td>
-<td style="text-align:center;">
-(0.020)
+3
 </td>
 </tr>
 <tr>
@@ -1709,13 +1727,7 @@ extraversion
 agreeableness
 </td>
 <td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
--0.001
-</td>
-<td style="text-align:center;">
--0.004*
+3
 </td>
 </tr>
 <tr>
@@ -1724,13 +1736,7 @@ agreeableness
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.002)
-</td>
-<td style="text-align:center;">
-(0.008)
-</td>
-<td style="text-align:center;">
-(0.002)
+3
 </td>
 </tr>
 <tr>
@@ -1740,13 +1746,7 @@ agreeableness
 conscientiousness
 </td>
 <td style="text-align:center;">
--0.001
-</td>
-<td style="text-align:center;">
-0.002
-</td>
-<td style="text-align:center;">
--0.002
+3
 </td>
 </tr>
 <tr>
@@ -1755,13 +1755,7 @@ conscientiousness
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.002)
-</td>
-<td style="text-align:center;">
-(0.008)
-</td>
-<td style="text-align:center;">
-(0.002)
+3
 </td>
 </tr>
 <tr>
@@ -1771,13 +1765,7 @@ conscientiousness
 neuroticism
 </td>
 <td style="text-align:center;">
-0.354***
-</td>
-<td style="text-align:center;">
-0.481***
-</td>
-<td style="text-align:center;">
-0.385***
+3
 </td>
 </tr>
 <tr>
@@ -1786,13 +1774,7 @@ neuroticism
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.047)
-</td>
-<td style="text-align:center;">
-(0.109)
-</td>
-<td style="text-align:center;">
-(0.087)
+3
 </td>
 </tr>
 <tr>
@@ -1802,13 +1784,7 @@ neuroticism
 openness
 </td>
 <td style="text-align:center;">
-0.000
-</td>
-<td style="text-align:center;">
-0.004
-</td>
-<td style="text-align:center;">
-0.186*
+3
 </td>
 </tr>
 <tr>
@@ -1817,13 +1793,4513 @@ openness
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.001)
+3
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup> * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div id="variable-dependiente-trayectorias-om-5-clases" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Variable dependiente: Trayectorias OM 5 clases<a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-5-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="modelo-multinomial-logit.html#cb102-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="modelo-multinomial-logit.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb102-3"><a href="modelo-multinomial-logit.html#cb102-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  85 (64 variable)
+## initial  value 1973.170881 
+## iter  10 value 1705.481491
+## iter  20 value 1453.704530
+## iter  30 value 1410.352906
+## iter  40 value 1405.660474
+## iter  50 value 1405.409567
+## iter  60 value 1405.371900
+## final  value 1405.371193 
+## converged</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="modelo-multinomial-logit.html#cb104-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb104-2"><a href="modelo-multinomial-logit.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
+<span id="cb104-3"><a href="modelo-multinomial-logit.html#cb104-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  105 (80 variable)
+## initial  value 1841.196972 
+## iter  10 value 1394.173327
+## iter  20 value 1284.724030
+## iter  30 value 1265.004455
+## iter  40 value 1262.780403
+## iter  50 value 1261.896568
+## iter  60 value 1261.632052
+## iter  70 value 1261.603286
+## iter  80 value 1261.599760
+## final  value 1261.599691 
+## converged</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="modelo-multinomial-logit.html#cb106-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb106-2"><a href="modelo-multinomial-logit.html#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb106-3"><a href="modelo-multinomial-logit.html#cb106-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  130 (100 variable)
+## initial  value 1818.664841 
+## iter  10 value 1371.121097
+## iter  20 value 1259.206333
+## iter  30 value 1223.071275
+## iter  40 value 1201.134823
+## iter  50 value 1192.248050
+## iter  60 value 1191.014291
+## iter  70 value 1190.183574
+## iter  80 value 1189.972518
+## iter  90 value 1189.951431
+## iter 100 value 1189.947353
+## final  value 1189.947353 
+## stopped after 100 iterations</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="modelo-multinomial-logit.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb108-2"><a href="modelo-multinomial-logit.html#cb108-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb108-3"><a href="modelo-multinomial-logit.html#cb108-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> model <span class="sc">+</span> term <span class="sc">~</span> y.level)</span></code></pre></div>
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+V1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Model 1
+</td>
+<td style="text-align:left;">
+(Intercept)
 </td>
 <td style="text-align:center;">
-(0.033)
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-(0.086)
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing4
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup22
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup23
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup24
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup25
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica4
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01Fumador
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+imc_w01
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaDecidido dirección de vida
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+apoyo_social_w01Con apoyo social
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model 2
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing4
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup22
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup23
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup24
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup25
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica4
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01Fumador
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+imc_w01
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaDecidido dirección de vida
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+apoyo_social_w01Con apoyo social
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model 3
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing4
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup22
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup23
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup24
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup25
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica4
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01Fumador
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+imc_w01
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaDecidido dirección de vida
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+apoyo_social_w01Con apoyo social
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup> * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div id="variable-dependiente-trayectorias-lcmm-4-clases" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Variable dependiente: Trayectorias LCMM 4 clases<a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-4-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="modelo-multinomial-logit.html#cb109-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb109-2"><a href="modelo-multinomial-logit.html#cb109-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb109-3"><a href="modelo-multinomial-logit.html#cb109-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  68 (48 variable)
+## initial  value 1699.596887 
+## iter  10 value 1096.972088
+## iter  20 value 1023.050361
+## iter  30 value 1016.021065
+## iter  40 value 1015.496353
+## iter  50 value 1015.449584
+## final  value 1015.447967 
+## converged</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="modelo-multinomial-logit.html#cb111-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb111-2"><a href="modelo-multinomial-logit.html#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
+<span id="cb111-3"><a href="modelo-multinomial-logit.html#cb111-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  84 (60 variable)
+## initial  value 1585.920749 
+## iter  10 value 1049.843019
+## iter  20 value 937.010917
+## iter  30 value 914.728898
+## iter  40 value 911.498652
+## iter  50 value 910.621069
+## iter  60 value 909.794084
+## iter  70 value 909.311831
+## iter  80 value 909.291216
+## final  value 909.274258 
+## converged</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="modelo-multinomial-logit.html#cb113-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb113-2"><a href="modelo-multinomial-logit.html#cb113-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb113-3"><a href="modelo-multinomial-logit.html#cb113-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  104 (75 variable)
+## initial  value 1566.512628 
+## iter  10 value 1055.074861
+## iter  20 value 942.672577
+## iter  30 value 880.912734
+## iter  40 value 856.189235
+## iter  50 value 852.994875
+## iter  60 value 851.266183
+## iter  70 value 850.507060
+## iter  80 value 849.416891
+## iter  90 value 849.150806
+## iter 100 value 849.146979
+## final  value 849.146979 
+## stopped after 100 iterations</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="modelo-multinomial-logit.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb115-2"><a href="modelo-multinomial-logit.html#cb115-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb115-3"><a href="modelo-multinomial-logit.html#cb115-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> model <span class="sc">+</span> term <span class="sc">~</span> y.level)</span></code></pre></div>
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+V1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Model 1
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda2
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda3
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing2
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing3
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing4
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup22
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup23
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup24
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup25
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica4
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01Fumador
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+imc_w01
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaDecidido dirección de vida
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+apoyo_social_w01Con apoyo social
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model 2
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda2
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda3
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing2
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing3
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing4
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup22
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup23
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup24
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup25
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica4
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01Fumador
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+imc_w01
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaDecidido dirección de vida
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+apoyo_social_w01Con apoyo social
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model 3
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda2
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda3
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing2
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing3
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing4
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup22
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup23
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup24
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup25
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica4
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01Fumador
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+imc_w01
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaDecidido dirección de vida
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+apoyo_social_w01Con apoyo social
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+3
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup> * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div id="variable-dependiente-trayectorias-lcmm-5-clases" class="section level2 hasAnchor" number="4.5">
+<h2><span class="header-section-number">4.5</span> Variable dependiente: Trayectorias LCMM 5 clases<a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-5-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="modelo-multinomial-logit.html#cb116-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb116-2"><a href="modelo-multinomial-logit.html#cb116-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb116-3"><a href="modelo-multinomial-logit.html#cb116-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  85 (64 variable)
+## initial  value 1973.170881 
+## iter  10 value 1242.425579
+## iter  20 value 1191.852775
+## iter  30 value 1177.290466
+## iter  40 value 1174.843518
+## iter  50 value 1174.459764
+## iter  60 value 1174.290978
+## iter  70 value 1174.229295
+## iter  80 value 1174.226262
+## final  value 1174.225898 
+## converged</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="modelo-multinomial-logit.html#cb118-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb118-2"><a href="modelo-multinomial-logit.html#cb118-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
+<span id="cb118-3"><a href="modelo-multinomial-logit.html#cb118-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  105 (80 variable)
+## initial  value 1841.196972 
+## iter  10 value 1204.443400
+## iter  20 value 1088.541970
+## iter  30 value 1063.029153
+## iter  40 value 1057.628996
+## iter  50 value 1055.560309
+## iter  60 value 1054.827216
+## iter  70 value 1054.593056
+## iter  80 value 1054.500771
+## iter  90 value 1054.470330
+## iter 100 value 1054.459326
+## final  value 1054.459326 
+## stopped after 100 iterations</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="modelo-multinomial-logit.html#cb120-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb120-2"><a href="modelo-multinomial-logit.html#cb120-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_insatisf_ing <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb120-3"><a href="modelo-multinomial-logit.html#cb120-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<pre><code>## # weights:  130 (100 variable)
+## initial  value 1818.664841 
+## iter  10 value 1152.176336
+## iter  20 value 1066.249949
+## iter  30 value 1021.584984
+## iter  40 value 999.270923
+## iter  50 value 993.509630
+## iter  60 value 989.983344
+## iter  70 value 988.403301
+## iter  80 value 987.777480
+## iter  90 value 987.494274
+## iter 100 value 987.421283
+## final  value 987.421283 
+## stopped after 100 iterations</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="modelo-multinomial-logit.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb122-2"><a href="modelo-multinomial-logit.html#cb122-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb122-3"><a href="modelo-multinomial-logit.html#cb122-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">group =</span> model <span class="sc">+</span> term <span class="sc">~</span> y.level)</span></code></pre></div>
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+V1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Model 1
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing4
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup22
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup23
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup24
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup25
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica4
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01Fumador
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+imc_w01
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaDecidido dirección de vida
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+apoyo_social_w01Con apoyo social
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model 2
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing4
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup22
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup23
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup24
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup25
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica4
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01Fumador
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+imc_w01
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaDecidido dirección de vida
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+apoyo_social_w01Con apoyo social
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model 3
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deuda3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_insatisf_ing4
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup22
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup23
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup24
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup25
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica4
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+fuma_w01Fumador
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+imc_w01
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaDecidido dirección de vida
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+apoyo_social_w01Con apoyo social
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+16
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:center;">
+4
 </td>
 </tr>
 </tbody>
@@ -1837,12 +6313,13 @@ openness
 </table>
 
 </div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="variables-independientes.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="variables-modelo.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

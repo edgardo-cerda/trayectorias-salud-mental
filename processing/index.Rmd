@@ -20,7 +20,7 @@ editor_options:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, cache=TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, cache=TRUE )
 
 ```
 
@@ -46,7 +46,6 @@ library(elsoc)
 
 # Librerias graficos
 library(ggpubr)
-library(ggsankey)
 library(shiny)
 library(plotly)
 
@@ -54,6 +53,8 @@ library(plotly)
 library(nnet)
 library(modelsummary)
 library(lcmm)
+library(rcompanion)
+library(statar)
 
 ```
 

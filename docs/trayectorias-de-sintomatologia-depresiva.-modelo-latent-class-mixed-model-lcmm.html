@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 2 Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM) | Trayectorias de sintomatología depresiva</title>
   <meta name="description" content="Capítulo 2 Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM) | Trayectorias de sintomatología depresiva" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 2 Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM) | Trayectorias de sintomatología depresiva" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Capítulo 2 Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM) | Trayectorias de sintomatología depresiva" />
   <meta name="github-repo" content="edgardo-cerda/trayectorias-salud-mental" />
@@ -31,8 +30,7 @@
   
   
 <link rel="prev" href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"/>
-<link rel="next" href="variables-independientes.html"/>
-<script src="libs/header-attrs-2.14/header-attrs.js"></script>
+<link rel="next" href="variables-modelo.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -139,53 +137,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Trayectorias de depresión </a></li>
 
 <li class="divider"></li>
-<li><a href="index.html#cargar-y-preparar-datos-elsoc">Cargar y preparar datos ELSOC<span></span></a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cargar y preparar datos ELSOC</a>
 <ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>0.1</b> Cargar librerías<span></span></a></li>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#cargar-librerías"><i class="fa fa-check"></i><b>0.1</b> Cargar librerías</a></li>
 </ul></li>
-<li class="chapter" data-level="1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><i class="fa fa-check"></i><b>1</b> Trayectorias de sintomatología depresiva. Modelo Optimal-Matching<span></span></a>
+<li class="chapter" data-level="1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><i class="fa fa-check"></i><b>1</b> Trayectorias de sintomatología depresiva. Modelo Optimal-Matching</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-4-categorías"><i class="fa fa-check"></i><b>1.1</b> Secuencia de depresión con 4 categorías:<span></span></a>
+<li class="chapter" data-level="1.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-4-categorías"><i class="fa fa-check"></i><b>1.1</b> Secuencia de depresión con 4 categorías:</a>
 <ul>
-<li class="chapter" data-level="1.1.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráfico-de-secuencias"><i class="fa fa-check"></i><b>1.1.1</b> Gráfico de secuencias:<span></span></a></li>
-<li class="chapter" data-level="1.1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#frecuencia-de-estados-y-transiciones"><i class="fa fa-check"></i><b>1.1.2</b> Frecuencia de estados y transiciones<span></span></a></li>
-<li class="chapter" data-level="1.1.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias"><i class="fa fa-check"></i><b>1.1.3</b> Clusters de secuencias:<span></span></a></li>
-<li class="chapter" data-level="1.1.4" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#graficos-de-secuencias-por-clusters"><i class="fa fa-check"></i><b>1.1.4</b> Graficos de secuencias por clusters<span></span></a></li>
-<li class="chapter" data-level="1.1.5" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#opción-preferida-5-clusters"><i class="fa fa-check"></i><b>1.1.5</b> Opción preferida: 5 clusters<span></span></a></li>
+<li class="chapter" data-level="1.1.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráfico-de-secuencias"><i class="fa fa-check"></i><b>1.1.1</b> Gráfico de secuencias:</a></li>
+<li class="chapter" data-level="1.1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#frecuencia-de-estados-y-transiciones"><i class="fa fa-check"></i><b>1.1.2</b> Frecuencia de estados y transiciones</a></li>
+<li class="chapter" data-level="1.1.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias"><i class="fa fa-check"></i><b>1.1.3</b> Clusters de secuencias:</a></li>
+<li class="chapter" data-level="1.1.4" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#graficos-de-secuencias-por-clusters"><i class="fa fa-check"></i><b>1.1.4</b> Graficos de secuencias por clusters</a></li>
+<li class="chapter" data-level="1.1.5" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#opción-preferida-5-clusters"><i class="fa fa-check"></i><b>1.1.5</b> Opción preferida: 5 clusters</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-2-categorías"><i class="fa fa-check"></i><b>1.2</b> Secuencia de depresión con 2 categorías<span></span></a>
+<li class="chapter" data-level="1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-2-categorías"><i class="fa fa-check"></i><b>1.2</b> Secuencia de depresión con 2 categorías</a>
 <ul>
-<li class="chapter" data-level="1.2.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráfico-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.1</b> Gráfico de secuencias:<span></span></a></li>
-<li class="chapter" data-level="1.2.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.2</b> Clusters de secuencias:<span></span></a></li>
-<li class="chapter" data-level="1.2.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráficos-de-secuencia-por-clusters"><i class="fa fa-check"></i><b>1.2.3</b> Gráficos de secuencia por clusters<span></span></a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><i class="fa fa-check"></i><b>2</b> Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM)<span></span></a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#identificar-trayectorias"><i class="fa fa-check"></i><b>2.1</b> Identificar trayectorias:<span></span></a>
-<ul>
-<li><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-lineales">Modelos de trayectorias lineales:<span></span></a></li>
-<li><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-cuadráticas">Modelos de trayectorias cuadráticas:<span></span></a></li>
-<li><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#comparación-resultados">Comparación resultados<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#principales-trayectorias"><i class="fa fa-check"></i><b>2.2</b> Principales trayectorias<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="variables-independientes.html"><a href="variables-independientes.html"><i class="fa fa-check"></i><b>3</b> Variables independientes<span></span></a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="variables-independientes.html"><a href="variables-independientes.html#preparar-datos"><i class="fa fa-check"></i><b>3.1</b> Preparar datos<span></span></a>
-<ul>
-<li><a href="variables-independientes.html#agregar-variables-de-trayectoria-de-los-distintos-modelos">Agregar variables de trayectoria de los distintos modelos:<span></span></a></li>
-<li><a href="variables-independientes.html#agregar-variables-independientes">Agregar variables independientes<span></span></a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="variables-independientes.html"><a href="variables-independientes.html#trayectorias-de-variables-independientes"><i class="fa fa-check"></i><b>3.2</b> Trayectorias de variables independientes<span></span></a>
-<ul>
-<li><a href="variables-independientes.html#insatisfacción-con-el-ingreso">Insatisfacción con el ingreso<span></span></a></li>
-<li><a href="variables-independientes.html#situación-ocupacional">Situación ocupacional<span></span></a></li>
-<li><a href="variables-independientes.html#sobrecarga-por-deudas">Sobrecarga por deudas<span></span></a></li>
-<li><a href="variables-independientes.html#avtividad-física-regular">Avtividad física regular<span></span></a></li>
+<li class="chapter" data-level="1.2.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráfico-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.1</b> Gráfico de secuencias:</a></li>
+<li class="chapter" data-level="1.2.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.2</b> Clusters de secuencias:</a></li>
+<li class="chapter" data-level="1.2.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráficos-de-secuencia-por-clusters"><i class="fa fa-check"></i><b>1.2.3</b> Gráficos de secuencia por clusters</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html"><i class="fa fa-check"></i><b>4</b> Modelo multinomial logit<span></span></a></li>
+<li class="chapter" data-level="2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><i class="fa fa-check"></i><b>2</b> Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM)</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#identificar-trayectorias"><i class="fa fa-check"></i><b>2.1</b> Identificar trayectorias:</a>
+<ul>
+<li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-lineales"><i class="fa fa-check"></i>Modelos de trayectorias lineales:</a></li>
+<li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-cuadráticas"><i class="fa fa-check"></i>Modelos de trayectorias cuadráticas:</a></li>
+<li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#comparación-resultados"><i class="fa fa-check"></i>Comparación resultados</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#principales-trayectorias"><i class="fa fa-check"></i><b>2.2</b> Principales trayectorias</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="variables-modelo.html"><a href="variables-modelo.html"><i class="fa fa-check"></i><b>3</b> Variables modelo</a>
+<ul>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#agregar-variables-de-trayectoria-de-los-distintos-modelos"><i class="fa fa-check"></i>Agregar variables de trayectoria de los distintos modelos</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#agregar-variables-independientes"><i class="fa fa-check"></i>Agregar variables independientes</a></li>
+<li class="chapter" data-level="3.1" data-path="variables-modelo.html"><a href="variables-modelo.html#crear-y-agregar-trayectorias-de-variables-independientes"><i class="fa fa-check"></i><b>3.1</b> Crear y agregar trayectorias de variables independientes</a>
+<ul>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#insatisfacción-con-el-ingreso"><i class="fa fa-check"></i>Insatisfacción con el ingreso</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#situación-ocupacional-3-categorías"><i class="fa fa-check"></i>Situación ocupacional (3 categorías)</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#situación-ocupacional-4-categorías"><i class="fa fa-check"></i>Situación ocupacional (4 categorías)</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#sobrecarga-por-deudas"><i class="fa fa-check"></i>Sobrecarga por deudas</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#avtividad-física-regular"><i class="fa fa-check"></i>Avtividad física regular</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="variables-modelo.html"><a href="variables-modelo.html#guardar-datos-para-usar-después"><i class="fa fa-check"></i><b>3.2</b> Guardar datos para usar después</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html"><i class="fa fa-check"></i><b>4</b> Modelo multinomial logit</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#comparación-trayectorias"><i class="fa fa-check"></i><b>4.1</b> Comparación trayectorias</a></li>
+<li class="chapter" data-level="4.2" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-4-clases"><i class="fa fa-check"></i><b>4.2</b> Variable dependiente: Trayectorias OM 4 clases</a></li>
+<li class="chapter" data-level="4.3" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-5-clases"><i class="fa fa-check"></i><b>4.3</b> Variable dependiente: Trayectorias OM 5 clases</a></li>
+<li class="chapter" data-level="4.4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-4-clases"><i class="fa fa-check"></i><b>4.4</b> Variable dependiente: Trayectorias LCMM 4 clases</a></li>
+<li class="chapter" data-level="4.5" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-5-clases"><i class="fa fa-check"></i><b>4.5</b> Variable dependiente: Trayectorias LCMM 5 clases</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/edgardo-cerda/trayectorias-salud-mental" target="blank"> Ver fuente <i class="fa fa-github"></i></a></li>
 
@@ -468,6 +472,40 @@ lcmm5_quad
 44230.7
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+lcmm6_lin
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+-22065.5
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+44262.9
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lcmm6_quad
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+-21999.6
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+44174.9
+</td>
+</tr>
 </tbody>
 </table>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb34-1" aria-hidden="true" tabindex="-1"></a>kableExtra<span class="sc">::</span><span class="fu">kbl</span>(resultados_comparados[,<span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>],</span>
@@ -560,10 +598,10 @@ NA
 lcmm2_quad
 </td>
 <td style="text-align:right;">
-79.1
+20.9
 </td>
 <td style="text-align:right;">
-20.9
+79.1
 </td>
 <td style="text-align:right;">
 NA
@@ -640,16 +678,16 @@ NA
 lcmm4_quad
 </td>
 <td style="text-align:right;">
-3.7
+63.2
 </td>
 <td style="text-align:right;">
 27.9
 </td>
 <td style="text-align:right;">
-63.2
+5.2
 </td>
 <td style="text-align:right;">
-5.2
+3.7
 </td>
 <td style="text-align:right;">
 NA
@@ -680,19 +718,59 @@ lcmm5_lin
 lcmm5_quad
 </td>
 <td style="text-align:right;">
-1.7
+27.4
 </td>
 <td style="text-align:right;">
 6.0
 </td>
 <td style="text-align:right;">
-27.4
+59.6
+</td>
+<td style="text-align:right;">
+1.7
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lcmm6_lin
 </td>
 <td style="text-align:right;">
 5.4
 </td>
 <td style="text-align:right;">
-59.6
+0.0
+</td>
+<td style="text-align:right;">
+31.5
+</td>
+<td style="text-align:right;">
+5.8
+</td>
+<td style="text-align:right;">
+55.8
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+lcmm6_quad
+</td>
+<td style="text-align:right;">
+5.1
+</td>
+<td style="text-align:right;">
+5.4
+</td>
+<td style="text-align:right;">
+26.6
+</td>
+<td style="text-align:right;">
+1.7
+</td>
+<td style="text-align:right;">
+58.2
 </td>
 </tr>
 </tbody>
@@ -773,10 +851,10 @@ lcmm5_quad
 ##  
 ## Iteration process: 
 ##      Convergence criteria satisfied 
-##      Number of iterations:  8 
-##      Convergence criteria: parameters= 3.4e-05 
-##                          : likelihood= 3.5e-06 
-##                          : second derivatives= 8.5e-12 
+##      Number of iterations:  12 
+##      Convergence criteria: parameters= 3.5e-06 
+##                          : likelihood= 4.3e-07 
+##                          : second derivatives= 5.7e-13 
 ##  
 ## Goodness-of-fit statistics: 
 ##      maximum log-likelihood: -22073.96  
@@ -790,25 +868,25 @@ lcmm5_quad
 ## (the class of reference is the last class) 
 ## 
 ##                      coef      Se    Wald p-value
-## intercept class1 -0.38807 0.26940  -1.441 0.14972
-## intercept class2  1.61827 0.16912   9.569 0.00000
-## intercept class3  2.40304 0.16591  14.484 0.00000
+## intercept class1  2.79111 0.21113  13.220 0.00000
+## intercept class2  2.00634 0.20744   9.672 0.00000
+## intercept class3  0.38807 0.27068   1.434 0.15166
 ## 
 ## Fixed effects in the longitudinal model:
 ## 
 ##                      coef      Se    Wald p-value
-## intercept class1 16.53511 1.83099   9.031 0.00000
-## intercept class2  6.71471 0.59959  11.199 0.00000
-## intercept class3  2.72252 0.32149   8.468 0.00000
-## intercept class4  7.39445 1.32288   5.590 0.00000
-## ola class1        1.79551 1.29955   1.382 0.16708
+## intercept class1  2.72252 0.32155   8.467 0.00000
+## intercept class2  6.71471 0.59952  11.200 0.00000
+## intercept class3  7.39444 1.32548   5.579 0.00000
+## intercept class4 16.53512 1.83362   9.018 0.00000
+## ola class1        0.76515 0.24073   3.178 0.00148
 ## ola class2        1.52408 0.43486   3.505 0.00046
-## ola class3        0.76515 0.24069   3.179 0.00148
-## ola class4        2.97858 1.01997   2.920 0.00350
-## I(ola^2) class1  -0.65557 0.20855  -3.143 0.00167
-## I(ola^2) class2  -0.24243 0.07147  -3.392 0.00069
-## I(ola^2) class3  -0.10045 0.03910  -2.569 0.01020
-## I(ola^2) class4  -0.17680 0.17006  -1.040 0.29851
+## ola class3        2.97859 1.02192   2.915 0.00356
+## ola class4        1.79550 1.30092   1.380 0.16753
+## I(ola^2) class1  -0.10045 0.03911  -2.569 0.01021
+## I(ola^2) class2  -0.24243 0.07148  -3.391 0.00070
+## I(ola^2) class3  -0.17680 0.17031  -1.038 0.29921
+## I(ola^2) class4  -0.65557 0.20870  -3.141 0.00168
 ## 
 ##                              coef      Se
 ## Residual standard error:  4.08664 0.03647</code></pre>
@@ -890,10 +968,10 @@ lcmm5_quad
 ##  
 ## Iteration process: 
 ##      Convergence criteria satisfied 
-##      Number of iterations:  17 
-##      Convergence criteria: parameters= 3.7e-06 
-##                          : likelihood= 7.6e-08 
-##                          : second derivatives= 1.8e-12 
+##      Number of iterations:  16 
+##      Convergence criteria: parameters= 4e-05 
+##                          : likelihood= 7.4e-05 
+##                          : second derivatives= 2.2e-05 
 ##  
 ## Goodness-of-fit statistics: 
 ##      maximum log-likelihood: -22042.15  
@@ -907,32 +985,32 @@ lcmm5_quad
 ## (the class of reference is the last class) 
 ## 
 ##                      coef      Se    Wald p-value
-## intercept class1 -3.61274 0.36031 -10.027 0.00000
-## intercept class2 -2.27152 0.16487 -13.778 0.00000
-## intercept class3 -0.75827 0.13872  -5.466 0.00000
-## intercept class4 -2.25700 0.25639  -8.803 0.00000
+## intercept class1  1.50241 0.27757   5.413 0.00000
+## intercept class2 -0.00935 0.32383  -0.029 0.97696
+## intercept class3  2.26102 0.28374   7.969 0.00000
+## intercept class4 -1.35096 0.47966  -2.816 0.00486
 ## 
 ## Fixed effects in the longitudinal model:
 ## 
 ##                      coef      Se    Wald p-value
-## intercept class1 15.81498 2.75045   5.750 0.00000
-## intercept class2  6.39589 1.37661   4.646 0.00000
-## intercept class3  4.56692 1.00604   4.539 0.00001
-## intercept class4 17.45019 3.61552   4.826 0.00000
-## intercept class5  2.85852 0.33899   8.433 0.00000
-## ola class1        4.14382 1.96534   2.108 0.03499
-## ola class2        3.39563 1.06528   3.188 0.00143
-## ola class3        2.43558 0.82991   2.935 0.00334
-## ola class4       -2.36011 3.22500  -0.732 0.46428
-## ola class5        0.59085 0.25203   2.344 0.01906
-## I(ola^2) class1  -0.94830 0.33507  -2.830 0.00465
-## I(ola^2) class2  -0.24451 0.17866  -1.369 0.17112
-## I(ola^2) class3  -0.35386 0.13311  -2.658 0.00785
-## I(ola^2) class4   0.10307 0.52503   0.196 0.84436
-## I(ola^2) class5  -0.07683 0.04102  -1.873 0.06110
+## intercept class1  4.56716 0.98064   4.657 0.00000
+## intercept class2  6.39774 1.39832   4.575 0.00000
+## intercept class3  2.85867 0.33978   8.413 0.00000
+## intercept class4 15.79998 2.85279   5.538 0.00000
+## intercept class5 17.49394 4.02094   4.351 0.00001
+## ola class1        2.43868 0.83855   2.908 0.00363
+## ola class2        3.39610 1.07202   3.168 0.00154
+## ola class3        0.59090 0.25220   2.343 0.01913
+## ola class4        4.15404 2.03568   2.041 0.04129
+## ola class5       -2.39232 3.48704  -0.686 0.49268
+## I(ola^2) class1  -0.35450 0.13635  -2.600 0.00932
+## I(ola^2) class2  -0.24487 0.17831  -1.373 0.16968
+## I(ola^2) class3  -0.07681 0.04117  -1.866 0.06207
+## I(ola^2) class4  -0.95009 0.34733  -2.735 0.00623
+## I(ola^2) class5   0.10784 0.56052   0.192 0.84744
 ## 
 ##                              coef      Se
-## Residual standard error:  4.02135 0.03678</code></pre>
+## Residual standard error:  4.02137 0.03675</code></pre>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb46-1" aria-hidden="true" tabindex="-1"></a>pred_lcmm5_quad <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcmm5_quad, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
 <span id="cb46-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcmm5_quad, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
@@ -946,7 +1024,7 @@ lcmm5_quad
         </div>
       </div>
 <a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="variables-independientes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="variables-modelo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
