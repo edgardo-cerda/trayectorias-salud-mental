@@ -151,12 +151,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1.4" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#graficos-de-secuencias-por-clusters"><i class="fa fa-check"></i><b>1.1.4</b> Graficos de secuencias por clusters</a></li>
 <li class="chapter" data-level="1.1.5" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#opción-preferida-5-clusters"><i class="fa fa-check"></i><b>1.1.5</b> Opción preferida: 5 clusters</a></li>
 </ul></li>
-<li class="chapter" data-level="1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-2-categorías"><i class="fa fa-check"></i><b>1.2</b> Secuencia de depresión con 2 categorías</a>
-<ul>
-<li class="chapter" data-level="1.2.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráfico-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.1</b> Gráfico de secuencias:</a></li>
-<li class="chapter" data-level="1.2.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias-1"><i class="fa fa-check"></i><b>1.2.2</b> Clusters de secuencias:</a></li>
-<li class="chapter" data-level="1.2.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráficos-de-secuencia-por-clusters"><i class="fa fa-check"></i><b>1.2.3</b> Gráficos de secuencia por clusters</a></li>
-</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><i class="fa fa-check"></i><b>2</b> Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM)</a>
 <ul>
@@ -214,70 +208,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="modelo-multinomial-logit" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Capítulo 4</span> Modelo multinomial logit<a href="modelo-multinomial-logit.html#modelo-multinomial-logit" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="modelo-multinomial-logit.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&#39;datos_salud_modelo.RData&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="modelo-multinomial-logit.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&#39;datos_salud_modelo.RData&#39;</span>)</span></code></pre></div>
 <div id="comparación-trayectorias" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Comparación trayectorias<a href="modelo-multinomial-logit.html#comparación-trayectorias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="modelo-multinomial-logit.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.4</span>, trayectoria_gmm<span class="fl">.4</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="modelo-multinomial-logit.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.4</span>, trayectoria_gmm<span class="fl">.4</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## Cramer V 
 ##   0.2558</code></pre>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="modelo-multinomial-logit.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.4</span>, trayectoria_gmm<span class="fl">.5</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="modelo-multinomial-logit.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.4</span>, trayectoria_gmm<span class="fl">.5</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## Cramer V 
 ##   0.2524</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="modelo-multinomial-logit.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.5</span>, trayectoria_gmm<span class="fl">.4</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="modelo-multinomial-logit.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.5</span>, trayectoria_gmm<span class="fl">.4</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## Cramer V 
 ##   0.6047</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="modelo-multinomial-logit.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.5</span>, trayectoria_gmm<span class="fl">.5</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="modelo-multinomial-logit.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.5</span>, trayectoria_gmm<span class="fl">.5</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## Cramer V 
 ##   0.5733</code></pre>
 </div>
 <div id="variable-dependiente-trayectorias-om-4-clases" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Variable dependiente: Trayectorias OM 4 clases<a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-4-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="modelo-multinomial-logit.html#cb92-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb92-2"><a href="modelo-multinomial-logit.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
-<span id="cb92-3"><a href="modelo-multinomial-logit.html#cb92-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="modelo-multinomial-logit.html#cb81-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb81-2"><a href="modelo-multinomial-logit.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb81-3"><a href="modelo-multinomial-logit.html#cb81-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  72 (51 variable)
-## initial  value 707.010124 
-## iter  10 value 639.412745
-## iter  20 value 627.349244
-## iter  30 value 626.093616
-## iter  40 value 625.765793
-## iter  50 value 625.735948
-## final  value 625.735890 
+## initial  value 743.942395 
+## iter  10 value 637.254708
+## iter  20 value 614.478322
+## iter  30 value 611.649044
+## iter  40 value 611.365770
+## iter  50 value 611.345397
+## final  value 611.345180 
 ## converged</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="modelo-multinomial-logit.html#cb94-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb94-2"><a href="modelo-multinomial-logit.html#cb94-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
-<span id="cb94-3"><a href="modelo-multinomial-logit.html#cb94-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="modelo-multinomial-logit.html#cb83-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb83-2"><a href="modelo-multinomial-logit.html#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
+<span id="cb83-3"><a href="modelo-multinomial-logit.html#cb83-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  88 (63 variable)
-## initial  value 647.399467 
-## iter  10 value 613.393413
-## iter  20 value 562.434447
-## iter  30 value 560.454319
-## iter  40 value 560.065072
-## iter  50 value 559.987857
-## iter  60 value 559.972216
-## iter  70 value 559.965927
-## final  value 559.965625 
+## initial  value 689.192085 
+## iter  10 value 645.282958
+## iter  20 value 559.149728
+## iter  30 value 550.431046
+## iter  40 value 548.990230
+## iter  50 value 548.919815
+## iter  60 value 548.916610
+## final  value 548.916280 
 ## converged</code></pre>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="modelo-multinomial-logit.html#cb96-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb96-2"><a href="modelo-multinomial-logit.html#cb96-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
-<span id="cb96-3"><a href="modelo-multinomial-logit.html#cb96-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="modelo-multinomial-logit.html#cb85-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb85-2"><a href="modelo-multinomial-logit.html#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb85-3"><a href="modelo-multinomial-logit.html#cb85-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  108 (78 variable)
-## initial  value 637.695406 
-## iter  10 value 585.823402
-## iter  20 value 546.641542
-## iter  30 value 536.931352
-## iter  40 value 535.029652
-## iter  50 value 534.650694
-## iter  60 value 534.530634
-## iter  70 value 534.508175
-## iter  80 value 534.506783
-## final  value 534.506753 
+## initial  value 675.869796 
+## iter  10 value 622.186359
+## iter  20 value 537.419536
+## iter  30 value 513.080790
+## iter  40 value 507.937079
+## iter  50 value 506.809438
+## iter  60 value 506.673414
+## iter  70 value 506.648702
+## iter  80 value 506.645569
+## final  value 506.645455 
 ## converged</code></pre>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="modelo-multinomial-logit.html#cb98-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
-<span id="cb98-2"><a href="modelo-multinomial-logit.html#cb98-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
-<span id="cb98-3"><a href="modelo-multinomial-logit.html#cb98-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
-<span id="cb98-4"><a href="modelo-multinomial-logit.html#cb98-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb98-5"><a href="modelo-multinomial-logit.html#cb98-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="modelo-multinomial-logit.html#cb87-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb87-2"><a href="modelo-multinomial-logit.html#cb87-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
+<span id="cb87-3"><a href="modelo-multinomial-logit.html#cb87-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
+<span id="cb87-4"><a href="modelo-multinomial-logit.html#cb87-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb87-5"><a href="modelo-multinomial-logit.html#cb87-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model)</span></code></pre></div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -305,13 +298,13 @@ Model 3
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-−5.942*
+−4.402
 </td>
 <td style="text-align:center;">
-−4.550
+−2.019
 </td>
 <td style="text-align:center;">
-−4.625
+−0.376
 </td>
 </tr>
 <tr>
@@ -321,13 +314,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−2.583
+−2.962
 </td>
 <td style="text-align:center;">
-−1.923
+−1.703
 </td>
 <td style="text-align:center;">
-−0.889
+1.892
 </td>
 </tr>
 <tr>
@@ -337,13 +330,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−1.469
+−0.272
 </td>
 <td style="text-align:center;">
-−0.471
+1.933
 </td>
 <td style="text-align:center;">
-−0.777
+3.178
 </td>
 </tr>
 <tr>
@@ -354,13 +347,13 @@ m0_sexo_w01
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.480
+0.558
 </td>
 <td style="text-align:center;">
-0.354
+0.553
 </td>
 <td style="text-align:center;">
-0.307
+0.497
 </td>
 </tr>
 <tr>
@@ -370,13 +363,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.203
+0.602*
 </td>
 <td style="text-align:center;">
-0.127
+0.522
 </td>
 <td style="text-align:center;">
-0.106
+0.510
 </td>
 </tr>
 <tr>
@@ -386,13 +379,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.879*
+1.503***
 </td>
 <td style="text-align:center;">
-0.813
+1.660***
 </td>
 <td style="text-align:center;">
-0.685
+1.339**
 </td>
 </tr>
 <tr>
@@ -403,13 +396,13 @@ m0_edad_w01
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.019
+0.042***
 </td>
 <td style="text-align:center;">
-0.016
+0.035**
 </td>
 <td style="text-align:center;">
-0.020
+0.045**
 </td>
 </tr>
 <tr>
@@ -419,13 +412,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.007
+0.023*
 </td>
 <td style="text-align:center;">
-0.008
+0.023*
 </td>
 <td style="text-align:center;">
-0.007
+0.022*
 </td>
 </tr>
 <tr>
@@ -435,13 +428,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.001
+0.005
 </td>
 <td style="text-align:center;">
-−0.003
+−0.004
 </td>
 <td style="text-align:center;">
-−0.007
+−0.006
 </td>
 </tr>
 <tr>
@@ -452,13 +445,13 @@ log_ing
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.204
+−0.003
 </td>
 <td style="text-align:center;">
-0.179
+−0.058
 </td>
 <td style="text-align:center;">
-0.233
+−0.082
 </td>
 </tr>
 <tr>
@@ -468,13 +461,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.132
+0.055
 </td>
 <td style="text-align:center;">
-0.153
+0.069
 </td>
 <td style="text-align:center;">
-0.155
+−0.011
 </td>
 </tr>
 <tr>
@@ -484,13 +477,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−0.169
+−0.329
 </td>
 <td style="text-align:center;">
-−0.161
+−0.372
 </td>
 <td style="text-align:center;">
-−0.216
+−0.625*
 </td>
 </tr>
 <tr>
@@ -501,13 +494,13 @@ trayectoria_deudaNada-Algo sobrecargados
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.586
+0.610
 </td>
 <td style="text-align:center;">
-0.541
+0.573
 </td>
 <td style="text-align:center;">
-0.549
+0.426
 </td>
 </tr>
 <tr>
@@ -517,13 +510,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.147
+1.056**
 </td>
 <td style="text-align:center;">
-0.076
+0.909*
 </td>
 <td style="text-align:center;">
-0.041
+0.581
 </td>
 </tr>
 <tr>
@@ -533,13 +526,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.160
+0.769
 </td>
 <td style="text-align:center;">
-0.022
+0.630
 </td>
 <td style="text-align:center;">
-−0.073
+0.494
 </td>
 </tr>
 <tr>
@@ -550,13 +543,13 @@ trayectoria_deudaNo muy o algo sobrecargados
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-−1.252*
+−1.310*
 </td>
 <td style="text-align:center;">
-−1.281*
+−1.354*
 </td>
 <td style="text-align:center;">
-−1.423*
+−1.335*
 </td>
 </tr>
 <tr>
@@ -566,13 +559,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−1.193**
+−0.825
 </td>
 <td style="text-align:center;">
-−1.236**
+−0.960*
 </td>
 <td style="text-align:center;">
-−1.313**
+−1.227*
 </td>
 </tr>
 <tr>
@@ -582,13 +575,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−2.048*
+−1.935*
 </td>
 <td style="text-align:center;">
-−2.236**
+−2.156*
 </td>
 <td style="text-align:center;">
-−2.174**
+−2.190*
 </td>
 </tr>
 <tr>
@@ -599,13 +592,13 @@ trayectoria_deudaBastante sobrecargados, aliviados 2021
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-−0.614
+−1.308*
 </td>
 <td style="text-align:center;">
-−0.664
+−1.272*
 </td>
 <td style="text-align:center;">
-−0.550
+−1.100
 </td>
 </tr>
 <tr>
@@ -615,13 +608,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−0.616
+0.135
 </td>
 <td style="text-align:center;">
-−0.834*
+0.078
 </td>
 <td style="text-align:center;">
-−0.933*
+−0.245
 </td>
 </tr>
 <tr>
@@ -631,13 +624,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−0.307
+−0.174
 </td>
 <td style="text-align:center;">
-−0.380
+−0.175
 </td>
 <td style="text-align:center;">
-−0.430
+−0.345
 </td>
 </tr>
 <tr>
@@ -648,13 +641,13 @@ trayectoria_deudaMuy sobrecargados
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.421
+0.740
 </td>
 <td style="text-align:center;">
-0.212
+0.364
 </td>
 <td style="text-align:center;">
-0.231
+0.302
 </td>
 </tr>
 <tr>
@@ -664,13 +657,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.263
+1.353***
 </td>
 <td style="text-align:center;">
-0.137
+1.045*
 </td>
 <td style="text-align:center;">
-0.080
+0.729
 </td>
 </tr>
 <tr>
@@ -680,13 +673,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.501
+0.938
 </td>
 <td style="text-align:center;">
-0.281
+0.598
 </td>
 <td style="text-align:center;">
-0.148
+0.246
 </td>
 </tr>
 <tr>
@@ -697,13 +690,13 @@ trayectoria_percepcion_desigualdadDesigualdad muy grande - No muy grande en 2021
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.238
+0.505
 </td>
 <td style="text-align:center;">
-0.172
+0.328
 </td>
 <td style="text-align:center;">
-0.159
+0.357
 </td>
 </tr>
 <tr>
@@ -713,13 +706,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.177
+0.250
 </td>
 <td style="text-align:center;">
-0.229
+0.288
 </td>
 <td style="text-align:center;">
-0.180
+0.186
 </td>
 </tr>
 <tr>
@@ -729,13 +722,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.567
+0.728*
 </td>
 <td style="text-align:center;">
-0.518
+0.649
 </td>
 <td style="text-align:center;">
-0.459
+0.483
 </td>
 </tr>
 <tr>
@@ -746,13 +739,13 @@ trayectoria_percepcion_desigualdadDesigualdad no muy grande - muy grande en 2019
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-−1.304
+−0.301
 </td>
 <td style="text-align:center;">
-−1.314
+−0.605
 </td>
 <td style="text-align:center;">
-−1.160
+−0.658
 </td>
 </tr>
 <tr>
@@ -762,13 +755,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.007
+−0.026
 </td>
 <td style="text-align:center;">
-−0.226
+−0.699
 </td>
 <td style="text-align:center;">
-−0.203
+−0.882
 </td>
 </tr>
 <tr>
@@ -778,13 +771,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−1.820
+−2.357
 </td>
 <td style="text-align:center;">
-−1.756
+−2.223
 </td>
 <td style="text-align:center;">
-−1.720
+−2.366
 </td>
 </tr>
 <tr>
@@ -795,13 +788,13 @@ trayectoria_ocup2Ocupados-inactivos
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.235
+0.665
 </td>
 <td style="text-align:center;">
-0.154
+0.855
 </td>
 <td style="text-align:center;">
-0.131
+0.911
 </td>
 </tr>
 <tr>
@@ -811,13 +804,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.210
+0.776
 </td>
 <td style="text-align:center;">
-0.425
+1.141*
 </td>
 <td style="text-align:center;">
-0.317
+1.142*
 </td>
 </tr>
 <tr>
@@ -827,13 +820,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.070
+1.015
 </td>
 <td style="text-align:center;">
-0.498
+1.564**
 </td>
 <td style="text-align:center;">
-0.488
+1.728**
 </td>
 </tr>
 <tr>
@@ -844,13 +837,13 @@ trayectoria_ocup2Inactivos
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-−0.184
+−1.622**
 </td>
 <td style="text-align:center;">
-−0.268
+−1.736**
 </td>
 <td style="text-align:center;">
-−0.327
+−2.191***
 </td>
 </tr>
 <tr>
@@ -860,13 +853,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−0.260
+−1.484***
 </td>
 <td style="text-align:center;">
-−0.628
+−2.035***
 </td>
 <td style="text-align:center;">
-−0.481
+−2.057***
 </td>
 </tr>
 <tr>
@@ -876,13 +869,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.518
+−0.073
 </td>
 <td style="text-align:center;">
-0.481
+−0.313
 </td>
 <td style="text-align:center;">
-0.719
+−0.399
 </td>
 </tr>
 <tr>
@@ -893,13 +886,13 @@ trayectoria_ocup2Trabajadores no remunerados
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-−0.197
+−0.754
 </td>
 <td style="text-align:center;">
-−0.156
+−0.469
 </td>
 <td style="text-align:center;">
-−0.180
+−0.664
 </td>
 </tr>
 <tr>
@@ -909,13 +902,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.130
+0.024
 </td>
 <td style="text-align:center;">
-0.189
+0.326
 </td>
 <td style="text-align:center;">
-0.246
+0.290
 </td>
 </tr>
 <tr>
@@ -925,13 +918,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−0.183
+−0.021
 </td>
 <td style="text-align:center;">
-−0.013
+0.240
 </td>
 <td style="text-align:center;">
-0.048
+0.100
 </td>
 </tr>
 <tr>
@@ -942,13 +935,13 @@ trayectoria_ocup2Ocupados-desempleados
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.579
+1.248**
 </td>
 <td style="text-align:center;">
-0.750
+1.396**
 </td>
 <td style="text-align:center;">
-0.802
+1.260**
 </td>
 </tr>
 <tr>
@@ -958,13 +951,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.078
+0.460
 </td>
 <td style="text-align:center;">
-0.028
+0.517
 </td>
 <td style="text-align:center;">
-0.061
+0.450
 </td>
 </tr>
 <tr>
@@ -974,13 +967,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−0.260
+0.324
 </td>
 <td style="text-align:center;">
-−0.200
+0.356
 </td>
 <td style="text-align:center;">
-−0.040
+0.243
 </td>
 </tr>
 <tr>
@@ -991,13 +984,13 @@ trayectoria_activ_fisica2
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-1.008
+0.897
 </td>
 <td style="text-align:center;">
-0.965
+0.776
 </td>
 <td style="text-align:center;">
-0.754
+0.932
 </td>
 </tr>
 <tr>
@@ -1007,13 +1000,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.172
+−0.402
 </td>
 <td style="text-align:center;">
-0.117
+−0.461
 </td>
 <td style="text-align:center;">
-0.006
+−0.397
 </td>
 </tr>
 <tr>
@@ -1023,13 +1016,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.881
+−0.265
 </td>
 <td style="text-align:center;">
-1.211*
+−0.097
 </td>
 <td style="text-align:center;">
-1.087
+0.128
 </td>
 </tr>
 <tr>
@@ -1040,13 +1033,13 @@ trayectoria_activ_fisica3
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.530
+0.722
 </td>
 <td style="text-align:center;">
-0.301
+0.291
 </td>
 <td style="text-align:center;">
-0.043
+0.161
 </td>
 </tr>
 <tr>
@@ -1056,13 +1049,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.435
+−0.122
 </td>
 <td style="text-align:center;">
-0.255
+−0.475
 </td>
 <td style="text-align:center;">
-0.082
+−0.539
 </td>
 </tr>
 <tr>
@@ -1072,13 +1065,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.960
+0.504
 </td>
 <td style="text-align:center;">
-1.006
+0.322
 </td>
 <td style="text-align:center;">
-0.838
+0.393
 </td>
 </tr>
 <tr>
@@ -1089,13 +1082,13 @@ trayectoria_activ_fisica4
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-1.558*
+0.747
 </td>
 <td style="text-align:center;">
-1.599*
+0.884
 </td>
 <td style="text-align:center;">
-1.429*
+1.710*
 </td>
 </tr>
 <tr>
@@ -1105,13 +1098,13 @@ Trayectoria media-moderada
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.664
+0.056
 </td>
 <td style="text-align:center;">
-0.751
+0.143
 </td>
 <td style="text-align:center;">
-0.712
+0.711
 </td>
 </tr>
 <tr>
@@ -1121,13 +1114,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-1.708**
+0.809
 </td>
 <td style="text-align:center;">
-2.276**
+1.273*
 </td>
 <td style="text-align:center;">
-2.112**
+2.097**
 </td>
 </tr>
 <tr>
@@ -1140,10 +1133,10 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.013
+−0.234
 </td>
 <td style="text-align:center;">
-0.074
+−0.227
 </td>
 </tr>
 <tr>
@@ -1155,10 +1148,10 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.121
+−0.296
 </td>
 <td style="text-align:center;">
-−0.173
+−0.407
 </td>
 </tr>
 <tr>
@@ -1170,10 +1163,10 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.075
+0.073
 </td>
 <td style="text-align:center;">
-0.166
+−0.008
 </td>
 </tr>
 <tr>
@@ -1189,7 +1182,7 @@ Trayectoria media-moderada
 0.001
 </td>
 <td style="text-align:center;">
-0.001
+0.000
 </td>
 </tr>
 <tr>
@@ -1201,10 +1194,10 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.003
+0.000
 </td>
 <td style="text-align:center;">
-−0.003
+0.000
 </td>
 </tr>
 <tr>
@@ -1216,7 +1209,7 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.001
+0.000
 </td>
 <td style="text-align:center;">
 0.000
@@ -1232,10 +1225,10 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.394
+−0.731
 </td>
 <td style="text-align:center;">
-−0.407
+−1.069*
 </td>
 </tr>
 <tr>
@@ -1247,10 +1240,10 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.538
+−0.881**
 </td>
 <td style="text-align:center;">
-−0.689*
+−1.196***
 </td>
 </tr>
 <tr>
@@ -1262,10 +1255,10 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.934**
+−1.352***
 </td>
 <td style="text-align:center;">
-−0.962**
+−1.667***
 </td>
 </tr>
 <tr>
@@ -1278,10 +1271,10 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.618*
+−0.866**
 </td>
 <td style="text-align:center;">
-−0.614*
+−0.881*
 </td>
 </tr>
 <tr>
@@ -1293,10 +1286,10 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.230
+−0.443
 </td>
 <td style="text-align:center;">
-−0.237
+−0.455
 </td>
 </tr>
 <tr>
@@ -1308,10 +1301,10 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.616*
+−1.031**
 </td>
 <td style="text-align:center;">
-−0.630*
+−1.119**
 </td>
 </tr>
 <tr>
@@ -1326,7 +1319,7 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.157
+−0.417**
 </td>
 </tr>
 <tr>
@@ -1340,7 +1333,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.009
+−0.088
 </td>
 </tr>
 <tr>
@@ -1354,7 +1347,7 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.179
+−0.147
 </td>
 </tr>
 <tr>
@@ -1369,7 +1362,7 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.198
+−0.192
 </td>
 </tr>
 <tr>
@@ -1383,7 +1376,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.204*
+−0.232*
 </td>
 </tr>
 <tr>
@@ -1397,7 +1390,7 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.096
+0.050
 </td>
 </tr>
 <tr>
@@ -1412,7 +1405,7 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.049
+−0.106
 </td>
 </tr>
 <tr>
@@ -1426,7 +1419,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.060
+0.080
 </td>
 </tr>
 <tr>
@@ -1440,7 +1433,7 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.079
+0.177
 </td>
 </tr>
 <tr>
@@ -1455,7 +1448,7 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.178
+0.279*
 </td>
 </tr>
 <tr>
@@ -1469,7 +1462,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.126
+−0.169*
 </td>
 </tr>
 <tr>
@@ -1483,7 +1476,7 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.130
+0.286**
 </td>
 </tr>
 <tr>
@@ -1498,7 +1491,7 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.168
+0.228*
 </td>
 </tr>
 <tr>
@@ -1512,7 +1505,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.144
+0.079
 </td>
 </tr>
 <tr>
@@ -1526,7 +1519,7 @@ Trayectoria alta-moderada
 <td style="text-align:center;box-shadow: 0px 1px">
 </td>
 <td style="text-align:center;box-shadow: 0px 1px">
-0.271**
+0.032
 </td>
 </tr>
 <tr>
@@ -1552,13 +1545,13 @@ AIC
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-1353.5
+1324.7
 </td>
 <td style="text-align:center;">
-1245.9
+1223.8
 </td>
 <td style="text-align:center;">
-1225.0
+1169.3
 </td>
 </tr>
 <tr>
@@ -1568,13 +1561,13 @@ BIC
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-1569.4
+1540.6
 </td>
 <td style="text-align:center;">
-1507.1
+1485.1
 </td>
 <td style="text-align:center;">
-1547.2
+1491.5
 </td>
 </tr>
 <tr>
@@ -1584,13 +1577,13 @@ RMSE
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
+0.42
+</td>
+<td style="text-align:center;">
 0.41
 </td>
 <td style="text-align:center;">
-0.40
-</td>
-<td style="text-align:center;">
-0.40
+0.41
 </td>
 </tr>
 </tbody>
@@ -1598,56 +1591,55 @@ RMSE
 </div>
 <div id="variable-dependiente-trayectorias-om-5-clases" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Variable dependiente: Trayectorias OM 5 clases<a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-5-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="modelo-multinomial-logit.html#cb99-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb99-2"><a href="modelo-multinomial-logit.html#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
-<span id="cb99-3"><a href="modelo-multinomial-logit.html#cb99-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="modelo-multinomial-logit.html#cb88-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb88-2"><a href="modelo-multinomial-logit.html#cb88-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb88-3"><a href="modelo-multinomial-logit.html#cb88-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  90 (68 variable)
-## initial  value 1973.170881 
-## iter  10 value 1714.140766
-## iter  20 value 1453.548592
-## iter  30 value 1412.306313
-## iter  40 value 1408.018473
-## iter  50 value 1407.803784
-## iter  60 value 1407.785631
-## final  value 1407.785551 
+## initial  value 1966.659099 
+## iter  10 value 1696.560253
+## iter  20 value 1424.507881
+## iter  30 value 1388.722711
+## iter  40 value 1380.392371
+## iter  50 value 1379.787018
+## iter  60 value 1379.757493
+## final  value 1379.756600 
 ## converged</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelo-multinomial-logit.html#cb101-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb101-2"><a href="modelo-multinomial-logit.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
-<span id="cb101-3"><a href="modelo-multinomial-logit.html#cb101-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="modelo-multinomial-logit.html#cb90-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb90-2"><a href="modelo-multinomial-logit.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
+<span id="cb90-3"><a href="modelo-multinomial-logit.html#cb90-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  110 (84 variable)
-## initial  value 1841.196972 
-## iter  10 value 1394.779709
-## iter  20 value 1286.406929
-## iter  30 value 1265.038297
-## iter  40 value 1261.934231
-## iter  50 value 1261.153783
-## iter  60 value 1260.875303
-## iter  70 value 1260.848432
-## iter  80 value 1260.844905
-## final  value 1260.844779 
+## initial  value 1843.694823 
+## iter  10 value 1473.400817
+## iter  20 value 1279.107224
+## iter  30 value 1242.006942
+## iter  40 value 1238.481945
+## iter  50 value 1237.613911
+## iter  60 value 1237.428760
+## iter  70 value 1237.393115
+## final  value 1237.392098 
 ## converged</code></pre>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="modelo-multinomial-logit.html#cb103-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb103-2"><a href="modelo-multinomial-logit.html#cb103-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
-<span id="cb103-3"><a href="modelo-multinomial-logit.html#cb103-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="modelo-multinomial-logit.html#cb92-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb92-2"><a href="modelo-multinomial-logit.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb92-3"><a href="modelo-multinomial-logit.html#cb92-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  135 (104 variable)
-## initial  value 1818.664841 
-## iter  10 value 1372.985321
-## iter  20 value 1262.476194
-## iter  30 value 1228.999068
-## iter  40 value 1200.765234
-## iter  50 value 1192.066047
-## iter  60 value 1189.883355
-## iter  70 value 1189.027358
-## iter  80 value 1188.841269
-## iter  90 value 1188.824570
-## iter 100 value 1188.812829
-## final  value 1188.812829 
+## initial  value 1822.382646 
+## iter  10 value 1448.948071
+## iter  20 value 1280.287955
+## iter  30 value 1203.680631
+## iter  40 value 1166.974532
+## iter  50 value 1153.175025
+## iter  60 value 1149.606105
+## iter  70 value 1149.053619
+## iter  80 value 1148.922282
+## iter  90 value 1148.896602
+## iter 100 value 1148.895383
+## final  value 1148.895383 
 ## stopped after 100 iterations</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="modelo-multinomial-logit.html#cb105-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
-<span id="cb105-2"><a href="modelo-multinomial-logit.html#cb105-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
-<span id="cb105-3"><a href="modelo-multinomial-logit.html#cb105-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
-<span id="cb105-4"><a href="modelo-multinomial-logit.html#cb105-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb105-5"><a href="modelo-multinomial-logit.html#cb105-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="modelo-multinomial-logit.html#cb94-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb94-2"><a href="modelo-multinomial-logit.html#cb94-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
+<span id="cb94-3"><a href="modelo-multinomial-logit.html#cb94-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
+<span id="cb94-4"><a href="modelo-multinomial-logit.html#cb94-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb94-5"><a href="modelo-multinomial-logit.html#cb94-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model)</span></code></pre></div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1675,13 +1667,13 @@ Model 3
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-2.381
+4.306*
 </td>
 <td style="text-align:center;">
-1.720
+3.549*
 </td>
 <td style="text-align:center;">
-0.318
+1.563
 </td>
 </tr>
 <tr>
@@ -1691,13 +1683,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-−3.523
+−0.874
 </td>
 <td style="text-align:center;">
-−2.965
+1.103
 </td>
 <td style="text-align:center;">
-−4.264
+−0.631
 </td>
 </tr>
 <tr>
@@ -1707,13 +1699,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.468
+1.249
 </td>
 <td style="text-align:center;">
-0.294
+1.463
 </td>
 <td style="text-align:center;">
-−0.298
+1.300
 </td>
 </tr>
 <tr>
@@ -1723,13 +1715,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-1.571
+4.541
 </td>
 <td style="text-align:center;">
-1.243
+5.320
 </td>
 <td style="text-align:center;">
-−0.202
+3.376
 </td>
 </tr>
 <tr>
@@ -1740,13 +1732,13 @@ m0_sexo_w01
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.294
+0.112
 </td>
 <td style="text-align:center;">
-0.413*
+0.337
 </td>
 <td style="text-align:center;">
-0.396
+0.260
 </td>
 </tr>
 <tr>
@@ -1756,13 +1748,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.811**
+0.773**
 </td>
 <td style="text-align:center;">
-0.835**
+1.013**
 </td>
 <td style="text-align:center;">
-0.722*
+0.896**
 </td>
 </tr>
 <tr>
@@ -1772,13 +1764,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.516*
+0.795***
 </td>
 <td style="text-align:center;">
-0.581*
+0.996***
 </td>
 <td style="text-align:center;">
-0.522*
+0.873***
 </td>
 </tr>
 <tr>
@@ -1788,13 +1780,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-1.171**
+1.605***
 </td>
 <td style="text-align:center;">
-1.276***
+2.034***
 </td>
 <td style="text-align:center;">
-1.109**
+1.681***
 </td>
 </tr>
 <tr>
@@ -1805,13 +1797,13 @@ m0_edad_w01
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-−0.011
+−0.030***
 </td>
 <td style="text-align:center;">
-−0.017*
+−0.032***
 </td>
 <td style="text-align:center;">
-−0.012
+−0.027***
 </td>
 </tr>
 <tr>
@@ -1821,13 +1813,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.010
+0.011
 </td>
 <td style="text-align:center;">
 0.001
 </td>
 <td style="text-align:center;">
-0.007
+0.016
 </td>
 </tr>
 <tr>
@@ -1837,13 +1829,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−0.004
+−0.012
 </td>
 <td style="text-align:center;">
-−0.009
+−0.013
 </td>
 <td style="text-align:center;">
-−0.006
+−0.008
 </td>
 </tr>
 <tr>
@@ -1853,13 +1845,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−0.007
+−0.026**
 </td>
 <td style="text-align:center;">
-−0.017
+−0.037***
 </td>
 <td style="text-align:center;">
-−0.017
+−0.034**
 </td>
 </tr>
 <tr>
@@ -1870,13 +1862,13 @@ log_ing
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-−0.353**
+−0.380**
 </td>
 <td style="text-align:center;">
-−0.278*
+−0.286*
 </td>
 <td style="text-align:center;">
-−0.276
+−0.271
 </td>
 </tr>
 <tr>
@@ -1886,13 +1878,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-−0.156
+−0.326
 </td>
 <td style="text-align:center;">
-−0.097
+−0.339
 </td>
 <td style="text-align:center;">
-−0.069
+−0.293
 </td>
 </tr>
 <tr>
@@ -1902,13 +1894,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−0.269
+−0.313*
 </td>
 <td style="text-align:center;">
-−0.164
+−0.206
 </td>
 <td style="text-align:center;">
-−0.160
+−0.193
 </td>
 </tr>
 <tr>
@@ -1918,13 +1910,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−0.557*
+−0.727***
 </td>
 <td style="text-align:center;">
-−0.433
+−0.649**
 </td>
 <td style="text-align:center;">
-−0.537*
+−0.854***
 </td>
 </tr>
 <tr>
@@ -1935,13 +1927,13 @@ trayectoria_deudaNada-Algo sobrecargados
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.067
+−0.540*
 </td>
 <td style="text-align:center;">
-0.172
+−0.371
 </td>
 <td style="text-align:center;">
-0.227
+−0.072
 </td>
 </tr>
 <tr>
@@ -1951,13 +1943,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.515
+−0.080
 </td>
 <td style="text-align:center;">
-0.605
+0.014
 </td>
 <td style="text-align:center;">
-0.666
+0.087
 </td>
 </tr>
 <tr>
@@ -1967,13 +1959,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.171
+0.307
 </td>
 <td style="text-align:center;">
-0.186
+0.230
 </td>
 <td style="text-align:center;">
-0.209
+0.183
 </td>
 </tr>
 <tr>
@@ -1983,13 +1975,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.124
+0.144
 </td>
 <td style="text-align:center;">
-0.097
+0.061
 </td>
 <td style="text-align:center;">
-0.117
+0.203
 </td>
 </tr>
 <tr>
@@ -2000,13 +1992,13 @@ trayectoria_deudaNo muy o algo sobrecargados
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.746**
+0.292
 </td>
 <td style="text-align:center;">
-0.787**
+0.376
 </td>
 <td style="text-align:center;">
-0.895**
+0.676*
 </td>
 </tr>
 <tr>
@@ -2016,13 +2008,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-−0.431
+−0.864
 </td>
 <td style="text-align:center;">
-−0.401
+−0.825
 </td>
 <td style="text-align:center;">
-−0.437
+−0.561
 </td>
 </tr>
 <tr>
@@ -2032,13 +2024,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−0.413
+−0.597
 </td>
 <td style="text-align:center;">
-−0.415
+−0.668
 </td>
 <td style="text-align:center;">
-−0.362
+−0.596
 </td>
 </tr>
 <tr>
@@ -2048,13 +2040,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−1.263
+−1.646*
 </td>
 <td style="text-align:center;">
-−1.410
+−1.849*
 </td>
 <td style="text-align:center;">
-−1.252
+−1.725*
 </td>
 </tr>
 <tr>
@@ -2065,13 +2057,13 @@ trayectoria_deudaBastante sobrecargados, aliviados 2021
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.788**
+0.152
 </td>
 <td style="text-align:center;">
-0.898***
+0.230
 </td>
 <td style="text-align:center;">
-1.044***
+0.615*
 </td>
 </tr>
 <tr>
@@ -2081,13 +2073,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.142
+−1.255**
 </td>
 <td style="text-align:center;">
-0.177
+−1.222*
 </td>
 <td style="text-align:center;">
-0.381
+−0.730
 </td>
 </tr>
 <tr>
@@ -2097,13 +2089,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.148
+0.117
 </td>
 <td style="text-align:center;">
-0.023
+0.102
 </td>
 <td style="text-align:center;">
-0.028
+0.169
 </td>
 </tr>
 <tr>
@@ -2113,13 +2105,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.376
+−0.201
 </td>
 <td style="text-align:center;">
-0.386
+−0.200
 </td>
 <td style="text-align:center;">
-0.469
+−0.012
 </td>
 </tr>
 <tr>
@@ -2130,13 +2122,13 @@ trayectoria_deudaMuy sobrecargados
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.750**
+−0.140
 </td>
 <td style="text-align:center;">
-0.799**
+−0.092
 </td>
 <td style="text-align:center;">
-0.831**
+0.247
 </td>
 </tr>
 <tr>
@@ -2146,13 +2138,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-1.114**
+0.405
 </td>
 <td style="text-align:center;">
-1.014**
+0.101
 </td>
 <td style="text-align:center;">
-1.032*
+0.295
 </td>
 </tr>
 <tr>
@@ -2162,13 +2154,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.970***
+1.001***
 </td>
 <td style="text-align:center;">
-0.899**
+0.690*
 </td>
 <td style="text-align:center;">
-0.912**
+0.749*
 </td>
 </tr>
 <tr>
@@ -2178,13 +2170,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-1.191***
+0.657
 </td>
 <td style="text-align:center;">
-1.043**
+0.292
 </td>
 <td style="text-align:center;">
-0.977*
+0.281
 </td>
 </tr>
 <tr>
@@ -2195,13 +2187,13 @@ trayectoria_percepcion_desigualdadDesigualdad muy grande - No muy grande en 2021
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-−0.069
+−0.089
 </td>
 <td style="text-align:center;">
-−0.091
+−0.109
 </td>
 <td style="text-align:center;">
-−0.099
+0.010
 </td>
 </tr>
 <tr>
@@ -2211,13 +2203,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.066
+0.201
 </td>
 <td style="text-align:center;">
-0.009
+0.023
 </td>
 <td style="text-align:center;">
-−0.006
+0.130
 </td>
 </tr>
 <tr>
@@ -2227,13 +2219,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.008
+0.092
 </td>
 <td style="text-align:center;">
-0.083
+0.127
 </td>
 <td style="text-align:center;">
-0.068
+0.129
 </td>
 </tr>
 <tr>
@@ -2243,13 +2235,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.342
+0.390
 </td>
 <td style="text-align:center;">
-0.314
+0.339
 </td>
 <td style="text-align:center;">
-0.284
+0.275
 </td>
 </tr>
 <tr>
@@ -2260,13 +2252,13 @@ trayectoria_percepcion_desigualdadDesigualdad no muy grande - muy grande en 2019
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.267
+−0.327
 </td>
 <td style="text-align:center;">
-0.224
+−0.332
 </td>
 <td style="text-align:center;">
-0.166
+−0.154
 </td>
 </tr>
 <tr>
@@ -2276,13 +2268,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-−1.004
+−0.856
 </td>
 <td style="text-align:center;">
-−1.032
+−1.229
 </td>
 <td style="text-align:center;">
-−1.072
+−0.975
 </td>
 </tr>
 <tr>
@@ -2292,13 +2284,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.184
+−0.506
 </td>
 <td style="text-align:center;">
-−0.095
+−1.129*
 </td>
 <td style="text-align:center;">
-−0.203
+−1.321*
 </td>
 </tr>
 <tr>
@@ -2308,13 +2300,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−1.571
+−2.765
 </td>
 <td style="text-align:center;">
-−1.521
+−2.761
 </td>
 <td style="text-align:center;">
-−1.648
+−2.665
 </td>
 </tr>
 <tr>
@@ -2325,13 +2317,13 @@ trayectoria_ocup2Ocupados-inactivos
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-−0.070
+−0.411
 </td>
 <td style="text-align:center;">
-−0.099
+−0.522
 </td>
 <td style="text-align:center;">
-−0.120
+−0.658
 </td>
 </tr>
 <tr>
@@ -2341,13 +2333,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.268
+0.080
 </td>
 <td style="text-align:center;">
-−0.002
+−0.071
 </td>
 <td style="text-align:center;">
-0.046
+−0.182
 </td>
 </tr>
 <tr>
@@ -2357,13 +2349,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.171
+0.219
 </td>
 <td style="text-align:center;">
-0.233
+0.214
 </td>
 <td style="text-align:center;">
-0.171
+0.009
 </td>
 </tr>
 <tr>
@@ -2373,13 +2365,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.035
+0.437
 </td>
 <td style="text-align:center;">
-0.293
+0.536
 </td>
 <td style="text-align:center;">
-0.390
+0.471
 </td>
 </tr>
 <tr>
@@ -2390,13 +2382,13 @@ trayectoria_ocup2Inactivos
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.408
+1.212***
 </td>
 <td style="text-align:center;">
-0.544
+1.154***
 </td>
 <td style="text-align:center;">
-0.329
+0.942**
 </td>
 </tr>
 <tr>
@@ -2406,13 +2398,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.190
+−0.298
 </td>
 <td style="text-align:center;">
-0.327
+−0.441
 </td>
 <td style="text-align:center;">
-0.110
+−0.917
 </td>
 </tr>
 <tr>
@@ -2422,13 +2414,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.149
+−0.116
 </td>
 <td style="text-align:center;">
-−0.024
+−0.628
 </td>
 <td style="text-align:center;">
-−0.093
+−0.834
 </td>
 </tr>
 <tr>
@@ -2438,13 +2430,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.756
+1.020*
 </td>
 <td style="text-align:center;">
-0.910*
+0.861
 </td>
 <td style="text-align:center;">
-0.926*
+0.541
 </td>
 </tr>
 <tr>
@@ -2455,13 +2447,13 @@ trayectoria_ocup2Trabajadores no remunerados
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.209
+0.243
 </td>
 <td style="text-align:center;">
-0.145
+−0.111
 </td>
 <td style="text-align:center;">
-0.009
+−0.170
 </td>
 </tr>
 <tr>
@@ -2471,13 +2463,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.053
+−0.348
 </td>
 <td style="text-align:center;">
-0.072
+−0.529
 </td>
 <td style="text-align:center;">
-−0.047
+−0.640
 </td>
 </tr>
 <tr>
@@ -2487,13 +2479,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.333
+0.389
 </td>
 <td style="text-align:center;">
-0.365
+0.328
 </td>
 <td style="text-align:center;">
-0.315
+0.311
 </td>
 </tr>
 <tr>
@@ -2503,13 +2495,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−0.032
+0.250
 </td>
 <td style="text-align:center;">
-0.150
+0.183
 </td>
 <td style="text-align:center;">
-0.029
+0.000
 </td>
 </tr>
 <tr>
@@ -2520,13 +2512,13 @@ trayectoria_ocup2Ocupados-desempleados
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.034
+0.041
 </td>
 <td style="text-align:center;">
-−0.073
+−0.179
 </td>
 <td style="text-align:center;">
-−0.103
+−0.212
 </td>
 </tr>
 <tr>
@@ -2536,13 +2528,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.656
+1.420***
 </td>
 <td style="text-align:center;">
-0.703
+1.250***
 </td>
 <td style="text-align:center;">
-0.572
+1.167**
 </td>
 </tr>
 <tr>
@@ -2552,13 +2544,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.126
+0.560
 </td>
 <td style="text-align:center;">
-−0.064
+0.332
 </td>
 <td style="text-align:center;">
-−0.153
+0.234
 </td>
 </tr>
 <tr>
@@ -2568,13 +2560,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-−0.223
+0.369
 </td>
 <td style="text-align:center;">
-−0.297
+0.182
 </td>
 <td style="text-align:center;">
-−0.348
+−0.020
 </td>
 </tr>
 <tr>
@@ -2585,13 +2577,13 @@ trayectoria_activ_fisica2
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-0.265
+0.415
 </td>
 <td style="text-align:center;">
-0.214
+0.455
 </td>
 <td style="text-align:center;">
-0.252
+0.514*
 </td>
 </tr>
 <tr>
@@ -2601,13 +2593,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-1.187*
+1.386**
 </td>
 <td style="text-align:center;">
-1.068*
+1.379**
 </td>
 <td style="text-align:center;">
-1.029*
+1.624**
 </td>
 </tr>
 <tr>
@@ -2617,13 +2609,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.337
+0.150
 </td>
 <td style="text-align:center;">
-0.249
+0.124
 </td>
 <td style="text-align:center;">
-0.259
+0.164
 </td>
 </tr>
 <tr>
@@ -2633,13 +2625,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.898
+0.088
 </td>
 <td style="text-align:center;">
-1.164*
+0.259
 </td>
 <td style="text-align:center;">
-1.266*
+0.479
 </td>
 </tr>
 <tr>
@@ -2650,13 +2642,13 @@ trayectoria_activ_fisica3
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-−0.039
+−0.113
 </td>
 <td style="text-align:center;">
-−0.022
+−0.029
 </td>
 <td style="text-align:center;">
-0.017
+0.181
 </td>
 </tr>
 <tr>
@@ -2666,13 +2658,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.440
+0.669
 </td>
 <td style="text-align:center;">
-0.281
+0.549
 </td>
 <td style="text-align:center;">
-0.246
+0.834
 </td>
 </tr>
 <tr>
@@ -2682,13 +2674,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.333
+−0.021
 </td>
 <td style="text-align:center;">
-0.247
+−0.183
 </td>
 <td style="text-align:center;">
-0.233
+−0.096
 </td>
 </tr>
 <tr>
@@ -2698,13 +2690,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-0.671
+0.375
 </td>
 <td style="text-align:center;">
-0.802
+0.398
 </td>
 <td style="text-align:center;">
-0.905
+0.688
 </td>
 </tr>
 <tr>
@@ -2715,13 +2707,13 @@ trayectoria_activ_fisica4
 Trayectoria media-moderada
 </td>
 <td style="text-align:center;">
-−0.421
+−0.124
 </td>
 <td style="text-align:center;">
-−0.489
+−0.110
 </td>
 <td style="text-align:center;">
-−0.545
+−0.618
 </td>
 </tr>
 <tr>
@@ -2731,13 +2723,13 @@ Trayectoria media-moderada
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-1.105*
+0.804
 </td>
 <td style="text-align:center;">
-0.982
+0.911
 </td>
 <td style="text-align:center;">
-0.870
+1.160
 </td>
 </tr>
 <tr>
@@ -2747,13 +2739,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.209
+0.129
 </td>
 <td style="text-align:center;">
-0.257
+0.167
 </td>
 <td style="text-align:center;">
-0.205
+0.125
 </td>
 </tr>
 <tr>
@@ -2763,13 +2755,13 @@ Trayectoria ascendente
 Trayectoria alta-moderada
 </td>
 <td style="text-align:center;">
-1.053
+0.731
 </td>
 <td style="text-align:center;">
-1.475*
+0.999*
 </td>
 <td style="text-align:center;">
-1.495*
+1.205*
 </td>
 </tr>
 <tr>
@@ -2782,10 +2774,10 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.200
+0.144
 </td>
 <td style="text-align:center;">
-0.271
+0.181
 </td>
 </tr>
 <tr>
@@ -2797,10 +2789,10 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.215
+0.083
 </td>
 <td style="text-align:center;">
-0.333
+0.139
 </td>
 </tr>
 <tr>
@@ -2812,10 +2804,10 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.087
+−0.064
 </td>
 <td style="text-align:center;">
-0.045
+−0.126
 </td>
 </tr>
 <tr>
@@ -2827,10 +2819,10 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.254
+0.379
 </td>
 <td style="text-align:center;">
-0.418
+0.360
 </td>
 </tr>
 <tr>
@@ -2843,10 +2835,10 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.013
+0.002
 </td>
 <td style="text-align:center;">
-0.014
+0.003
 </td>
 </tr>
 <tr>
@@ -2858,10 +2850,10 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.014
+0.002
 </td>
 <td style="text-align:center;">
-0.015
+0.004
 </td>
 </tr>
 <tr>
@@ -2873,10 +2865,10 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.010
+0.002
 </td>
 <td style="text-align:center;">
-0.010
+0.003
 </td>
 </tr>
 <tr>
@@ -2888,10 +2880,10 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.012
+0.002
 </td>
 <td style="text-align:center;">
-0.014
+0.003
 </td>
 </tr>
 <tr>
@@ -2904,10 +2896,10 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.586*
+−0.647*
 </td>
 <td style="text-align:center;">
-−0.426
+−0.354
 </td>
 </tr>
 <tr>
@@ -2919,10 +2911,10 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.945**
+−1.240***
 </td>
 <td style="text-align:center;">
-−0.750*
+−1.132**
 </td>
 </tr>
 <tr>
@@ -2934,10 +2926,10 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−1.132***
+−1.392***
 </td>
 <td style="text-align:center;">
-−1.122***
+−1.373***
 </td>
 </tr>
 <tr>
@@ -2949,10 +2941,10 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−1.462***
+−1.712***
 </td>
 <td style="text-align:center;">
-−1.319***
+−1.681***
 </td>
 </tr>
 <tr>
@@ -2965,10 +2957,10 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.262
+−0.355
 </td>
 <td style="text-align:center;">
-−0.222
+−0.297
 </td>
 </tr>
 <tr>
@@ -2980,10 +2972,10 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.858***
+−1.130***
 </td>
 <td style="text-align:center;">
-−0.802**
+−0.934**
 </td>
 </tr>
 <tr>
@@ -2995,10 +2987,10 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.451*
+−0.639**
 </td>
 <td style="text-align:center;">
-−0.419*
+−0.565**
 </td>
 </tr>
 <tr>
@@ -3010,10 +3002,10 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.850**
+−1.282***
 </td>
 <td style="text-align:center;">
-−0.840**
+−1.198***
 </td>
 </tr>
 <tr>
@@ -3028,7 +3020,7 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.090
+0.180*
 </td>
 </tr>
 <tr>
@@ -3042,7 +3034,7 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.035
+−0.176
 </td>
 </tr>
 <tr>
@@ -3056,7 +3048,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.132
+0.141
 </td>
 </tr>
 <tr>
@@ -3070,7 +3062,7 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.047
+0.082
 </td>
 </tr>
 <tr>
@@ -3085,7 +3077,7 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.027
+0.022
 </td>
 </tr>
 <tr>
@@ -3099,7 +3091,7 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.188
+−0.212
 </td>
 </tr>
 <tr>
@@ -3113,7 +3105,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.196**
+−0.206**
 </td>
 </tr>
 <tr>
@@ -3127,7 +3119,7 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.095
+0.060
 </td>
 </tr>
 <tr>
@@ -3142,7 +3134,7 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.160*
+−0.233***
 </td>
 </tr>
 <tr>
@@ -3156,7 +3148,7 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.179
+−0.261*
 </td>
 </tr>
 <tr>
@@ -3170,7 +3162,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.075
+−0.113
 </td>
 </tr>
 <tr>
@@ -3184,7 +3176,7 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.065
+−0.022
 </td>
 </tr>
 <tr>
@@ -3199,7 +3191,7 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.299***
+0.304***
 </td>
 </tr>
 <tr>
@@ -3213,7 +3205,7 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.484***
+0.549***
 </td>
 </tr>
 <tr>
@@ -3227,7 +3219,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.176**
+0.148*
 </td>
 </tr>
 <tr>
@@ -3241,7 +3233,7 @@ Trayectoria alta-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.439***
+0.582***
 </td>
 </tr>
 <tr>
@@ -3256,7 +3248,7 @@ Trayectoria media-moderada
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.027
+−0.009
 </td>
 </tr>
 <tr>
@@ -3270,7 +3262,7 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.124
+0.221*
 </td>
 </tr>
 <tr>
@@ -3284,7 +3276,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.107
+0.089
 </td>
 </tr>
 <tr>
@@ -3298,7 +3290,7 @@ Trayectoria alta-moderada
 <td style="text-align:center;box-shadow: 0px 1px">
 </td>
 <td style="text-align:center;box-shadow: 0px 1px">
-0.241**
+0.058
 </td>
 </tr>
 <tr>
@@ -3324,13 +3316,13 @@ AIC
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-2951.6
+2895.5
 </td>
 <td style="text-align:center;">
-2689.7
+2642.8
 </td>
 <td style="text-align:center;">
-2585.6
+2505.8
 </td>
 </tr>
 <tr>
@@ -3340,13 +3332,13 @@ BIC
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-3299.2
+3243.1
 </td>
 <td style="text-align:center;">
-3113.2
+3066.3
 </td>
 <td style="text-align:center;">
-3108.7
+3028.9
 </td>
 </tr>
 <tr>
@@ -3356,10 +3348,10 @@ RMSE
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-0.34
+0.35
 </td>
 <td style="text-align:center;">
-0.33
+0.34
 </td>
 <td style="text-align:center;">
 0.33
@@ -3370,56 +3362,60 @@ RMSE
 </div>
 <div id="variable-dependiente-trayectorias-lcmm-4-clases" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Variable dependiente: Trayectorias LCMM 4 clases<a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-4-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="modelo-multinomial-logit.html#cb106-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb106-2"><a href="modelo-multinomial-logit.html#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
-<span id="cb106-3"><a href="modelo-multinomial-logit.html#cb106-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="modelo-multinomial-logit.html#cb95-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb95-2"><a href="modelo-multinomial-logit.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb95-3"><a href="modelo-multinomial-logit.html#cb95-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  72 (51 variable)
-## initial  value 1699.596887 
-## iter  10 value 1111.088679
-## iter  20 value 1028.987031
-## iter  30 value 1018.132002
-## iter  40 value 1016.839960
-## iter  50 value 1016.698825
-## iter  60 value 1016.683835
-## iter  70 value 1016.675043
-## final  value 1016.674955 
+## initial  value 1693.987943 
+## iter  10 value 1060.327069
+## iter  20 value 984.800520
+## iter  30 value 972.021052
+## iter  40 value 969.561229
+## iter  50 value 969.338252
+## iter  60 value 969.302628
+## iter  70 value 969.289608
+## final  value 969.289584 
 ## converged</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="modelo-multinomial-logit.html#cb108-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb108-2"><a href="modelo-multinomial-logit.html#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
-<span id="cb108-3"><a href="modelo-multinomial-logit.html#cb108-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="modelo-multinomial-logit.html#cb97-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb97-2"><a href="modelo-multinomial-logit.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
+<span id="cb97-3"><a href="modelo-multinomial-logit.html#cb97-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  88 (63 variable)
-## initial  value 1585.920749 
-## iter  10 value 1058.385003
-## iter  20 value 934.441093
-## iter  30 value 913.823675
-## iter  40 value 910.007458
-## iter  50 value 908.628104
-## iter  60 value 907.889247
-## iter  70 value 907.360617
-## iter  80 value 907.257821
-## final  value 907.257780 
+## initial  value 1588.072281 
+## iter  10 value 1042.701212
+## iter  20 value 895.759003
+## iter  30 value 866.595768
+## iter  40 value 858.690680
+## iter  50 value 856.894591
+## iter  60 value 856.595480
+## iter  70 value 856.559991
+## iter  80 value 856.550480
+## iter  90 value 856.545691
+## iter  90 value 856.545683
+## iter  90 value 856.545683
+## final  value 856.545683 
 ## converged</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="modelo-multinomial-logit.html#cb110-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb110-2"><a href="modelo-multinomial-logit.html#cb110-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
-<span id="cb110-3"><a href="modelo-multinomial-logit.html#cb110-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="modelo-multinomial-logit.html#cb99-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb99-2"><a href="modelo-multinomial-logit.html#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb99-3"><a href="modelo-multinomial-logit.html#cb99-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  108 (78 variable)
-## initial  value 1566.512628 
-## iter  10 value 1063.624861
-## iter  20 value 946.918227
-## iter  30 value 869.631943
-## iter  40 value 851.539192
-## iter  50 value 848.710504
-## iter  60 value 846.513668
-## iter  70 value 845.350617
-## iter  80 value 844.878331
-## iter  90 value 844.521162
-## final  value 844.491323 
-## converged</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="modelo-multinomial-logit.html#cb112-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
-<span id="cb112-2"><a href="modelo-multinomial-logit.html#cb112-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
-<span id="cb112-3"><a href="modelo-multinomial-logit.html#cb112-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
-<span id="cb112-4"><a href="modelo-multinomial-logit.html#cb112-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb112-5"><a href="modelo-multinomial-logit.html#cb112-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model)</span></code></pre></div>
+## initial  value 1569.714971 
+## iter  10 value 1038.577698
+## iter  20 value 888.558397
+## iter  30 value 834.556397
+## iter  40 value 812.429249
+## iter  50 value 805.972445
+## iter  60 value 803.765809
+## iter  70 value 803.080450
+## iter  80 value 802.972692
+## iter  90 value 802.967418
+## iter 100 value 802.960212
+## final  value 802.960212 
+## stopped after 100 iterations</code></pre>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelo-multinomial-logit.html#cb101-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb101-2"><a href="modelo-multinomial-logit.html#cb101-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
+<span id="cb101-3"><a href="modelo-multinomial-logit.html#cb101-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
+<span id="cb101-4"><a href="modelo-multinomial-logit.html#cb101-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb101-5"><a href="modelo-multinomial-logit.html#cb101-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model)</span></code></pre></div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3447,13 +3443,13 @@ Model 3
 Trayectoria media
 </td>
 <td style="text-align:center;">
-−0.260
+1.811
 </td>
 <td style="text-align:center;">
-−0.799
+1.333
 </td>
 <td style="text-align:center;">
-−2.201
+0.526
 </td>
 </tr>
 <tr>
@@ -3463,13 +3459,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-−5.362
+−8.574*
 </td>
 <td style="text-align:center;">
-−7.389
+−10.409*
 </td>
 <td style="text-align:center;">
-−7.276
+−13.125**
 </td>
 </tr>
 <tr>
@@ -3479,13 +3475,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-2.454
+2.811
 </td>
 <td style="text-align:center;">
-2.614
+2.402
 </td>
 <td style="text-align:center;">
-0.481
+0.566
 </td>
 </tr>
 <tr>
@@ -3496,13 +3492,13 @@ m0_sexo_w01
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.855***
+0.884***
 </td>
 <td style="text-align:center;">
-0.918***
+1.138***
 </td>
 <td style="text-align:center;">
-0.839***
+1.050***
 </td>
 </tr>
 <tr>
@@ -3512,13 +3508,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-1.636**
+1.513**
 </td>
 <td style="text-align:center;">
-2.136**
+2.441***
 </td>
 <td style="text-align:center;">
-2.123**
+2.539***
 </td>
 </tr>
 <tr>
@@ -3528,13 +3524,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.867*
+1.495***
 </td>
 <td style="text-align:center;">
-0.850*
+1.793***
 </td>
 <td style="text-align:center;">
-0.855*
+1.613***
 </td>
 </tr>
 <tr>
@@ -3545,13 +3541,13 @@ m0_edad_w01
 Trayectoria media
 </td>
 <td style="text-align:center;">
-−0.010
+−0.025***
 </td>
 <td style="text-align:center;">
-−0.016**
+−0.029***
 </td>
 <td style="text-align:center;">
-−0.012*
+−0.021***
 </td>
 </tr>
 <tr>
@@ -3561,13 +3557,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.015
+−0.005
 </td>
 <td style="text-align:center;">
-0.005
+−0.016
 </td>
 <td style="text-align:center;">
-0.011
+−0.002
 </td>
 </tr>
 <tr>
@@ -3577,13 +3573,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−0.007
+−0.028**
 </td>
 <td style="text-align:center;">
-−0.017
+−0.041***
 </td>
 <td style="text-align:center;">
-−0.019
+−0.036**
 </td>
 </tr>
 <tr>
@@ -3594,13 +3590,13 @@ log_ing
 Trayectoria media
 </td>
 <td style="text-align:center;">
-−0.188
+−0.285**
 </td>
 <td style="text-align:center;">
-−0.087
+−0.192
 </td>
 <td style="text-align:center;">
-−0.095
+−0.231
 </td>
 </tr>
 <tr>
@@ -3610,13 +3606,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-−0.216
+0.053
 </td>
 <td style="text-align:center;">
-−0.022
+0.226
 </td>
 <td style="text-align:center;">
-0.059
+0.492
 </td>
 </tr>
 <tr>
@@ -3626,13 +3622,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−0.626**
+−0.629**
 </td>
 <td style="text-align:center;">
-−0.528*
+−0.495*
 </td>
 <td style="text-align:center;">
-−0.611*
+−0.602*
 </td>
 </tr>
 <tr>
@@ -3643,13 +3639,13 @@ trayectoria_deudaNada-Algo sobrecargados
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.166
+−0.028
 </td>
 <td style="text-align:center;">
-0.255
+0.095
 </td>
 <td style="text-align:center;">
-0.336
+0.186
 </td>
 </tr>
 <tr>
@@ -3659,13 +3655,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-1.439**
+1.758**
 </td>
 <td style="text-align:center;">
-1.520**
+1.885**
 </td>
 <td style="text-align:center;">
-1.722**
+2.244**
 </td>
 </tr>
 <tr>
@@ -3675,13 +3671,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.434
+0.559
 </td>
 <td style="text-align:center;">
-0.371
+0.464
 </td>
 <td style="text-align:center;">
-0.377
+0.476
 </td>
 </tr>
 <tr>
@@ -3692,13 +3688,13 @@ trayectoria_deudaNo muy o algo sobrecargados
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.309
+0.114
 </td>
 <td style="text-align:center;">
-0.297
+0.157
 </td>
 <td style="text-align:center;">
-0.421
+0.328
 </td>
 </tr>
 <tr>
@@ -3708,13 +3704,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-−0.388
+0.399
 </td>
 <td style="text-align:center;">
-−0.488
+0.333
 </td>
 <td style="text-align:center;">
-−0.302
+0.454
 </td>
 </tr>
 <tr>
@@ -3724,13 +3720,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−1.100
+−2.751
 </td>
 <td style="text-align:center;">
-−1.190
+−2.976
 </td>
 <td style="text-align:center;">
-−1.005
+−2.795
 </td>
 </tr>
 <tr>
@@ -3741,13 +3737,13 @@ trayectoria_deudaBastante sobrecargados, aliviados 2021
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.487*
+−0.118
 </td>
 <td style="text-align:center;">
-0.541*
+−0.037
 </td>
 <td style="text-align:center;">
-0.675**
+0.255
 </td>
 </tr>
 <tr>
@@ -3757,13 +3753,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-1.329*
+1.487*
 </td>
 <td style="text-align:center;">
-1.348*
+1.581*
 </td>
 <td style="text-align:center;">
-1.630**
+2.205**
 </td>
 </tr>
 <tr>
@@ -3773,13 +3769,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−0.036
+−0.635
 </td>
 <td style="text-align:center;">
-−0.113
+−0.691
 </td>
 <td style="text-align:center;">
-−0.311
+−0.683
 </td>
 </tr>
 <tr>
@@ -3790,13 +3786,13 @@ trayectoria_deudaMuy sobrecargados
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.960***
+0.549*
 </td>
 <td style="text-align:center;">
-0.907***
+0.402
 </td>
 <td style="text-align:center;">
-0.921***
+0.563*
 </td>
 </tr>
 <tr>
@@ -3806,13 +3802,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-1.941***
+2.066**
 </td>
 <td style="text-align:center;">
-1.717**
+1.726*
 </td>
 <td style="text-align:center;">
-1.869**
+1.871*
 </td>
 </tr>
 <tr>
@@ -3822,13 +3818,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-1.371***
+1.336***
 </td>
 <td style="text-align:center;">
-1.306***
+1.174**
 </td>
 <td style="text-align:center;">
-1.291**
+1.309**
 </td>
 </tr>
 <tr>
@@ -3839,13 +3835,13 @@ trayectoria_percepcion_desigualdadDesigualdad muy grande - No muy grande en 2021
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.070
+−0.037
 </td>
 <td style="text-align:center;">
-0.078
+−0.087
 </td>
 <td style="text-align:center;">
-0.042
+−0.076
 </td>
 </tr>
 <tr>
@@ -3855,13 +3851,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.523
+0.954**
 </td>
 <td style="text-align:center;">
-0.630
+0.968*
 </td>
 <td style="text-align:center;">
-0.627
+1.199**
 </td>
 </tr>
 <tr>
@@ -3871,13 +3867,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.057
+0.022
 </td>
 <td style="text-align:center;">
-−0.058
+−0.017
 </td>
 <td style="text-align:center;">
-−0.197
+−0.082
 </td>
 </tr>
 <tr>
@@ -3888,13 +3884,13 @@ trayectoria_percepcion_desigualdadDesigualdad no muy grande - muy grande en 2019
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.174
+−0.286
 </td>
 <td style="text-align:center;">
-0.064
+−0.478
 </td>
 <td style="text-align:center;">
-−0.052
+−0.453
 </td>
 </tr>
 <tr>
@@ -3904,13 +3900,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-−11.887***
+−11.644***
 </td>
 <td style="text-align:center;">
-−10.607***
+−12.041***
 </td>
 <td style="text-align:center;">
-−12.336***
+−8.502***
 </td>
 </tr>
 <tr>
@@ -3920,13 +3916,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−0.823
+−2.119
 </td>
 <td style="text-align:center;">
-−0.705
+−1.995
 </td>
 <td style="text-align:center;">
-−0.742
+−2.000
 </td>
 </tr>
 <tr>
@@ -3937,13 +3933,13 @@ trayectoria_ocup2Ocupados-inactivos
 Trayectoria media
 </td>
 <td style="text-align:center;">
-−0.028
+0.029
 </td>
 <td style="text-align:center;">
-−0.081
+−0.006
 </td>
 <td style="text-align:center;">
-−0.106
+−0.154
 </td>
 </tr>
 <tr>
@@ -3953,13 +3949,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-−0.004
+0.572
 </td>
 <td style="text-align:center;">
-0.268
+0.693
 </td>
 <td style="text-align:center;">
-0.371
+0.687
 </td>
 </tr>
 <tr>
@@ -3969,13 +3965,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.128
+−0.129
 </td>
 <td style="text-align:center;">
-0.440
+−0.019
 </td>
 <td style="text-align:center;">
-0.530
+−0.274
 </td>
 </tr>
 <tr>
@@ -3986,13 +3982,13 @@ trayectoria_ocup2Inactivos
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.412
+0.884***
 </td>
 <td style="text-align:center;">
-0.483
+0.839**
 </td>
 <td style="text-align:center;">
-0.332
+0.445
 </td>
 </tr>
 <tr>
@@ -4002,13 +3998,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.366
+0.614
 </td>
 <td style="text-align:center;">
-0.596
+0.512
 </td>
 <td style="text-align:center;">
-0.580
+0.095
 </td>
 </tr>
 <tr>
@@ -4018,13 +4014,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.779
+1.228**
 </td>
 <td style="text-align:center;">
-1.087*
+1.425**
 </td>
 <td style="text-align:center;">
-1.122*
+1.047*
 </td>
 </tr>
 <tr>
@@ -4035,13 +4031,13 @@ trayectoria_ocup2Trabajadores no remunerados
 Trayectoria media
 </td>
 <td style="text-align:center;">
-−0.040
+0.073
 </td>
 <td style="text-align:center;">
-−0.109
+−0.199
 </td>
 <td style="text-align:center;">
-−0.249
+−0.344
 </td>
 </tr>
 <tr>
@@ -4051,13 +4047,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.280
+1.158*
 </td>
 <td style="text-align:center;">
-0.430
+1.015
 </td>
 <td style="text-align:center;">
-0.274
+0.851
 </td>
 </tr>
 <tr>
@@ -4067,13 +4063,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.629
+0.557
 </td>
 <td style="text-align:center;">
-0.875*
+0.593
 </td>
 <td style="text-align:center;">
-0.771
+0.419
 </td>
 </tr>
 <tr>
@@ -4084,13 +4080,13 @@ trayectoria_ocup2Ocupados-desempleados
 Trayectoria media
 </td>
 <td style="text-align:center;">
-−0.167
+0.321
 </td>
 <td style="text-align:center;">
-−0.239
+0.105
 </td>
 <td style="text-align:center;">
-−0.353
+−0.071
 </td>
 </tr>
 <tr>
@@ -4100,13 +4096,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.076
+1.121*
 </td>
 <td style="text-align:center;">
-−0.160
+0.844
 </td>
 <td style="text-align:center;">
-−0.375
+0.674
 </td>
 </tr>
 <tr>
@@ -4116,13 +4112,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-−0.179
+−0.116
 </td>
 <td style="text-align:center;">
-−0.212
+−0.229
 </td>
 <td style="text-align:center;">
-−0.367
+−0.443
 </td>
 </tr>
 <tr>
@@ -4133,13 +4129,13 @@ trayectoria_activ_fisica2
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.435*
+0.577**
 </td>
 <td style="text-align:center;">
-0.371
+0.591**
 </td>
 <td style="text-align:center;">
-0.359
+0.717**
 </td>
 </tr>
 <tr>
@@ -4149,13 +4145,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.057
+0.399
 </td>
 <td style="text-align:center;">
-0.403
+0.992
 </td>
 <td style="text-align:center;">
-0.250
+1.110
 </td>
 </tr>
 <tr>
@@ -4165,13 +4161,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-1.081*
+0.743
 </td>
 <td style="text-align:center;">
-1.125*
+0.877
 </td>
 <td style="text-align:center;">
-1.196*
+1.040*
 </td>
 </tr>
 <tr>
@@ -4185,10 +4181,10 @@ Trayectoria media
 0.229
 </td>
 <td style="text-align:center;">
-0.206
+0.186
 </td>
 <td style="text-align:center;">
-0.191
+0.423
 </td>
 </tr>
 <tr>
@@ -4198,13 +4194,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-−0.655
+0.111
 </td>
 <td style="text-align:center;">
-−0.283
+0.409
 </td>
 <td style="text-align:center;">
-−0.353
+0.610
 </td>
 </tr>
 <tr>
@@ -4214,13 +4210,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-1.184*
+0.718
 </td>
 <td style="text-align:center;">
-1.109
+0.755
 </td>
 <td style="text-align:center;">
-1.171
+1.004
 </td>
 </tr>
 <tr>
@@ -4231,13 +4227,13 @@ trayectoria_activ_fisica4
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.107
+0.058
 </td>
 <td style="text-align:center;">
-0.155
+0.161
 </td>
 <td style="text-align:center;">
-0.075
+0.267
 </td>
 </tr>
 <tr>
@@ -4247,13 +4243,13 @@ Trayectoria media
 Trayectoria descendente
 </td>
 <td style="text-align:center;">
-0.448
+1.106
 </td>
 <td style="text-align:center;">
-0.829
+1.709*
 </td>
 <td style="text-align:center;">
-0.711
+1.821*
 </td>
 </tr>
 <tr>
@@ -4263,13 +4259,13 @@ Trayectoria descendente
 Trayectoria ascendente
 </td>
 <td style="text-align:center;">
-0.382
+0.942
 </td>
 <td style="text-align:center;">
-0.586
+1.254*
 </td>
 <td style="text-align:center;">
-0.712
+1.470*
 </td>
 </tr>
 <tr>
@@ -4282,10 +4278,10 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.035
+0.187
 </td>
 <td style="text-align:center;">
-0.087
+0.186
 </td>
 </tr>
 <tr>
@@ -4297,10 +4293,10 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.528
+0.112
 </td>
 <td style="text-align:center;">
-0.725
+0.203
 </td>
 </tr>
 <tr>
@@ -4312,10 +4308,10 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.434
+1.021***
 </td>
 <td style="text-align:center;">
-0.476
+0.943**
 </td>
 </tr>
 <tr>
@@ -4328,10 +4324,10 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.017
+0.006
 </td>
 <td style="text-align:center;">
-0.019*
+0.008
 </td>
 </tr>
 <tr>
@@ -4343,10 +4339,10 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.016
+0.005
 </td>
 <td style="text-align:center;">
-0.018
+0.007
 </td>
 </tr>
 <tr>
@@ -4358,10 +4354,10 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.011
+0.005
 </td>
 <td style="text-align:center;">
-0.017
+0.008
 </td>
 </tr>
 <tr>
@@ -4374,10 +4370,10 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.903***
+−0.742***
 </td>
 <td style="text-align:center;">
-−0.819***
+−0.758***
 </td>
 </tr>
 <tr>
@@ -4389,10 +4385,10 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−1.593***
+−1.492***
 </td>
 <td style="text-align:center;">
-−1.468***
+−1.426**
 </td>
 </tr>
 <tr>
@@ -4404,10 +4400,10 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−1.037**
+−1.065**
 </td>
 <td style="text-align:center;">
-−1.003**
+−1.095**
 </td>
 </tr>
 <tr>
@@ -4420,10 +4416,10 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.420**
+−0.775***
 </td>
 <td style="text-align:center;">
-−0.380*
+−0.649***
 </td>
 </tr>
 <tr>
@@ -4435,10 +4431,10 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−1.131**
+−1.513***
 </td>
 <td style="text-align:center;">
-−1.059**
+−1.328**
 </td>
 </tr>
 <tr>
@@ -4450,10 +4446,10 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−1.023***
+−1.515***
 </td>
 <td style="text-align:center;">
-−1.015***
+−1.466***
 </td>
 </tr>
 <tr>
@@ -4468,7 +4464,7 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.039
+−0.025
 </td>
 </tr>
 <tr>
@@ -4482,7 +4478,7 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.244
+−0.298
 </td>
 </tr>
 <tr>
@@ -4496,7 +4492,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.005
+0.090
 </td>
 </tr>
 <tr>
@@ -4511,7 +4507,7 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.071
+−0.044
 </td>
 </tr>
 <tr>
@@ -4525,7 +4521,7 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.243
+−0.146
 </td>
 </tr>
 <tr>
@@ -4539,7 +4535,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.019
+0.014
 </td>
 </tr>
 <tr>
@@ -4554,7 +4550,7 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.117*
+−0.193**
 </td>
 </tr>
 <tr>
@@ -4568,7 +4564,7 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.282*
+−0.293*
 </td>
 </tr>
 <tr>
@@ -4582,7 +4578,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.075
+−0.080
 </td>
 </tr>
 <tr>
@@ -4597,7 +4593,7 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.363***
+0.344***
 </td>
 </tr>
 <tr>
@@ -4611,7 +4607,7 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.478***
+0.505***
 </td>
 </tr>
 <tr>
@@ -4625,7 +4621,7 @@ Trayectoria ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.379***
+0.323***
 </td>
 </tr>
 <tr>
@@ -4640,7 +4636,7 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.075
+0.125*
 </td>
 </tr>
 <tr>
@@ -4654,7 +4650,7 @@ Trayectoria descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.156
+0.035
 </td>
 </tr>
 <tr>
@@ -4668,7 +4664,7 @@ Trayectoria ascendente
 <td style="text-align:center;box-shadow: 0px 1px">
 </td>
 <td style="text-align:center;box-shadow: 0px 1px">
-0.230*
+0.181
 </td>
 </tr>
 <tr>
@@ -4694,13 +4690,13 @@ AIC
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-2135.3
+2040.6
 </td>
 <td style="text-align:center;">
-1940.5
+1839.1
 </td>
 <td style="text-align:center;">
-1845.0
+1761.9
 </td>
 </tr>
 <tr>
@@ -4710,13 +4706,13 @@ BIC
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-2396.0
+2301.3
 </td>
 <td style="text-align:center;">
-2258.2
+2156.8
 </td>
 <td style="text-align:center;">
-2237.3
+2154.3
 </td>
 </tr>
 <tr>
@@ -4726,7 +4722,7 @@ RMSE
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-0.34
+0.35
 </td>
 <td style="text-align:center;">
 0.34
@@ -4740,60 +4736,63 @@ RMSE
 </div>
 <div id="variable-dependiente-trayectorias-lcmm-5-clases" class="section level2 hasAnchor" number="4.5">
 <h2><span class="header-section-number">4.5</span> Variable dependiente: Trayectorias LCMM 5 clases<a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-5-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="modelo-multinomial-logit.html#cb113-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb113-2"><a href="modelo-multinomial-logit.html#cb113-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
-<span id="cb113-3"><a href="modelo-multinomial-logit.html#cb113-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="modelo-multinomial-logit.html#cb102-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="modelo-multinomial-logit.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb102-3"><a href="modelo-multinomial-logit.html#cb102-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  90 (68 variable)
-## initial  value 1973.170881 
-## iter  10 value 1249.552970
-## iter  20 value 1193.245124
-## iter  30 value 1182.360687
-## iter  40 value 1180.299156
-## iter  50 value 1179.782837
-## iter  60 value 1179.576538
-## iter  70 value 1179.542581
-## iter  80 value 1179.538116
-## final  value 1179.537016 
+## initial  value 1966.659099 
+## iter  10 value 1236.897226
+## iter  20 value 1155.888885
+## iter  30 value 1138.164669
+## iter  40 value 1134.359249
+## iter  50 value 1133.372972
+## iter  60 value 1132.956267
+## iter  70 value 1132.902146
+## iter  80 value 1132.884689
+## iter  90 value 1132.883542
+## iter  90 value 1132.883537
+## iter  90 value 1132.883537
+## final  value 1132.883537 
 ## converged</code></pre>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="modelo-multinomial-logit.html#cb115-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb115-2"><a href="modelo-multinomial-logit.html#cb115-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
-<span id="cb115-3"><a href="modelo-multinomial-logit.html#cb115-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="modelo-multinomial-logit.html#cb104-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb104-2"><a href="modelo-multinomial-logit.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
+<span id="cb104-3"><a href="modelo-multinomial-logit.html#cb104-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  110 (84 variable)
-## initial  value 1841.196972 
-## iter  10 value 1206.346699
-## iter  20 value 1098.846028
-## iter  30 value 1066.088219
-## iter  40 value 1061.064797
-## iter  50 value 1058.742468
-## iter  60 value 1057.994429
-## iter  70 value 1057.807880
-## iter  80 value 1057.743441
-## iter  90 value 1057.720320
-## iter 100 value 1057.689844
-## final  value 1057.689844 
+## initial  value 1843.694823 
+## iter  10 value 1213.171176
+## iter  20 value 1057.288041
+## iter  30 value 1020.815075
+## iter  40 value 1008.988835
+## iter  50 value 1005.910354
+## iter  60 value 1004.530128
+## iter  70 value 1004.038362
+## iter  80 value 1003.870662
+## iter  90 value 1003.821763
+## iter 100 value 1003.808707
+## final  value 1003.808707 
 ## stopped after 100 iterations</code></pre>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="modelo-multinomial-logit.html#cb117-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb117-2"><a href="modelo-multinomial-logit.html#cb117-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
-<span id="cb117-3"><a href="modelo-multinomial-logit.html#cb117-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="modelo-multinomial-logit.html#cb106-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb106-2"><a href="modelo-multinomial-logit.html#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_percepcion_desigualdad <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb106-3"><a href="modelo-multinomial-logit.html#cb106-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  135 (104 variable)
-## initial  value 1818.664841 
-## iter  10 value 1154.435327
-## iter  20 value 1062.679516
-## iter  30 value 1020.290569
-## iter  40 value 1001.370218
-## iter  50 value 995.636925
-## iter  60 value 993.066766
-## iter  70 value 991.667058
-## iter  80 value 990.868979
-## iter  90 value 990.691353
-## iter 100 value 990.623672
-## final  value 990.623672 
+## initial  value 1822.382646 
+## iter  10 value 1169.134758
+## iter  20 value 1024.569025
+## iter  30 value 977.698018
+## iter  40 value 953.647613
+## iter  50 value 945.668281
+## iter  60 value 940.799579
+## iter  70 value 939.352724
+## iter  80 value 938.858842
+## iter  90 value 938.321575
+## iter 100 value 938.273119
+## final  value 938.273119 
 ## stopped after 100 iterations</code></pre>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="modelo-multinomial-logit.html#cb119-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
-<span id="cb119-2"><a href="modelo-multinomial-logit.html#cb119-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
-<span id="cb119-3"><a href="modelo-multinomial-logit.html#cb119-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
-<span id="cb119-4"><a href="modelo-multinomial-logit.html#cb119-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb119-5"><a href="modelo-multinomial-logit.html#cb119-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model)</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="modelo-multinomial-logit.html#cb108-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb108-2"><a href="modelo-multinomial-logit.html#cb108-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
+<span id="cb108-3"><a href="modelo-multinomial-logit.html#cb108-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
+<span id="cb108-4"><a href="modelo-multinomial-logit.html#cb108-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb108-5"><a href="modelo-multinomial-logit.html#cb108-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model)</span></code></pre></div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -4821,13 +4820,13 @@ Model 3
 Trayectoria media
 </td>
 <td style="text-align:center;">
-1.350
+3.398*
 </td>
 <td style="text-align:center;">
-1.073
+3.261*
 </td>
 <td style="text-align:center;">
-−0.728
+1.110
 </td>
 </tr>
 <tr>
@@ -4837,13 +4836,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-−2.113
+1.948
 </td>
 <td style="text-align:center;">
-−3.192
+1.450
 </td>
 <td style="text-align:center;">
-−3.387
+−0.540
 </td>
 </tr>
 <tr>
@@ -4853,13 +4852,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-1.068
+1.867
 </td>
 <td style="text-align:center;">
-0.960
+1.799
 </td>
 <td style="text-align:center;">
-−1.419
+−1.394
 </td>
 </tr>
 <tr>
@@ -4869,13 +4868,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-−14.461**
+−21.631***
 </td>
 <td style="text-align:center;">
-−11.020*
+−17.635***
 </td>
 <td style="text-align:center;">
-−10.477*
+−17.111***
 </td>
 </tr>
 <tr>
@@ -4886,13 +4885,13 @@ m0_sexo_w01
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.660***
+0.655***
 </td>
 <td style="text-align:center;">
-0.721***
+0.877***
 </td>
 <td style="text-align:center;">
-0.687***
+0.855***
 </td>
 </tr>
 <tr>
@@ -4902,13 +4901,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-1.886***
+1.931***
 </td>
 <td style="text-align:center;">
-2.111***
+2.402***
 </td>
 <td style="text-align:center;">
-1.946***
+2.125***
 </td>
 </tr>
 <tr>
@@ -4918,13 +4917,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-0.960**
+1.260***
 </td>
 <td style="text-align:center;">
-0.980**
+1.552***
 </td>
 <td style="text-align:center;">
-1.000*
+1.394***
 </td>
 </tr>
 <tr>
@@ -4934,13 +4933,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-0.752
+0.895
 </td>
 <td style="text-align:center;">
-0.986
+1.546
 </td>
 <td style="text-align:center;">
-0.924
+1.210
 </td>
 </tr>
 <tr>
@@ -4951,13 +4950,13 @@ m0_edad_w01
 Trayectoria media
 </td>
 <td style="text-align:center;">
-−0.009
+−0.021***
 </td>
 <td style="text-align:center;">
-−0.015**
+−0.024***
 </td>
 <td style="text-align:center;">
-−0.012*
+−0.018**
 </td>
 </tr>
 <tr>
@@ -4967,13 +4966,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-0.000
+−0.017
 </td>
 <td style="text-align:center;">
-−0.003
+−0.019
 </td>
 <td style="text-align:center;">
-0.001
+−0.011
 </td>
 </tr>
 <tr>
@@ -4983,13 +4982,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-−0.009
+−0.028**
 </td>
 <td style="text-align:center;">
-−0.018
+−0.039***
 </td>
 <td style="text-align:center;">
-−0.018
+−0.038***
 </td>
 </tr>
 <tr>
@@ -5002,10 +5001,10 @@ Trayectoria alta-descendente
 −0.020
 </td>
 <td style="text-align:center;">
-−0.034
+−0.040
 </td>
 <td style="text-align:center;">
-−0.032
+−0.022
 </td>
 </tr>
 <tr>
@@ -5016,13 +5015,13 @@ log_ing
 Trayectoria media
 </td>
 <td style="text-align:center;">
-−0.290**
+−0.387***
 </td>
 <td style="text-align:center;">
-−0.213
+−0.306**
 </td>
 <td style="text-align:center;">
-−0.200
+−0.275*
 </td>
 </tr>
 <tr>
@@ -5032,13 +5031,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-−0.351
+−0.591**
 </td>
 <td style="text-align:center;">
-−0.234
+−0.542*
 </td>
 <td style="text-align:center;">
-−0.272
+−0.648**
 </td>
 </tr>
 <tr>
@@ -5048,13 +5047,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-−0.523*
+−0.519*
 </td>
 <td style="text-align:center;">
-−0.415
+−0.406
 </td>
 <td style="text-align:center;">
-−0.473
+−0.492*
 </td>
 </tr>
 <tr>
@@ -5064,13 +5063,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-−0.165
+0.052
 </td>
 <td style="text-align:center;">
-0.032
+0.422
 </td>
 <td style="text-align:center;">
-−0.083
+0.640
 </td>
 </tr>
 <tr>
@@ -5081,13 +5080,13 @@ trayectoria_deudaNada-Algo sobrecargados
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.311
+−0.011
 </td>
 <td style="text-align:center;">
-0.430*
+0.084
 </td>
 <td style="text-align:center;">
-0.501*
+0.284
 </td>
 </tr>
 <tr>
@@ -5097,13 +5096,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-0.151
+−0.854
 </td>
 <td style="text-align:center;">
-0.085
+−0.797
 </td>
 <td style="text-align:center;">
-0.192
+−0.689
 </td>
 </tr>
 <tr>
@@ -5113,13 +5112,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-0.470
+0.526
 </td>
 <td style="text-align:center;">
-0.402
+0.484
 </td>
 <td style="text-align:center;">
-0.429
+0.558
 </td>
 </tr>
 <tr>
@@ -5129,13 +5128,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-0.560
+1.481
 </td>
 <td style="text-align:center;">
-0.684
+1.926*
 </td>
 <td style="text-align:center;">
-0.669
+2.526*
 </td>
 </tr>
 <tr>
@@ -5146,13 +5145,13 @@ trayectoria_deudaNo muy o algo sobrecargados
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.383
+−0.027
 </td>
 <td style="text-align:center;">
-0.361
+−0.001
 </td>
 <td style="text-align:center;">
-0.452
+0.199
 </td>
 </tr>
 <tr>
@@ -5162,13 +5161,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-−0.949
+−1.840*
 </td>
 <td style="text-align:center;">
-−1.008
+−1.842*
 </td>
 <td style="text-align:center;">
-−0.868
+−1.689
 </td>
 </tr>
 <tr>
@@ -5178,13 +5177,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-−0.417
+−0.533
 </td>
 <td style="text-align:center;">
-−0.486
+−0.576
 </td>
 <td style="text-align:center;">
-−0.293
+−0.396
 </td>
 </tr>
 <tr>
@@ -5194,13 +5193,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-−0.482
+0.537
 </td>
 <td style="text-align:center;">
-−0.571
+0.672
 </td>
 <td style="text-align:center;">
-−0.287
+1.133
 </td>
 </tr>
 <tr>
@@ -5211,13 +5210,13 @@ trayectoria_deudaBastante sobrecargados, aliviados 2021
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.542**
+−0.118
 </td>
 <td style="text-align:center;">
-0.583**
+−0.099
 </td>
 <td style="text-align:center;">
-0.715**
+0.258
 </td>
 </tr>
 <tr>
@@ -5227,13 +5226,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-0.490
+−0.200
 </td>
 <td style="text-align:center;">
-0.572
+−0.130
 </td>
 <td style="text-align:center;">
-0.766
+0.274
 </td>
 </tr>
 <tr>
@@ -5243,13 +5242,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-0.343
+−0.240
 </td>
 <td style="text-align:center;">
-0.295
+−0.204
 </td>
 <td style="text-align:center;">
-0.311
+−0.062
 </td>
 </tr>
 <tr>
@@ -5259,13 +5258,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-0.146
+0.669
 </td>
 <td style="text-align:center;">
-0.179
+1.190
 </td>
 <td style="text-align:center;">
-−0.148
+1.751
 </td>
 </tr>
 <tr>
@@ -5276,13 +5275,13 @@ trayectoria_deudaMuy sobrecargados
 Trayectoria media
 </td>
 <td style="text-align:center;">
-1.041***
+0.607*
 </td>
 <td style="text-align:center;">
-1.055***
+0.518*
 </td>
 <td style="text-align:center;">
-1.088***
+0.790**
 </td>
 </tr>
 <tr>
@@ -5292,13 +5291,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-1.456***
+0.853*
 </td>
 <td style="text-align:center;">
-1.148**
+0.351
 </td>
 <td style="text-align:center;">
-1.259**
+0.545
 </td>
 </tr>
 <tr>
@@ -5308,13 +5307,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-1.473***
+1.409***
 </td>
 <td style="text-align:center;">
-1.403***
+1.308**
 </td>
 <td style="text-align:center;">
-1.426***
+1.485***
 </td>
 </tr>
 <tr>
@@ -5324,13 +5323,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-1.222
+0.670
 </td>
 <td style="text-align:center;">
-1.270
+0.730
 </td>
 <td style="text-align:center;">
-1.221
+0.578
 </td>
 </tr>
 <tr>
@@ -5341,13 +5340,13 @@ trayectoria_percepcion_desigualdadDesigualdad muy grande - No muy grande en 2021
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.075
+−0.021
 </td>
 <td style="text-align:center;">
-0.088
+−0.056
 </td>
 <td style="text-align:center;">
-0.072
+0.009
 </td>
 </tr>
 <tr>
@@ -5357,13 +5356,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-0.367
+0.137
 </td>
 <td style="text-align:center;">
-0.288
+−0.006
 </td>
 <td style="text-align:center;">
-0.238
+0.050
 </td>
 </tr>
 <tr>
@@ -5373,13 +5372,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-0.025
+−0.119
 </td>
 <td style="text-align:center;">
-−0.112
+−0.230
 </td>
 <td style="text-align:center;">
-−0.193
+−0.272
 </td>
 </tr>
 <tr>
@@ -5389,13 +5388,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-0.304
+0.840
 </td>
 <td style="text-align:center;">
-0.225
+0.711
 </td>
 <td style="text-align:center;">
-0.044
+0.804
 </td>
 </tr>
 <tr>
@@ -5406,13 +5405,13 @@ trayectoria_percepcion_desigualdadDesigualdad no muy grande - muy grande en 2019
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.464
+−0.138
 </td>
 <td style="text-align:center;">
-0.442
+−0.156
 </td>
 <td style="text-align:center;">
-0.378
+−0.055
 </td>
 </tr>
 <tr>
@@ -5422,13 +5421,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-−0.455
+−0.585
 </td>
 <td style="text-align:center;">
-−1.113
+−4.498
 </td>
 <td style="text-align:center;">
-−1.299
+−5.397
 </td>
 </tr>
 <tr>
@@ -5438,13 +5437,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-−0.770
+−2.116
 </td>
 <td style="text-align:center;">
-−0.693
+−2.115
 </td>
 <td style="text-align:center;">
-−0.760
+−2.137
 </td>
 </tr>
 <tr>
@@ -5454,13 +5453,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-−13.448***
+−11.624***
 </td>
 <td style="text-align:center;">
-−6.797***
+−6.069***
 </td>
 <td style="text-align:center;">
-−6.187***
+−5.850***
 </td>
 </tr>
 <tr>
@@ -5471,13 +5470,13 @@ trayectoria_ocup2Ocupados-inactivos
 Trayectoria media
 </td>
 <td style="text-align:center;">
-−0.084
+−0.348
 </td>
 <td style="text-align:center;">
-−0.095
+−0.443
 </td>
 <td style="text-align:center;">
-−0.088
+−0.545
 </td>
 </tr>
 <tr>
@@ -5487,13 +5486,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-0.126
+0.388
 </td>
 <td style="text-align:center;">
-0.135
+0.520
 </td>
 <td style="text-align:center;">
-0.176
+0.382
 </td>
 </tr>
 <tr>
@@ -5503,13 +5502,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-0.596
+0.316
 </td>
 <td style="text-align:center;">
-0.906
+0.461
 </td>
 <td style="text-align:center;">
-1.021*
+0.427
 </td>
 </tr>
 <tr>
@@ -5519,13 +5518,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-0.331
+1.659
 </td>
 <td style="text-align:center;">
-0.596
+2.061
 </td>
 <td style="text-align:center;">
-0.378
+1.806
 </td>
 </tr>
 <tr>
@@ -5536,13 +5535,13 @@ trayectoria_ocup2Inactivos
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.519*
+0.890***
 </td>
 <td style="text-align:center;">
-0.592*
+0.844***
 </td>
 <td style="text-align:center;">
-0.455
+0.558*
 </td>
 </tr>
 <tr>
@@ -5552,13 +5551,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-0.579
+0.546
 </td>
 <td style="text-align:center;">
-0.614
+0.247
 </td>
 <td style="text-align:center;">
-0.547
+−0.176
 </td>
 </tr>
 <tr>
@@ -5568,13 +5567,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-0.544
+1.142**
 </td>
 <td style="text-align:center;">
-0.806
+1.151*
 </td>
 <td style="text-align:center;">
-0.814
+0.863
 </td>
 </tr>
 <tr>
@@ -5584,13 +5583,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-1.705*
+0.828
 </td>
 <td style="text-align:center;">
-1.731*
+0.621
 </td>
 <td style="text-align:center;">
-1.476
+0.288
 </td>
 </tr>
 <tr>
@@ -5601,13 +5600,13 @@ trayectoria_ocup2Trabajadores no remunerados
 Trayectoria media
 </td>
 <td style="text-align:center;">
-−0.084
+0.001
 </td>
 <td style="text-align:center;">
-−0.118
+−0.211
 </td>
 <td style="text-align:center;">
-−0.246
+−0.321
 </td>
 </tr>
 <tr>
@@ -5617,13 +5616,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-−0.230
+−0.361
 </td>
 <td style="text-align:center;">
-−0.319
+−0.731
 </td>
 <td style="text-align:center;">
-−0.441
+−0.923
 </td>
 </tr>
 <tr>
@@ -5633,13 +5632,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-0.583
+0.646
 </td>
 <td style="text-align:center;">
-0.778*
+0.621
 </td>
 <td style="text-align:center;">
-0.723
+0.550
 </td>
 </tr>
 <tr>
@@ -5649,13 +5648,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-1.119
+2.845**
 </td>
 <td style="text-align:center;">
-1.162
+2.969**
 </td>
 <td style="text-align:center;">
-0.636
+2.806*
 </td>
 </tr>
 <tr>
@@ -5666,13 +5665,13 @@ trayectoria_ocup2Ocupados-desempleados
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.023
+0.240
 </td>
 <td style="text-align:center;">
-−0.070
+0.008
 </td>
 <td style="text-align:center;">
-−0.132
+−0.103
 </td>
 </tr>
 <tr>
@@ -5682,13 +5681,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-−0.292
+0.420
 </td>
 <td style="text-align:center;">
-−0.638
+−0.091
 </td>
 <td style="text-align:center;">
-−0.798
+−0.317
 </td>
 </tr>
 <tr>
@@ -5701,10 +5700,10 @@ Trayectoria media-ascendente
 −0.058
 </td>
 <td style="text-align:center;">
-−0.098
+−0.175
 </td>
 <td style="text-align:center;">
-−0.187
+−0.274
 </td>
 </tr>
 <tr>
@@ -5714,13 +5713,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-0.912
+2.701**
 </td>
 <td style="text-align:center;">
-0.838
+3.008**
 </td>
 <td style="text-align:center;">
-0.623
+2.994**
 </td>
 </tr>
 <tr>
@@ -5731,13 +5730,13 @@ trayectoria_activ_fisica2
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.364
+0.556**
 </td>
 <td style="text-align:center;">
-0.297
+0.580**
 </td>
 <td style="text-align:center;">
-0.286
+0.639**
 </td>
 </tr>
 <tr>
@@ -5747,13 +5746,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-0.121
+0.224
 </td>
 <td style="text-align:center;">
-0.177
+0.379
 </td>
 <td style="text-align:center;">
-0.147
+0.546
 </td>
 </tr>
 <tr>
@@ -5763,13 +5762,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-1.210*
+1.087*
 </td>
 <td style="text-align:center;">
-1.231*
+1.212*
 </td>
 <td style="text-align:center;">
-1.314*
+1.384**
 </td>
 </tr>
 <tr>
@@ -5779,13 +5778,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-11.645***
+14.064***
 </td>
 <td style="text-align:center;">
-7.704***
+7.287***
 </td>
 <td style="text-align:center;">
-5.000*
+5.533*
 </td>
 </tr>
 <tr>
@@ -5796,13 +5795,13 @@ trayectoria_activ_fisica3
 Trayectoria media
 </td>
 <td style="text-align:center;">
-0.116
+0.130
 </td>
 <td style="text-align:center;">
-0.146
+0.194
 </td>
 <td style="text-align:center;">
-0.151
+0.382
 </td>
 </tr>
 <tr>
@@ -5812,13 +5811,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-−0.446
+0.450
 </td>
 <td style="text-align:center;">
-−0.684
+0.309
 </td>
 <td style="text-align:center;">
-−0.646
+0.501
 </td>
 </tr>
 <tr>
@@ -5828,13 +5827,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-1.305*
+0.762
 </td>
 <td style="text-align:center;">
-1.234*
+0.681
 </td>
 <td style="text-align:center;">
-1.280*
+0.892
 </td>
 </tr>
 <tr>
@@ -5844,13 +5843,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-10.282***
+13.492***
 </td>
 <td style="text-align:center;">
-6.171***
+5.644**
 </td>
 <td style="text-align:center;">
-3.410
+4.465
 </td>
 </tr>
 <tr>
@@ -5861,13 +5860,13 @@ trayectoria_activ_fisica4
 Trayectoria media
 </td>
 <td style="text-align:center;">
-−0.019
+0.355
 </td>
 <td style="text-align:center;">
-0.038
+0.496
 </td>
 <td style="text-align:center;">
-−0.077
+0.323
 </td>
 </tr>
 <tr>
@@ -5877,13 +5876,13 @@ Trayectoria media
 Trayectoria media-descendente
 </td>
 <td style="text-align:center;">
-0.601
+0.782
 </td>
 <td style="text-align:center;">
-0.783
+1.129*
 </td>
 <td style="text-align:center;">
-0.661
+1.141
 </td>
 </tr>
 <tr>
@@ -5893,13 +5892,13 @@ Trayectoria media-descendente
 Trayectoria media-ascendente
 </td>
 <td style="text-align:center;">
-0.630
+1.190*
 </td>
 <td style="text-align:center;">
-0.847
+1.457*
 </td>
 <td style="text-align:center;">
-0.953
+1.623**
 </td>
 </tr>
 <tr>
@@ -5909,13 +5908,13 @@ Trayectoria media-ascendente
 Trayectoria alta-descendente
 </td>
 <td style="text-align:center;">
-11.225***
+14.860***
 </td>
 <td style="text-align:center;">
-7.326***
+7.879***
 </td>
 <td style="text-align:center;">
-4.564*
+6.329**
 </td>
 </tr>
 <tr>
@@ -5928,10 +5927,10 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.005
+0.044
 </td>
 <td style="text-align:center;">
-0.081
+0.088
 </td>
 </tr>
 <tr>
@@ -5943,10 +5942,10 @@ Trayectoria media-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.489
+0.848**
 </td>
 <td style="text-align:center;">
-0.559
+0.879**
 </td>
 </tr>
 <tr>
@@ -5958,10 +5957,10 @@ Trayectoria media-ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.499
+0.645*
 </td>
 <td style="text-align:center;">
-0.521
+0.588*
 </td>
 </tr>
 <tr>
@@ -5973,10 +5972,10 @@ Trayectoria alta-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.495
+−1.184
 </td>
 <td style="text-align:center;">
-−0.294
+−0.818
 </td>
 </tr>
 <tr>
@@ -5989,10 +5988,10 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.015
+0.004
 </td>
 <td style="text-align:center;">
-0.018
+0.007
 </td>
 </tr>
 <tr>
@@ -6004,10 +6003,10 @@ Trayectoria media-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.017
+0.009
 </td>
 <td style="text-align:center;">
-0.020*
+0.012
 </td>
 </tr>
 <tr>
@@ -6019,10 +6018,10 @@ Trayectoria media-ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.011
+0.008
 </td>
 <td style="text-align:center;">
-0.015
+0.011
 </td>
 </tr>
 <tr>
@@ -6034,10 +6033,10 @@ Trayectoria alta-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.015
+0.007
 </td>
 <td style="text-align:center;">
-0.019
+0.010
 </td>
 </tr>
 <tr>
@@ -6050,10 +6049,10 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.852***
+−0.942***
 </td>
 <td style="text-align:center;">
-−0.701***
+−0.791***
 </td>
 </tr>
 <tr>
@@ -6065,10 +6064,10 @@ Trayectoria media-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−1.028**
+−0.722
 </td>
 <td style="text-align:center;">
-−0.949**
+−0.655
 </td>
 </tr>
 <tr>
@@ -6080,10 +6079,10 @@ Trayectoria media-ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−1.097***
+−1.251***
 </td>
 <td style="text-align:center;">
-−1.102***
+−1.280***
 </td>
 </tr>
 <tr>
@@ -6095,10 +6094,10 @@ Trayectoria alta-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−1.215*
+−0.990
 </td>
 <td style="text-align:center;">
-−0.783
+−0.533
 </td>
 </tr>
 <tr>
@@ -6111,10 +6110,10 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.328*
+−0.620***
 </td>
 <td style="text-align:center;">
-−0.286
+−0.540***
 </td>
 </tr>
 <tr>
@@ -6126,10 +6125,10 @@ Trayectoria media-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.625*
+−1.053***
 </td>
 <td style="text-align:center;">
-−0.515
+−0.923**
 </td>
 </tr>
 <tr>
@@ -6141,10 +6140,10 @@ Trayectoria media-ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.805**
+−1.342***
 </td>
 <td style="text-align:center;">
-−0.812**
+−1.343***
 </td>
 </tr>
 <tr>
@@ -6156,10 +6155,10 @@ Trayectoria alta-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−1.956**
+−2.576***
 </td>
 <td style="text-align:center;">
-−1.932**
+−2.378**
 </td>
 </tr>
 <tr>
@@ -6174,7 +6173,7 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.048
+0.055
 </td>
 </tr>
 <tr>
@@ -6188,7 +6187,7 @@ Trayectoria media-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.009
+0.073
 </td>
 </tr>
 <tr>
@@ -6202,7 +6201,7 @@ Trayectoria media-ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.055
+0.035
 </td>
 </tr>
 <tr>
@@ -6216,7 +6215,7 @@ Trayectoria alta-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.157
+−0.080
 </td>
 </tr>
 <tr>
@@ -6231,7 +6230,7 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.065
+−0.020
 </td>
 </tr>
 <tr>
@@ -6245,7 +6244,7 @@ Trayectoria media-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.322**
+−0.148
 </td>
 </tr>
 <tr>
@@ -6259,7 +6258,7 @@ Trayectoria media-ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.043
+0.068
 </td>
 </tr>
 <tr>
@@ -6273,7 +6272,7 @@ Trayectoria alta-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.049
+0.077
 </td>
 </tr>
 <tr>
@@ -6288,7 +6287,7 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.061
+−0.176**
 </td>
 </tr>
 <tr>
@@ -6302,7 +6301,7 @@ Trayectoria media-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.082
+−0.094
 </td>
 </tr>
 <tr>
@@ -6316,7 +6315,7 @@ Trayectoria media-ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.001
+0.059
 </td>
 </tr>
 <tr>
@@ -6330,7 +6329,7 @@ Trayectoria alta-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-−0.257
+−0.470*
 </td>
 </tr>
 <tr>
@@ -6345,7 +6344,7 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.351***
+0.348***
 </td>
 </tr>
 <tr>
@@ -6359,7 +6358,7 @@ Trayectoria media-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.412***
+0.557***
 </td>
 </tr>
 <tr>
@@ -6373,7 +6372,7 @@ Trayectoria media-ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.367***
+0.353***
 </td>
 </tr>
 <tr>
@@ -6387,7 +6386,7 @@ Trayectoria alta-descendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.592***
+0.553**
 </td>
 </tr>
 <tr>
@@ -6402,7 +6401,7 @@ Trayectoria media
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.004
+0.043
 </td>
 </tr>
 <tr>
@@ -6430,7 +6429,7 @@ Trayectoria media-ascendente
 <td style="text-align:center;">
 </td>
 <td style="text-align:center;">
-0.211*
+0.158
 </td>
 </tr>
 <tr>
@@ -6444,7 +6443,7 @@ Trayectoria alta-descendente
 <td style="text-align:center;box-shadow: 0px 1px">
 </td>
 <td style="text-align:center;box-shadow: 0px 1px">
-0.079
+−0.378
 </td>
 </tr>
 <tr>
@@ -6470,13 +6469,13 @@ AIC
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-2495.1
+2401.8
 </td>
 <td style="text-align:center;">
-2283.4
+2175.6
 </td>
 <td style="text-align:center;">
-2189.2
+2084.5
 </td>
 </tr>
 <tr>
@@ -6486,13 +6485,13 @@ BIC
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-2842.7
+2749.3
 </td>
 <td style="text-align:center;">
-2706.9
+2599.2
 </td>
 <td style="text-align:center;">
-2712.4
+2607.7
 </td>
 </tr>
 <tr>
@@ -6502,7 +6501,7 @@ RMSE
 <td style="text-align:left;">
 </td>
 <td style="text-align:center;">
-0.32
+0.33
 </td>
 <td style="text-align:center;">
 0.32
@@ -6516,28 +6515,28 @@ RMSE
 </div>
 <div id="modelo-preferido-trayectorias-lcmm-con-5-clases" class="section level2 hasAnchor" number="4.6">
 <h2><span class="header-section-number">4.6</span> Modelo preferido: Trayectorias LCMM con 5 clases<a href="modelo-multinomial-logit.html#modelo-preferido-trayectorias-lcmm-con-5-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="modelo-multinomial-logit.html#cb120-1" aria-hidden="true" tabindex="-1"></a>mf <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb120-2"><a href="modelo-multinomial-logit.html#cb120-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
-<span id="cb120-3"><a href="modelo-multinomial-logit.html#cb120-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> .) </span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="modelo-multinomial-logit.html#cb109-1" aria-hidden="true" tabindex="-1"></a>mf <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb109-2"><a href="modelo-multinomial-logit.html#cb109-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb109-3"><a href="modelo-multinomial-logit.html#cb109-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  115 (88 variable)
-## initial  value 1949.029312 
-## iter  10 value 1200.421619
-## iter  20 value 1134.266147
-## iter  30 value 1104.294005
-## iter  40 value 1092.379401
-## iter  50 value 1088.792044
-## iter  60 value 1087.429940
-## iter  70 value 1087.029086
-## iter  80 value 1086.701544
-## iter  90 value 1086.675333
-## iter 100 value 1086.667863
-## final  value 1086.667863 
+## initial  value 1944.530937 
+## iter  10 value 1201.638905
+## iter  20 value 1114.834783
+## iter  30 value 1068.652231
+## iter  40 value 1041.904953
+## iter  50 value 1035.106900
+## iter  60 value 1031.075580
+## iter  70 value 1029.760774
+## iter  80 value 1029.328578
+## iter  90 value 1029.150286
+## iter 100 value 1029.132444
+## final  value 1029.132444 
 ## stopped after 100 iterations</code></pre>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="modelo-multinomial-logit.html#cb122-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(mf,</span>
-<span id="cb122-2"><a href="modelo-multinomial-logit.html#cb122-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
-<span id="cb122-3"><a href="modelo-multinomial-logit.html#cb122-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
-<span id="cb122-4"><a href="modelo-multinomial-logit.html#cb122-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb122-5"><a href="modelo-multinomial-logit.html#cb122-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">~</span> response)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="modelo-multinomial-logit.html#cb111-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(mf,</span>
+<span id="cb111-2"><a href="modelo-multinomial-logit.html#cb111-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
+<span id="cb111-3"><a href="modelo-multinomial-logit.html#cb111-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
+<span id="cb111-4"><a href="modelo-multinomial-logit.html#cb111-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb111-5"><a href="modelo-multinomial-logit.html#cb111-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">~</span> response)</span></code></pre></div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -6572,16 +6571,16 @@ Trayectoria alta-descendente
 (Intercept)
 </td>
 <td style="text-align:center;">
-1.097
+2.839
 </td>
 <td style="text-align:center;">
-−1.507
+0.903
 </td>
 <td style="text-align:center;">
-−0.935
+−1.064
 </td>
 <td style="text-align:center;">
-−13.717**
+−16.297**
 </td>
 </tr>
 <tr>
@@ -6589,16 +6588,16 @@ Trayectoria alta-descendente
 m0_sexo_w01
 </td>
 <td style="text-align:center;">
-0.661***
+0.682***
 </td>
 <td style="text-align:center;">
-1.835***
+1.693***
 </td>
 <td style="text-align:center;">
-1.019**
+1.184**
 </td>
 <td style="text-align:center;">
-0.887
+1.118
 </td>
 </tr>
 <tr>
@@ -6606,16 +6605,16 @@ m0_sexo_w01
 m0_edad_w01
 </td>
 <td style="text-align:center;">
-−0.010
-</td>
-<td style="text-align:center;">
-−0.002
+−0.017**
 </td>
 <td style="text-align:center;">
 −0.012
 </td>
 <td style="text-align:center;">
-−0.026
+−0.029**
+</td>
+<td style="text-align:center;">
+−0.011
 </td>
 </tr>
 <tr>
@@ -6623,16 +6622,16 @@ m0_edad_w01
 log_ing
 </td>
 <td style="text-align:center;">
-−0.264*
+−0.346**
 </td>
 <td style="text-align:center;">
-−0.327
+−0.657**
 </td>
 <td style="text-align:center;">
-−0.496*
+−0.515*
 </td>
 <td style="text-align:center;">
-−0.082
+0.473
 </td>
 </tr>
 <tr>
@@ -6640,16 +6639,16 @@ log_ing
 trayectoria_deudaNada-Algo sobrecargados
 </td>
 <td style="text-align:center;">
-0.360
+0.058
 </td>
 <td style="text-align:center;">
-0.284
+−0.727
 </td>
 <td style="text-align:center;">
-0.451
+0.536
 </td>
 <td style="text-align:center;">
-0.570
+2.315*
 </td>
 </tr>
 <tr>
@@ -6657,16 +6656,16 @@ trayectoria_deudaNada-Algo sobrecargados
 trayectoria_deudaNo muy o algo sobrecargados
 </td>
 <td style="text-align:center;">
-0.444
+0.221
 </td>
 <td style="text-align:center;">
-−0.811
+−1.504
 </td>
 <td style="text-align:center;">
-−0.210
+−0.249
 </td>
 <td style="text-align:center;">
-−0.177
+1.341
 </td>
 </tr>
 <tr>
@@ -6674,16 +6673,16 @@ trayectoria_deudaNo muy o algo sobrecargados
 trayectoria_deudaBastante sobrecargados, aliviados 2021
 </td>
 <td style="text-align:center;">
-0.636**
+0.129
 </td>
 <td style="text-align:center;">
-0.699
+0.199
 </td>
 <td style="text-align:center;">
-0.391
+−0.018
 </td>
 <td style="text-align:center;">
-−0.171
+1.356
 </td>
 </tr>
 <tr>
@@ -6691,16 +6690,16 @@ trayectoria_deudaBastante sobrecargados, aliviados 2021
 trayectoria_deudaMuy sobrecargados
 </td>
 <td style="text-align:center;">
-1.036***
+0.755**
 </td>
 <td style="text-align:center;">
-1.549***
+1.045*
 </td>
 <td style="text-align:center;">
-1.503***
+1.491***
 </td>
 <td style="text-align:center;">
-1.318
+0.789
 </td>
 </tr>
 <tr>
@@ -6708,16 +6707,16 @@ trayectoria_deudaMuy sobrecargados
 trayectoria_ocup2Ocupados-inactivos
 </td>
 <td style="text-align:center;">
-−0.143
+−0.466
 </td>
 <td style="text-align:center;">
-0.183
+0.316
 </td>
 <td style="text-align:center;">
-0.678
+0.344
 </td>
 <td style="text-align:center;">
-0.299
+1.983
 </td>
 </tr>
 <tr>
@@ -6725,16 +6724,16 @@ trayectoria_ocup2Ocupados-inactivos
 trayectoria_ocup2Inactivos
 </td>
 <td style="text-align:center;">
-0.373
+0.567*
 </td>
 <td style="text-align:center;">
-0.609
+0.224
 </td>
 <td style="text-align:center;">
-0.627
+0.904*
 </td>
 <td style="text-align:center;">
-1.639*
+0.561
 </td>
 </tr>
 <tr>
@@ -6742,16 +6741,16 @@ trayectoria_ocup2Inactivos
 trayectoria_ocup2Trabajadores no remunerados
 </td>
 <td style="text-align:center;">
-−0.233
+−0.076
 </td>
 <td style="text-align:center;">
-−0.302
+−0.472
 </td>
 <td style="text-align:center;">
-0.584
+0.606
 </td>
 <td style="text-align:center;">
-0.685
+2.873**
 </td>
 </tr>
 <tr>
@@ -6759,16 +6758,16 @@ trayectoria_ocup2Trabajadores no remunerados
 trayectoria_ocup2Ocupados-desempleados
 </td>
 <td style="text-align:center;">
-−0.113
+−0.032
 </td>
 <td style="text-align:center;">
-−0.516
+0.115
 </td>
 <td style="text-align:center;">
-−0.133
+−0.239
 </td>
 <td style="text-align:center;">
-0.665
+2.876**
 </td>
 </tr>
 <tr>
@@ -6776,16 +6775,16 @@ trayectoria_ocup2Ocupados-desempleados
 trayectoria_activ_fisica2
 </td>
 <td style="text-align:center;">
-0.334
+0.642**
 </td>
 <td style="text-align:center;">
-0.106
+0.380
 </td>
 <td style="text-align:center;">
-1.257*
+1.285**
 </td>
 <td style="text-align:center;">
-8.626***
+7.033***
 </td>
 </tr>
 <tr>
@@ -6793,16 +6792,16 @@ trayectoria_activ_fisica2
 trayectoria_activ_fisica3
 </td>
 <td style="text-align:center;">
-0.138
+0.313
 </td>
 <td style="text-align:center;">
-−0.398
+0.623
 </td>
 <td style="text-align:center;">
-1.236*
+0.796
 </td>
 <td style="text-align:center;">
-7.090***
+6.225**
 </td>
 </tr>
 <tr>
@@ -6810,16 +6809,16 @@ trayectoria_activ_fisica3
 trayectoria_activ_fisica4
 </td>
 <td style="text-align:center;">
-−0.101
+0.222
 </td>
 <td style="text-align:center;">
-0.523
+0.841
 </td>
 <td style="text-align:center;">
-0.732
+1.392*
 </td>
 <td style="text-align:center;">
-8.143***
+8.041***
 </td>
 </tr>
 <tr>
@@ -6827,16 +6826,16 @@ trayectoria_activ_fisica4
 proyecto_vidaDecidido dirección de vida
 </td>
 <td style="text-align:center;">
-−0.714***
+−0.919***
 </td>
 <td style="text-align:center;">
-−1.021**
+−0.708
 </td>
 <td style="text-align:center;">
-−0.968**
+−1.116***
 </td>
 <td style="text-align:center;">
-−0.575
+−0.183
 </td>
 </tr>
 <tr>
@@ -6844,16 +6843,16 @@ proyecto_vidaDecidido dirección de vida
 apoyo_social_w01Con apoyo social
 </td>
 <td style="text-align:center;">
-−0.311*
+−0.637***
 </td>
 <td style="text-align:center;">
-−0.706*
+−1.010***
 </td>
 <td style="text-align:center;">
-−0.737**
+−1.248***
 </td>
 <td style="text-align:center;">
-−1.891**
+−2.110**
 </td>
 </tr>
 <tr>
@@ -6861,16 +6860,16 @@ apoyo_social_w01Con apoyo social
 extraversion
 </td>
 <td style="text-align:center;">
-0.052
+0.072
 </td>
 <td style="text-align:center;">
-−0.032
+0.091
 </td>
 <td style="text-align:center;">
-−0.034
+0.091
 </td>
 <td style="text-align:center;">
-0.146
+−0.074
 </td>
 </tr>
 <tr>
@@ -6878,16 +6877,16 @@ extraversion
 agreeableness
 </td>
 <td style="text-align:center;">
-−0.111*
+−0.040
 </td>
 <td style="text-align:center;">
-−0.284**
+−0.120
 </td>
 <td style="text-align:center;">
-−0.023
+0.069
 </td>
 <td style="text-align:center;">
-0.018
+−0.019
 </td>
 </tr>
 <tr>
@@ -6895,16 +6894,16 @@ agreeableness
 conscientiousness
 </td>
 <td style="text-align:center;">
-−0.040
+−0.168**
 </td>
 <td style="text-align:center;">
-−0.023
+−0.074
 </td>
 <td style="text-align:center;">
-0.019
+0.036
 </td>
 <td style="text-align:center;">
-−0.243
+−0.426*
 </td>
 </tr>
 <tr>
@@ -6912,16 +6911,16 @@ conscientiousness
 neuroticism
 </td>
 <td style="text-align:center;">
-0.322***
+0.312***
 </td>
 <td style="text-align:center;">
-0.392***
+0.512***
 </td>
 <td style="text-align:center;">
-0.322***
+0.378***
 </td>
 <td style="text-align:center;">
-0.594***
+0.574**
 </td>
 </tr>
 <tr>
@@ -6929,16 +6928,16 @@ neuroticism
 openness
 </td>
 <td style="text-align:center;box-shadow: 0px 1px">
-−0.020
+0.052
 </td>
 <td style="text-align:center;box-shadow: 0px 1px">
-0.101
+0.135
 </td>
 <td style="text-align:center;box-shadow: 0px 1px">
-0.174*
+0.129
 </td>
 <td style="text-align:center;box-shadow: 0px 1px">
-0.026
+−0.489*
 </td>
 </tr>
 <tr>
@@ -6960,7 +6959,7 @@ Num.Obs.
 AIC
 </td>
 <td style="text-align:center;">
-2349.3
+2234.3
 </td>
 <td style="text-align:center;">
 </td>
@@ -6974,7 +6973,7 @@ AIC
 BIC
 </td>
 <td style="text-align:center;">
-2798.1
+2683.0
 </td>
 <td style="text-align:center;">
 </td>
@@ -6988,7 +6987,7 @@ BIC
 RMSE
 </td>
 <td style="text-align:center;">
-0.31
+0.32
 </td>
 <td style="text-align:center;">
 </td>
@@ -6999,6 +6998,7 @@ RMSE
 </tr>
 </tbody>
 </table>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="modelo-multinomial-logit.html#cb112-1" aria-hidden="true" tabindex="-1"></a>asd <span class="ot">&lt;-</span> mf<span class="sc">$</span>fitted.values</span></code></pre></div>
 
 </div>
 </div>
