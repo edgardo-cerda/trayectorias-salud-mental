@@ -25,15 +25,15 @@ with(elsoc_salud_modelo, rcompanion::cramerV(trayectoria_om4.5, trayectoria_gmm.
 
 m1 <- elsoc_salud_modelo %>%
   multinom(trayectoria_om4.4 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 m2 <- elsoc_salud_modelo %>%
   multinom(trayectoria_om4.4 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 m3 <- elsoc_salud_modelo %>%
   multinom(trayectoria_om4.4 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 modelsummary::modelsummary(list(m1, m2, m3),
                            estimate = "{estimate}{stars}",
@@ -51,15 +51,15 @@ modelsummary::modelsummary(list(m1, m2, m3),
 
 m1 <- elsoc_salud_modelo %>%
   multinom(trayectoria_om4.5 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 m2 <- elsoc_salud_modelo %>%
   multinom(trayectoria_om4.5 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 m3 <- elsoc_salud_modelo %>%
   multinom(trayectoria_om4.5 ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 modelsummary::modelsummary(list(m1, m2, m3),
                            estimate = "{estimate}{stars}",
@@ -76,15 +76,15 @@ modelsummary::modelsummary(list(m1, m2, m3),
 
 m1 <- elsoc_salud_modelo %>%
   multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 m2 <- elsoc_salud_modelo %>%
   multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 m3 <- elsoc_salud_modelo %>%
   multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 modelsummary::modelsummary(list(m1, m2, m3),
                            estimate = "{estimate}{stars}",
@@ -102,15 +102,15 @@ modelsummary::modelsummary(list(m1, m2, m3),
 
 m1 <- elsoc_salud_modelo %>%
   multinom(trayectoria_gmm.5lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 m2 <- elsoc_salud_modelo %>%
   multinom(trayectoria_gmm.5lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 m3 <- elsoc_salud_modelo %>%
   multinom(trayectoria_gmm.5lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_percepcion_desigualdad + trayectoria_ocup2 + trayectoria_activ_fisica + fuma_w01 + imc_w01 + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 modelsummary::modelsummary(list(m1, m2, m3),
                            estimate = "{estimate}{stars}",
@@ -127,12 +127,14 @@ modelsummary::modelsummary(list(m1, m2, m3),
 
 mf <- elsoc_salud_modelo %>%
   multinom(trayectoria_gmm.5lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_ocup2 + trayectoria_activ_fisica + proyecto_vida + apoyo_social_w01 + extraversion + agreeableness + conscientiousness + neuroticism + openness,
-           data = .) 
+           data = ., weights = ponderador02_w01) 
 
 modelsummary::modelsummary(mf,
                            estimate = "{estimate}{stars}",
                            statistic = NULL,
                            stars = c('*' = .05, '**' = .01, '***' = .001),
                            shape = term ~ response)
+
+asd <- mf$fitted.values
 
 ```
