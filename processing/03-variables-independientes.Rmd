@@ -41,9 +41,13 @@ elsoc_salud_modelo$trayectoria_gmm.5lin <- factor(elsoc_salud %>%
                                              pull(class),
                                            levels = c(1, 4, 5, 2, 3),
                                            labels = c('Trayectoria baja', 'Trayectoria media', 
-                                                      'Trayectoria remisión', 'Trayectoria ascendente', 
+                                                      'Trayectoria remision', 'Trayectoria ascendente', 
                                                       'Trayectoria persistentes'))
 
+sjmisc::frq(elsoc_salud_modelo$trayectoria_om4.4)
+sjmisc::frq(elsoc_salud_modelo$trayectoria_om4.5)
+sjmisc::frq(elsoc_salud_modelo$trayectoria_gmm.4lin)
+sjmisc::frq(elsoc_salud_modelo$trayectoria_gmm.5lin)
 
 ```
 

@@ -37,50 +37,16 @@ lcmm6_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_lin,
 
 ```
 
-### Modelos de trayectorias cuadráticas: {-}
-
-```{r modelos-lcmm-quad, results=FALSE, cache = TRUE}
-
-lcmm1_quad <- hlme(phq9 ~ poly(ola, degree = 2, raw = TRUE), subject = "idencuesta", ng = 1, 
-              data = elsoc_salud_long)
-
-lcmm2_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, 
-                    hlme(phq9 ~ ola + I(ola^2), mixture = ~ ola + I(ola^2),
-                         subject = "idencuesta", ng = 2, 
-                         data = elsoc_salud_long))
-
-lcmm3_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, 
-                    hlme(phq9 ~ ola + I(ola^2), mixture = ~ ola + I(ola^2),
-                         subject = "idencuesta", ng = 3, 
-                         data = elsoc_salud_long))
-
-lcmm4_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, 
-                    hlme(phq9 ~ ola + I(ola^2), mixture = ~ ola + I(ola^2),
-                         subject = "idencuesta", ng = 4, 
-                         data = elsoc_salud_long))
-
-lcmm5_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, 
-                    hlme(phq9 ~ ola + I(ola^2), mixture = ~ ola + I(ola^2),
-                         subject = "idencuesta", ng = 5, 
-                         data = elsoc_salud_long))
-
-lcmm6_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, 
-                    hlme(phq9 ~ ola + I(ola^2), mixture = ~ ola + I(ola^2),
-                         subject = "idencuesta", ng = 6, 
-                         data = elsoc_salud_long))
-
-```
-
 ### Comparación resultados {-}
 
 ```{r, results=FALSE}
 # Comparar resultados:
-resultados_comparados <- summarytable(lcmm1_lin, lcmm1_quad, 
-                             lcmm2_lin, lcmm2_quad, 
-                             lcmm3_lin, lcmm3_lin,
-                             lcmm4_lin, lcmm4_quad, 
-                             lcmm5_lin, lcmm5_quad,
-                             lcmm6_lin, lcmm6_quad)
+resultados_comparados <- summarytable(lcmm1_lin, 
+                             lcmm2_lin, 
+                             lcmm3_lin, 
+                             lcmm4_lin, 
+                             lcmm5_lin, 
+                             lcmm6_lin)
 ```
 
 
@@ -95,7 +61,7 @@ kableExtra::kbl(resultados_comparados[,5:9],
 
 ## Principales trayectorias
 
-Según criterios de información debería estar entre 4y 5 clases:
+Según criterios de información debería estar entre 4 y 5 clases:
 
 
 ```{r, cache = TRUE}
@@ -109,16 +75,6 @@ plot(pred_lcmm4_lin, ylim = c(0, 27))
 
 
 ```{r, cache = TRUE}
-summary(lcmm4_quad)
-
-pred_lcmm4_quad <- predictY(lcmm4_quad, data.frame(ola = 1:5))
-
-plot(pred_lcmm4_quad, ylim = c(0, 27))
-
-```
-
-
-```{r, cache = TRUE}
 summary(lcmm5_lin)
 
 pred_lcmm5_lin <- predictY(lcmm5_lin, data.frame(ola = 1:5))
@@ -127,12 +83,12 @@ plot(pred_lcmm5_lin, ylim = c(0, 27))
 
 ```
 
-
 ```{r, cache = TRUE}
-summary(lcmm5_quad)
+summary(lcmm6_lin)
 
-pred_lcmm5_quad <- predictY(lcmm5_quad, data.frame(ola = 1:5))
+pred_lcmm6_lin <- predictY(lcmm6_lin, data.frame(ola = 1:5))
 
-plot(pred_lcmm5_quad, ylim = c(0, 27))
+plot(pred_lcmm6_lin, ylim = c(0, 27))
 
 ```
+

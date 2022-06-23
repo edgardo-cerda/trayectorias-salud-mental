@@ -157,7 +157,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#identificar-trayectorias"><i class="fa fa-check"></i><b>2.1</b> Identificar trayectorias:</a>
 <ul>
 <li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-lineales"><i class="fa fa-check"></i>Modelos de trayectorias lineales:</a></li>
-<li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-cuadráticas"><i class="fa fa-check"></i>Modelos de trayectorias cuadráticas:</a></li>
 <li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#comparación-resultados"><i class="fa fa-check"></i>Comparación resultados</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#principales-trayectorias"><i class="fa fa-check"></i><b>2.2</b> Principales trayectorias</a></li>
@@ -208,27 +207,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="modelo-multinomial-logit" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Capítulo 4</span> Modelo multinomial logit<a href="modelo-multinomial-logit.html#modelo-multinomial-logit" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="modelo-multinomial-logit.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&#39;datos_salud_modelo.RData&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="modelo-multinomial-logit.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&#39;datos_salud_modelo.RData&#39;</span>)</span></code></pre></div>
 <div id="comparación-trayectorias" class="section level2 hasAnchor" number="4.1">
 <h2><span class="header-section-number">4.1</span> Comparación trayectorias<a href="modelo-multinomial-logit.html#comparación-trayectorias" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="modelo-multinomial-logit.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.4</span>, trayectoria_gmm<span class="fl">.4</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="modelo-multinomial-logit.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.4</span>, trayectoria_gmm<span class="fl">.4</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## Cramer V 
 ##   0.2558</code></pre>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="modelo-multinomial-logit.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.4</span>, trayectoria_gmm<span class="fl">.5</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="modelo-multinomial-logit.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.4</span>, trayectoria_gmm<span class="fl">.5</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## Cramer V 
 ##   0.2524</code></pre>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="modelo-multinomial-logit.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.5</span>, trayectoria_gmm<span class="fl">.4</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="modelo-multinomial-logit.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.5</span>, trayectoria_gmm<span class="fl">.4</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## Cramer V 
 ##   0.6047</code></pre>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="modelo-multinomial-logit.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.5</span>, trayectoria_gmm<span class="fl">.5</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="modelo-multinomial-logit.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(elsoc_salud_modelo, rcompanion<span class="sc">::</span><span class="fu">cramerV</span>(trayectoria_om4<span class="fl">.5</span>, trayectoria_gmm<span class="fl">.5</span>lin, <span class="at">bias.correct =</span> <span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## Cramer V 
 ##   0.5733</code></pre>
 </div>
 <div id="variable-dependiente-trayectorias-om-4-clases" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Variable dependiente: Trayectorias OM 4 clases<a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-4-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="modelo-multinomial-logit.html#cb81-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb81-2"><a href="modelo-multinomial-logit.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
-<span id="cb81-3"><a href="modelo-multinomial-logit.html#cb81-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="modelo-multinomial-logit.html#cb84-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb84-2"><a href="modelo-multinomial-logit.html#cb84-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb84-3"><a href="modelo-multinomial-logit.html#cb84-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  68 (48 variable)
 ## initial  value 743.942395 
 ## iter  10 value 633.487327
@@ -237,9 +236,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## iter  40 value 608.576340
 ## final  value 608.572531 
 ## converged</code></pre>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="modelo-multinomial-logit.html#cb83-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb83-2"><a href="modelo-multinomial-logit.html#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
-<span id="cb83-3"><a href="modelo-multinomial-logit.html#cb83-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="modelo-multinomial-logit.html#cb86-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb86-2"><a href="modelo-multinomial-logit.html#cb86-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
+<span id="cb86-3"><a href="modelo-multinomial-logit.html#cb86-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  84 (60 variable)
 ## initial  value 689.192085 
 ## iter  10 value 645.440299
@@ -249,9 +248,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## iter  50 value 552.250541
 ## final  value 552.250183 
 ## converged</code></pre>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="modelo-multinomial-logit.html#cb85-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb85-2"><a href="modelo-multinomial-logit.html#cb85-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
-<span id="cb85-3"><a href="modelo-multinomial-logit.html#cb85-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="modelo-multinomial-logit.html#cb88-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb88-2"><a href="modelo-multinomial-logit.html#cb88-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.4</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb88-3"><a href="modelo-multinomial-logit.html#cb88-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  104 (75 variable)
 ## initial  value 675.869796 
 ## iter  10 value 622.340613
@@ -264,12 +263,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## iter  80 value 511.384510
 ## final  value 511.384475 
 ## converged</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="modelo-multinomial-logit.html#cb87-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
-<span id="cb87-2"><a href="modelo-multinomial-logit.html#cb87-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
-<span id="cb87-3"><a href="modelo-multinomial-logit.html#cb87-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
-<span id="cb87-4"><a href="modelo-multinomial-logit.html#cb87-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb87-5"><a href="modelo-multinomial-logit.html#cb87-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model,</span>
-<span id="cb87-6"><a href="modelo-multinomial-logit.html#cb87-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="modelo-multinomial-logit.html#cb90-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb90-2"><a href="modelo-multinomial-logit.html#cb90-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
+<span id="cb90-3"><a href="modelo-multinomial-logit.html#cb90-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
+<span id="cb90-4"><a href="modelo-multinomial-logit.html#cb90-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb90-5"><a href="modelo-multinomial-logit.html#cb90-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model,</span>
+<span id="cb90-6"><a href="modelo-multinomial-logit.html#cb90-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1541,9 +1540,9 @@ RMSE
 </div>
 <div id="variable-dependiente-trayectorias-om-5-clases" class="section level2 hasAnchor" number="4.3">
 <h2><span class="header-section-number">4.3</span> Variable dependiente: Trayectorias OM 5 clases<a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-5-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="modelo-multinomial-logit.html#cb88-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb88-2"><a href="modelo-multinomial-logit.html#cb88-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
-<span id="cb88-3"><a href="modelo-multinomial-logit.html#cb88-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="modelo-multinomial-logit.html#cb91-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb91-2"><a href="modelo-multinomial-logit.html#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb91-3"><a href="modelo-multinomial-logit.html#cb91-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  85 (64 variable)
 ## initial  value 1966.659099 
 ## iter  10 value 1699.576505
@@ -1554,9 +1553,9 @@ RMSE
 ## iter  60 value 1370.054740
 ## final  value 1370.054520 
 ## converged</code></pre>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="modelo-multinomial-logit.html#cb90-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb90-2"><a href="modelo-multinomial-logit.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
-<span id="cb90-3"><a href="modelo-multinomial-logit.html#cb90-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="modelo-multinomial-logit.html#cb93-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb93-2"><a href="modelo-multinomial-logit.html#cb93-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
+<span id="cb93-3"><a href="modelo-multinomial-logit.html#cb93-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  105 (80 variable)
 ## initial  value 1843.694823 
 ## iter  10 value 1472.988841
@@ -1568,9 +1567,9 @@ RMSE
 ## iter  70 value 1238.307000
 ## final  value 1238.306443 
 ## converged</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="modelo-multinomial-logit.html#cb92-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb92-2"><a href="modelo-multinomial-logit.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
-<span id="cb92-3"><a href="modelo-multinomial-logit.html#cb92-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="modelo-multinomial-logit.html#cb95-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb95-2"><a href="modelo-multinomial-logit.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_om4<span class="fl">.5</span> <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb95-3"><a href="modelo-multinomial-logit.html#cb95-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  130 (100 variable)
 ## initial  value 1822.382646 
 ## iter  10 value 1448.818605
@@ -1585,12 +1584,12 @@ RMSE
 ## iter 100 value 1148.821679
 ## final  value 1148.821679 
 ## stopped after 100 iterations</code></pre>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="modelo-multinomial-logit.html#cb94-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
-<span id="cb94-2"><a href="modelo-multinomial-logit.html#cb94-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
-<span id="cb94-3"><a href="modelo-multinomial-logit.html#cb94-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
-<span id="cb94-4"><a href="modelo-multinomial-logit.html#cb94-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb94-5"><a href="modelo-multinomial-logit.html#cb94-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model,</span>
-<span id="cb94-6"><a href="modelo-multinomial-logit.html#cb94-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="modelo-multinomial-logit.html#cb97-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb97-2"><a href="modelo-multinomial-logit.html#cb97-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
+<span id="cb97-3"><a href="modelo-multinomial-logit.html#cb97-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
+<span id="cb97-4"><a href="modelo-multinomial-logit.html#cb97-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb97-5"><a href="modelo-multinomial-logit.html#cb97-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model,</span>
+<span id="cb97-6"><a href="modelo-multinomial-logit.html#cb97-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3248,9 +3247,9 @@ RMSE
 </div>
 <div id="variable-dependiente-trayectorias-lcmm-4-clases" class="section level2 hasAnchor" number="4.4">
 <h2><span class="header-section-number">4.4</span> Variable dependiente: Trayectorias LCMM 4 clases<a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-4-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="modelo-multinomial-logit.html#cb95-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb95-2"><a href="modelo-multinomial-logit.html#cb95-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
-<span id="cb95-3"><a href="modelo-multinomial-logit.html#cb95-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="modelo-multinomial-logit.html#cb98-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb98-2"><a href="modelo-multinomial-logit.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb98-3"><a href="modelo-multinomial-logit.html#cb98-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  68 (48 variable)
 ## initial  value 1693.987943 
 ## iter  10 value 1031.132238
@@ -3260,9 +3259,9 @@ RMSE
 ## iter  50 value 959.111590
 ## final  value 959.100348 
 ## converged</code></pre>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="modelo-multinomial-logit.html#cb97-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb97-2"><a href="modelo-multinomial-logit.html#cb97-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
-<span id="cb97-3"><a href="modelo-multinomial-logit.html#cb97-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="modelo-multinomial-logit.html#cb100-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb100-2"><a href="modelo-multinomial-logit.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
+<span id="cb100-3"><a href="modelo-multinomial-logit.html#cb100-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  84 (60 variable)
 ## initial  value 1588.072281 
 ## iter  10 value 1028.449171
@@ -3274,9 +3273,9 @@ RMSE
 ## iter  70 value 858.752892
 ## final  value 858.752822 
 ## converged</code></pre>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="modelo-multinomial-logit.html#cb99-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb99-2"><a href="modelo-multinomial-logit.html#cb99-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
-<span id="cb99-3"><a href="modelo-multinomial-logit.html#cb99-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="modelo-multinomial-logit.html#cb102-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="modelo-multinomial-logit.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.4</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb102-3"><a href="modelo-multinomial-logit.html#cb102-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  104 (75 variable)
 ## initial  value 1569.714971 
 ## iter  10 value 1045.975030
@@ -3289,12 +3288,12 @@ RMSE
 ## iter  80 value 806.600519
 ## final  value 806.599571 
 ## converged</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="modelo-multinomial-logit.html#cb101-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
-<span id="cb101-2"><a href="modelo-multinomial-logit.html#cb101-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
-<span id="cb101-3"><a href="modelo-multinomial-logit.html#cb101-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
-<span id="cb101-4"><a href="modelo-multinomial-logit.html#cb101-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb101-5"><a href="modelo-multinomial-logit.html#cb101-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model,</span>
-<span id="cb101-6"><a href="modelo-multinomial-logit.html#cb101-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="modelo-multinomial-logit.html#cb104-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb104-2"><a href="modelo-multinomial-logit.html#cb104-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
+<span id="cb104-3"><a href="modelo-multinomial-logit.html#cb104-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
+<span id="cb104-4"><a href="modelo-multinomial-logit.html#cb104-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb104-5"><a href="modelo-multinomial-logit.html#cb104-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model,</span>
+<span id="cb104-6"><a href="modelo-multinomial-logit.html#cb104-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -4566,9 +4565,9 @@ RMSE
 </div>
 <div id="variable-dependiente-trayectorias-lcmm-5-clases" class="section level2 hasAnchor" number="4.5">
 <h2><span class="header-section-number">4.5</span> Variable dependiente: Trayectorias LCMM 5 clases<a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-5-clases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="modelo-multinomial-logit.html#cb102-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb102-2"><a href="modelo-multinomial-logit.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
-<span id="cb102-3"><a href="modelo-multinomial-logit.html#cb102-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="modelo-multinomial-logit.html#cb105-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb105-2"><a href="modelo-multinomial-logit.html#cb105-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica,</span>
+<span id="cb105-3"><a href="modelo-multinomial-logit.html#cb105-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  85 (64 variable)
 ## initial  value 1966.659099 
 ## iter  10 value 1230.388416
@@ -4582,9 +4581,9 @@ RMSE
 ## iter  90 value 1117.386902
 ## final  value 1117.386874 
 ## converged</code></pre>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="modelo-multinomial-logit.html#cb104-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb104-2"><a href="modelo-multinomial-logit.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
-<span id="cb104-3"><a href="modelo-multinomial-logit.html#cb104-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="modelo-multinomial-logit.html#cb107-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb107-2"><a href="modelo-multinomial-logit.html#cb107-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01,</span>
+<span id="cb107-3"><a href="modelo-multinomial-logit.html#cb107-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  105 (80 variable)
 ## initial  value 1843.694823 
 ## iter  10 value 1213.362538
@@ -4599,9 +4598,9 @@ RMSE
 ## iter 100 value 1006.832182
 ## final  value 1006.832182 
 ## stopped after 100 iterations</code></pre>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="modelo-multinomial-logit.html#cb106-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
-<span id="cb106-2"><a href="modelo-multinomial-logit.html#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
-<span id="cb106-3"><a href="modelo-multinomial-logit.html#cb106-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="modelo-multinomial-logit.html#cb109-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb109-2"><a href="modelo-multinomial-logit.html#cb109-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>lin <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> fuma_w01 <span class="sc">+</span> imc_w01 <span class="sc">+</span> proyecto_vida <span class="sc">+</span> apoyo_social_w01 <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb109-3"><a href="modelo-multinomial-logit.html#cb109-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
 <pre><code>## # weights:  130 (100 variable)
 ## initial  value 1822.382646 
 ## iter  10 value 1169.161302
@@ -4616,12 +4615,12 @@ RMSE
 ## iter 100 value 941.477004
 ## final  value 941.477004 
 ## stopped after 100 iterations</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="modelo-multinomial-logit.html#cb108-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
-<span id="cb108-2"><a href="modelo-multinomial-logit.html#cb108-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
-<span id="cb108-3"><a href="modelo-multinomial-logit.html#cb108-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
-<span id="cb108-4"><a href="modelo-multinomial-logit.html#cb108-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
-<span id="cb108-5"><a href="modelo-multinomial-logit.html#cb108-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model,</span>
-<span id="cb108-6"><a href="modelo-multinomial-logit.html#cb108-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="modelo-multinomial-logit.html#cb111-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(m1, m2, m3),</span>
+<span id="cb111-2"><a href="modelo-multinomial-logit.html#cb111-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
+<span id="cb111-3"><a href="modelo-multinomial-logit.html#cb111-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
+<span id="cb111-4"><a href="modelo-multinomial-logit.html#cb111-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb111-5"><a href="modelo-multinomial-logit.html#cb111-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> term <span class="sc">+</span> response <span class="sc">~</span> model,</span>
+<span id="cb111-6"><a href="modelo-multinomial-logit.html#cb111-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -4662,7 +4661,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 16.083
@@ -4727,7 +4726,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 7.201***
@@ -4792,7 +4791,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 0.980
@@ -4857,7 +4856,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 0.563**
@@ -4922,7 +4921,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 0.443
@@ -4987,7 +4986,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 0.162*
@@ -5052,7 +5051,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 0.849
@@ -5117,7 +5116,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 2.288*
@@ -5182,7 +5181,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 0.358*
@@ -5247,7 +5246,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 0.829
@@ -5312,7 +5311,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 0.324*
@@ -5377,7 +5376,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 0.586
@@ -5442,7 +5441,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 1.464
@@ -5507,7 +5506,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 1.145
@@ -5572,7 +5571,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 1.751
@@ -5637,7 +5636,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 0.778
@@ -5701,7 +5700,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 </td>
@@ -5762,7 +5761,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 </td>
@@ -5823,7 +5822,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 </td>
@@ -5884,7 +5883,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 </td>
@@ -5944,7 +5943,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 </td>
@@ -6001,7 +6000,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 </td>
@@ -6058,7 +6057,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 </td>
@@ -6115,7 +6114,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 </td>
@@ -6172,7 +6171,7 @@ Trayectoria media
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-Trayectoria remisión
+Trayectoria remision
 </td>
 <td style="text-align:center;">
 </td>

@@ -132,7 +132,7 @@ modelsummary::modelsummary(list(m1, m2, m3),
 elsoc_salud_modelo$trayectoria_gmm.5agrup <- factor(car::recode(elsoc_salud_modelo$trayectoria_gmm.5lin, 
                                                                 "'Trayectoria baja' = 1; 
                                                                 'Trayectoria media' = 1; 
-                                                                'Trayectoria remisión' = 2; 
+                                                                'Trayectoria remision' = 2; 
                                                                 'Trayectoria ascendente' = 3;
                                                                 'Trayectoria persistentes' = 4"),
                                                     levels = 1:4,
