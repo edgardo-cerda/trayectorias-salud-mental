@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 5 Modelo preferido: Trayectorias LCMM con 5 clases | Trayectorias de sintomatología depresiva</title>
+  <meta name="description" content="Capítulo 5 Modelo preferido: Trayectorias LCMM con 5 clases | Trayectorias de sintomatología depresiva" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 5 Modelo preferido: Trayectorias LCMM con 5 clases | Trayectorias de sintomatología depresiva" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Capítulo 5 Modelo preferido: Trayectorias LCMM con 5 clases | Trayectorias de sintomatología depresiva" />
+  <meta name="github-repo" content="edgardo-cerda/trayectorias-salud-mental" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 5 Modelo preferido: Trayectorias LCMM con 5 clases | Trayectorias de sintomatología depresiva" />
+  
+  <meta name="twitter:description" content="Capítulo 5 Modelo preferido: Trayectorias LCMM con 5 clases | Trayectorias de sintomatología depresiva" />
+  
+
+<meta name="author" content="Álvaro Jiménez, Fabián Duarte, Edgardo Cerda" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="modelo-multinomial-logit.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Trayectorias de depresión </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Cargar y preparar datos ELSOC</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#cargar-librerías"><i class="fa fa-check"></i><b>0.1</b> Cargar librerías</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><i class="fa fa-check"></i><b>1</b> Trayectorias de sintomatología depresiva. Modelo Optimal-Matching</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#secuencia-de-depresión-con-4-categorías"><i class="fa fa-check"></i><b>1.1</b> Secuencia de depresión con 4 categorías:</a>
+<ul>
+<li class="chapter" data-level="1.1.1" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#gráfico-de-secuencias"><i class="fa fa-check"></i><b>1.1.1</b> Gráfico de secuencias:</a></li>
+<li class="chapter" data-level="1.1.2" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#frecuencia-de-estados-y-transiciones"><i class="fa fa-check"></i><b>1.1.2</b> Frecuencia de estados y transiciones</a></li>
+<li class="chapter" data-level="1.1.3" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#clusters-de-secuencias"><i class="fa fa-check"></i><b>1.1.3</b> Clusters de secuencias:</a></li>
+<li class="chapter" data-level="1.1.4" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#graficos-de-secuencias-por-clusters"><i class="fa fa-check"></i><b>1.1.4</b> Graficos de secuencias por clusters</a></li>
+<li class="chapter" data-level="1.1.5" data-path="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#opción-preferida-5-clusters"><i class="fa fa-check"></i><b>1.1.5</b> Opción preferida: 5 clusters</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><i class="fa fa-check"></i><b>2</b> Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM)</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#identificar-trayectorias"><i class="fa fa-check"></i><b>2.1</b> Identificar trayectorias:</a>
+<ul>
+<li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-lineales"><i class="fa fa-check"></i>Modelos de trayectorias lineales:</a></li>
+<li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-cuadráticas"><i class="fa fa-check"></i>Modelos de trayectorias cuadráticas:</a></li>
+<li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#comparación-resultados"><i class="fa fa-check"></i>Comparación resultados</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#principales-trayectorias"><i class="fa fa-check"></i><b>2.2</b> Principales trayectorias</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="variables-modelo.html"><a href="variables-modelo.html"><i class="fa fa-check"></i><b>3</b> Variables modelo</a>
+<ul>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#agregar-variables-de-trayectoria-de-los-distintos-modelos"><i class="fa fa-check"></i>Agregar variables de trayectoria de los distintos modelos</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#agregar-variables-independientes"><i class="fa fa-check"></i>Agregar variables independientes</a></li>
+<li class="chapter" data-level="3.1" data-path="variables-modelo.html"><a href="variables-modelo.html#crear-y-agregar-trayectorias-de-variables-independientes"><i class="fa fa-check"></i><b>3.1</b> Crear y agregar trayectorias de variables independientes</a>
+<ul>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#insatisfacción-con-el-ingreso"><i class="fa fa-check"></i>Insatisfacción con el ingreso</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#situación-ocupacional-3-categorías"><i class="fa fa-check"></i>Situación ocupacional (3 categorías)</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#situación-ocupacional-4-categorías"><i class="fa fa-check"></i>Situación ocupacional (4 categorías)</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#sobrecarga-por-deudas"><i class="fa fa-check"></i>Sobrecarga por deudas</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#actividad-física-regular"><i class="fa fa-check"></i>Actividad física regular</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#apoyo-social"><i class="fa fa-check"></i>Apoyo social</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="variables-modelo.html"><a href="variables-modelo.html#guardar-datos-para-usar-después"><i class="fa fa-check"></i><b>3.2</b> Guardar datos para usar después</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html"><i class="fa fa-check"></i><b>4</b> Modelo multinomial logit</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#comparación-trayectorias"><i class="fa fa-check"></i><b>4.1</b> Comparación trayectorias</a></li>
+<li class="chapter" data-level="4.2" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-4-clases"><i class="fa fa-check"></i><b>4.2</b> Variable dependiente: Trayectorias OM 4 clases</a></li>
+<li class="chapter" data-level="4.3" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-5-clases"><i class="fa fa-check"></i><b>4.3</b> Variable dependiente: Trayectorias OM 5 clases</a></li>
+<li class="chapter" data-level="4.4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-4-clases"><i class="fa fa-check"></i><b>4.4</b> Variable dependiente: Trayectorias LCMM 4 clases</a></li>
+<li class="chapter" data-level="4.5" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-5-clases"><i class="fa fa-check"></i><b>4.5</b> Variable dependiente: Trayectorias LCMM 5 clases</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="modelo-preferido-trayectorias-lcmm-con-5-clases.html"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html"><i class="fa fa-check"></i><b>5</b> Modelo preferido: Trayectorias LCMM con 5 clases</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/edgardo-cerda/trayectorias-salud-mental" target="blank"> Ver fuente <i class="fa fa-github"></i></a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Trayectorias de sintomatología depresiva</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="modelo-preferido-trayectorias-lcmm-con-5-clases" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Modelo preferido: Trayectorias LCMM con 5 clases<a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#modelo-preferido-trayectorias-lcmm-con-5-clases" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-1" aria-hidden="true" tabindex="-1"></a>elsoc_salud_modelo<span class="sc">$</span>trayectoria_gmm<span class="fl">.5</span>agrup <span class="ot">&lt;-</span> <span class="fu">factor</span>(car<span class="sc">::</span><span class="fu">recode</span>(elsoc_salud_modelo<span class="sc">$</span>trayectoria_gmm<span class="fl">.5</span>lin, </span>
+<span id="cb109-2"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-2" aria-hidden="true" tabindex="-1"></a>                                                                <span class="st">&quot;&#39;Trayectoria baja&#39; = 1; </span></span>
+<span id="cb109-3"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="st">                                                                &#39;Trayectoria media&#39; = 1; </span></span>
+<span id="cb109-4"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="st">                                                                &#39;Trayectoria remisión&#39; = 2; </span></span>
+<span id="cb109-5"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="st">                                                                &#39;Trayectoria ascendente&#39; = 3;</span></span>
+<span id="cb109-6"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-6" aria-hidden="true" tabindex="-1"></a><span class="st">                                                                &#39;Trayectoria persistentes&#39; = 4&quot;</span>),</span>
+<span id="cb109-7"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-7" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
+<span id="cb109-8"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-8" aria-hidden="true" tabindex="-1"></a>                                                    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;Trayectoria síntomas bajos/medios&#39;</span>, </span>
+<span id="cb109-9"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-9" aria-hidden="true" tabindex="-1"></a>                                                               <span class="st">&#39;Trayectoria síntomas moderados decrecientes&#39;</span>,</span>
+<span id="cb109-10"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-10" aria-hidden="true" tabindex="-1"></a>                                                               <span class="st">&#39;Trayectoria síntomas moderados crecientes&#39;</span>, </span>
+<span id="cb109-11"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-11" aria-hidden="true" tabindex="-1"></a>                                                               <span class="st">&#39;Trayectoria síntomas moderados/severos persistentes&#39;</span>))</span>
+<span id="cb109-12"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb109-13"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-13" aria-hidden="true" tabindex="-1"></a>mp1 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb109-14"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>agrup <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_apoyo_social,</span>
+<span id="cb109-15"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb109-15" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<pre><code>## # weights:  64 (45 variable)
+## initial  value 1693.987943 
+## iter  10 value 650.920098
+## iter  20 value 554.207686
+## iter  30 value 531.407369
+## iter  40 value 522.209374
+## iter  50 value 521.601149
+## iter  60 value 521.586965
+## iter  70 value 521.586780
+## final  value 521.586765 
+## converged</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb111-1" aria-hidden="true" tabindex="-1"></a>mp2 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb111-2"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb111-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>agrup <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> proyecto_vida,</span>
+<span id="cb111-3"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb111-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<pre><code>## # weights:  80 (57 variable)
+## initial  value 1693.987943 
+## iter  10 value 638.575759
+## iter  20 value 543.988276
+## iter  30 value 521.428356
+## iter  40 value 511.462010
+## iter  50 value 510.079350
+## iter  60 value 509.884764
+## iter  70 value 509.749910
+## iter  80 value 509.748279
+## iter  90 value 509.746718
+## final  value 509.746698 
+## converged</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb113-1" aria-hidden="true" tabindex="-1"></a>mp3 <span class="ot">&lt;-</span> elsoc_salud_modelo <span class="sc">%&gt;%</span></span>
+<span id="cb113-2"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb113-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">multinom</span>(trayectoria_gmm<span class="fl">.5</span>agrup <span class="sc">~</span> m0_sexo_w01 <span class="sc">+</span> m0_edad_w01 <span class="sc">+</span> log_ing <span class="sc">+</span> trayectoria_deuda <span class="sc">+</span> trayectoria_ocup2 <span class="sc">+</span> trayectoria_activ_fisica <span class="sc">+</span> trayectoria_apoyo_social <span class="sc">+</span> proyecto_vida <span class="sc">+</span> extraversion <span class="sc">+</span> agreeableness <span class="sc">+</span> conscientiousness <span class="sc">+</span> neuroticism <span class="sc">+</span> openness,</span>
+<span id="cb113-3"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb113-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> ., <span class="at">weights =</span> ponderador02_w01) </span></code></pre></div>
+<pre><code>## # weights:  100 (72 variable)
+## initial  value 1674.927782 
+## iter  10 value 643.545587
+## iter  20 value 538.124856
+## iter  30 value 507.848629
+## iter  40 value 493.374711
+## iter  50 value 485.965493
+## iter  60 value 483.526767
+## iter  70 value 482.780729
+## iter  80 value 482.622437
+## iter  90 value 482.586961
+## iter 100 value 482.568769
+## final  value 482.568769 
+## stopped after 100 iterations</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb115-1" aria-hidden="true" tabindex="-1"></a>modelsummary<span class="sc">::</span><span class="fu">modelsummary</span>(<span class="fu">list</span>(mp1, mp2, mp3),</span>
+<span id="cb115-2"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb115-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">estimate =</span> <span class="st">&quot;{estimate}{stars}&quot;</span>,</span>
+<span id="cb115-3"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb115-3" aria-hidden="true" tabindex="-1"></a>                           <span class="at">statistic =</span> <span class="cn">NULL</span>,</span>
+<span id="cb115-4"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb115-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">stars =</span> <span class="fu">c</span>(<span class="st">&#39;*&#39;</span> <span class="ot">=</span> .<span class="dv">05</span>, <span class="st">&#39;**&#39;</span> <span class="ot">=</span> .<span class="dv">01</span>, <span class="st">&#39;***&#39;</span> <span class="ot">=</span> .<span class="dv">001</span>),</span>
+<span id="cb115-5"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb115-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">shape =</span> model <span class="sc">+</span> term <span class="sc">~</span> response,</span>
+<span id="cb115-6"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html#cb115-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">exponentiate =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+Trayectoria síntomas moderados decrecientes
+</th>
+<th style="text-align:center;">
+Trayectoria síntomas moderados crecientes
+</th>
+<th style="text-align:center;">
+Trayectoria síntomas moderados/severos persistentes
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Model 1
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+0.437
+</td>
+<td style="text-align:center;">
+0.128
+</td>
+<td style="text-align:center;">
+0.000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+5.593***
+</td>
+<td style="text-align:center;">
+3.401***
+</td>
+<td style="text-align:center;">
+3.288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+0.992
+</td>
+<td style="text-align:center;">
+0.984
+</td>
+<td style="text-align:center;">
+0.983
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+0.667
+</td>
+<td style="text-align:center;">
+0.758
+</td>
+<td style="text-align:center;">
+1.258
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deudaNada-Algo sobrecargados
+</td>
+<td style="text-align:center;">
+0.455
+</td>
+<td style="text-align:center;">
+1.922
+</td>
+<td style="text-align:center;">
+5.856*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deudaNo muy o algo sobrecargados
+</td>
+<td style="text-align:center;">
+0.165*
+</td>
+<td style="text-align:center;">
+0.724
+</td>
+<td style="text-align:center;">
+2.728
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deudaBastante sobrecargados, aliviados 2021
+</td>
+<td style="text-align:center;">
+0.932
+</td>
+<td style="text-align:center;">
+1.073
+</td>
+<td style="text-align:center;">
+2.799
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deudaMuy sobrecargados
+</td>
+<td style="text-align:center;">
+1.724
+</td>
+<td style="text-align:center;">
+3.080**
+</td>
+<td style="text-align:center;">
+1.681
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2Ocupados-inactivos
+</td>
+<td style="text-align:center;">
+1.511
+</td>
+<td style="text-align:center;">
+1.460
+</td>
+<td style="text-align:center;">
+5.548
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2Inactivos
+</td>
+<td style="text-align:center;">
+1.049
+</td>
+<td style="text-align:center;">
+1.662
+</td>
+<td style="text-align:center;">
+1.051
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2Trabajadores no remunerados
+</td>
+<td style="text-align:center;">
+0.650
+</td>
+<td style="text-align:center;">
+1.728
+</td>
+<td style="text-align:center;">
+15.459**
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2Ocupados-desempleados
+</td>
+<td style="text-align:center;">
+1.203
+</td>
+<td style="text-align:center;">
+0.882
+</td>
+<td style="text-align:center;">
+12.733*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_apoyo_socialApoyo social creciente
+</td>
+<td style="text-align:center;">
+2.295*
+</td>
+<td style="text-align:center;">
+2.661*
+</td>
+<td style="text-align:center;">
+130.984
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_apoyo_socialApoyo social decreciente
+</td>
+<td style="text-align:center;">
+0.967
+</td>
+<td style="text-align:center;">
+2.400
+</td>
+<td style="text-align:center;">
+122.090
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_apoyo_socialSin apoyo social
+</td>
+<td style="text-align:center;">
+1.995
+</td>
+<td style="text-align:center;">
+3.871**
+</td>
+<td style="text-align:center;">
+415.439
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model 2
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+0.590
+</td>
+<td style="text-align:center;">
+0.070
+</td>
+<td style="text-align:center;">
+0.000***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+5.499***
+</td>
+<td style="text-align:center;">
+3.056**
+</td>
+<td style="text-align:center;">
+2.503
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+0.990
+</td>
+<td style="text-align:center;">
+0.979*
+</td>
+<td style="text-align:center;">
+0.982
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+0.655*
+</td>
+<td style="text-align:center;">
+0.801
+</td>
+<td style="text-align:center;">
+1.744
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deudaNada-Algo sobrecargados
+</td>
+<td style="text-align:center;">
+0.444
+</td>
+<td style="text-align:center;">
+1.713
+</td>
+<td style="text-align:center;">
+5.879*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deudaNo muy o algo sobrecargados
+</td>
+<td style="text-align:center;">
+0.166*
+</td>
+<td style="text-align:center;">
+0.675
+</td>
+<td style="text-align:center;">
+3.157
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deudaBastante sobrecargados, aliviados 2021
+</td>
+<td style="text-align:center;">
+0.902
+</td>
+<td style="text-align:center;">
+0.975
+</td>
+<td style="text-align:center;">
+2.842
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deudaMuy sobrecargados
+</td>
+<td style="text-align:center;">
+1.709
+</td>
+<td style="text-align:center;">
+2.816**
+</td>
+<td style="text-align:center;">
+1.710
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2Ocupados-inactivos
+</td>
+<td style="text-align:center;">
+1.583
+</td>
+<td style="text-align:center;">
+1.476
+</td>
+<td style="text-align:center;">
+8.182
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2Inactivos
+</td>
+<td style="text-align:center;">
+1.070
+</td>
+<td style="text-align:center;">
+1.791
+</td>
+<td style="text-align:center;">
+1.772
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2Trabajadores no remunerados
+</td>
+<td style="text-align:center;">
+0.663
+</td>
+<td style="text-align:center;">
+1.737
+</td>
+<td style="text-align:center;">
+18.665**
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2Ocupados-desempleados
+</td>
+<td style="text-align:center;">
+1.151
+</td>
+<td style="text-align:center;">
+0.804
+</td>
+<td style="text-align:center;">
+16.873**
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_apoyo_socialApoyo social creciente
+</td>
+<td style="text-align:center;">
+2.463*
+</td>
+<td style="text-align:center;">
+2.917*
+</td>
+<td style="text-align:center;">
+164.092
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_apoyo_socialApoyo social decreciente
+</td>
+<td style="text-align:center;">
+1.059
+</td>
+<td style="text-align:center;">
+2.541*
+</td>
+<td style="text-align:center;">
+155.453
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_apoyo_socialSin apoyo social
+</td>
+<td style="text-align:center;">
+2.017
+</td>
+<td style="text-align:center;">
+4.202**
+</td>
+<td style="text-align:center;">
+629.386
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+1.040
+</td>
+<td style="text-align:center;">
+2.539*
+</td>
+<td style="text-align:center;">
+1435282.900***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+1.515
+</td>
+<td style="text-align:center;">
+1.919
+</td>
+<td style="text-align:center;">
+549233.094***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica4
+</td>
+<td style="text-align:center;">
+2.009
+</td>
+<td style="text-align:center;">
+3.078*
+</td>
+<td style="text-align:center;">
+3451708.730***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaDecidido dirección de vida
+</td>
+<td style="text-align:center;">
+0.784
+</td>
+<td style="text-align:center;">
+0.574
+</td>
+<td style="text-align:center;">
+1.384
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Model 3
+</td>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:center;">
+0.201
+</td>
+<td style="text-align:center;">
+0.007
+</td>
+<td style="text-align:center;">
+0.000***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_sexo_w01
+</td>
+<td style="text-align:center;">
+3.953**
+</td>
+<td style="text-align:center;">
+2.505**
+</td>
+<td style="text-align:center;">
+2.425
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+m0_edad_w01
+</td>
+<td style="text-align:center;">
+0.994
+</td>
+<td style="text-align:center;">
+0.979*
+</td>
+<td style="text-align:center;">
+0.996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+log_ing
+</td>
+<td style="text-align:center;">
+0.591*
+</td>
+<td style="text-align:center;">
+0.719
+</td>
+<td style="text-align:center;">
+2.088
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deudaNada-Algo sobrecargados
+</td>
+<td style="text-align:center;">
+0.475
+</td>
+<td style="text-align:center;">
+1.669
+</td>
+<td style="text-align:center;">
+12.557*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deudaNo muy o algo sobrecargados
+</td>
+<td style="text-align:center;">
+0.176
+</td>
+<td style="text-align:center;">
+0.738
+</td>
+<td style="text-align:center;">
+5.170
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deudaBastante sobrecargados, aliviados 2021
+</td>
+<td style="text-align:center;">
+1.087
+</td>
+<td style="text-align:center;">
+0.970
+</td>
+<td style="text-align:center;">
+4.101
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_deudaMuy sobrecargados
+</td>
+<td style="text-align:center;">
+1.826
+</td>
+<td style="text-align:center;">
+2.905**
+</td>
+<td style="text-align:center;">
+1.125
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2Ocupados-inactivos
+</td>
+<td style="text-align:center;">
+1.646
+</td>
+<td style="text-align:center;">
+1.548
+</td>
+<td style="text-align:center;">
+6.739
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2Inactivos
+</td>
+<td style="text-align:center;">
+0.878
+</td>
+<td style="text-align:center;">
+1.671
+</td>
+<td style="text-align:center;">
+1.175
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2Trabajadores no remunerados
+</td>
+<td style="text-align:center;">
+0.626
+</td>
+<td style="text-align:center;">
+1.765
+</td>
+<td style="text-align:center;">
+15.340*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_ocup2Ocupados-desempleados
+</td>
+<td style="text-align:center;">
+1.019
+</td>
+<td style="text-align:center;">
+0.811
+</td>
+<td style="text-align:center;">
+21.721**
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_apoyo_socialApoyo social creciente
+</td>
+<td style="text-align:center;">
+2.305
+</td>
+<td style="text-align:center;">
+3.133*
+</td>
+<td style="text-align:center;">
+209.349
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_apoyo_socialApoyo social decreciente
+</td>
+<td style="text-align:center;">
+0.954
+</td>
+<td style="text-align:center;">
+2.489
+</td>
+<td style="text-align:center;">
+202.771
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_apoyo_socialSin apoyo social
+</td>
+<td style="text-align:center;">
+1.605
+</td>
+<td style="text-align:center;">
+4.132**
+</td>
+<td style="text-align:center;">
+595.398
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica2
+</td>
+<td style="text-align:center;">
+1.155
+</td>
+<td style="text-align:center;">
+2.797*
+</td>
+<td style="text-align:center;">
+3350.955***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica3
+</td>
+<td style="text-align:center;">
+1.854
+</td>
+<td style="text-align:center;">
+2.148
+</td>
+<td style="text-align:center;">
+2082.835**
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+trayectoria_activ_fisica4
+</td>
+<td style="text-align:center;">
+2.210
+</td>
+<td style="text-align:center;">
+3.812*
+</td>
+<td style="text-align:center;">
+12068.785***
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+proyecto_vidaDecidido dirección de vida
+</td>
+<td style="text-align:center;">
+0.770
+</td>
+<td style="text-align:center;">
+0.563
+</td>
+<td style="text-align:center;">
+1.811
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+extraversion
+</td>
+<td style="text-align:center;">
+1.067
+</td>
+<td style="text-align:center;">
+1.064
+</td>
+<td style="text-align:center;">
+0.863
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+agreeableness
+</td>
+<td style="text-align:center;">
+0.901
+</td>
+<td style="text-align:center;">
+1.082
+</td>
+<td style="text-align:center;">
+0.937
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+conscientiousness
+</td>
+<td style="text-align:center;">
+1.007
+</td>
+<td style="text-align:center;">
+1.084
+</td>
+<td style="text-align:center;">
+0.653*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+neuroticism
+</td>
+<td style="text-align:center;">
+1.454***
+</td>
+<td style="text-align:center;">
+1.255**
+</td>
+<td style="text-align:center;">
+1.647*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+openness
+</td>
+<td style="text-align:center;">
+1.109
+</td>
+<td style="text-align:center;">
+1.135
+</td>
+<td style="text-align:center;">
+0.647*
+</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="modelo-multinomial-logit.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Trayectorias-depresion.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+},
+"info": false
+});
+});
+</script>
+
+</body>
+
+</html>

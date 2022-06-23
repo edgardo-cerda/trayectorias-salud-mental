@@ -3,7 +3,7 @@
 
 ## Secuencia de depresión con 4 categorías:
 
-```{r, cache = TRUE}
+```{r seq-depr4, cache = TRUE}
 # Crear objeto con secuencias
 seq.depr4 <- TraMineR::seqdef(elsoc_salud, 
                              var = c('depr4_w01', 'depr4_w02', 'depr4_w03', 'depr4_w04', 'depr4_w05'), 
@@ -17,7 +17,7 @@ seq.depr4 <- TraMineR::seqdef(elsoc_salud,
 
 Muestra todas las secuencias, ordenadas según la suma total del indice phq9 (sumando las 5 olas)
 
-```{r, cache = TRUE}
+```{r graph-seqdepr4, cache = TRUE}
 
 TraMineR::seqIplot(seq.depr4, border = NA, xtlab = c(2016:2019, 2021),
                    space = 0, sortv = elsoc_salud$phq_sum)
@@ -27,7 +27,7 @@ TraMineR::seqIplot(seq.depr4, border = NA, xtlab = c(2016:2019, 2021),
 
 ### Frecuencia de estados y transiciones
 
-```{r, cache = TRUE}
+```{r tablas-seqdepr4, cache = TRUE}
 seqstatd(seq.depr4)
 
 seqtrate(seq.depr4)

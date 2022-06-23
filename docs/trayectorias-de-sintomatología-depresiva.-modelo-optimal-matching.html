@@ -172,8 +172,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#situación-ocupacional-3-categorías"><i class="fa fa-check"></i>Situación ocupacional (3 categorías)</a></li>
 <li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#situación-ocupacional-4-categorías"><i class="fa fa-check"></i>Situación ocupacional (4 categorías)</a></li>
 <li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#sobrecarga-por-deudas"><i class="fa fa-check"></i>Sobrecarga por deudas</a></li>
-<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#avtividad-física-regular"><i class="fa fa-check"></i>Avtividad física regular</a></li>
-<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#percepción-desigualdad"><i class="fa fa-check"></i>Percepción desigualdad</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#actividad-física-regular"><i class="fa fa-check"></i>Actividad física regular</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#apoyo-social"><i class="fa fa-check"></i>Apoyo social</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="variables-modelo.html"><a href="variables-modelo.html#guardar-datos-para-usar-después"><i class="fa fa-check"></i><b>3.2</b> Guardar datos para usar después</a></li>
 </ul></li>
@@ -184,8 +184,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-5-clases"><i class="fa fa-check"></i><b>4.3</b> Variable dependiente: Trayectorias OM 5 clases</a></li>
 <li class="chapter" data-level="4.4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-4-clases"><i class="fa fa-check"></i><b>4.4</b> Variable dependiente: Trayectorias LCMM 4 clases</a></li>
 <li class="chapter" data-level="4.5" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-5-clases"><i class="fa fa-check"></i><b>4.5</b> Variable dependiente: Trayectorias LCMM 5 clases</a></li>
-<li class="chapter" data-level="4.6" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#modelo-preferido-trayectorias-lcmm-con-5-clases"><i class="fa fa-check"></i><b>4.6</b> Modelo preferido: Trayectorias LCMM con 5 clases</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="modelo-preferido-trayectorias-lcmm-con-5-clases.html"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html"><i class="fa fa-check"></i><b>5</b> Modelo preferido: Trayectorias LCMM con 5 clases</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/edgardo-cerda/trayectorias-salud-mental" target="blank"> Ver fuente <i class="fa fa-github"></i></a></li>
 
@@ -222,7 +222,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Muestra todas las secuencias, ordenadas según la suma total del indice phq9 (sumando las 5 olas)</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb4-1" aria-hidden="true" tabindex="-1"></a>TraMineR<span class="sc">::</span><span class="fu">seqIplot</span>(seq.depr4, <span class="at">border =</span> <span class="cn">NA</span>, <span class="at">xtlab =</span> <span class="fu">c</span>(<span class="dv">2016</span><span class="sc">:</span><span class="dv">2019</span>, <span class="dv">2021</span>),</span>
 <span id="cb4-2"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb4-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">space =</span> <span class="dv">0</span>, <span class="at">sortv =</span> elsoc_salud<span class="sc">$</span>phq_sum)</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="Trayectorias-depresion_files/figure-html/graph-seqdepr4-1.png" width="672" /></p>
 </div>
 <div id="frecuencia-de-estados-y-transiciones" class="section level3 hasAnchor" number="1.1.2">
 <h3><span class="header-section-number">1.1.2</span> Frecuencia de estados y transiciones<a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#frecuencia-de-estados-y-transiciones" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -357,7 +357,7 @@ Mide la coherencia de asignaciones. Alta coherencia indica una alta distancia en
 <span id="cb11-15"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb11-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> value, <span class="at">x =</span> clusters, <span class="at">color =</span> indicador, <span class="at">group =</span> indicador)) <span class="sc">+</span></span>
 <span id="cb11-16"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb11-17"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb11-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">2</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Para ASWw, HG y PBC, mientras más alto el valor indica una mejor calidad en la partición. Para HC mientras más bajo es mejor. Los mejores valores parecen estar entre 4 y 5 clusters.</p>
 </div>
 </div>
@@ -367,19 +367,19 @@ Mide la coherencia de asignaciones. Alta coherencia indica una alta distancia en
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb12-1" aria-hidden="true" tabindex="-1"></a>TraMineR<span class="sc">::</span><span class="fu">seqfplot</span>(seq.depr4, <span class="at">group =</span> stats<span class="sc">::</span><span class="fu">cutree</span>(ward.depr4, <span class="at">k =</span> <span class="dv">4</span>),</span>
 <span id="cb12-2"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb12-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">border =</span> <span class="cn">NA</span>, </span>
 <span id="cb12-3"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb12-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">space =</span> <span class="dv">0</span>, <span class="at">idxs =</span> <span class="dv">0</span>, <span class="at">xtlab =</span> <span class="fu">c</span>(<span class="dv">2016</span><span class="sc">:</span><span class="dv">2019</span>, <span class="dv">2021</span>))</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb13-1" aria-hidden="true" tabindex="-1"></a>TraMineR<span class="sc">::</span><span class="fu">seqdplot</span>(seq.depr4, <span class="at">group =</span> stats<span class="sc">::</span><span class="fu">cutree</span>(ward.depr4, <span class="at">k =</span> <span class="dv">4</span>),</span>
 <span id="cb13-2"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb13-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">border =</span> <span class="cn">NA</span>, </span>
 <span id="cb13-3"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb13-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">space =</span> <span class="dv">0</span>)</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-4-2.png" width="672" /></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb14-1" aria-hidden="true" tabindex="-1"></a>TraMineR<span class="sc">::</span><span class="fu">seqfplot</span>(seq.depr4, <span class="at">group =</span> stats<span class="sc">::</span><span class="fu">cutree</span>(ward.depr4, <span class="at">k =</span> <span class="dv">5</span>),</span>
 <span id="cb14-2"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb14-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">border =</span> <span class="cn">NA</span>, </span>
 <span id="cb14-3"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb14-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">space =</span> <span class="dv">0</span>, <span class="at">idxs =</span> <span class="dv">0</span>, <span class="at">xtlab =</span> <span class="fu">c</span>(<span class="dv">2016</span><span class="sc">:</span><span class="dv">2019</span>, <span class="dv">2021</span>))</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb15-1" aria-hidden="true" tabindex="-1"></a>TraMineR<span class="sc">::</span><span class="fu">seqdplot</span>(seq.depr4, <span class="at">group =</span> stats<span class="sc">::</span><span class="fu">cutree</span>(ward.depr4, <span class="at">k =</span> <span class="dv">5</span>),</span>
 <span id="cb15-2"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb15-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">border =</span> <span class="cn">NA</span>, </span>
 <span id="cb15-3"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb15-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">space =</span> <span class="dv">0</span>)</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
 </div>
 <div id="opción-preferida-5-clusters" class="section level3 hasAnchor" number="1.1.5">
 <h3><span class="header-section-number">1.1.5</span> Opción preferida: 5 clusters<a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#opción-preferida-5-clusters" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -401,12 +401,12 @@ Mide la coherencia de asignaciones. Alta coherencia indica una alta distancia en
 <span id="cb16-10"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb16-10" aria-hidden="true" tabindex="-1"></a>                   <span class="at">border =</span> <span class="cn">NA</span>,</span>
 <span id="cb16-11"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb16-11" aria-hidden="true" tabindex="-1"></a>                   <span class="at">space =</span> <span class="dv">0</span>, <span class="at">idxs =</span> <span class="dv">0</span>, </span>
 <span id="cb16-12"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb16-12" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xtlab =</span> <span class="fu">c</span>(<span class="dv">2016</span><span class="sc">:</span><span class="dv">2019</span>, <span class="dv">2021</span>))</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb17-1" aria-hidden="true" tabindex="-1"></a>TraMineR<span class="sc">::</span><span class="fu">seqdplot</span>(seq.depr4, <span class="at">group =</span> seq.depr4<span class="sc">$</span>cluster,</span>
 <span id="cb17-2"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb17-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">border =</span> <span class="cn">NA</span>,</span>
 <span id="cb17-3"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb17-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">space =</span> <span class="dv">0</span>, </span>
 <span id="cb17-4"><a href="trayectorias-de-sintomatología-depresiva.-modelo-optimal-matching.html#cb17-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">xtlab =</span> <span class="fu">c</span>(<span class="dv">2016</span><span class="sc">:</span><span class="dv">2019</span>, <span class="dv">2021</span>))</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
 
 </div>
 </div>

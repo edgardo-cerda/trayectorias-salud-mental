@@ -172,8 +172,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#situación-ocupacional-3-categorías"><i class="fa fa-check"></i>Situación ocupacional (3 categorías)</a></li>
 <li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#situación-ocupacional-4-categorías"><i class="fa fa-check"></i>Situación ocupacional (4 categorías)</a></li>
 <li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#sobrecarga-por-deudas"><i class="fa fa-check"></i>Sobrecarga por deudas</a></li>
-<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#avtividad-física-regular"><i class="fa fa-check"></i>Avtividad física regular</a></li>
-<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#percepción-desigualdad"><i class="fa fa-check"></i>Percepción desigualdad</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#actividad-física-regular"><i class="fa fa-check"></i>Actividad física regular</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#apoyo-social"><i class="fa fa-check"></i>Apoyo social</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="variables-modelo.html"><a href="variables-modelo.html#guardar-datos-para-usar-después"><i class="fa fa-check"></i><b>3.2</b> Guardar datos para usar después</a></li>
 </ul></li>
@@ -184,8 +184,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.3" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-om-5-clases"><i class="fa fa-check"></i><b>4.3</b> Variable dependiente: Trayectorias OM 5 clases</a></li>
 <li class="chapter" data-level="4.4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-4-clases"><i class="fa fa-check"></i><b>4.4</b> Variable dependiente: Trayectorias LCMM 4 clases</a></li>
 <li class="chapter" data-level="4.5" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-5-clases"><i class="fa fa-check"></i><b>4.5</b> Variable dependiente: Trayectorias LCMM 5 clases</a></li>
-<li class="chapter" data-level="4.6" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#modelo-preferido-trayectorias-lcmm-con-5-clases"><i class="fa fa-check"></i><b>4.6</b> Modelo preferido: Trayectorias LCMM con 5 clases</a></li>
 </ul></li>
+<li class="chapter" data-level="5" data-path="modelo-preferido-trayectorias-lcmm-con-5-clases.html"><a href="modelo-preferido-trayectorias-lcmm-con-5-clases.html"><i class="fa fa-check"></i><b>5</b> Modelo preferido: Trayectorias LCMM con 5 clases</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/edgardo-cerda/trayectorias-salud-mental" target="blank"> Ver fuente <i class="fa fa-github"></i></a></li>
 
@@ -830,7 +830,7 @@ lcmm6_quad
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb26-1" aria-hidden="true" tabindex="-1"></a>pred_lcmm4_lin <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcmm4_lin, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
 <span id="cb26-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcmm4_lin, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lcmm4_quad)</span></code></pre></div>
 <pre><code>## Heterogenous linear mixed model 
 ##      fitted by maximum likelihood method 
@@ -889,7 +889,7 @@ lcmm6_quad
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb29-1" aria-hidden="true" tabindex="-1"></a>pred_lcmm4_quad <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcmm4_quad, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
 <span id="cb29-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcmm4_quad, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lcmm5_lin)</span></code></pre></div>
 <pre><code>## Heterogenous linear mixed model 
 ##      fitted by maximum likelihood method 
@@ -947,7 +947,7 @@ lcmm6_quad
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb32-1" aria-hidden="true" tabindex="-1"></a>pred_lcmm5_lin <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcmm5_lin, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
 <span id="cb32-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcmm5_lin, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lcmm5_quad)</span></code></pre></div>
 <pre><code>## Heterogenous linear mixed model 
 ##      fitted by maximum likelihood method 
@@ -1010,7 +1010,7 @@ lcmm6_quad
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb35-1" aria-hidden="true" tabindex="-1"></a>pred_lcmm5_quad <span class="ot">&lt;-</span> <span class="fu">predictY</span>(lcmm5_quad, <span class="fu">data.frame</span>(<span class="at">ola =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>))</span>
 <span id="cb35-2"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb35-3"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(pred_lcmm5_quad, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">27</span>))</span></code></pre></div>
-<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="Trayectorias-depresion_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 
 </div>
 </div>

@@ -30,7 +30,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, cache = FAL
 
 ## Cargar librerías
 
-```{r, warning=FALSE, message=FALSE}
+```{r cargar-paquetes, warning=FALSE, message=FALSE}
 # Librerías básicas
 library(tidyverse)
 library(sjlabelled)
@@ -59,10 +59,11 @@ library(statar)
 ```
 
 
-```{r}
+```{r armar-bases, cache=TRUE}
 
 # Cargar datos ELSOC:
-elsoc::load_elsoc(data = 'wide')
+# elsoc::load_elsoc(data = 'wide')
+load(file.path('..', 'inputs', 'ELSOC_Wide_2016_2021_v1.00_R.RData'))
 
 # Crear variables de sintomatología depresiva por ola:
 elsoc_salud <- elsoc_wide_2016_2021 %>% 
@@ -99,7 +100,8 @@ elsoc_salud <- elsoc_wide_2016_2021 %>%
 
 
 # Cargar datos ELSOC LONG:
-elsoc::load_elsoc(data = 'long')
+# elsoc::load_elsoc(data = 'long')
+load(file.path('..', 'inputs', 'ELSOC_Long_2016_2021_v1.00_R.RData'))
 
 # Crear variables de sintomatología depresiva por ola LONG:
 elsoc_salud_long <- elsoc_long_2016_2021 %>% 
