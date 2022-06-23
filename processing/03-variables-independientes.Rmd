@@ -36,7 +36,7 @@ sjmisc::frq(elsoc_salud_modelo$trayectoria_gmm.5lin)
 
 ## Agregar variables independientes {.unnumbered}
 
-```{r}
+```{r df-salud-modelo, cache=FALSE}
 
 elsoc_salud_modelo <- elsoc_salud_modelo %>% 
     filter(!elsoc::is_nsnr(m30_w01, m30_w02, m30_w03, m30_w04, m30b_w05)) %>% 
@@ -105,15 +105,6 @@ elsoc_salud_modelo <- elsoc_salud_modelo %>%
                       levels = 1:4,
                       labels = c('Ocupado', 'Desempleado', 'Inactivo', 'Trabajo no remunerado')),
     
-    # Insatisfacción con el ingreso
-    insatisf_ing_w01 = factor(m16_w01 %in% 1:2,
-                              labels = c('Satisfecho', 'Insatisfecho')),
-    insatisf_ing_w02 = factor(m16_w02 %in% 1:2,
-                              labels = c('Satisfecho', 'Insatisfecho')),
-    insatisf_ing_w03 = factor(m16_w03 %in% 1:2,
-                              labels = c('Satisfecho', 'Insatisfecho')),
-    insatisf_ing_w04 = factor(m16_w04 %in% 1:2,
-                              labels = c('Satisfecho', 'Insatisfecho')),
     
     # Sobrecarga de deudas
     sobrecarga_deuda_w01 = factor(car::recode(m43_w01, "1:2 = 1; 4:5 = 2; else = NA"),
@@ -125,16 +116,30 @@ elsoc_salud_modelo <- elsoc_salud_modelo %>%
                                              'Bastante/Muy sobrecargado')),
 
     # Apoyo social
-    apoyo_social_w01 = factor(s12_w01 %in% 4:5,
-                              labels = c('Sin apoyo social', 'Con apoyo social')),
-    apoyo_social_w03 = factor(s12_w03 %in% 4:5,
-                              labels = c('Sin apoyo social', 'Con apoyo social')),
+    apoyo_social_w01 = factor(car::recode(s12_w01, "1:2 = 1; 3:4 = 2; 5 = 3"),
+                              levels = 1:3,
+                              labels = c('Apoyo social bajo', 'Apoyo social medio', 'Apoyo social alto')),
+    apoyo_social_w03 = factor(car::recode(s12_w03, "1:2 = 1; 3:4 = 2; 5 = 3"),
+                              levels = 1:3,
+                              labels = c('Apoyo social bajo', 'Apoyo social medio', 'Apoyo social alto')),
     
     # Actividad física regular
     activ_fisica_w01 = factor(s04_w01 %in% 1:3,
                               labels = c('Sin actividad fisica regular', 'Con actividad fisica regular')),
     activ_fisica_w03 = factor(s04_w03 %in% 1:3,
                               labels = c('Sin actividad fisica regular', 'Con actividad fisica regular')),
+    
+    # Estado de salud
+    salud_w01 = factor(car::recode(s03_w01, "1 = 1; 2:3 = 2; 4:5 = 3; else = NA"),
+                       labels = c('Mala', 'Regular/buena', 'Muy buena/excelente')),
+    salud_w02 = factor(car::recode(s03_w02, "1 = 1; 2:3 = 2; 4:5 = 3; else = NA"),
+                       labels = c('Mala', 'Regular/buena', 'Muy buena/excelente')),
+    salud_w03 = factor(car::recode(s03_w03, "1 = 1; 2:3 = 2; 4:5 = 3; else = NA"),
+                       labels = c('Mala', 'Regular/buena', 'Muy buena/excelente')),
+    salud_w04 = factor(car::recode(s03_w04, "1 = 1; 2:3 = 2; 4:5 = 3; else = NA"),
+                       labels = c('Mala', 'Regular/buena', 'Muy buena/excelente')),
+    salud_w05 = factor(car::recode(s03_w05, "1 = 1; 2:3 = 2; 4:5 = 3; else = NA"),
+                       labels = c('Mala', 'Regular/buena', 'Muy buena/excelente')),
     
     # Fumador
     fuma_w01 = factor(s08_w01 >= 1,
@@ -390,26 +395,20 @@ elsoc_salud_modelo$trayectoria_activ_fisica <- factor(stats::cutree(ward, k = 4)
 
 ### Apoyo social {.unnumbered}
 
-```{r, cache=TRUE}
+```{r tray-apoyo-social, cache=FALSE}
 
 comparar_clusters(elsoc_salud_modelo,
             vars = c('apoyo_social_w01', 'apoyo_social_w03'))
 
 trayectoria(elsoc_salud_modelo,
             vars = c('apoyo_social_w01', 'apoyo_social_w03'),
-            cpal = c('palegreen3', 'palevioletred3'),
-            olas = c(2016, 2018),
-            K = 3)
-
-trayectoria(elsoc_salud_modelo,
-            vars = c('apoyo_social_w01', 'apoyo_social_w03'),
-            cpal = c('palegreen3', 'palevioletred3'),
+            cpal = c('palegreen3', 'palevioletred3', 'khaki3'),
             olas = c(2016, 2018),
             K = 4)
 
 trayectoria(elsoc_salud_modelo,
             vars = c('apoyo_social_w01', 'apoyo_social_w03'),
-            cpal = c('palegreen3', 'palevioletred3'),
+            cpal = c('palegreen3', 'palevioletred3', 'khaki3'),
             olas = c(2016, 2018),
             K = 5)
 
@@ -425,12 +424,55 @@ dist <- TraMineR::seqdist(seq,
                           with.missing = TRUE)
 ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
 
-elsoc_salud_modelo$trayectoria_apoyo_social <- factor(stats::cutree(ward, k = 4),
-                                                      levels = c(2, 3, 1, 4),
-                                                      labels = c('Sin apoyo social persistente', 
-                                                                 'Apoyo social decreciente', 
-                                                                 'Apoyo social creciente', 
-                                                                 'Con apoyo social persistente'))
+elsoc_salud_modelo$trayectoria_apoyo_social <- factor(stats::cutree(ward, k = 5),
+                                                      levels = c(5, 4, 2, 1, 3),
+                                                      labels = c('Apoyo social estable', 
+                                                                 'Apoyo social/decreciente', 
+                                                                 'Apoyo social medio', 
+                                                                 'Apoyo social cambiante',
+                                                                 'Sin apoyo social'))
+
+```
+
+
+### Salud subjetiva {.unnumbered}
+
+```{r, cache=TRUE}
+
+comparar_clusters(elsoc_salud_modelo,
+            vars = c('salud_w01', 'salud_w02', 'salud_w03', 'salud_w04', 'salud_w05'))
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('salud_w01', 'salud_w02', 'salud_w03', 'salud_w04', 'salud_w05'),
+            cpal = c('palevioletred3', 'palegreen3', 'khaki3'),
+            K = 3)
+trayectoria(elsoc_salud_modelo,
+            vars = c('salud_w01', 'salud_w02', 'salud_w03', 'salud_w04', 'salud_w05'),
+            cpal = c('palevioletred3', 'palegreen3', 'khaki3'),
+            K = 4)
+trayectoria(elsoc_salud_modelo,
+            vars = c('salud_w01', 'salud_w02', 'salud_w03', 'salud_w04', 'salud_w05'),
+            cpal = c('palevioletred3', 'palegreen3', 'khaki3'),
+            K = 5)
+
+```
+
+```{r, cache=TRUE}
+# Agregar trayectoria de 3 clusters
+seq <- TraMineR::seqdef(elsoc_salud_modelo, 
+                        var = c('salud_w01', 'salud_w02', 'salud_w03', 'salud_w04', 'salud_w05'),
+                        weights = elsoc_salud_modelo$ponderador02_w01)
+dist <- TraMineR::seqdist(seq,
+                          method = "LCS",
+                          with.missing = TRUE)
+ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
+
+elsoc_salud_modelo$trayectoria_salud <- factor(stats::cutree(ward, k = 4),
+                                                      levels = c(4, 3, 2, 1),
+                                                      labels = c('Salud subjetiva muy buena',
+                                                      'Salud subjetiva regular/muy buena',
+                                                      'Salud subjetiva regular',
+                                                      'Salud subjetiva mala/regular'))
 
 ```
 

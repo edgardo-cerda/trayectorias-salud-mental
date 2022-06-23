@@ -14,4 +14,3 @@ guardar-datos-para-usar-después
 modelo-multinomial-logit
 comparación-trayectorias
 variable-dependiente-trayectorias-lcmm-4-clases
-variable-dependiente-trayectorias-lcmm-5-clases
