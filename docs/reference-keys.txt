@@ -5,7 +5,6 @@ gráfico-de-secuencias
 frecuencia-de-estados-y-transiciones
 clusters-de-secuencias
 graficos-de-secuencias-por-clusters
-opción-preferida-5-clusters
 trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm
 identificar-trayectorias
 principales-trayectorias
@@ -14,8 +13,5 @@ crear-y-agregar-trayectorias-de-variables-independientes
 guardar-datos-para-usar-después
 modelo-multinomial-logit
 comparación-trayectorias
-variable-dependiente-trayectorias-om-4-clases
-variable-dependiente-trayectorias-om-5-clases
 variable-dependiente-trayectorias-lcmm-4-clases
 variable-dependiente-trayectorias-lcmm-5-clases
-modelo-preferido-trayectorias-lcmm-con-4-clases-agrupando-trayectorias-bajas-y-medias

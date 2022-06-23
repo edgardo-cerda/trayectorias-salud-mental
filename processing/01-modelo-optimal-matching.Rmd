@@ -6,7 +6,7 @@
 ```{r seq-depr4, cache = TRUE}
 # Crear objeto con secuencias
 seq.depr4 <- TraMineR::seqdef(elsoc_salud, 
-                             var = c('depr4_w01', 'depr4_w02', 'depr4_w03', 'depr4_w04', 'depr4_w05'), 
+                             var = c('depr4_w01', 'depr4_w02', 'depr4_w03', 'depr4_w04'), 
                              states = c('Sin síntomas', 'Síntomas medios', 'Síntomas moderados', 'Síntomas severos'), 
                              labels = c('Sin síntomas', 'Síntomas medios', 'Sintomas moderados', 'Síntomas severos'),
                              weights = elsoc_salud$ponderador02_w01,
@@ -19,7 +19,7 @@ Muestra todas las secuencias, ordenadas según la suma total del indice phq9 (su
 
 ```{r graph-seqdepr4, cache = TRUE}
 
-TraMineR::seqIplot(seq.depr4, border = NA, xtlab = c(2016:2019, 2021),
+TraMineR::seqIplot(seq.depr4, border = NA, xtlab = 2016:2019,
                    space = 0, sortv = elsoc_salud$phq_sum)
 
 
@@ -95,7 +95,7 @@ Para ASWw, HG y PBC, mientras más alto el valor indica una mejor calidad en la 
 
 ### Graficos de secuencias por clusters
 
-Pruebas con 4-5 clusters
+Pruebas con 4-6 clusters
 
 
 ```{r, cache = TRUE}
@@ -103,7 +103,7 @@ Pruebas con 4-5 clusters
 
 TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 4),
                    border = NA, 
-                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
+                   space = 0, idxs = 0, xtlab = 2016:2019)
 
 TraMineR::seqdplot(seq.depr4, group = stats::cutree(ward.depr4, k = 4),
                    border = NA, 
@@ -117,7 +117,7 @@ TraMineR::seqdplot(seq.depr4, group = stats::cutree(ward.depr4, k = 4),
 ```{r, cache = TRUE}
 TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 5),
                    border = NA, 
-                   space = 0, idxs = 0, xtlab = c(2016:2019, 2021))
+                   space = 0, idxs = 0, xtlab = 2016:2019)
 
 TraMineR::seqdplot(seq.depr4, group = stats::cutree(ward.depr4, k = 5),
                    border = NA, 
@@ -126,35 +126,13 @@ TraMineR::seqdplot(seq.depr4, group = stats::cutree(ward.depr4, k = 5),
 ```
 
 
-### Opción preferida: 5 clusters
-
-Me gusta la opción con 5 clusters. Nombres provisorios:
- - Trayectoria alta/moderada
- - Trayectoria descendente
- - Trayectoria ascendente
- - Trayectoria media/moderada
- - Trayectoria baja/media
- 
-
 ```{r, cache = TRUE}
+TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 6),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = 2016:2019)
 
-seq.depr4$cluster <- factor(stats::cutree(ward.depr4, k = 5), 
-                            levels = 1:5,
-                            labels = c('Trayectoria alta/moderada', 
-                     'Trayectoria descendente', 
-                     'Trayectoria ascendente', 
-                     'Trayectoria media/moderada', 
-                     'Trayectoria baja/media'))
-
-TraMineR::seqfplot(seq.depr4, group = seq.depr4$cluster,
-                   border = NA,
-                   space = 0, idxs = 0, 
-                   xtlab = c(2016:2019, 2021))
-
-TraMineR::seqdplot(seq.depr4, group = seq.depr4$cluster,
-                   border = NA,
-                   space = 0, 
-                   xtlab = c(2016:2019, 2021))
+TraMineR::seqdplot(seq.depr4, group = stats::cutree(ward.depr4, k = 6),
+                   border = NA, 
+                   space = 0)
 
 ```
-

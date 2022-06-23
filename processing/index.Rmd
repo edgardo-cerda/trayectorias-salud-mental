@@ -69,7 +69,7 @@ load(file.path('..', 'inputs', 'ELSOC_Wide_2016_2021_v1.00_R.RData'))
 elsoc_salud <- elsoc_wide_2016_2021 %>% 
   
   # Se conservan observaciones presentes en las 5 olas
-  filter(tipo_atricion == 1) %>% 
+  filter(tipo_atricion %in% 1:2) %>% 
   
   # Crear variables de PHQ9
   purrr::map_at(.at = vars(starts_with('s11_0')), 
@@ -78,24 +78,22 @@ elsoc_salud <- elsoc_wide_2016_2021 %>%
   mutate(phq9_w01 = (s11_01_w01 + s11_02_w01 + s11_03_w01 + s11_04_w01 + s11_05_w01 + s11_06_w01 + s11_07_w01 + s11_08_w01 + s11_09_w01),
          phq9_w02 = (s11_01_w02 + s11_02_w02 + s11_03_w02 + s11_04_w02 + s11_05_w02 + s11_06_w02 + s11_07_w02 + s11_08_w02 + s11_09_w02),
          phq9_w03 = (s11_01_w03 + s11_02_w03 + s11_03_w03 + s11_04_w03 + s11_05_w03 + s11_06_w03 + s11_07_w03 + s11_08_w03 + s11_09_w03),
-         phq9_w04 = (s11_01_w04 + s11_02_w04 + s11_03_w04 + s11_04_w04 + s11_05_w04 + s11_06_w04 + s11_07_w04 + s11_08_w04 + s11_09_w04),
-         phq9_w05 = (s11_01_w05 + s11_02_w05 + s11_03_w05 + s11_04_w05 + s11_05_w05 + s11_06_w05 + s11_07_w05 + s11_08_w05 + s11_09_w05)) %>% 
+         phq9_w04 = (s11_01_w04 + s11_02_w04 + s11_03_w04 + s11_04_w04 + s11_05_w04 + s11_06_w04 + s11_07_w04 + s11_08_w04 + s11_09_w04)
+         ) %>% 
   
   # Quitar NAs
-  filter(!is.na(phq9_w01), !is.na(phq9_w02), !is.na(phq9_w03), !is.na(phq9_w04), !is.na(phq9_w05)) %>% 
+  filter(!is.na(phq9_w01), !is.na(phq9_w02), !is.na(phq9_w03), !is.na(phq9_w04)) %>% 
   
   # Crear indicador de depresión en 4 y en 2 categorías:
   mutate(depr4_w01 = car::recode(phq9_w01, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"), 
          depr4_w02 = car::recode(phq9_w02, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"), 
          depr4_w03 = car::recode(phq9_w03, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"), 
          depr4_w04 = car::recode(phq9_w04, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"), 
-         depr4_w05 = car::recode(phq9_w05, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"),
          depr2_w01 = car::recode(phq9_w01, "0:9 = 0; 10:27 = 1"), 
          depr2_w02 = car::recode(phq9_w02, "0:9 = 0; 10:27 = 1"), 
          depr2_w03 = car::recode(phq9_w03, "0:9 = 0; 10:27 = 1"),  
          depr2_w04 = car::recode(phq9_w04, "0:9 = 0; 10:27 = 1"), 
-         depr2_w05 = car::recode(phq9_w05, "0:9 = 0; 10:27 = 1"),
-         phq_sum = depr4_w01 + depr4_w02 + depr4_w03 + depr4_w04 + depr4_w05
+         phq_sum = depr4_w01 + depr4_w02 + depr4_w03 + depr4_w04
          )
 
 
@@ -107,7 +105,7 @@ load(file.path('..', 'inputs', 'ELSOC_Long_2016_2021_v1.00_R.RData'))
 elsoc_salud_long <- elsoc_long_2016_2021 %>% 
   
   # Se conservan observaciones presentes en las 5 olas
-  filter(tipo_atricion == 1) %>% 
+  filter(tipo_atricion %in% 1:2, ola != 5) %>% 
   
   # Crear variables de PHQ9
   purrr::map_at(.at = vars(starts_with('s11_0')), 
