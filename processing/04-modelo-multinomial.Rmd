@@ -124,7 +124,7 @@ modelsummary::modelsummary(list(m1, m2, m3),
 
 ```
 
-# Modelo preferido: Trayectorias LCMM con 5 clases
+# Modelo preferido: Trayectorias LCMM con 4 clases (agrupando trayectorias bajas y medias)
 
 
 ```{r}
@@ -142,22 +142,22 @@ elsoc_salud_modelo$trayectoria_gmm.5agrup <- factor(car::recode(elsoc_salud_mode
                                                                'Trayectoria síntomas moderados/severos persistentes'))
 
 mp1 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.5agrup ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_ocup2 + trayectoria_apoyo_social,
+  multinom(trayectoria_gmm.5agrup ~ m0_sexo_w01 + m0_edad_w01 + trayectoria_deuda + trayectoria_ocup2,
            data = ., weights = ponderador02_w01) 
 
 mp2 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.5agrup ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_ocup2 + trayectoria_apoyo_social + trayectoria_activ_fisica + proyecto_vida,
+  multinom(trayectoria_gmm.5agrup ~ m0_sexo_w01 + m0_edad_w01 + trayectoria_deuda + trayectoria_ocup2 + trayectoria_apoyo_social + trayectoria_activ_fisica + proyecto_vida,
            data = ., weights = ponderador02_w01) 
 
 mp3 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.5agrup ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_ocup2 + trayectoria_activ_fisica + trayectoria_apoyo_social + proyecto_vida + extraversion + agreeableness + conscientiousness + neuroticism + openness,
+  multinom(trayectoria_gmm.5agrup ~ m0_sexo_w01 + m0_edad_w01 + trayectoria_deuda + trayectoria_ocup2 + trayectoria_activ_fisica + trayectoria_apoyo_social + proyecto_vida + extraversion + agreeableness + conscientiousness + neuroticism + openness,
            data = ., weights = ponderador02_w01) 
 
 modelsummary::modelsummary(list(mp1, mp2, mp3),
                            estimate = "{estimate}{stars}",
                            statistic = NULL,
                            stars = c('*' = .05, '**' = .01, '***' = .001),
-                           shape = model + term ~ response,
+                           shape = term + response ~ model,
                            exponentiate = TRUE)
 
 

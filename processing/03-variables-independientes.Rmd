@@ -3,7 +3,10 @@
 ## Agregar variables de trayectoria de los distintos modelos {.unnumbered}
 
 ```{r}
-elsoc_salud_modelo <- elsoc_salud
+set.seed(123)
+elsoc_salud_modelo <- elsoc_salud %>% 
+    filter(tipo_atricion == 1 )
+
 
 ```
 
@@ -177,11 +180,11 @@ elsoc_salud_modelo <- elsoc_salud_modelo %>%
     
     # Actividad física regular
     activ_fisica_w01 = factor(s04_w01 %in% 1:3,
-                              labels = c('Sin actividad física regular', 'Con actividad física regular')),
+                              labels = c('Sin actividad fisica regular', 'Con actividad fisica regular')),
     activ_fisica_w03 = factor(s04_w03 %in% 1:3,
-                              labels = c('Sin actividad física regular', 'Con actividad física regular')),
+                              labels = c('Sin actividad fisica regular', 'Con actividad fisica regular')),
     activ_fisica_w05 = factor(s04_w05 %in% 1:3,
-                              labels = c('Sin actividad física regular', 'Con actividad física regular')),
+                              labels = c('Sin actividad fisica regular', 'Con actividad fisica regular')),
     
     # Fumador
     fuma_w01 = factor(s08_w01 >= 1,
@@ -403,10 +406,9 @@ dist <- TraMineR::seqdist(seq,
                           with.missing = TRUE)
 ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
 
-elsoc_salud_modelo$trayectoria_ocup2 <- factor(stats::cutree(ward, k = 5),
-                                               levels = c(4, 1, 3, 2, 5),
-                                               labels = c('Ocupados', 'Ocupados-inactivos', 'Inactivos', 
-                                               'Trabajadores no remunerados', 'Ocupados-desempleados'))
+elsoc_salud_modelo$trayectoria_ocup2 <- factor(stats::cutree(ward, k = 3),
+                                               levels = c(1, 2, 3),
+                                               labels = c('Mayoritariamente ocupados', 'Mayoritariamente trabajo no remunerado', 'Mayoritariamente inactivos'))
 
 ```
 
@@ -452,7 +454,8 @@ ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
 elsoc_salud_modelo$trayectoria_deuda <- factor(stats::cutree(ward, k = 5),
                                                levels = c(4, 3, 5, 2, 1),
                                                labels = c('Nada sobrecargados', 'Nada-Algo sobrecargados',
-                                                          'No muy o algo sobrecargados', 'Bastante sobrecargados, aliviados 2021', 'Muy sobrecargados'))
+                                                          'No muy o algo sobrecargados', 
+                                                          'Bastante sobrecargados, aliviados 2021', 'Muy sobrecargados'))
 
 ```
 
@@ -493,7 +496,12 @@ dist <- TraMineR::seqdist(seq,
                           with.missing = TRUE)
 ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
 
-elsoc_salud_modelo$trayectoria_activ_fisica <- factor(stats::cutree(ward, k = 4))
+elsoc_salud_modelo$trayectoria_activ_fisica <- factor(stats::cutree(ward, k = 4),
+                                                      levels = c(2, 3, 4, 1),
+                                                      labels = c('Sin actividad fisica persistente',
+                                                                 'Abandonan actividad fisica en 2021',
+                                                                 'Se activan en 2021',
+                                                                 'Con actividad fisica persistente'))
 
 ```
 
@@ -536,11 +544,11 @@ dist <- TraMineR::seqdist(seq,
 ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
 
 elsoc_salud_modelo$trayectoria_apoyo_social <- factor(stats::cutree(ward, k = 4),
-                                                      levels = c(4, 1, 3, 2),
-                                                      labels = c('Con apoyo social', 
-                                                                 'Apoyo social creciente', 
+                                                      levels = c(2, 3, 1, 4),
+                                                      labels = c('Sin apoyo social persistente', 
                                                                  'Apoyo social decreciente', 
-                                                                 'Sin apoyo social'))
+                                                                 'Apoyo social creciente', 
+                                                                 'Con apoyo social persistente'))
 
 ```
 
