@@ -166,19 +166,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#agregar-variables-independientes"><i class="fa fa-check"></i>Agregar variables independientes</a></li>
 <li class="chapter" data-level="3.1" data-path="variables-modelo.html"><a href="variables-modelo.html#crear-y-agregar-trayectorias-de-variables-independientes"><i class="fa fa-check"></i><b>3.1</b> Crear y agregar trayectorias de variables independientes</a>
 <ul>
-<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#situación-ocupacional-4-categorías"><i class="fa fa-check"></i>Situación ocupacional (4 categorías)</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#situacion-ocupacional-4-categorias"><i class="fa fa-check"></i>Situacion ocupacional (4 categorias)</a></li>
 <li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#sobrecarga-por-deudas"><i class="fa fa-check"></i>Sobrecarga por deudas</a></li>
-<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#actividad-física-regular"><i class="fa fa-check"></i>Actividad física regular</a></li>
+<li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#actividad-fisica-regular"><i class="fa fa-check"></i>Actividad fisica regular</a></li>
 <li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#apoyo-social"><i class="fa fa-check"></i>Apoyo social</a></li>
 <li class="chapter" data-level="" data-path="variables-modelo.html"><a href="variables-modelo.html#salud-subjetiva"><i class="fa fa-check"></i>Salud subjetiva</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="variables-modelo.html"><a href="variables-modelo.html#guardar-datos-para-usar-después"><i class="fa fa-check"></i><b>3.2</b> Guardar datos para usar después</a></li>
+<li class="chapter" data-level="3.2" data-path="variables-modelo.html"><a href="variables-modelo.html#guardar-datos-para-usar-despues"><i class="fa fa-check"></i><b>3.2</b> Guardar datos para usar despues</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html"><i class="fa fa-check"></i><b>4</b> Modelo multinomial logit</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#comparación-trayectorias"><i class="fa fa-check"></i><b>4.1</b> Comparación trayectorias</a></li>
-<li class="chapter" data-level="4.2" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-4-clases"><i class="fa fa-check"></i><b>4.2</b> Variable dependiente: Trayectorias LCMM 4 clases</a></li>
-<li class="chapter" data-level="4.3" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-4-clases---sin-trayectoria-salud-subjetiva"><i class="fa fa-check"></i><b>4.3</b> Variable dependiente: Trayectorias LCMM 4 clases - sin trayectoria salud subjetiva</a></li>
+<li class="chapter" data-level="4.2" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-4-clases---sin-trayectoria-salud-subjetiva"><i class="fa fa-check"></i><b>4.2</b> Variable dependiente: Trayectorias LCMM 4 clases - sin trayectoria salud subjetiva</a></li>
+<li class="chapter" data-level="4.3" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#resultados-en-formato-grafico"><i class="fa fa-check"></i><b>4.3</b> Resultados en formato grafico</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#trayectorias-según-clasificación"><i class="fa fa-check"></i>Trayectorias según clasificación</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/edgardo-cerda/trayectorias-salud-mental" target="blank"> Ver fuente <i class="fa fa-github"></i></a></li>
@@ -227,13 +230,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-15"><a href="index.html#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpubr)</span>
 <span id="cb1-16"><a href="index.html#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
 <span id="cb1-17"><a href="index.html#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
-<span id="cb1-18"><a href="index.html#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="index.html#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Libreria analisis estadístico</span></span>
-<span id="cb1-20"><a href="index.html#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnet)</span>
-<span id="cb1-21"><a href="index.html#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
-<span id="cb1-22"><a href="index.html#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lcmm)</span>
-<span id="cb1-23"><a href="index.html#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rcompanion)</span>
-<span id="cb1-24"><a href="index.html#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(statar)</span></code></pre></div>
+<span id="cb1-18"><a href="index.html#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggstance)</span>
+<span id="cb1-19"><a href="index.html#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="index.html#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Libreria analisis estadístico</span></span>
+<span id="cb1-21"><a href="index.html#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnet)</span>
+<span id="cb1-22"><a href="index.html#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb1-23"><a href="index.html#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lcmm)</span>
+<span id="cb1-24"><a href="index.html#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rcompanion)</span>
+<span id="cb1-25"><a href="index.html#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(statar)</span>
+<span id="cb1-26"><a href="index.html#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="index.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar datos ELSOC:</span></span>
 <span id="cb2-2"><a href="index.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># elsoc::load_elsoc(data = &#39;wide&#39;)</span></span>
 <span id="cb2-3"><a href="index.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">file.path</span>(<span class="st">&#39;..&#39;</span>, <span class="st">&#39;inputs&#39;</span>, <span class="st">&#39;ELSOC_Wide_2016_2021_v1.00_R.RData&#39;</span>))</span>

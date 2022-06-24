@@ -14,9 +14,10 @@ elsoc_salud_modelo$trayectoria_gmm.4lin <- factor(elsoc_salud %>%
                                                        by = 'idencuesta') %>%
                                              pull(class),
                                            levels = c(3, 1, 2, 4),
-                                           labels = c('Trayectoria baja', 
-                                                      'Trayectoria media/moderada', 
-                                                      'Trayectoria Severa', 'Trayectoria ascendente'))
+                                           labels = c('Trayectoria asintomatica', 
+                                                      'Trayectoria sintomas moderados descendente', 
+                                                      'Trayectoria de sintomas ascendente',
+                                                      'Trayectoria sintomas severos persistentes'))
 
 elsoc_salud_modelo$trayectoria_gmm.5lin <- factor(elsoc_salud %>%
                                              left_join(lcmm5_lin$pprob %>% select(idencuesta, class),
@@ -91,7 +92,7 @@ elsoc_salud_modelo <- elsoc_salud_modelo %>%
                        levels = 1:4,
                        labels = c("Basica", "Media", "Tecnica", "Universitaria")),
 
-    # Situación ocupacional:
+    # Situacion ocupacional:
     ocup_w01 = factor(car::recode(m02_w01, "1:3 = 1; 6 = 2; c(4, 5, 8, 9) = 3; 7 = 4"),
                       levels = 1:4,
                       labels = c('Ocupado', 'Desempleado', 'Inactivo', 'Trabajo no remunerado')),
@@ -123,7 +124,7 @@ elsoc_salud_modelo <- elsoc_salud_modelo %>%
                               levels = 1:3,
                               labels = c('Apoyo social bajo', 'Apoyo social medio', 'Apoyo social alto')),
     
-    # Actividad física regular
+    # Actividad fisica regular
     activ_fisica_w01 = factor(s04_w01 %in% 1:3,
                               labels = c('Sin actividad fisica regular', 'Con actividad fisica regular')),
     activ_fisica_w03 = factor(s04_w03 %in% 1:3,
@@ -172,7 +173,7 @@ elsoc_salud_modelo <- elsoc_salud_modelo %>%
     
     # Direccion vida
     proyecto_vida_w03 = factor(s30_01_w03 %in% 4:5,
-                           labels = c('No decidido dirección de vida', 'Decidido dirección de vida')),
+                           labels = c('No decidido direccion de vida', 'Decidido direccion de vida')),
     
     # Desigualdad percibida
     
@@ -248,7 +249,7 @@ TraMineR::seqdplot(seq, group = stats::cutree(ward, k = K),
 ```
 
 
-### Situación ocupacional (4 categorías) {.unnumbered}
+### Situacion ocupacional (4 categorias) {.unnumbered}
 
 ```{r, cache=TRUE}
 
@@ -291,7 +292,7 @@ elsoc_salud_modelo$trayectoria_ocup <- factor(stats::cutree(ward, k = 6),
                                                levels = c(3, 1, 4, 2, 5, 6),
                                                labels = c('Ocupados estables', 
                                                           'Oscilan entre inactividad y ocupacion',
-                                                          'Ocupados con períodos sin ocupación',
+                                                          'Ocupados con periodos sin ocupacion',
                                                           'Mayoritariamente inactivos',
                                                           'Mayoritariamente trabajo no remunerado',
                                                           'Mayoritariamente desempleados'))
@@ -340,13 +341,13 @@ ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
 elsoc_salud_modelo$trayectoria_deuda <- factor(stats::cutree(ward, k = 5),
                                                levels = c(4, 3, 1, 2),
                                                labels = c('Nada/No muy sobrecargados deuda',
-                                                          'Reducción sobrecarga deuda',
+                                                          'Reduccion sobrecarga deuda',
                                                           'Aumento sobrecarga deuda',
                                                           'Bastante/muy sobrecargados deuda'))
 
 ```
 
-### Actividad física regular {.unnumbered}
+### Actividad fisica regular {.unnumbered}
 
 ```{r, cache=TRUE}
 
@@ -476,7 +477,7 @@ elsoc_salud_modelo$trayectoria_salud <- factor(stats::cutree(ward, k = 4),
 
 ```
 
-## Guardar datos para usar después
+## Guardar datos para usar despues
 
 ```{r}
 save(elsoc_salud_modelo, file = 'datos_salud_modelo.RData')

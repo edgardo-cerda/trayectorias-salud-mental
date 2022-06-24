@@ -48,6 +48,7 @@ library(elsoc)
 library(ggpubr)
 library(shiny)
 library(plotly)
+library(ggstance)
 
 # Libreria analisis estadístico
 library(nnet)
@@ -55,6 +56,7 @@ library(modelsummary)
 library(lcmm)
 library(rcompanion)
 library(statar)
+library(marginaleffects)
 
 ```
 

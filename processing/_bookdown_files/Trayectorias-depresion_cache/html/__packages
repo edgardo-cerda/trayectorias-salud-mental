@@ -16,6 +16,7 @@ elsoc
 ggpubr
 shiny
 plotly
+ggstance
 nnet
 modelsummary
 survival
@@ -25,3 +26,4 @@ randtoolbox
 lcmm
 rcompanion
 statar
+marginaleffects

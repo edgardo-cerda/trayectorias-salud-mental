@@ -38,56 +38,69 @@ lcmm6_lin <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_lin,
 
 ```
 
-<!-- ### Modelos de trayectorias cuadraticas: {-} -->
+### Modelos de trayectorias cuadraticas: {-}
 
-<!-- ```{r modelos-lcmm-lin, results=FALSE, cache = TRUE} -->
+```{r modelos-lcmm-lin, results=FALSE, cache=TRUE}
 
-<!-- lcmm1_quad <- hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 1,  -->
-<!--               data = elsoc_salud_long) -->
+lcmm1_quad <- hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 1,
+              data = elsoc_salud_long)
 
-<!-- lcmm2_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad,  -->
-<!--                     hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 2, -->
-<!--                          data = elsoc_salud_long)) -->
+lcmm2_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad,
+                    hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 2,
+                         data = elsoc_salud_long))
 
-<!-- lcmm3_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad,  -->
-<!--                     hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 3, -->
-<!--                          data = elsoc_salud_long)) -->
+lcmm3_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad,
+                    hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 3,
+                         data = elsoc_salud_long))
 
-<!-- lcmm4_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad,  -->
-<!--                     hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 4, -->
-<!--                          data = elsoc_salud_long)) -->
+lcmm4_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad,
+                    hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 4,
+                         data = elsoc_salud_long))
 
-<!-- lcmm5_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad,  -->
-<!--                     hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 5, -->
-<!--                          data = elsoc_salud_long)) -->
+lcmm5_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad,
+                    hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 5,
+                         data = elsoc_salud_long))
 
-<!-- lcmm6_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad,  -->
-<!--                     hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 6, -->
-<!--                          data = elsoc_salud_long)) -->
+lcmm6_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad,
+                    hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 6,
+                         data = elsoc_salud_long))
 
-<!-- ``` -->
+```
 
 ### Comparación resultados {-}
 
+```{r, results=FALSE}
+# Comparar resultados:
+resultados_comparados <- summarytable(lcmm1_lin, lcmm1_quad,
+                             lcmm2_lin, lcmm2_quad,
+                             lcmm3_lin, lcmm3_quad,
+                             lcmm4_lin, lcmm4_quad,
+                             lcmm5_lin, lcmm5_quad,
+                             lcmm6_lin, lcmm6_quad)
+
+```
+
 <!-- ```{r, results=FALSE} -->
 <!-- # Comparar resultados: -->
-<!-- resultados_comparados <- summarytable(lcmm1_lin, lcmm1_quad,  -->
-<!--                              lcmm2_lin, lcmm2_quad, -->
-<!--                              lcmm3_lin, lcmm3_quad, -->
-<!--                              lcmm4_lin, lcmm4_quad, -->
-<!--                              lcmm5_lin, lcmm5_quad, -->
-<!--                              lcmm6_lin, lcmm6_quad) -->
+<!-- resultados_comparados <- summarytable(lcmm1_lin,  -->
+<!--                              lcmm2_lin, -->
+<!--                              lcmm3_lin, -->
+<!--                              lcmm4_lin, -->
+<!--                              lcmm5_lin, -->
+<!--                              lcmm6_lin) -->
 
 <!-- ``` -->
 
-```{r, results=FALSE}
-# Comparar resultados:
-resultados_comparados <- summarytable(lcmm1_lin, 
-                             lcmm2_lin,
-                             lcmm3_lin,
-                             lcmm4_lin,
-                             lcmm5_lin,
-                             lcmm6_lin)
+```{r post-prob}
+
+postprob(lcmm4_lin)
+postprob(lcmm4_quad)
+
+postprob(lcmm5_lin)
+postprob(lcmm5_quad)
+
+postprob(lcmm6_lin)
+postprob(lcmm6_quad)
 
 ```
 
