@@ -217,7 +217,8 @@ comparar_clusters <- function(.data, vars, K = 10) {
     mutate(value = (value - mean(value, na.rm = TRUE)) / sd(value, na.rm = TRUE)) %>%
     ggplot(aes(y = value, x = clusters, color = indicador, group = indicador)) +
     geom_line() +
-    scale_x_continuous(breaks = 2:10)
+    scale_x_continuous(breaks = 2:10) +
+    ylab('Valor estandarizado')
     
 }
 
@@ -264,11 +265,6 @@ trayectoria(elsoc_salud_modelo,
 trayectoria(elsoc_salud_modelo,
             vars = c('ocup_w01', 'ocup_w02', 'ocup_w03', 'ocup_w04'),
             cpal = c('palevioletred3', 'khaki3', 'steelblue3', 'palegreen3'),
-            K = 4)
-
-trayectoria(elsoc_salud_modelo,
-            vars = c('ocup_w01', 'ocup_w02', 'ocup_w03', 'ocup_w04'),
-            cpal = c('palevioletred3', 'khaki3', 'steelblue3', 'palegreen3'),
             K = 5)
 
 trayectoria(elsoc_salud_modelo,
@@ -276,9 +272,15 @@ trayectoria(elsoc_salud_modelo,
             cpal = c('palevioletred3', 'khaki3', 'steelblue3', 'palegreen3'),
             K = 6)
 
+trayectoria(elsoc_salud_modelo,
+            vars = c('ocup_w01', 'ocup_w02', 'ocup_w03', 'ocup_w04'),
+            cpal = c('palevioletred3', 'khaki3', 'steelblue3', 'palegreen3'),
+            K = 7)
+
+
 ```
 
-```{r, cache=TRUE}
+```{r, cache=FALSE}
 # Agregar trayectoria de 6 clusters
 seq <- TraMineR::seqdef(elsoc_salud_modelo, 
                         var = c('ocup_w01', 'ocup_w02', 'ocup_w03', 'ocup_w04'),
@@ -291,7 +293,7 @@ ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
 elsoc_salud_modelo$trayectoria_ocup <- factor(stats::cutree(ward, k = 6),
                                                levels = c(3, 1, 4, 2, 5, 6),
                                                labels = c('Ocupados estables', 
-                                                          'Oscilan entre inactividad y ocupacion',
+                                                          'Pasan de inactividad a ocupacion',
                                                           'Ocupados con periodos sin ocupacion',
                                                           'Mayoritariamente inactivos',
                                                           'Mayoritariamente trabajo no remunerado',

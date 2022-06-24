@@ -2,7 +2,7 @@
 # Modelo multinomial logit
 
 ```{r}
-# load('datos_salud_modelo.RData')
+load('datos_salud_modelo.RData')
 ```
 
 ## Comparación trayectorias
@@ -35,7 +35,8 @@ modelsummary::modelsummary(list(m1, m2, m3),
                            statistic = NULL,
                            stars = c('*' = .05, '**' = .01, '***' = .001),
                            shape = term + response ~ model,
-                           exponentiate = TRUE)
+                           exponentiate = TRUE,
+                           output = 'resultados.docx')
 ```
 
 ## Resultados en formato grafico
@@ -61,7 +62,7 @@ m3.coefs %>%
   ggplot(aes(x = estimate, y = fct_rev(term), colour = fct_rev(y.level))) +
   geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
                    position = position_dodgev(height = 0.75)) + 
-  geom_vline(xintercept = 1, linetype = 2, alpha = .5) +
+  geom_vline(xintercept = c(0, 1), linetype = 2, alpha = .5) +
   scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
   theme(legend.position = 'top') +
   theme(legend.title = element_blank()) +
@@ -86,7 +87,7 @@ m3.coefs %>%
   ggplot(aes(x = estimate, y = term, colour = fct_rev(y.level))) +
   geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
                    position = position_dodgev(height = 0.75)) + 
-  geom_vline(xintercept = 1, linetype = 2, alpha = .5) +
+  geom_vline(xintercept = c(0, 1), linetype = 2, alpha = .5) +
   scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
   theme(legend.position = 'top') +
   theme(legend.title = element_blank()) +
@@ -109,7 +110,7 @@ m3.coefs %>%
   ggplot(aes(x = estimate, y = term, colour = fct_rev(y.level))) +
   geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
                    position = position_dodgev(height = 0.75)) + 
-  geom_vline(xintercept = 1, linetype = 2, alpha = .5) +
+  geom_vline(xintercept = c(0, 1), linetype = 2, alpha = .5) +
   scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
   theme(legend.position = 'top') +
   theme(legend.title = element_blank()) +
@@ -132,7 +133,7 @@ m3.coefs %>%
   ggplot(aes(x = estimate, y = term, colour = fct_rev(y.level))) +
   geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
                    position = position_dodgev(height = 0.75)) + 
-  geom_vline(xintercept = 1, linetype = 2, alpha = .5) +
+  geom_vline(xintercept = c(0, 1), linetype = 2, alpha = .5) +
   scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
   theme(legend.position = 'top') +
   theme(legend.title = element_blank()) +
@@ -155,7 +156,7 @@ m3.coefs %>%
   ggplot(aes(x = estimate, y = term, colour = fct_rev(y.level))) +
   geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
                    position = position_dodgev(height = 0.75)) + 
-  geom_vline(xintercept = 1, linetype = 2, alpha = .5) +
+  geom_vline(xintercept = c(0, 1), linetype = 2, alpha = .5) +
   scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
   theme(legend.position = 'top') +
   theme(legend.title = element_blank()) +
