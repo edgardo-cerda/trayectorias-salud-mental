@@ -1,8 +1,29 @@
 
+
+```{r}
+library(tidyverse)
+
+# Librerias graficos
+library(ggpubr)
+library(plotly)
+library(ggstance)
+
+# Libreria analisis estadístico
+library(nnet)
+library(modelsummary)
+library(marginaleffects)
+
+```
+
 # Modelo multinomial logit
 
 ```{r}
-load('datos_salud_modelo.RData')
+load(file.path('..', 'inputs', 'datos_elsoc_preparados.RData'))
+load(file.path('..', 'inputs', 'datos_salud_modelo.RData'))
+load(file.path('..', 'inputs', 'modelos_lcmm.RData'))
+
+elsoc_salud_modelo <- elsoc_salud_modelo %>% 
+  left_join(elsoc_lcmm, by = 'idencuesta')
 
 ```
 
@@ -22,7 +43,7 @@ with(elsoc_salud_modelo, rcompanion::cramerV(trayectoria_gmm.4lin, trayectoria_g
 
 
 elsoc_salud_long %>% 
-  left_join(elsoc_salud_modelo %>% select(idencuesta, trayectoria_gmm.4lin), by = 'idencuesta') %>% 
+  left_join(elsoc_lcmm, by = 'idencuesta') %>% 
   filter(!is.na(trayectoria_gmm.4lin)) %>% 
   group_by(trayectoria_gmm.4lin) %>% 
   sjlabelled::as_label(ola) %>% 
@@ -49,7 +70,7 @@ m1 <- elsoc_salud_modelo %>%
 
 m2 <- elsoc_salud_modelo %>%
   sjlabelled::as_label(m0_sexo_w01, proyecto_vida_w03) %>% 
-  nnet::multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_apoyo_social + trayectoria_ocup + proyecto_vida_w03 + estresor_n_w01 + estresor_n_w03,
+  nnet::multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_apoyo_social + trayectoria_ocup + proyecto_vida_w03 + estresor_n,
            data = ., weights = ponderador02_w01, quiet = TRUE) 
 
 m3 <- elsoc_salud_modelo %>%

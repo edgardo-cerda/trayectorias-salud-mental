@@ -1,9 +1,14 @@
-# Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM)
 
-```{r}
-set.seed(123)
+```{r, include=FALSE}
+
+# Librerías básicas
+library(tidyverse)
+library(lcmm)
 
 ```
+
+
+# Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM)
 
 ## Identificar trayectorias:
 
