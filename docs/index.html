@@ -156,7 +156,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#identificar-trayectorias"><i class="fa fa-check"></i><b>2.1</b> Identificar trayectorias:</a>
 <ul>
 <li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-lineales"><i class="fa fa-check"></i>Modelos de trayectorias lineales:</a></li>
-<li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#modelos-de-trayectorias-cuadraticas"><i class="fa fa-check"></i>Modelos de trayectorias cuadraticas:</a></li>
 <li class="chapter" data-level="" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#comparación-resultados"><i class="fa fa-check"></i>Comparación resultados</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html"><a href="trayectorias-de-sintomatologia-depresiva.-modelo-latent-class-mixed-model-lcmm.html#principales-trayectorias"><i class="fa fa-check"></i><b>2.2</b> Principales trayectorias</a></li>
@@ -177,7 +176,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html"><i class="fa fa-check"></i><b>4</b> Modelo multinomial logit</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#comparación-trayectorias"><i class="fa fa-check"></i><b>4.1</b> Comparación trayectorias</a></li>
+<li class="chapter" data-level="4.1" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#comparación-trayectorias"><i class="fa fa-check"></i><b>4.1</b> Comparación trayectorias</a>
+<ul>
+<li class="chapter" data-level="" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#trayectorias-según-clasificación"><i class="fa fa-check"></i>Trayectorias según clasificación</a></li>
+</ul></li>
 <li class="chapter" data-level="4.2" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variable-dependiente-trayectorias-lcmm-4-clases---sin-trayectoria-salud-subjetiva"><i class="fa fa-check"></i><b>4.2</b> Variable dependiente: Trayectorias LCMM 4 clases - sin trayectoria salud subjetiva</a></li>
 <li class="chapter" data-level="4.3" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#resultados-en-formato-grafico"><i class="fa fa-check"></i><b>4.3</b> Resultados en formato grafico</a>
 <ul>
@@ -186,7 +188,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#apoyo-social-1"><i class="fa fa-check"></i>Apoyo social</a></li>
 <li class="chapter" data-level="" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#trayectoria-ocupacional"><i class="fa fa-check"></i>Trayectoria ocupacional</a></li>
 <li class="chapter" data-level="" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#variables-de-personalidad"><i class="fa fa-check"></i>Variables de personalidad</a></li>
-<li class="chapter" data-level="" data-path="modelo-multinomial-logit.html"><a href="modelo-multinomial-logit.html#trayectorias-según-clasificación"><i class="fa fa-check"></i>Trayectorias según clasificación</a></li>
 </ul></li>
 </ul></li>
 <li class="divider"></li>
@@ -252,7 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb2-5"><a href="index.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear variables de sintomatología depresiva por ola:</span></span>
 <span id="cb2-6"><a href="index.html#cb2-6" aria-hidden="true" tabindex="-1"></a>elsoc_salud <span class="ot">&lt;-</span> elsoc_wide_2016_2021 <span class="sc">%&gt;%</span> </span>
 <span id="cb2-7"><a href="index.html#cb2-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb2-8"><a href="index.html#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Se conservan observaciones presentes en las 5 olas</span></span>
+<span id="cb2-8"><a href="index.html#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Se conservan observaciones presentes en las olas 1 a 4 (muestra original)</span></span>
 <span id="cb2-9"><a href="index.html#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(tipo_atricion <span class="sc">%in%</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
 <span id="cb2-10"><a href="index.html#cb2-10" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-11"><a href="index.html#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Crear variables de PHQ9</span></span>

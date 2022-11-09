@@ -70,7 +70,7 @@ load(file.path('..', 'inputs', 'ELSOC_Wide_2016_2021_v1.00_R.RData'))
 # Crear variables de sintomatología depresiva por ola:
 elsoc_salud <- elsoc_wide_2016_2021 %>% 
   
-  # Se conservan observaciones presentes en las 5 olas
+  # Se conservan observaciones presentes en las olas 1 a 4 (muestra original)
   filter(tipo_atricion %in% 1:2) %>% 
   
   # Crear variables de PHQ9

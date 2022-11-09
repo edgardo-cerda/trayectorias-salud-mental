@@ -1,0 +1,1135 @@
+--- 
+title: "Trayectorias de sintomatología depresiva"
+site: bookdown::bookdown_site
+documentclass: book
+link-citations: yes
+linkcolor: blue
+geometry: "left=4cm, right=3cm, top=2.5cm, bottom=2.5cm"
+fontsize: 12pt
+linestretch: 1.5
+toc-depth: 1
+lof: True
+lot: True
+author: Álvaro Jiménez, Fabián Duarte, Edgardo Cerda
+description: "Trayectorias de sintomatología depresiva"
+github-repo: "edgardo-cerda/trayectorias-salud-mental"
+always_allow_html: true
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE, cache = FALSE )
+
+```
+
+# Cargar y preparar datos ELSOC {-}
+
+<div style="text-align: justify">
+
+## Cargar librerías
+
+```{r cargar-paquetes, warning=FALSE, message=FALSE}
+# Librerías básicas
+library(tidyverse)
+library(sjlabelled)
+
+# Librerias análisis de secuencia
+library(TraMineR)
+library(TraMineRextras)
+library(WeightedCluster)
+library(cluster)
+
+# Librería ELSOC
+library(elsoc)
+
+# Librerias graficos
+library(ggpubr)
+library(shiny)
+library(plotly)
+library(ggstance)
+
+# Libreria analisis estadístico
+library(nnet)
+library(modelsummary)
+library(lcmm)
+library(rcompanion)
+library(statar)
+library(marginaleffects)
+
+```
+
+
+```{r armar-bases, cache=TRUE}
+
+# Cargar datos ELSOC:
+# elsoc::load_elsoc(data = 'wide')
+load(file.path('..', 'inputs', 'ELSOC_Wide_2016_2021_v1.00_R.RData'))
+
+# Crear variables de sintomatología depresiva por ola:
+elsoc_salud <- elsoc_wide_2016_2021 %>% 
+  
+  # Se conservan observaciones presentes en las olas 1 a 4 (muestra original)
+  filter(tipo_atricion %in% 1:2) %>% 
+  
+  # Crear variables de PHQ9
+  purrr::map_at(.at = vars(starts_with('s11_0')), 
+                .f = function(s) car::recode(s, "1 = 0; 2 = 1; 3 = 2; c(4, 5) = 3; c(-888, -999) = NA")) %>%
+  as.data.frame() %>%  
+  mutate(phq9_w01 = (s11_01_w01 + s11_02_w01 + s11_03_w01 + s11_04_w01 + s11_05_w01 + s11_06_w01 + s11_07_w01 + s11_08_w01 + s11_09_w01),
+         phq9_w02 = (s11_01_w02 + s11_02_w02 + s11_03_w02 + s11_04_w02 + s11_05_w02 + s11_06_w02 + s11_07_w02 + s11_08_w02 + s11_09_w02),
+         phq9_w03 = (s11_01_w03 + s11_02_w03 + s11_03_w03 + s11_04_w03 + s11_05_w03 + s11_06_w03 + s11_07_w03 + s11_08_w03 + s11_09_w03),
+         phq9_w04 = (s11_01_w04 + s11_02_w04 + s11_03_w04 + s11_04_w04 + s11_05_w04 + s11_06_w04 + s11_07_w04 + s11_08_w04 + s11_09_w04)
+         ) %>% 
+  
+  # Quitar NAs
+  filter(!is.na(phq9_w01), !is.na(phq9_w02), !is.na(phq9_w03), !is.na(phq9_w04)) %>% 
+  
+  # Crear indicador de depresión en 4 y en 2 categorías:
+  mutate(depr4_w01 = car::recode(phq9_w01, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"), 
+         depr4_w02 = car::recode(phq9_w02, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"), 
+         depr4_w03 = car::recode(phq9_w03, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"), 
+         depr4_w04 = car::recode(phq9_w04, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"), 
+         depr2_w01 = car::recode(phq9_w01, "0:9 = 0; 10:27 = 1"), 
+         depr2_w02 = car::recode(phq9_w02, "0:9 = 0; 10:27 = 1"), 
+         depr2_w03 = car::recode(phq9_w03, "0:9 = 0; 10:27 = 1"),  
+         depr2_w04 = car::recode(phq9_w04, "0:9 = 0; 10:27 = 1"), 
+         phq_sum = depr4_w01 + depr4_w02 + depr4_w03 + depr4_w04
+         )
+
+
+# Cargar datos ELSOC LONG:
+# elsoc::load_elsoc(data = 'long')
+load(file.path('..', 'inputs', 'ELSOC_Long_2016_2021_v1.00_R.RData'))
+
+# Crear variables de sintomatología depresiva por ola LONG:
+elsoc_salud_long <- elsoc_long_2016_2021 %>% 
+  
+  # Se conservan observaciones presentes en las 5 olas
+  filter(tipo_atricion %in% 1:2, ola != 5) %>% 
+  
+  # Crear variables de PHQ9
+  purrr::map_at(.at = vars(starts_with('s11_0')), 
+                .f = function(s) car::recode(s, "1 = 0; 2 = 1; 3 = 2; c(4, 5) = 3; c(-888, -999) = NA")) %>%
+  as.data.frame() %>%  
+  mutate(phq9 = (s11_01 + s11_02 + s11_03 + s11_04 + s11_05 + s11_06 + s11_07 + s11_08 + s11_09)) %>% 
+  
+  # Quitar NAs
+  filter(!is.na(phq9)) %>% 
+  
+  # Crear indicador de depresión en 4 y en 2 categorías:
+  mutate(depr4 = car::recode(phq9, "0:4 = 1; 5:9 = 2; 10:14 = 3; 15:27 = 4"), 
+         depr2 = car::recode(phq9, "0:9 = 0; 10:27 = 1"))
+
+
+```
+
+<!--chapter:end:index.Rmd-->
+
+
+# Trayectorias de sintomatología depresiva. Modelo Optimal-Matching
+
+## Secuencia de depresión con 4 categorías:
+
+```{r seq-depr4, cache = TRUE}
+# Crear objeto con secuencias
+seq.depr4 <- TraMineR::seqdef(elsoc_salud, 
+                             var = c('depr4_w01', 'depr4_w02', 'depr4_w03', 'depr4_w04'), 
+                             states = c('Sin síntomas', 'Síntomas medios', 'Síntomas moderados', 'Síntomas severos'), 
+                             labels = c('Sin síntomas', 'Síntomas medios', 'Sintomas moderados', 'Síntomas severos'),
+                             weights = elsoc_salud$ponderador02_w01,
+                             cpal = c('lightgreen', 'mediumturquoise', 'skyblue3', 'slateblue4'))
+```
+
+### Gráfico de secuencias:
+
+Muestra todas las secuencias, ordenadas según la suma total del indice phq9 (sumando las 5 olas)
+
+```{r graph-seqdepr4, cache = TRUE}
+
+TraMineR::seqIplot(seq.depr4, border = NA, xtlab = 2016:2019,
+                   space = 0, sortv = elsoc_salud$phq_sum)
+
+
+```
+
+### Frecuencia de estados y transiciones
+
+```{r tablas-seqdepr4, cache = TRUE}
+seqstatd(seq.depr4)
+
+seqtrate(seq.depr4)
+
+```
+
+
+### Clusters de secuencias:
+
+```{r, cache = TRUE}
+# Medir distancias entre secuencias usando analisis de secuencias usando optimal matching analysis
+
+# Se define matriz de costos de sustitución basados en valores medios de indice phq9
+substitution_cost_matrix <- as.matrix(rbind(c(0, 5, 10, 19),
+                                            c(5, 0, 5, 14),
+                                            c(10, 5, 0, 9),
+                                            c(19, 14, 9, 0)))
+
+dist.depr4 <- TraMineR::seqdist(seq.depr4,
+                               method = "OM",
+                               sm = substitution_cost_matrix)
+
+# Construir tipos de trayectorias con analisis de cluster jerarquico Ward
+ward.depr4 <- cluster::agnes(dist.depr4, diss = TRUE, method = 'ward')
+```
+
+#### Indicadores de calidad de partición: {-}
+
+Se evalúa según los indicadores:
+
+```{r, cache = TRUE}
+kableExtra::kbl(data.frame(indicador = c('Point Biserial Correlation', "Hubert's Somers' D", 
+                                 "Hubert's C", "Average Silhouette Width (weighted)"),
+                   abreviacion = c('PBC', 'HGSD', 'HC', 'ASWw'),
+                   interpretacion = c('Mide la capacidad de la clusterización de reproducir las distancias',
+                                      'Mide la capacidad de la clusterización de reproducir las distancias tomando en cuenta empates en distancias',
+                                      'Mide la brecha entre la clusterización obtenida y la mejor partición teóricamente posible con este número de grupos y distancias',
+                                      'Mide la coherencia de asignaciones. Alta coherencia indica una alta distancia entre grupos y fuerte homogeneidad inter-grupal')))
+
+```
+
+```{r, cache = TRUE}
+# Comparar soluciones con diferentes numeros de trayectorias (se prueban de 2 a 10 clusters)
+ward.range.depr4 <- WeightedCluster::as.clustrange(ward.depr4,
+                                                  diss = dist.depr4, 
+                                                  ncluster = 10)
+
+
+# Visualizar clusters:
+ward.range.depr4$stats %>%
+  mutate(clusters = 2:10) %>%
+  pivot_longer(cols = c(ASWw, HG, PBC, HC),
+               names_to = 'indicador',
+               values_to = 'value') %>%
+  group_by(indicador) %>%
+  mutate(value = (value - mean(value, na.rm = TRUE)) / sd(value, na.rm = TRUE)) %>%
+  ggplot(aes(y = value, x = clusters, color = indicador, group = indicador)) +
+  geom_line() +
+  scale_x_continuous(breaks = 2:10)
+
+```
+
+Para ASWw, HG y PBC, mientras más alto el valor indica una mejor calidad en la partición. Para HC mientras más bajo es mejor. Los mejores valores parecen estar entre 4 y 5 clusters.
+
+
+### Graficos de secuencias por clusters
+
+Pruebas con 4-6 clusters
+
+
+```{r, cache = TRUE}
+
+
+TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 4),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = 2016:2019)
+
+TraMineR::seqdplot(seq.depr4, group = stats::cutree(ward.depr4, k = 4),
+                   border = NA, 
+                   space = 0)
+
+
+```
+
+
+
+```{r, cache = TRUE}
+TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 5),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = 2016:2019)
+
+TraMineR::seqdplot(seq.depr4, group = stats::cutree(ward.depr4, k = 5),
+                   border = NA, 
+                   space = 0)
+
+```
+
+
+```{r, cache = TRUE}
+TraMineR::seqfplot(seq.depr4, group = stats::cutree(ward.depr4, k = 6),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = 2016:2019)
+
+TraMineR::seqdplot(seq.depr4, group = stats::cutree(ward.depr4, k = 6),
+                   border = NA, 
+                   space = 0)
+
+```
+
+<!--chapter:end:01-modelo-optimal-matching.Rmd-->
+
+# Trayectorias de sintomatologia depresiva. Modelo Latent Class Mixed Model (LCMM)
+
+```{r}
+set.seed(123)
+
+```
+
+## Identificar trayectorias:
+
+### Modelos de trayectorias lineales: {-}
+
+Se usa el modelo de 1 clase para fijar los valores iniciales a iterar:
+
+```{r modelos-lcmm-lin, results=FALSE, cache = TRUE}
+
+load(file.path('..', 'inputs', 'modelos_lcmm.RData'))
+
+```
+
+<!-- ### Modelos de trayectorias cuadraticas: {-} -->
+
+<!-- ```{r modelos-lcmm-quad, results=FALSE, cache=TRUE} -->
+
+<!-- lcmm1_quad <- hlme(phq9 ~ ola + I(ola^2), subject = "idencuesta", ng = 1, -->
+<!--               data = elsoc_salud_long) -->
+
+<!-- lcmm2_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, -->
+<!--                     hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 2, -->
+<!--                          data = elsoc_salud_long)) -->
+
+<!-- lcmm3_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, -->
+<!--                     hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 3, -->
+<!--                          data = elsoc_salud_long)) -->
+
+<!-- lcmm4_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, -->
+<!--                     hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 4, -->
+<!--                          data = elsoc_salud_long)) -->
+
+<!-- lcmm5_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, -->
+<!--                     hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 5, -->
+<!--                          data = elsoc_salud_long)) -->
+
+<!-- lcmm6_quad <- gridsearch(rep = 10, maxiter = 10, minit = lcmm1_quad, -->
+<!--                     hlme(phq9 ~ ola +  I(ola^2), mixture = ~ ola +  I(ola^2), subject = "idencuesta", ng = 6, -->
+<!--                          data = elsoc_salud_long)) -->
+
+<!-- ``` -->
+
+### Comparación resultados {-}
+
+```{r, results=FALSE}
+# Comparar resultados:
+resultados_comparados <- summarytable(lcmm3_lin, lcmm4_lin, lcmm5_lin)
+
+```
+
+<!-- ```{r, results=FALSE} -->
+<!-- # Comparar resultados: -->
+<!-- resultados_comparados <- summarytable(lcmm1_lin,  -->
+<!--                              lcmm2_lin, -->
+<!--                              lcmm3_lin, -->
+<!--                              lcmm4_lin, -->
+<!--                              lcmm5_lin, -->
+<!--                              lcmm6_lin) -->
+
+<!-- ``` -->
+
+```{r post-prob}
+postprob(lcmm3_lin)
+
+postprob(lcmm4_lin)
+
+postprob(lcmm5_lin)
+
+
+```
+
+
+```{r}
+kableExtra::kbl(resultados_comparados[,1:4],
+                digits = 1)
+
+kableExtra::kbl(resultados_comparados[,5:9],
+                digits = 1)
+
+```
+
+## Principales trayectorias
+
+Según criterios de información debería estar entre 4 y 5 clases:
+
+
+```{r, cache = TRUE}
+summary(lcmm4_lin)
+
+pred_lcmm4_lin <- predictY(lcmm4_lin, data.frame(ola = 1:4))
+
+plot(pred_lcmm4_lin, ylim = c(0, 27))
+
+```
+
+<!-- ```{r, cache = TRUE} -->
+<!-- summary(lcmm4_quad) -->
+
+<!-- pred_lcmm4_quad <- predictY(lcmm4_quad, data.frame(ola = 1:4)) -->
+
+<!-- plot(pred_lcmm4_quad, ylim = c(0, 27)) -->
+
+<!-- ``` -->
+
+
+```{r, cache = TRUE}
+summary(lcmm5_lin)
+
+pred_lcmm5_lin <- predictY(lcmm5_lin, data.frame(ola = 1:4))
+
+plot(pred_lcmm5_lin, ylim = c(0, 27))
+
+```
+
+
+<!-- ```{r, cache = TRUE} -->
+<!-- summary(lcmm5_quad) -->
+
+<!-- pred_lcmm5_quad <- predictY(lcmm5_quad, data.frame(ola = 1:4)) -->
+
+<!-- plot(pred_lcmm5_quad, ylim = c(0, 27)) -->
+
+<!-- ``` -->
+
+
+<!--chapter:end:02-modelo-lcmm.Rmd-->
+
+# Variables modelo
+
+## Agregar variables de trayectoria de los distintos modelos {.unnumbered}
+
+```{r}
+elsoc_salud_modelo <- elsoc_salud
+```
+
+
+```{r}
+
+elsoc_salud_modelo$trayectoria_gmm.4lin <- factor(elsoc_salud %>% 
+                                             left_join(lcmm4_lin$pprob %>% select(idencuesta, class),
+                                                       by = 'idencuesta') %>%
+                                             pull(class),
+                                           levels = c(2, 1, 3, 4),
+                                           labels = c('Trayectoria asintomatica', 
+                                                      'Trayectoria sintomas moderados', 
+                                                      'Trayectoria de sintomas ascendente',
+                                                      'Trayectoria sintomas severos persistentes'))
+
+
+```
+
+```{r}
+
+elsoc_salud_modelo$trayectoria_gmm.5lin <- factor(elsoc_salud %>%
+                                             left_join(lcmm5_lin$pprob %>% select(idencuesta, class),
+                                                       by = 'idencuesta') %>%
+                                             pull(class),
+                                             levels = c(4, 5, 1, 2, 3),
+                              labels = c('Trayectoria baja-media',
+                                         'Trayectoria media-moderada',
+                                         'Trayectoria descendente',
+                                         'Trayectoria ascendente',
+                                         'Trayectoria alta-moderada'))
+
+
+```
+
+## Agregar variables independientes {.unnumbered}
+
+```{r df-salud-modelo, cache=FALSE}
+
+elsoc_salud_modelo <- elsoc_salud_modelo %>% 
+    filter(!elsoc::is_nsnr(m30_w01, m30_w02, m30_w03, m30_w04, m30b_w05)) %>% 
+  mutate(
+    
+    # Variables de ingreso:
+    m30_w01 = 1000*as.numeric(car::recode(m30_w01, "1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; 
+                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;
+                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA")),
+    m29_w01_imp = ifelse(is_nsnr(m29_w01), m30_w01, m29_w01),
+    ypc_w01 = m29_w01_imp / nhogar1_w01,
+    
+    m30_w02 = 1000*as.numeric(car::recode(m30_w02, "1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; 
+                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;
+                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA")),
+    m29_w02_imp = ifelse(is_nsnr(m29_w02), m30_w02, m29_w02),
+    ypc_w02 = m29_w02_imp / nhogar1_w01,    
+    
+    m30_w03 = 1000*as.numeric(car::recode(m30_w03, "1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; 
+                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;
+                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA")),
+    m29_w03_imp = ifelse(is_nsnr(m29_w03), m30_w03, m29_w03),
+    ypc_w03 = m29_w03_imp / ifelse(is_nsnr(m54_w03), NA, m54_w03),
+    
+    m30_w04 = 1000*as.numeric(car::recode(m30_w04, "1 = 220; 2 = 250; 3 = 305; 4 = 355; 5 = 400; 6 = 445; 7 = 490; 
+                                      8 = 535; 9 = 585; 10 = 640; 11 = 700; 12 = 765; 13 = 845; 14 = 935;
+                                      15 = 1040; 16 = 1180; 17 = 1375; 18 = 1670; 19 = 2275; 20 = 2700; NA = NA")),
+    m29_w04_imp = ifelse(is_nsnr(m29_w04), m30_w04, m29_w04),
+    ypc_w04 = m29_w04_imp / ifelse(is_nsnr(m54_w04), NA, m54_w04),
+    
+    log_ing = log((ypc_w01 + ypc_w02 + ypc_w03 + ypc_w04)/5),
+    
+    quintil_w01 = statar::xtile(ypc_w01, n = 5, wt = ponderador02_w01),
+    quintil_w01 = factor(quintil_w01,
+                         levels = 1:5,
+                         labels = glue::glue('Quintil {1:5}')),
+    quintil_w02 = statar::xtile(ypc_w02, n = 5, wt = ponderador02_w02),
+    quintil_w02 = factor(quintil_w02,
+                         levels = 1:5,
+                         labels = glue::glue('Quintil {1:5}')),
+    quintil_w03 = statar::xtile(ypc_w03, n = 5, wt = ponderador02_w03),
+    quintil_w03 = factor(quintil_w03,
+                         levels = 1:5,
+                         labels = glue::glue('Quintil {1:5}')),
+    quintil_w04 = statar::xtile(ypc_w04, n = 5, wt = ponderador02_w04),
+    quintil_w04 = factor(quintil_w04,
+                         levels = 1:5,
+                         labels = glue::glue('Quintil {1:5}')),
+   
+    # Nivel educacional: 
+    educ_w01 = factor(car::recode(m01_w01, recodes = "1:3 = 1; 4:5 = 2; 6:7 = 3; 8:10 = 4"),
+                       levels = 1:4,
+                       labels = c("Basica", "Media", "Tecnica", "Universitaria")),
+
+    # Situacion ocupacional:
+    ocup_w01 = factor(car::recode(m02_w01, "1:3 = 1; 6 = 2; c(4, 5, 8, 9) = 3; 7 = 4"),
+                      levels = 1:4,
+                      labels = c('Ocupado', 'Desempleado', 'Inactivo', 'Trabajo no remunerado')),
+    ocup_w02 = factor(car::recode(m02_w02, "1:3 = 1; 6 = 2; c(4, 5, 8, 9) = 3; 7 = 4"),
+                      levels = 1:4,
+                      labels = c('Ocupado', 'Desempleado', 'Inactivo', 'Trabajo no remunerado')),
+    ocup_w03 = factor(car::recode(m02_w03, "1:3 = 1; 6 = 2; c(4, 5, 8, 9) = 3; 7 = 4"),
+                      levels = 1:4,
+                      labels = c('Ocupado', 'Desempleado', 'Inactivo', 'Trabajo no remunerado')),
+    ocup_w04 = factor(car::recode(m02_w04, "1:3 = 1; 6 = 2; c(4, 5, 8, 9) = 3; 7 = 4"),
+                      levels = 1:4,
+                      labels = c('Ocupado', 'Desempleado', 'Inactivo', 'Trabajo no remunerado')),
+    
+    
+    # Sobrecarga de deudas
+    sobrecarga_deuda_w01 = factor(car::recode(m43_w01, "1:2 = 1; 4:5 = 2; else = NA"),
+                                  labels = c('Nada/No muy sobrecargado', 
+                                             'Bastante/Muy sobrecargado')),
+
+    sobrecarga_deuda_w03 = factor(car::recode(m43_w03, "1:2 = 1; 4:5 = 2; else = NA"),
+                                  labels = c('Nada/No muy sobrecargado', 
+                                             'Bastante/Muy sobrecargado')),
+
+    # Apoyo social
+    apoyo_social_w01 = factor(car::recode(s12_w01, "1:2 = 1; 3:4 = 2; 5 = 3"),
+                              levels = 1:3,
+                              labels = c('Apoyo social bajo', 'Apoyo social medio', 'Apoyo social alto')),
+    apoyo_social_w03 = factor(car::recode(s12_w03, "1:2 = 1; 3:4 = 2; 5 = 3"),
+                              levels = 1:3,
+                              labels = c('Apoyo social bajo', 'Apoyo social medio', 'Apoyo social alto')),
+    
+    # Actividad fisica regular
+    activ_fisica_w01 = factor(s04_w01 %in% 1:3,
+                              labels = c('Sin actividad fisica regular', 'Con actividad fisica regular')),
+    activ_fisica_w03 = factor(s04_w03 %in% 1:3,
+                              labels = c('Sin actividad fisica regular', 'Con actividad fisica regular')),
+    
+    # Estado de salud
+    salud_w01 = factor(car::recode(s03_w01, "1 = 1; 2:3 = 2; 4:5 = 3; else = NA"),
+                       labels = c('Mala', 'Regular/buena', 'Muy buena/excelente')),
+    salud_w02 = factor(car::recode(s03_w02, "1 = 1; 2:3 = 2; 4:5 = 3; else = NA"),
+                       labels = c('Mala', 'Regular/buena', 'Muy buena/excelente')),
+    salud_w03 = factor(car::recode(s03_w03, "1 = 1; 2:3 = 2; 4:5 = 3; else = NA"),
+                       labels = c('Mala', 'Regular/buena', 'Muy buena/excelente')),
+    salud_w04 = factor(car::recode(s03_w04, "1 = 1; 2:3 = 2; 4:5 = 3; else = NA"),
+                       labels = c('Mala', 'Regular/buena', 'Muy buena/excelente')),
+    salud_w05 = factor(car::recode(s03_w05, "1 = 1; 2:3 = 2; 4:5 = 3; else = NA"),
+                       labels = c('Mala', 'Regular/buena', 'Muy buena/excelente')),
+    
+    # Fumador
+    fuma_w01 = factor(s08_w01 >= 1,
+                      labels = c('No fuma', 'Fumador')),
+    fuma_w03 = factor(s08_w03 >= 1,
+                      labels = c('No fuma', 'Fumador')),
+    
+    # IMC
+    imc_w01 = ifelse(is_nsnr(s06_w01), NA, s06_w01) / (ifelse(is_nsnr(s05_w01), NA, s05_w01/100))^2,
+    imc_w03 = ifelse(is_nsnr(s06_w03), NA, s06_w03) / (ifelse(is_nsnr(s05_w03), NA, s05_w03/100))^2,
+    
+    # Personalidad
+
+    s22_01_w02 = ifelse(is_nsnr(s22_01_w02), NA, s22_01_w02),
+    s22_02_w02 = ifelse(is_nsnr(s22_02_w02), NA, s22_02_w02),
+    s22_03_w02 = ifelse(is_nsnr(s22_03_w02), NA, s22_03_w02),
+    s22_04_w02 = ifelse(is_nsnr(s22_04_w02), NA, s22_04_w02),
+    s22_05_w02 = ifelse(is_nsnr(s22_05_w02), NA, s22_05_w02),
+    s22_06_w02 = ifelse(is_nsnr(s22_06_w02), NA, s22_06_w02),
+    s22_07_w02 = ifelse(is_nsnr(s22_07_w02), NA, s22_07_w02),
+    s22_08_w02 = ifelse(is_nsnr(s22_08_w02), NA, s22_08_w02),
+    s22_09_w02 = ifelse(is_nsnr(s22_09_w02), NA, s22_09_w02),
+    s22_10_w02 = ifelse(is_nsnr(s22_10_w02), NA, s22_10_w02),
+    
+    extraversion_w02 = 6 - (s22_01_w02) + s22_06_w02 ,
+    agreeableness_w02 = s22_02_w02 + 6 - s22_07_w02,
+    conscientiousness_w02 = 6 - s22_03_w02 + s22_08_w02 ,
+    neuroticism_w02 = 6 - s22_04_w02 + s22_09_w02,
+    openness_w02 = 6 - s22_05_w02 + s22_10_w02,
+    
+    # Direccion vida
+    proyecto_vida_w03 = factor(s30_01_w03 %in% 4:5,
+                           labels = c('No decidido direccion de vida', 'Decidido direccion de vida')),
+    
+    # Desigualdad percibida
+    
+    percepcion_desigualdad_w01 = factor(c18_11_w01 %in% 4:5,
+                                        labels = c('Desigualdad no muy grande', 'Desigualdad muy grande')),
+    percepcion_desigualdad_w02 = factor(c18_11_w02 %in% 4:5,
+                                        labels = c('Desigualdad no muy grande', 'Desigualdad muy grande')),
+    percepcion_desigualdad_w03 = factor(c18_11_w03 %in% 4:5,
+                                        labels = c('Desigualdad no muy grande', 'Desigualdad muy grande')),
+    percepcion_desigualdad_w04 = factor(c18_11_w04 %in% 4:5,
+                                        labels = c('Desigualdad no muy grande', 'Desigualdad muy grande')),
+    
+    # Estresores:
+    
+    estresor_01_w01 = s13_01_w01 == 1,
+    estresor_02_w01 = s13_02_w01 == 1,
+    estresor_03_w01 = s13_03_w01 == 1,
+    estresor_04_w01 = s13_04_w01 == 1,
+    estresor_06_w01 = s13_06_w01 == 1,
+    
+    estresor_01_w03 = s13_01_w03 == 1,
+    estresor_02_w03 = s13_02_w03 == 1,
+    estresor_03_w03 = s13_03_w03 == 1,
+    estresor_04_w03 = s13_04_w03 == 1,
+    estresor_06_w03 = s13_06_w03 == 1,
+    
+    estresor_n_w01 = estresor_01_w01 + estresor_02_w01 + estresor_03_w01 + estresor_04_w01 + estresor_06_w01,
+    estresor_n_w03 = estresor_01_w03 + estresor_02_w03 + estresor_03_w03 + estresor_04_w03 + estresor_06_w03,
+    
+    estresor_n = estresor_n_w01 + estresor_n_w03
+    
+  )
+
+```
+
+## Crear y agregar trayectorias de variables independientes
+
+```{r}
+
+comparar_clusters <- function(.data, vars, K = 10) {
+  
+  seq <- TraMineR::seqdef(.data, 
+                        var = vars,
+                        weights = .data$ponderador02_w01)
+  dist <- TraMineR::seqdist(seq,
+                          method = "LCS",
+                          with.missing = TRUE)
+  ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
+
+  # Comparar soluciones con diferentes numeros de trayectorias (se prueban de 2 a 10 clusters)
+  ward.range <- WeightedCluster::as.clustrange(ward, diss = dist, ncluster = K)
+  
+  # Visualizar clusters:
+  ward.range$stats %>%
+    mutate(clusters = 2:10) %>%
+    pivot_longer(cols = c(ASWw, HG, PBC, HC),
+                 names_to = 'indicador',
+                 values_to = 'value') %>%
+    group_by(indicador) %>%
+    mutate(value = (value - mean(value, na.rm = TRUE)) / sd(value, na.rm = TRUE)) %>%
+    ggplot(aes(y = value, x = clusters, color = indicador, group = indicador)) +
+    geom_line() +
+    scale_x_continuous(breaks = 2:10) +
+    ylab('Valor estandarizado')
+    
+}
+
+
+```
+
+
+```{r}
+trayectoria <- function(.data, vars, K, olas = 2016:2019, MISSING = TRUE, ...) {
+  
+seq <- TraMineR::seqdef(.data, 
+                        var = vars,
+                        ...,
+                        weights = .data$ponderador02_w01)
+dist <- TraMineR::seqdist(seq,
+                          method = "LCS",
+                          with.missing = MISSING)
+ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
+
+TraMineR::seqIplot(seq, group = stats::cutree(ward, k = K),
+                   border = NA, 
+                   space = 0, idxs = 0, xtlab = olas)
+
+TraMineR::seqdplot(seq, group = stats::cutree(ward, k = K),
+                   border = NA, 
+                   space = 0)
+}
+
+```
+
+
+### Situacion ocupacional (4 categorias) {.unnumbered}
+
+```{r, cache=TRUE}
+
+comparar_clusters(elsoc_salud_modelo,
+            vars = c('ocup_w01', 'ocup_w02', 'ocup_w03', 'ocup_w04'))
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('ocup_w01', 'ocup_w02', 'ocup_w03', 'ocup_w04'),
+            cpal = c('palevioletred3', 'khaki3', 'steelblue3', 'palegreen3'),
+            K = 3)
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('ocup_w01', 'ocup_w02', 'ocup_w03', 'ocup_w04'),
+            cpal = c('palevioletred3', 'khaki3', 'steelblue3', 'palegreen3'),
+            K = 5)
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('ocup_w01', 'ocup_w02', 'ocup_w03', 'ocup_w04'),
+            cpal = c('palevioletred3', 'khaki3', 'steelblue3', 'palegreen3'),
+            K = 6)
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('ocup_w01', 'ocup_w02', 'ocup_w03', 'ocup_w04'),
+            cpal = c('palevioletred3', 'khaki3', 'steelblue3', 'palegreen3'),
+            K = 7)
+
+
+```
+
+```{r, cache=FALSE}
+# Agregar trayectoria de 6 clusters
+seq <- TraMineR::seqdef(elsoc_salud_modelo, 
+                        var = c('ocup_w01', 'ocup_w02', 'ocup_w03', 'ocup_w04'),
+                        weights = elsoc_salud_modelo$ponderador02_w01)
+dist <- TraMineR::seqdist(seq,
+                          method = "LCS",
+                          with.missing = TRUE)
+ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
+
+elsoc_salud_modelo$trayectoria_ocup <- factor(stats::cutree(ward, k = 6),
+                                               levels = c(3, 1, 4, 2, 5, 6),
+                                               labels = c('Ocupados estables', 
+                                                          'Pasan de inactividad a ocupacion',
+                                                          'Ocupados con periodos sin ocupacion',
+                                                          'Mayoritariamente inactivos',
+                                                          'Mayoritariamente trabajo no remunerado',
+                                                          'Mayoritariamente desempleados'))
+
+```
+
+### Sobrecarga por deudas {.unnumbered}
+
+
+```{r, cache=TRUE}
+
+
+comparar_clusters(elsoc_salud_modelo,
+            vars = c('sobrecarga_deuda_w01', 'sobrecarga_deuda_w03'))
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('sobrecarga_deuda_w01', 'sobrecarga_deuda_w03'),
+            olas = c(2016, 2018),
+            cpal = c('palevioletred3', 'palegreen3'),
+            K = 4)
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('sobrecarga_deuda_w01', 'sobrecarga_deuda_w03'),
+            olas = c(2016, 2018),
+            cpal = c('palevioletred3', 'palegreen3'),
+            K = 5)
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('sobrecarga_deuda_w01', 'sobrecarga_deuda_w03'),
+            olas = c(2016, 2018),
+            cpal = c('palevioletred3', 'palegreen3'),
+            K = 6)
+
+```
+
+```{r, cache=TRUE}
+# Agregar trayectoria de 3 clusters
+seq <- TraMineR::seqdef(elsoc_salud_modelo, 
+                        var = c('sobrecarga_deuda_w01', 'sobrecarga_deuda_w03'),
+                        weights = elsoc_salud_modelo$ponderador02_w01)
+dist <- TraMineR::seqdist(seq,
+                          method = "LCS",
+                          with.missing = TRUE)
+ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
+
+elsoc_salud_modelo$trayectoria_deuda <- factor(stats::cutree(ward, k = 5),
+                                               levels = c(4, 3, 1, 2),
+                                               labels = c('Nada/No muy sobrecargados deuda',
+                                                          'Reduccion sobrecarga deuda',
+                                                          'Aumento sobrecarga deuda',
+                                                          'Bastante/muy sobrecargados deuda'))
+
+```
+
+### Actividad fisica regular {.unnumbered}
+
+```{r, cache=TRUE}
+
+comparar_clusters(elsoc_salud_modelo,
+            vars = c('activ_fisica_w01', 'activ_fisica_w03'))
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('activ_fisica_w01', 'activ_fisica_w03'),
+            olas = c(2016, 2018),
+            cpal = c('palegreen3', 'palevioletred3'),
+            K = 2)
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('activ_fisica_w01', 'activ_fisica_w03'),
+            olas = c(2016, 2018),
+            cpal = c('palegreen3', 'palevioletred3'),
+            K = 4)
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('activ_fisica_w01', 'activ_fisica_w03'),
+            olas = c(2016, 2018),
+            cpal = c('palegreen3', 'palevioletred3'),
+            K = 5)
+
+```
+
+```{r, cache=TRUE}
+# Agregar trayectoria de 3 clusters
+seq <- TraMineR::seqdef(elsoc_salud_modelo, 
+                        var = c('activ_fisica_w01', 'activ_fisica_w03'),
+                        weights = elsoc_salud_modelo$ponderador02_w01)
+dist <- TraMineR::seqdist(seq,
+                          method = "LCS",
+                          with.missing = TRUE)
+ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
+
+elsoc_salud_modelo$trayectoria_activ_fisica <- factor(stats::cutree(ward, k = 4),
+                                                      levels = c(2, 3, 4, 1),
+                                                      labels = c('Sin actividad fisica persistente',
+                                                                 'Abandonan actividad fisica en 2021',
+                                                                 'Se activan en 2021',
+                                                                 'Con actividad fisica persistente'))
+
+```
+
+
+### Apoyo social {.unnumbered}
+
+```{r tray-apoyo-social, cache=FALSE}
+
+comparar_clusters(elsoc_salud_modelo,
+            vars = c('apoyo_social_w01', 'apoyo_social_w03'))
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('apoyo_social_w01', 'apoyo_social_w03'),
+            cpal = c('palegreen3', 'palevioletred3', 'khaki3'),
+            olas = c(2016, 2018),
+            K = 4)
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('apoyo_social_w01', 'apoyo_social_w03'),
+            cpal = c('palegreen3', 'palevioletred3', 'khaki3'),
+            olas = c(2016, 2018),
+            K = 5)
+
+```
+
+```{r, cache=TRUE}
+# Agregar trayectoria de 3 clusters
+seq <- TraMineR::seqdef(elsoc_salud_modelo, 
+                        var = c('apoyo_social_w01', 'apoyo_social_w03'),
+                        weights = elsoc_salud_modelo$ponderador02_w01)
+dist <- TraMineR::seqdist(seq,
+                          method = "LCS",
+                          with.missing = TRUE)
+ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
+
+elsoc_salud_modelo$trayectoria_apoyo_social <- factor(stats::cutree(ward, k = 5),
+                                                      levels = c(5, 4, 2, 1, 3),
+                                                      labels = c('Apoyo social estable', 
+                                                                 'Apoyo social/decreciente', 
+                                                                 'Apoyo social medio', 
+                                                                 'Apoyo social cambiante',
+                                                                 'Sin apoyo social'))
+
+```
+
+
+### Salud subjetiva {.unnumbered}
+
+```{r, cache=TRUE}
+
+comparar_clusters(elsoc_salud_modelo,
+            vars = c('salud_w01', 'salud_w02', 'salud_w03', 'salud_w04', 'salud_w05'))
+
+trayectoria(elsoc_salud_modelo,
+            vars = c('salud_w01', 'salud_w02', 'salud_w03', 'salud_w04', 'salud_w05'),
+            cpal = c('palevioletred3', 'palegreen3', 'khaki3'),
+            K = 3)
+trayectoria(elsoc_salud_modelo,
+            vars = c('salud_w01', 'salud_w02', 'salud_w03', 'salud_w04', 'salud_w05'),
+            cpal = c('palevioletred3', 'palegreen3', 'khaki3'),
+            K = 4)
+trayectoria(elsoc_salud_modelo,
+            vars = c('salud_w01', 'salud_w02', 'salud_w03', 'salud_w04', 'salud_w05'),
+            cpal = c('palevioletred3', 'palegreen3', 'khaki3'),
+            K = 5)
+
+```
+
+```{r, cache=TRUE}
+# Agregar trayectoria de 3 clusters
+seq <- TraMineR::seqdef(elsoc_salud_modelo, 
+                        var = c('salud_w01', 'salud_w02', 'salud_w03', 'salud_w04', 'salud_w05'),
+                        weights = elsoc_salud_modelo$ponderador02_w01)
+dist <- TraMineR::seqdist(seq,
+                          method = "LCS",
+                          with.missing = TRUE)
+ward <- cluster::agnes(dist, diss = TRUE, method = 'ward')
+
+elsoc_salud_modelo$trayectoria_salud <- factor(stats::cutree(ward, k = 4),
+                                                      levels = c(4, 3, 2, 1),
+                                                      labels = c('Salud subjetiva muy buena',
+                                                      'Salud subjetiva regular/muy buena',
+                                                      'Salud subjetiva regular',
+                                                      'Salud subjetiva mala/regular'))
+
+```
+
+## Guardar datos para usar despues
+
+```{r}
+save(elsoc_salud_modelo, file = 'datos_salud_modelo.RData')
+
+# sjlabelled::write_stata(x = elsoc_salud_modelo %>% 
+#                           rename(trayectoria_om4_4 = trayectoria_om4.4,
+#                                  trayectoria_om4_5 = trayectoria_om4.5,
+#                                  trayectoria_gmm_4lin = trayectoria_gmm.4lin,
+#                                  trayectoria_gmm_5lin = trayectoria_gmm.5lin
+#                                  ), 
+#                         path = 'datos_salud_modelo.dta')
+
+```
+
+
+<!--chapter:end:03-variables-independientes.Rmd-->
+
+
+# Modelo multinomial logit
+
+```{r}
+load('datos_salud_modelo.RData')
+```
+
+## Comparación trayectorias
+
+```{r}
+
+with(elsoc_salud_modelo, rcompanion::cramerV(trayectoria_gmm.4lin, trayectoria_gmm.5lin, bias.correct = TRUE))
+
+
+```
+
+  
+### Trayectorias según clasificación {-}
+
+```{r, cache = TRUE}
+
+
+elsoc_salud_long %>% 
+  left_join(elsoc_salud_modelo %>% select(idencuesta, trayectoria_gmm.4lin), by = 'idencuesta') %>% 
+  filter(!is.na(trayectoria_gmm.4lin)) %>% 
+  group_by(trayectoria_gmm.4lin) %>% 
+  sjlabelled::as_label(ola) %>% 
+  ggplot(aes(y = phq9, x = ola, group = idencuesta, color = trayectoria_gmm.4lin)) + 
+  facet_wrap(~trayectoria_gmm.4lin) +
+  geom_line(alpha = .25) + 
+  geom_point(alpha = .25) + 
+  geom_hline(yintercept = 10, linetype  = 2) +
+  scale_y_continuous(limits = c(0, 27)) +
+  theme(legend.position = 'none') + 
+  ylab('Indice PHQ-9') + 
+  xlab(NULL)
+
+```
+
+## Variable dependiente: Trayectorias LCMM 4 clases - sin trayectoria salud subjetiva
+
+```{r}
+
+m1 <- elsoc_salud_modelo %>%
+  sjlabelled::as_label(m0_sexo_w01, proyecto_vida_w03) %>% 
+  nnet::multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_apoyo_social + trayectoria_ocup,
+           data = ., weights = ponderador02_w01, quiet = TRUE) 
+
+m2 <- elsoc_salud_modelo %>%
+  sjlabelled::as_label(m0_sexo_w01, proyecto_vida_w03) %>% 
+  nnet::multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_apoyo_social + trayectoria_ocup + proyecto_vida_w03 + estresor_n_w01 + estresor_n_w03,
+           data = ., weights = ponderador02_w01, quiet = TRUE) 
+
+m3 <- elsoc_salud_modelo %>%
+  sjlabelled::as_label(m0_sexo_w01, proyecto_vida_w03) %>% 
+  nnet::multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_apoyo_social + trayectoria_ocup + proyecto_vida_w03 + estresor_n_w01 + estresor_n_w03 + extraversion_w02 + agreeableness_w02 + conscientiousness_w02 + neuroticism_w02 + openness_w02,
+           data = ., weights = ponderador02_w01, quiet = TRUE)
+
+```
+
+```{r}
+em1 <- marginaleffects(m1, type = "probs",  conf_level = .95) %>% 
+  summary() %>% 
+  mutate(term = paste0(term, contrast))
+
+em2 <- marginaleffects(m2, type = "probs",  conf_level = .95) %>% 
+  summary() %>% 
+  mutate(term = paste0(term, contrast))
+
+em3 <- marginaleffects(m3, type = "probs",  conf_level = .95) %>% 
+  summary() %>% 
+  mutate(term = paste0(term, contrast))
+
+```
+
+
+```{r}
+modelsummary::modelsummary(list(m1, m2, m3),
+                           estimate = "{estimate}{stars}",
+                           statistic = NULL,
+                           stars = c('*' = .1, '**' = .05, '***' = .01),
+                           shape = term + response ~ model,
+                           exponentiate = TRUE)
+
+
+```
+
+## Resultados en formato grafico
+
+```{r}
+m3.coefs <- broom::tidy(m3, conf.int=TRUE)
+```
+
+### Variables de control {-}
+
+```{r}
+
+em3 %>% 
+  filter(term %in% c('m0_sexo_w01Mujer - Hombre', 'm0_edad_w01dY/dX', 'log_ingdY/dX', 'proyecto_vida_w03Decidido direccion de vida - No decidido direccion de vida', 'estresor_n_w01dY/dX', 'estresor_n_w03dY/dX')) %>% 
+  mutate(term = factor(term, 
+                       levels = c('m0_sexo_w01Mujer - Hombre', 'm0_edad_w01dY/dX', 'log_ingdY/dX', 'proyecto_vida_w03Decidido direccion de vida - No decidido direccion de vida', 'estresor_n_w01dY/dX', 'estresor_n_w03dY/dX'),
+                       labels = c('Sexo (mujer=1)', 'Edad', 'Log(ing)', 
+                                  'Decidido direccion\nde vida', 'N estresores (2016)', 'N estresores (2018)')),
+         group = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', group)) %>% 
+
+  ggplot(aes(x = estimate, y = fct_rev(term), colour = fct_rev(group))) +
+  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
+                   position = position_dodgev(height = 0.75)) + 
+  geom_vline(xintercept = 0, linetype = 2, alpha = .5) +
+  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
+  theme(legend.position = 'top') +
+  theme(legend.title = element_blank()) +
+  xlab('Probabilidad predicha') + 
+  ylab(NULL)
+
+```
+
+
+
+### Trayectoria sobrecarga deuda {-}
+
+```{r}
+
+em3 %>% 
+  filter(grepl('trayectoria_deuda', term)) %>% 
+  mutate(term = gsub("trayectoria_deuda", "", term),
+         term = gsub(" - Nada/No muy sobrecargados deuda", "", term),
+         group = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', group)) %>% 
+  ggplot(aes(x = estimate, y = fct_rev(term), colour = fct_rev(group))) +
+  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
+                   position = position_dodgev(height = 0.75)) + 
+  geom_vline(xintercept = 0, linetype = 2, alpha = .5) +
+  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
+  theme(legend.position = 'top') +
+  theme(legend.title = element_blank()) +
+  xlab('Probabilidad predicha cr a Nada/No muy sobrecargados deuda') + 
+  ylab(NULL)
+
+```
+
+### Apoyo social {-}
+
+```{r}
+
+em3 %>% 
+  filter(grepl('apoyo_social', term)) %>% 
+  mutate(term = gsub("trayectoria_apoyo_social", "", term),
+         term = gsub(" - Apoyo social estable", "", term),
+         group = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', group)) %>% 
+
+  ggplot(aes(x = estimate, y = fct_rev(term), colour = fct_rev(group))) +
+  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
+                   position = position_dodgev(height = 0.75)) + 
+  geom_vline(xintercept = 0, linetype = 2, alpha = .5) +
+  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
+  theme(legend.position = 'top') +
+  theme(legend.title = element_blank()) +
+  xlab('Probabilidad predicha cr a Apoyo social estable') + 
+  ylab(NULL)
+
+
+```
+
+### Trayectoria ocupacional {-}
+
+```{r}
+
+em3 %>% 
+  filter(grepl('ocup', term)) %>% 
+  mutate(term = gsub("trayectoria_ocup", "", term),
+         term = gsub(" - Ocupados estables", "", term),
+         group = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', group)) %>% 
+
+  ggplot(aes(x = estimate, y = fct_rev(term), colour = fct_rev(group))) +
+  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
+                   position = position_dodgev(height = 0.75)) + 
+  geom_vline(xintercept = 0, linetype = 2, alpha = .5) +
+  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
+  theme(legend.position = 'top') +
+  theme(legend.title = element_blank()) +
+  xlab('Probabilidad predicha cr a Ocupados estables') + 
+  ylab(NULL)
+
+
+```
+
+### Variables de personalidad {-}
+
+```{r}
+
+em3 %>% 
+  filter(term %in% c('extraversion_w02dY/dX', 'agreeableness_w02dY/dX', 'conscientiousness_w02dY/dX', 'neuroticism_w02dY/dX', 'openness_w02dY/dX')) %>% 
+  mutate(term = gsub("_w02", "", term),
+         term = str_to_title(gsub("dY/dX", "", term)),
+         group = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', group)) %>% 
+
+  ggplot(aes(x = estimate, y = fct_rev(term), colour = fct_rev(group))) +
+  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
+                   position = position_dodgev(height = 0.75)) + 
+  geom_vline(xintercept = 0, linetype = 2, alpha = .5) +
+  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
+  theme(legend.position = 'top') +
+  theme(legend.title = element_blank()) +
+  xlab('Probabilidad predicha') + 
+  ylab(NULL)
+
+
+```
+
+<!--chapter:end:04-modelo-multinomial.Rmd-->
+

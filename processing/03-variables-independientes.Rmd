@@ -13,25 +13,28 @@ elsoc_salud_modelo$trayectoria_gmm.4lin <- factor(elsoc_salud %>%
                                              left_join(lcmm4_lin$pprob %>% select(idencuesta, class),
                                                        by = 'idencuesta') %>%
                                              pull(class),
-                                           levels = c(3, 1, 2, 4),
+                                           levels = c(2, 1, 3, 4),
                                            labels = c('Trayectoria asintomatica', 
-                                                      'Trayectoria sintomas moderados descendente', 
+                                                      'Trayectoria sintomas moderados', 
                                                       'Trayectoria de sintomas ascendente',
                                                       'Trayectoria sintomas severos persistentes'))
+
+
+```
+
+```{r}
 
 elsoc_salud_modelo$trayectoria_gmm.5lin <- factor(elsoc_salud %>%
                                              left_join(lcmm5_lin$pprob %>% select(idencuesta, class),
                                                        by = 'idencuesta') %>%
                                              pull(class),
-                                             levels = c(2, 4, 5, 3, 1),
+                                             levels = c(4, 5, 1, 2, 3),
                               labels = c('Trayectoria baja-media',
                                          'Trayectoria media-moderada',
                                          'Trayectoria descendente',
                                          'Trayectoria ascendente',
                                          'Trayectoria alta-moderada'))
 
-sjmisc::frq(elsoc_salud_modelo$trayectoria_gmm.4lin)
-sjmisc::frq(elsoc_salud_modelo$trayectoria_gmm.5lin)
 
 ```
 
@@ -184,7 +187,26 @@ elsoc_salud_modelo <- elsoc_salud_modelo %>%
     percepcion_desigualdad_w03 = factor(c18_11_w03 %in% 4:5,
                                         labels = c('Desigualdad no muy grande', 'Desigualdad muy grande')),
     percepcion_desigualdad_w04 = factor(c18_11_w04 %in% 4:5,
-                                        labels = c('Desigualdad no muy grande', 'Desigualdad muy grande'))
+                                        labels = c('Desigualdad no muy grande', 'Desigualdad muy grande')),
+    
+    # Estresores:
+    
+    estresor_01_w01 = s13_01_w01 == 1,
+    estresor_02_w01 = s13_02_w01 == 1,
+    estresor_03_w01 = s13_03_w01 == 1,
+    estresor_04_w01 = s13_04_w01 == 1,
+    estresor_06_w01 = s13_06_w01 == 1,
+    
+    estresor_01_w03 = s13_01_w03 == 1,
+    estresor_02_w03 = s13_02_w03 == 1,
+    estresor_03_w03 = s13_03_w03 == 1,
+    estresor_04_w03 = s13_04_w03 == 1,
+    estresor_06_w03 = s13_06_w03 == 1,
+    
+    estresor_n_w01 = estresor_01_w01 + estresor_02_w01 + estresor_03_w01 + estresor_04_w01 + estresor_06_w01,
+    estresor_n_w03 = estresor_01_w03 + estresor_02_w03 + estresor_03_w03 + estresor_04_w03 + estresor_06_w03,
+    
+    estresor_n = estresor_n_w01 + estresor_n_w03
     
   )
 
@@ -482,6 +504,7 @@ elsoc_salud_modelo$trayectoria_salud <- factor(stats::cutree(ward, k = 4),
 ## Guardar datos para usar despues
 
 ```{r}
+
 save(elsoc_salud_modelo, file = 'datos_salud_modelo.RData')
 
 # sjlabelled::write_stata(x = elsoc_salud_modelo %>% 

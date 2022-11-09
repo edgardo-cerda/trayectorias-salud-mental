@@ -3,6 +3,7 @@
 
 ```{r}
 load('datos_salud_modelo.RData')
+
 ```
 
 ## Comparación trayectorias
@@ -14,193 +15,11 @@ with(elsoc_salud_modelo, rcompanion::cramerV(trayectoria_gmm.4lin, trayectoria_g
 
 ```
 
-
-## Variable dependiente: Trayectorias LCMM 4 clases - sin trayectoria salud subjetiva
-
-```{r}
-m1 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_apoyo_social + trayectoria_ocup,
-           data = ., weights = ponderador02_w01, quiet = TRUE) 
-
-m2 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_apoyo_social + trayectoria_ocup + fuma_w01 + imc_w01 + proyecto_vida_w03,
-           data = ., weights = ponderador02_w01, quiet = TRUE) 
-
-m3 <- elsoc_salud_modelo %>%
-  multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_apoyo_social + trayectoria_ocup + fuma_w01 + imc_w01 + proyecto_vida_w03 + extraversion_w02 + agreeableness_w02 + conscientiousness_w02 + neuroticism_w02 + openness_w02,
-           data = ., weights = ponderador02_w01, quiet = TRUE) 
-
-modelsummary::modelsummary(list(m1, m2, m3),
-                           estimate = "{estimate}{stars}",
-                           statistic = NULL,
-                           stars = c('*' = .05, '**' = .01, '***' = .001),
-                           shape = term + response ~ model,
-                           exponentiate = TRUE,
-                           output = 'resultados.docx')
-```
-
-## Resultados en formato grafico
-
-```{r}
-m3.coefs <- broom::tidy(m3, conf.int=TRUE)
-```
-
-### Variables de control {-}
-
-```{r}
-
-m3.coefs %>% 
-  filter(term %in% c('m0_sexo_w01', 'm0_edad_w01', 'log_ing', 'proyecto_vida_w03Decidido direccion de vida', 'fuma_w01Fumador', 'imc_w01')) %>% 
-  mutate(estimate = exp(estimate),
-         conf.low = exp(conf.low),
-         conf.high = exp(conf.high),
-         term = factor(term, 
-                       levels = c('m0_sexo_w01', 'm0_edad_w01', 'log_ing', 'proyecto_vida_w03Decidido direccion de vida', 'fuma_w01Fumador', 'imc_w01'),
-                       labels = c('Sexo (mujer=1)', 'Edad', 'Log(ing)', 
-                                  'Decidido direccion\nde vida', 'IMC', 'Fuma')),
-         y.level = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', y.level)) %>% 
-  ggplot(aes(x = estimate, y = fct_rev(term), colour = fct_rev(y.level))) +
-  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
-                   position = position_dodgev(height = 0.75)) + 
-  geom_vline(xintercept = c(0, 1), linetype = 2, alpha = .5) +
-  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
-  theme(legend.position = 'top') +
-  theme(legend.title = element_blank()) +
-  xlab('Odds Ratio') + 
-  ylab(NULL)
-
-```
-
-
-
-### Trayectoria sobrecarga deuda {-}
-
-```{r}
-
-m3.coefs %>% 
-  filter(grepl('trayectoria_deuda', term)) %>% 
-  mutate(estimate = exp(estimate),
-         conf.low = exp(conf.low),
-         conf.high = exp(conf.high),
-         term = gsub("trayectoria_deuda", "", term),
-         y.level = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', y.level)) %>% 
-  ggplot(aes(x = estimate, y = term, colour = fct_rev(y.level))) +
-  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
-                   position = position_dodgev(height = 0.75)) + 
-  geom_vline(xintercept = c(0, 1), linetype = 2, alpha = .5) +
-  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
-  theme(legend.position = 'top') +
-  theme(legend.title = element_blank()) +
-  xlab('Odds Ratio') + 
-  ylab(NULL)
-
-```
-
-### Apoyo social {-}
-
-```{r}
-
-m3.coefs %>% 
-  filter(grepl('apoyo_social', term)) %>% 
-  mutate(estimate = exp(estimate),
-         conf.low = exp(conf.low),
-         conf.high = exp(conf.high),
-         term = gsub("trayectoria_apoyo_social", "", term),
-         y.level = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', y.level)) %>% 
-  ggplot(aes(x = estimate, y = term, colour = fct_rev(y.level))) +
-  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
-                   position = position_dodgev(height = 0.75)) + 
-  geom_vline(xintercept = c(0, 1), linetype = 2, alpha = .5) +
-  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
-  theme(legend.position = 'top') +
-  theme(legend.title = element_blank()) +
-  xlab('Odds Ratio') + 
-  ylab(NULL)
-
-```
-
-### Trayectoria ocupacional {-}
-
-```{r}
-
-m3.coefs %>% 
-  filter(grepl('ocup', term)) %>% 
-  mutate(estimate = exp(estimate),
-         conf.low = exp(conf.low),
-         conf.high = exp(conf.high),
-         term = gsub("trayectoria_ocup", "", term),
-         y.level = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', y.level)) %>% 
-  ggplot(aes(x = estimate, y = term, colour = fct_rev(y.level))) +
-  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
-                   position = position_dodgev(height = 0.75)) + 
-  geom_vline(xintercept = c(0, 1), linetype = 2, alpha = .5) +
-  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
-  theme(legend.position = 'top') +
-  theme(legend.title = element_blank()) +
-  xlab('Odds Ratio') + 
-  ylab(NULL)
-
-```
-
-### Variables de personalidad {-}
-
-```{r}
-
-m3.coefs %>% 
-  filter(term %in% c('extraversion_w02', 'agreeableness_w02', 'conscientiousness_w02', 'neuroticism_w02', 'openness_w02')) %>% 
-  mutate(estimate = exp(estimate),
-         conf.low = exp(conf.low),
-         conf.high = exp(conf.high),
-         term = str_to_title(gsub("_w02", "", term)),
-         y.level = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', y.level)) %>% 
-  ggplot(aes(x = estimate, y = term, colour = fct_rev(y.level))) +
-  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
-                   position = position_dodgev(height = 0.75)) + 
-  geom_vline(xintercept = c(0, 1), linetype = 2, alpha = .5) +
-  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
-  theme(legend.position = 'top') +
-  theme(legend.title = element_blank()) +
-  xlab('Odds Ratio') + 
-  ylab(NULL)
-
-```
-
-```{r}
-mfx <- marginaleffects(m3, type = "probs")
-
-asd <- summary(mfx)
-
-asd %>% 
-  ggplot(aes(x = estimate, y = term, colour = fct_rev(group))) +
-  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
-                   position = position_dodgev(height = 0.75)) + 
-  theme(legend.position = 'top') +
-  theme(legend.title = element_blank()) +
-  xlab('Odds Ratio')
-
-```
-
-```{r}
-
-elsoc_salud_long %>% 
-  left_join(elsoc_salud_modelo %>% select(idencuesta, trayectoria_ocup), by = 'idencuesta') %>% 
-  filter(trayectoria_ocup == 'Oscilan entre inactividad y ocupacion') %>% 
-  filter(!elsoc::is_nsnr(m02)) %>% 
-  mutate(m02 = factor(m02, levels = 1:9, 
-                      labels = c('Trabajo remunerado\ntiempo completo', 'Trabajo remunerado\ntiempo parcial/ocasional', 'Estudia y trabaja', 'Solo estudia', 'Jubilado o\npensionado', 'Desempleado', 'Trabajo no\nremunerado', 
-                                                    'Enfermo o\ndiscapacidad', 'otro'))) %>% 
-  sjlabelled::as_label(ola) %>% 
-  elsoc::prop(m02, by = c(ola) , na.rm = TRUE) %>% 
-  ggplot(aes(y = prop, x = ola, fill = m02)) + 
-  geom_col(position = 'stack') +
-  theme(legend.position = 'top',
-        legend.title = element_blank())
-
-```
   
 ### Trayectorias según clasificación {-}
 
 ```{r, cache = TRUE}
+
 
 elsoc_salud_long %>% 
   left_join(elsoc_salud_modelo %>% select(idencuesta, trayectoria_gmm.4lin), by = 'idencuesta') %>% 
@@ -219,3 +38,172 @@ elsoc_salud_long %>%
 
 ```
 
+## Variable dependiente: Trayectorias LCMM 4 clases - sin trayectoria salud subjetiva
+
+```{r}
+
+m1 <- elsoc_salud_modelo %>%
+  sjlabelled::as_label(m0_sexo_w01, proyecto_vida_w03) %>% 
+  nnet::multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_apoyo_social + trayectoria_ocup,
+           data = ., weights = ponderador02_w01, quiet = TRUE) 
+
+m2 <- elsoc_salud_modelo %>%
+  sjlabelled::as_label(m0_sexo_w01, proyecto_vida_w03) %>% 
+  nnet::multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_apoyo_social + trayectoria_ocup + proyecto_vida_w03 + estresor_n_w01 + estresor_n_w03,
+           data = ., weights = ponderador02_w01, quiet = TRUE) 
+
+m3 <- elsoc_salud_modelo %>%
+  sjlabelled::as_label(m0_sexo_w01, proyecto_vida_w03) %>% 
+  nnet::multinom(trayectoria_gmm.4lin ~ m0_sexo_w01 + m0_edad_w01 + log_ing + trayectoria_deuda + trayectoria_apoyo_social + trayectoria_ocup + proyecto_vida_w03 + estresor_n + extraversion_w02 + agreeableness_w02 + conscientiousness_w02 + neuroticism_w02 + openness_w02,
+           data = ., weights = ponderador02_w01, quiet = TRUE)
+
+```
+
+```{r}
+em1 <- marginaleffects(m1, type = "probs",  conf_level = .95) %>% 
+  summary() %>% 
+  mutate(term = paste0(term, contrast))
+
+em2 <- marginaleffects(m2, type = "probs",  conf_level = .95) %>% 
+  summary() %>% 
+  mutate(term = paste0(term, contrast))
+
+em3 <- marginaleffects(m3, type = "probs",  conf_level = .95) %>% 
+  summary() %>% 
+  mutate(term = paste0(term, contrast))
+
+```
+
+
+```{r}
+modelsummary::modelsummary(list(m1, m2, m3),
+                           estimate = "{estimate}{stars}",
+                           statistic = NULL,
+                           stars = c('*' = .1, '**' = .05, '***' = .01),
+                           shape = term + response ~ model,
+                           exponentiate = TRUE)
+
+
+```
+
+## Resultados en formato grafico
+
+```{r}
+m3.coefs <- broom::tidy(m3, conf.int=TRUE)
+```
+
+### Variables de control {-}
+
+```{r}
+
+em3 %>% 
+  filter(term %in% c('m0_sexo_w01Mujer - Hombre', 'm0_edad_w01dY/dX', 'log_ingdY/dX', 'proyecto_vida_w03Decidido direccion de vida - No decidido direccion de vida', 'estresor_ndY/dX')) %>% 
+  mutate(term = factor(term, 
+                       levels = c('m0_sexo_w01Mujer - Hombre', 'm0_edad_w01dY/dX', 'log_ingdY/dX', 'proyecto_vida_w03Decidido direccion de vida - No decidido direccion de vida', 'estresor_ndY/dX'),
+                       labels = c('Sexo (mujer=1)', 'Edad', 'Log(ing)', 
+                                  'Decidido direccion\nde vida', 'N estresores')),
+         group = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', group)) %>% 
+
+  ggplot(aes(x = estimate, y = fct_rev(term), colour = fct_rev(group))) +
+  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
+                   position = position_dodgev(height = 0.75)) + 
+  geom_vline(xintercept = 0, linetype = 2, alpha = .5) +
+  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
+  theme(legend.position = 'top') +
+  theme(legend.title = element_blank()) +
+  xlab('Probabilidad predicha') + 
+  ylab(NULL)
+
+```
+
+
+
+### Trayectoria sobrecarga deuda {-}
+
+```{r}
+
+em3 %>% 
+  filter(grepl('trayectoria_deuda', term)) %>% 
+  mutate(term = gsub("trayectoria_deuda", "", term),
+         term = gsub(" - Nada/No muy sobrecargados deuda", "", term),
+         group = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', group)) %>% 
+  ggplot(aes(x = estimate, y = fct_rev(term), colour = fct_rev(group))) +
+  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
+                   position = position_dodgev(height = 0.75)) + 
+  geom_vline(xintercept = 0, linetype = 2, alpha = .5) +
+  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
+  theme(legend.position = 'top') +
+  theme(legend.title = element_blank()) +
+  xlab('Probabilidad predicha cr a Nada/No muy sobrecargados deuda') + 
+  ylab(NULL)
+
+```
+
+### Apoyo social {-}
+
+```{r}
+
+em3 %>% 
+  filter(grepl('apoyo_social', term)) %>% 
+  mutate(term = gsub("trayectoria_apoyo_social", "", term),
+         term = gsub(" - Apoyo social estable", "", term),
+         group = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', group)) %>% 
+
+  ggplot(aes(x = estimate, y = fct_rev(term), colour = fct_rev(group))) +
+  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
+                   position = position_dodgev(height = 0.75)) + 
+  geom_vline(xintercept = 0, linetype = 2, alpha = .5) +
+  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
+  theme(legend.position = 'top') +
+  theme(legend.title = element_blank()) +
+  xlab('Probabilidad predicha cr a Apoyo social estable') + 
+  ylab(NULL)
+
+
+```
+
+### Trayectoria ocupacional {-}
+
+```{r}
+
+em3 %>% 
+  filter(grepl('ocup', term)) %>% 
+  mutate(term = gsub("trayectoria_ocup", "", term),
+         term = gsub(" - Ocupados estables", "", term),
+         group = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', group)) %>% 
+
+  ggplot(aes(x = estimate, y = fct_rev(term), colour = fct_rev(group))) +
+  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
+                   position = position_dodgev(height = 0.75)) + 
+  geom_vline(xintercept = 0, linetype = 2, alpha = .5) +
+  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
+  theme(legend.position = 'top') +
+  theme(legend.title = element_blank()) +
+  xlab('Probabilidad predicha cr a Ocupados estables') + 
+  ylab(NULL)
+
+
+```
+
+### Variables de personalidad {-}
+
+```{r}
+
+em3 %>% 
+  filter(term %in% c('extraversion_w02dY/dX', 'agreeableness_w02dY/dX', 'conscientiousness_w02dY/dX', 'neuroticism_w02dY/dX', 'openness_w02dY/dX')) %>% 
+  mutate(term = gsub("_w02", "", term),
+         term = str_to_title(gsub("dY/dX", "", term)),
+         group = gsub('Trayectoria sintomas', 'Trayectoria sintomas\n', group)) %>% 
+
+  ggplot(aes(x = estimate, y = fct_rev(term), colour = fct_rev(group))) +
+  geom_pointrangeh(aes(xmin = conf.low, xmax = conf.high),
+                   position = position_dodgev(height = 0.75)) + 
+  geom_vline(xintercept = 0, linetype = 2, alpha = .5) +
+  scale_color_discrete(guide = guide_legend(reverse = TRUE)) +
+  theme(legend.position = 'top') +
+  theme(legend.title = element_blank()) +
+  xlab('Probabilidad predicha') + 
+  ylab(NULL)
+
+
+```
